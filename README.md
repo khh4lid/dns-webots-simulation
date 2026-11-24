@@ -40,6 +40,36 @@ The story in three steps:
 
 ---
 
+## Watch
+
+Four clips, every frame a real Webots render from an offscreen Camera node. Each one replays an episode that is already a row of `results/v2_S6/results_v2.csv` — the capture re-runs the whole session prefix first, so the footage **is** the logged run and not a lookalike. Max trajectory difference against the log: **4.99e-06 m** on all four.
+
+<table>
+<tr>
+<td width="50%"><a href="https://github.com/khh4lid/dns-webots-simulation/releases/tag/v2.0"><img src="assets/gifs/V-TOP_L00_success.gif" alt="Top-down view of the drone flying from the green start pad to the blue goal, trail coloured by clearance, while the orange cart crosses the aisle"></a></td>
+<td width="50%"><a href="https://github.com/khh4lid/dns-webots-simulation/releases/tag/v2.0"><img src="assets/gifs/V-SIDE_L00_altitude.gif" alt="Side view of the same flight showing the drone holding 1.0 m against the 2.0 m racks and 2.5 m columns"></a></td>
+</tr>
+<tr>
+<td><sub><b>V-TOP</b> — the drone threads the aisle · trail coloured by ground-truth clearance · WEBOTS CAPTURE · <code>L00_C_ppo_seed7_v01</code>, goal in 60 steps</sub></td>
+<td><sub><b>V-SIDE</b> — altitude against obstacle heights · camera tracks the drone · WEBOTS CAPTURE · same episode</sub></td>
+</tr>
+<tr>
+<td><a href="https://github.com/khh4lid/dns-webots-simulation/releases/tag/v2.0"><img src="assets/gifs/V-TOP_L02_mirror.gif" alt="Top-down view of the same checkpoint and cart phase on the mirrored layout, flying the opposite way around the racks"></a></td>
+<td><a href="https://github.com/khh4lid/dns-webots-simulation/releases/tag/v2.0"><img src="assets/gifs/V-TOP_L05_failure.gif" alt="Top-down view of the drone failing to reach the goal on the hardest layout"></a></td>
+</tr>
+<tr>
+<td><sub><b>V-TOP mirror</b> — same checkpoint, same cart phase, reflected layout · WEBOTS CAPTURE · <code>L02_C_ppo_seed7_v01</code>, goal in 44 steps</sub></td>
+<td><sub><b>V-TOP L05</b> — the hardest layout, 0/45 pooled. The reference traversal reaches this goal in 56 steps, so the layout is passable — this is a policy failure, not a broken world · WEBOTS CAPTURE</sub></td>
+</tr>
+</table>
+
+> [!NOTE]
+> GitHub does not play repository MP4s inline, so each thumbnail above is a GIF and links to **release v2.0**, where the full-resolution 1920x1080 MP4s live. They are deliberately not committed — large binaries bloat every clone. Each clip ships a JSON sidecar (`results/video/*.json`, committed) recording its run id, cart phase, selection rule and path delta.
+
+**Slides for the 27 Nov review:** [`DNS_SimEnv_2026-11-27.pdf`](docs/meetings/2026-11-27/DNS_SimEnv_2026-11-27.pdf) (12 slides + 6 backups) with the [presenter kit](docs/meetings/2026-11-27/TALKING_POINTS.md). The PPTX with embedded video is a release asset.
+
+---
+
 ## Start here — pick your role
 
 | You are… | Read this | The one command you need |
@@ -80,6 +110,14 @@ My five responsibilities and what each delivered: **[simulation environment doss
 <td><sub><b>Figure 3</b> — the six layouts at identical metric scale · LOGGED-DATA RENDER · source: <code>assets/figures/F1_shift_ladder.png</code></sub></td>
 </tr>
 </table>
+
+<img src="assets/figures/obstacle_catalogue.png" width="900" alt="Four cards showing a storage rack, structural column, crate stack and powered cart with their dimensions, motion and purpose">
+
+<sub><b>Figure 4</b> — the four obstacle types, their footprints and heights, and how many appear in each layout · WEBOTS CAPTURE (crops) + logged dimensions · source: <code>assets/figures/obstacle_catalogue.png</code></sub>
+
+<img src="assets/figures/side_elevation.png" width="820" alt="Chart of x against z showing obstacle heights as bars, the 1.14 m scan plane, and the drone holding 1.0 m">
+
+<sub><b>Figure 5</b> — every obstacle rises above the 1.14 m scan plane, so nothing is solid to the collision test and invisible to the sensor. The drone held 1.0 m to ±0.33 mm over 61 control steps · LOGGED-DATA RENDER · source: <code>assets/figures/side_elevation.png</code></sub>
 
 <details>
 <summary><b>Specification — every value read from <code>config/scenarios/L00_C.json</code></b></summary>
@@ -150,8 +188,8 @@ Three clocks nest exactly: **8 ms** physics, **125 Hz** inner attitude loop, **5
 <td width="54%"><img src="assets/gifs/lidar_sectors.gif" alt="Top-down Webots capture beside a synchronised polar plot of the 12 sector ranges as the cart crosses"></td>
 </tr>
 <tr>
-<td><sub><b>Figure 4</b> — sensor geometry, dimensions read from the scenario and the PROTO · SCHEMATIC · source: <code>assets/diagrams/SV1_sensor_schematic.png</code></sub></td>
-<td><sub><b>Figure 5</b> — the 12 sectors the policy actually receives, during a cart crossing · left WEBOTS CAPTURE, right LOGGED-DATA RENDER · source: <code>assets/gifs/lidar_sectors.gif</code></sub></td>
+<td><sub><b>Figure 6</b> — sensor geometry, dimensions read from the scenario and the PROTO · SCHEMATIC · source: <code>assets/diagrams/SV1_sensor_schematic.png</code></sub></td>
+<td><sub><b>Figure 7</b> — the 12 sectors the policy actually receives, during a cart crossing · left WEBOTS CAPTURE, right LOGGED-DATA RENDER · source: <code>assets/gifs/lidar_sectors.gif</code></sub></td>
 </tr>
 </table>
 
@@ -185,11 +223,11 @@ Fourteen decision records. Each states the context, the options that were on the
 
 <img src="assets/decisions/ADR-005_line_block.png" width="700" alt="Plan view showing the straight start-goal line crossed by both racks">
 
-<sub>**Figure 6** — both racks cross y = 0 by 0.20 m, so flying straight at the goal cannot work · LOGGED-DATA RENDER · source: `assets/decisions/ADR-005_line_block.png`</sub>
+<sub>**Figure 8** — both racks cross y = 0 by 0.20 m, so flying straight at the goal cannot work · LOGGED-DATA RENDER · source: `assets/decisions/ADR-005_line_block.png`</sub>
 
 <img src="assets/decisions/ADR-006_cart_spacetime.png" width="700" alt="The cart's y position against time, a triangle wave of period 16.89 s">
 
-<sub>**Figure 7** — the cart's pose is an exact function of time; its t = 0 pose is the −1.9 m extreme, not the sweep centre · LOGGED-DATA RENDER · source: `assets/decisions/ADR-006_cart_spacetime.png`</sub>
+<sub>**Figure 9** — the cart's pose is an exact function of time; its t = 0 pose is the −1.9 m extreme, not the sweep centre · LOGGED-DATA RENDER · source: `assets/decisions/ADR-006_cart_spacetime.png`</sub>
 
 </details>
 
@@ -199,7 +237,7 @@ Fourteen decision records. Each states the context, the options that were on the
 
 <img src="assets/figures/F4_verification_panel.png" width="860" alt="Four panels: observation interval histogram, LiDAR error bars per run, cart range tracked over time, and the box-versus-circle geometry">
 
-<sub>**Figure 8** — verification panel · LOGGED-DATA RENDER and SCHEMATIC · source: `assets/figures/F4_verification_panel.png`</sub>
+<sub>**Figure 10** — verification panel · LOGGED-DATA RENDER and SCHEMATIC · source: `assets/figures/F4_verification_panel.png`</sub>
 
 | Check | Method | Result |
 |---|---|---|
@@ -236,7 +274,7 @@ Full corrections C1–C9: **[V1_CORRECTIONS.md](docs/verification/V1_CORRECTIONS
 
 <img src="assets/figures/scorecard.png" width="900" alt="Six layout thumbnails, each with its pooled PPO success rate underneath">
 
-<sub>**Figure 9** — results scorecard · LOGGED-DATA RENDER · source: `assets/figures/scorecard.png`</sub>
+<sub>**Figure 11** — results scorecard · LOGGED-DATA RENDER · source: `assets/figures/scorecard.png`</sub>
 
 | Layout | What changes | IoU vs L00 | Corridor (m) | **PPO Mode C pooled [Wilson 95%]** | Reference traversal |
 |---|---|---|---|---|---|
@@ -249,7 +287,7 @@ Full corrections C1–C9: **[V1_CORRECTIONS.md](docs/verification/V1_CORRECTIONS
 
 <img src="assets/figures/F2_generalization.png" width="860" alt="Pooled success with Wilson intervals per layout for both modes, and the outcome taxonomy">
 
-<sub>**Figure 10** — generalisation across the ladder, with per-checkpoint points and the failure taxonomy · LOGGED-DATA RENDER · source: `assets/figures/F2_generalization.png`</sub>
+<sub>**Figure 12** — generalisation across the ladder, with per-checkpoint points and the failure taxonomy · LOGGED-DATA RENDER · source: `assets/figures/F2_generalization.png`</sub>
 
 > [!IMPORTANT]
 > **How to read these numbers.**
@@ -263,11 +301,11 @@ L02 is L00 reflected about y = 0 — so it is maximally *different* (occupancy I
 
 <img src="assets/figures/E15_mirror_overlay.png" width="760" alt="Three panels: trajectories on L00 going right, on L02 going left, and L02 reflected back onto L00">
 
-<sub>**Figure 11** — visual proof the mirrored layout was actually flown mirrored · LOGGED-DATA RENDER · source: `assets/figures/E15_mirror_overlay.png`</sub>
+<sub>**Figure 13** — visual proof the mirrored layout was actually flown mirrored · LOGGED-DATA RENDER · source: `assets/figures/E15_mirror_overlay.png`</sub>
 
 <img src="assets/gifs/mirror_l00_vs_l02.gif" width="900" alt="Side-by-side Webots capture of the same checkpoint and cart phase on L00 and on the mirrored L02">
 
-<sub>**Figure 12** — same checkpoint, same cart phase, mirrored geometry · WEBOTS CAPTURE · source: `assets/gifs/mirror_l00_vs_l02.gif`</sub>
+<sub>**Figure 14** — same checkpoint, same cart phase, mirrored geometry · WEBOTS CAPTURE · source: `assets/gifs/mirror_l00_vs_l02.gif`</sub>
 
 > [!NOTE]
 > **The claim, stated narrowly.** The pooled result is the same on L00 and L02 (24/45 both), and the reflected trajectories do **not** retrace the originals — the same checkpoint flies a genuinely different route. That is **no evidence of left/right layout memorisation in this test**.
@@ -403,6 +441,14 @@ $env:WEBOTS_HOME = "C:\Program Files\Webots"   # wherever yours is
 </tr>
 <tr>
 <td><sub>F4 — verification</sub></td><td><sub>E9 — L00 reproduction</sub></td><td><sub>E4 — clearance</sub></td>
+</tr>
+<tr>
+<td><img src="assets/figures/obstacle_catalogue.png" width="260" alt="Obstacle catalogue"></td>
+<td><img src="assets/figures/side_elevation.png" width="260" alt="Side elevation against the scan plane"></td>
+<td><img src="assets/figures/E15_mirror_overlay.png" width="260" alt="Mirror trajectory overlay"></td>
+</tr>
+<tr>
+<td><sub>Obstacle catalogue</sub></td><td><sub>Side elevation</sub></td><td><sub>Mirror overlay</sub></td>
 </tr>
 </table>
 
