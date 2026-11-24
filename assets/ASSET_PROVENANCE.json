@@ -1,0 +1,75 @@
+{
+  "scenario": "warehouse_dynamic",
+  "config": "config/scenario_warehouse.json",
+  "webots_version": "R2025a",
+  "statement": "Every asset listed here is derived from a file produced by a real run of this project. No asset is an artist's impression and none was sourced from a third party.",
+  "assets": [
+    {
+      "asset": "assets/screenshots/hero_annotated.png",
+      "kind": "annotated Webots capture",
+      "generated_by": "scripts/make_assets.py",
+      "sources": [
+        "results/screenshots/hero.png",
+        "results/screenshots/screenshots.json",
+        "config/scenario_warehouse.json"
+      ],
+      "note": "Genuine Webots R2025a render from the drone's scene Camera node. Labels are placed by projecting the configured world coordinates through the recorded camera pose; no scene element was redrawn."
+    },
+    {
+      "asset": "assets/figures/environment_map.png",
+      "kind": "generated technical drawing",
+      "generated_by": "scripts/make_assets.py",
+      "sources": [
+        "config/scenario_warehouse.json"
+      ],
+      "note": "Scaled plan drawn directly from the scenario JSON that generates the Webots world, so the map cannot drift from the simulated geometry."
+    },
+    {
+      "asset": "assets/figures/moving_obstacle_validation.png",
+      "kind": "measurement plot",
+      "generated_by": "scripts/make_assets.py",
+      "sources": [
+        "results/moving_obstacle_warehouse.json"
+      ],
+      "note": "Top: supervisor-reported cart position against the closed-form path it is driven from (exact by construction; labelled as such on the figure). Bottom: the genuinely independent comparison of the measured LiDAR scan against an analytic ray-cast during the same episode."
+    },
+    {
+      "asset": "assets/figures/lidar_validation.png",
+      "kind": "measurement plot",
+      "generated_by": "scripts/make_assets.py",
+      "sources": [
+        "results/calibration_warehouse.json"
+      ],
+      "note": "Sector ranges read from the Webots Lidar device compared against an analytic ray-cast of the same scene from the same pose."
+    },
+    {
+      "asset": "assets/figures/success_rate.png",
+      "kind": "experiment result",
+      "generated_by": "scripts/make_assets.py",
+      "sources": [
+        "results/experiments_warehouse/experiment_summary.csv"
+      ],
+      "note": "Point estimates and Wilson 95% intervals computed by tests/client_experiments.py over 90 recorded episodes."
+    },
+    {
+      "asset": "assets/figures/trajectories.png",
+      "kind": "experiment result",
+      "generated_by": "scripts/make_assets.py",
+      "sources": [
+        "results/experiments_warehouse/traces.json",
+        "results/experiments_warehouse/experiment_results.csv",
+        "config/scenario_warehouse.json"
+      ],
+      "note": "Flown paths as recorded by the simulator for the first episode of each mode/controller cell, including the episodes that failed."
+    },
+    {
+      "asset": "assets/demo-thumbnail.jpg",
+      "kind": "frame extracted from the demonstration video",
+      "generated_by": "scripts/make_assets.py",
+      "sources": [
+        "results/demo/DNS_Webots_Research_Demo.mp4"
+      ],
+      "note": "Single frame at t = 22.0 s of the recorded Webots run; not re-rendered."
+    }
+  ]
+}
