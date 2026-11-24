@@ -1,0 +1,33 @@
+# Normalise text to LF in the repository, check out native on Windows.
+* text=auto
+
+# Explicit text types -- these must never be mangled by platform detection.
+*.py      text diff=python
+*.md      text
+*.json    text
+*.csv     text
+*.txt     text
+*.proto   text
+*.wbt     text
+*.gitattributes text
+*.gitignore     text
+
+# Binary assets: never diffed, never line-ending converted.
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.svg     binary
+*.pdf     binary
+*.mp4     binary
+*.npz     binary
+*.zip     binary
+
+# Generated or bulky paths collapsed in diffs and excluded from language
+# statistics, so the repository is reported as the Python/simulation project it
+# is rather than as a pile of generated world files and logs.
+results/**        linguist-generated=true
+assets/**         linguist-generated=true
+evidence/**       linguist-documentation=true
+worlds/*.wbt      linguist-generated=true
+worlds/_*.wbt     linguist-generated=true -diff
+docs/**           linguist-documentation=true
