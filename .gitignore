@@ -62,6 +62,15 @@ handoff.py
 *.orig
 *~
 
+# Dated audit of one developer's machine: superseded by
+# docs/SIMULATION_METHODS.md and docs/VALIDATION_EVIDENCE.md section 8.1, and
+# it is wall-to-wall local absolute paths. Kept locally, not published.
+docs/M0_environment_audit.md
+
+# Google Drive handoff staged for upload -- assembled from tracked sources by
+# scripts/build_drive_package.py, so it is rebuildable and must not be committed.
+DNS_Research_Team_Shared/
+
 # ---------------------------------------------------------------------------
 # Credentials
 # ---------------------------------------------------------------------------
