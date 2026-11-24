@@ -1,0 +1,188 @@
+{
+  "tree": [
+    {
+      "rule": "personal_abs_path",
+      "severity": "medium",
+      "where": "README.md",
+      "match": "D:\\Program"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "medium",
+      "where": "dns/launcher.py",
+      "match": "D:\\Program"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "medium",
+      "where": "dns/launcher.py",
+      "match": "C:\\Program"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "medium",
+      "where": "dns/launcher.py",
+      "match": "C:\\Program"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/demo/recording_report.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/experiments/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/experiments/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/experiments/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/experiments/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/experiments/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/experiments_warehouse/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/experiments_warehouse/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/experiments_warehouse/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/movie_probe/probe_report.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/policy_rollout/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/policy_rollout/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/policy_rollout/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/policy_rollout/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/screenshots/screenshots.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/screenshots/screenshots.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/screenshots/screenshots.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/screenshots/screenshots.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/screenshots/screenshots.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/validation_kinematic_none.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/validation_physical_none.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "medium",
+      "where": "scripts/build_deliverable.py",
+      "match": "D:\\\\Program"
+    }
+  ],
+  "sizes": [],
+  "history": [],
+  "verdict": "FINDINGS",
+  "limits": {
+    "max_file_mb": 50.0,
+    "max_gif_mb": 8.0
+  }
+}

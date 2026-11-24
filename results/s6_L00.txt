@@ -1,0 +1,22 @@
+
+================================================================
+L00
+================================================================
+[L00] world check OK, max t=0 pose error 0.00e+00 m
+[L00] MODE B: 3 episodes x 5 controllers
+  ppo_seed7    goal 3/3
+  ppo_seed19   goal 3/3
+  ppo_seed43   goal 3/3
+  reactive     goal 0/3
+  direct       goal 0/3
+[L00] MODE C: 15 episodes x 5 controllers
+  ppo_seed7    goal 9/15
+  ppo_seed19   goal 8/15
+  ppo_seed43   goal 7/15
+  reactive     goal 0/15
+  direct       goal 0/15
+[L00] 90 episodes in 174.1 s (1.93 s/episode)
+[L00] wrote D:\Download\drone_navigation_system\webots_dns\results\s6\results_L00.csv
+
+wrote D:\Download\drone_navigation_system\DNS_FRIDAY_MEETING_2026-11-27\06_DATA\results_v2.csv (90 episodes)
+total wall clock 187 s for 90 episodes

@@ -1,0 +1,14 @@
+wrote worlds/DNS_L00_C.wbt  sha256=5534382b31b76579  obstacles=6  t=0 poses OK
+wrote worlds/DNS_L00_B.wbt  sha256=4fbe82cc9abfd9c8  obstacles=6  t=0 poses OK
+wrote worlds/DNS_L01_C.wbt  sha256=24a2333ede977cc7  obstacles=6  t=0 poses OK
+wrote worlds/DNS_L01_B.wbt  sha256=cf8daef6e70fda9d  obstacles=6  t=0 poses OK
+wrote worlds/DNS_L02_C.wbt  sha256=e9b0f444ee3ea76f  obstacles=6  t=0 poses OK
+wrote worlds/DNS_L02_B.wbt  sha256=376649c58d03b126  obstacles=6  t=0 poses OK
+wrote worlds/DNS_L03_C.wbt  sha256=a8c1460847f2aff7  obstacles=6  t=0 poses OK
+wrote worlds/DNS_L03_B.wbt  sha256=9f0cc8100cd04e21  obstacles=6  t=0 poses OK
+wrote worlds/DNS_L04_C.wbt  sha256=c6cb2456dc4fa33c  obstacles=9  t=0 poses OK
+wrote worlds/DNS_L04_B.wbt  sha256=fbd6c8232a3aebf1  obstacles=9  t=0 poses OK
+wrote worlds/DNS_L05_C.wbt  sha256=69434582238af124  obstacles=10  t=0 poses OK
+wrote worlds/DNS_L05_B.wbt  sha256=8bcba22aec52a0c6  obstacles=10  t=0 poses OK
+
+12 worlds written to D:\Download\drone_navigation_system\webots_dns\worlds and copied to D:\Download\drone_navigation_system\DNS_FRIDAY_MEETING_2026-11-27\07_SCENARIOS\worlds

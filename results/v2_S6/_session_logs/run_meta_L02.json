@@ -1,0 +1,43 @@
+{
+  "layout": "L02",
+  "episodes": 90,
+  "wall_clock_s": 156.84,
+  "wall_clock_per_episode_s": 1.743,
+  "world": "DNS_L02_C.wbt",
+  "scenario_sha256": {
+    "C": "e9b0f444ee3ea76f789b2345f485fdab4621eb2279414191e2fc8eb673773822",
+    "B": "376649c58d03b1265f2b3d02fea6cdde1308761236e6602e77ac80a125fc650d"
+  },
+  "controllers": {
+    "ppo_seed7": {
+      "kind": "ppo_checkpoint",
+      "source": "D:\\Download\\drone_navigation_system\\DroneNavPPO\\DroneNavPPO\\evidence\\seed7\\model.npz",
+      "sha256": "03808046e112e5c940189289fb1b912e965e769080b16725555cc015d259d2d1"
+    },
+    "ppo_seed19": {
+      "kind": "ppo_checkpoint",
+      "source": "D:\\Download\\drone_navigation_system\\DroneNavPPO\\DroneNavPPO\\evidence\\seed19\\model.npz",
+      "sha256": "bd48707abe0e2a22837837d44ee9d87a4744e20337f50e63cfdbaa56c4c1f63d"
+    },
+    "ppo_seed43": {
+      "kind": "ppo_checkpoint",
+      "source": "D:\\Download\\drone_navigation_system\\DroneNavPPO\\DroneNavPPO\\evidence\\seed43\\model.npz",
+      "sha256": "065cb5bcbb55fdeceba4d2e98311962d6600805fcc772acb31c4460fb87fc5d9"
+    },
+    "reactive": {
+      "kind": "untuned_reference",
+      "source": "evaluate.gap_rule",
+      "sha256": "eec2ee61f018fa0a4f9b7a62b23bbb244def34d1020fb82552d3ac113722eceb"
+    },
+    "direct": {
+      "kind": "untuned_reference",
+      "source": "evaluate.goal_direct",
+      "sha256": "eec2ee61f018fa0a4f9b7a62b23bbb244def34d1020fb82552d3ac113722eceb"
+    }
+  },
+  "protocol": "10_EVIDENCE/S6_GENERALIZATION_PROTOCOL.md",
+  "near_miss_threshold_m": 0.3,
+  "lidar_archive_variants": [
+    0
+  ]
+}

@@ -1,0 +1,265 @@
+# DNS S6 scenario generator -- configuration
+#
+# This file plus a seed is the ONLY input to dns/generator.py. The same file and
+# the same seed produce a byte-identical scenario JSON (asserted in
+# tests/test_generator.py::test_byte_identical), so a layout can be regenerated
+# from the config alone and its SHA-256 compared against 07_SCENARIOS/HASHES.txt.
+#
+# Everything under `base` is COPIED FROM L00 (config/scenario_warehouse.json)
+# and is frozen by the Section 3 contracts: arena bounds, start, goal,
+# tolerance, cruise altitude, basicTimeStep, command period, speed cap, sensing
+# and collision mode are identical in every layout L00-L05. The generator only
+# ever moves, adds or removes OBSTACLES.
+
+schema: dns-generator-v1
+version: 2
+
+# ---------------------------------------------------------------------------
+# Invariants. Reproduced verbatim from L00 so that layout is the only variable.
+# ---------------------------------------------------------------------------
+base:
+  arena:
+    low_xy: [0.0, -3.0]
+    high_xy: [10.0, 3.0]
+    wall_height_m: 2.5
+    wall_thickness_m: 0.1
+    floor_grid: true
+  drone:
+    start_xy: [0.85, 0.0]
+    cruise_altitude_m: 1.0
+    collision_radius_m: 0.18
+    fixed_yaw_rad: 0.0
+  goal:
+    xy: [9.15, 0.0]
+    tolerance_m: 0.4
+  control:
+    command_period_s: 0.2
+    max_speed_mps: 1.2
+    basic_timestep_ms: 8
+    settle_timeout_s: 6.0
+    settle_speed_tol_mps: 0.02
+    settle_altitude_tol_m: 0.02
+  dynamics:
+    mode: physical
+  sensing:
+    mode: lidar
+    max_range_m: 5.0
+    sectors: 12
+    mount: stabilised
+    mount_height_m: 0.14
+    beams: 720
+  collision:
+    mode: geometric
+  camera:
+    enabled: true
+    width: 1280
+    height: 720
+  viewpoint:
+    position: [5.0, -12.0, 8.0]
+    follow: false
+
+# ---------------------------------------------------------------------------
+# Validator thresholds. Every one of these is checked for every layout and the
+# sample is rejected and redrawn on failure; rejection counts are logged per
+# rule in 06_DATA/generator_report.json.
+# ---------------------------------------------------------------------------
+constraints:
+  # Static obstacle surfaces must stay this far inside the arena walls.
+  wall_margin_m: 0.22
+  # Minimum surface-to-surface gap between any two static obstacles. Below this
+  # the pair renders as one fused solid and the lidar sees a surface that
+  # matches neither footprint.
+  min_obstacle_gap_m: 0.50
+  # Start and goal keep-out: no static obstacle surface and no part of the
+  # cart's swept area may come within this distance of either point. The task
+  # specifies 0.75 m when the project has no value of its own; L00's own
+  # smallest start/goal surface gap is larger, so 0.75 m is adopted.
+  start_goal_keepout_m: 0.75
+  # An obstacle must rise this far above the scan plane (cruise_altitude +
+  # mount_height = 1.14 m) or it would be solid to the collision test and
+  # invisible to the lidar. Mirrors Scenario.ALTITUDE_MARGIN_M.
+  scan_plane_margin_m: 0.10
+  # The straight start-goal segment must be blocked in EVERY layout, as in L00,
+  # or the static mode stops discriminating (an open line let `direct` score
+  # 3/3 in an earlier v1 layout and the static condition measured nothing).
+  # Measured as the depth to which a static obstacle, inflated by the drone
+  # radius, crosses the y = 0 line.
+  min_line_intrusion_m: 0.12
+  # The cart's swept rectangle must be clear of static obstacle surfaces by
+  # this much, so the moving hazard is never fused with a rack.
+  cart_lane_clear_m: 0.40
+  # Occupancy grid and C-space inflation used for A* feasibility, corridor
+  # width and the IoU dissimilarity measure.
+  grid_m: 0.05
+  inflate_margin_m: 0.02
+  # A layout family that cannot satisfy its constraints within this many draws
+  # is a configuration error, not bad luck: the generator raises instead of
+  # silently relaxing a rule.
+  max_attempts: 4000
+  # Minimum physical free width any intended passage must leave. The drone is
+  # 0.36 m across (2 x collision_radius_m), so this is the hard lower bound.
+  min_passage_width_m: 0.42
+
+# ---------------------------------------------------------------------------
+# Asset library. Shapes, sizes, heights and colours are exactly L00's, so no
+# layout introduces an asset the policies have never seen -- only new PLACEMENT.
+# ---------------------------------------------------------------------------
+assets:
+  rack:
+    shape: box
+    size_xy: [0.8, 2.4]
+    height_m: 2.0
+    colour: [0.33, 0.36, 0.40]
+    label: storage rack
+    purpose: >-
+      Blocks part of the aisle and forces a lateral deviation. Its flat 2.4 m
+      face is the primary lidar calibration target: a plane returns a
+      predictable range profile, unlike a cylinder.
+  column:
+    shape: box
+    size_xy: [0.4, 0.4]
+    height_m: 2.5
+    colour: [0.55, 0.56, 0.59]
+    label: structural column
+    purpose: >-
+      Off-route building column. Gives a precisely known square return for
+      sector calibration and adds a wall-clearance hazard.
+  crate:
+    shape: box
+    size_xy: [0.7, 0.7]
+    height_m: 1.6
+    colour: [0.46, 0.38, 0.27]
+    label: crate stack
+    purpose: >-
+      Stacked pallet load off the route. Tests whether clearance is kept while
+      converging on the goal, and gives a short wide return.
+  cart:
+    shape: box
+    size_xy: [0.9, 0.55]
+    height_m: 1.5
+    colour: [0.92, 0.45, 0.13]
+    label: powered transfer cart
+    purpose: >-
+      The dynamic hazard. Crosses the aisle perpendicular to the direction of
+      travel at constant speed, so free space in its lane is a function of time
+      and the policy must solve a timing problem, not only a geometric one.
+
+# ---------------------------------------------------------------------------
+# Cart dynamics. Identical in every layout (Section 2 forbids changing them);
+# only the lane position x may move, and only if the sampled layout blocks the
+# L00 lane. `park_xy` is the Mode B pose: the cart is parked at the arena edge
+# with zero amplitude, reproducing L00's scenario_warehouse_static.json.
+# ---------------------------------------------------------------------------
+cart_motion:
+  type: linear
+  axis: y
+  amplitude_m: 1.9
+  speed_mps: 0.45
+  phase_rad: 0.0
+  preferred_lane_x_m: 5.1
+  # Fallback lane positions tried in order if the preferred lane is obstructed.
+  alternate_lane_x_m: [4.8, 5.4, 4.5, 5.7]
+  park_y_m: -2.5
+
+# ---------------------------------------------------------------------------
+# The distribution-shift ladder. L00 is read from the frozen L00 config and is
+# never generated. L02 is a deterministic transform, not a sample.
+# ---------------------------------------------------------------------------
+families:
+
+  L00:
+    kind: reference
+    title: Baseline
+    description: >-
+      The training layout, unchanged. Read directly from
+      config/scenario_warehouse.json and re-emitted in canonical form so that
+      L00 and L01-L05 are byte-comparable and share one hash scheme.
+    test_only: false
+    source: config/scenario_warehouse.json
+
+  L01:
+    kind: jitter
+    title: Perturbed
+    description: >-
+      Every L00 obstacle kept, with its position jittered within +-0.3 m on each
+      axis and its yaw within +-10 deg. The nearest-distribution rung: the scene
+      a policy would see if the warehouse were restocked slightly off-plan.
+    test_only: true
+    seed: 20261127
+    position_jitter_m: 0.3
+    yaw_jitter_deg: 10.0
+
+  L02:
+    kind: mirror
+    title: Mirrored
+    description: >-
+      L00 reflected across y = 0: y -> -y, yaw -> -yaw, and the cart's crossing
+      phase shifted by pi so its initial direction mirrors too. Geometric
+      difficulty is identical by construction, so a success-rate drop between
+      L00 and L02 cannot be a difficulty effect -- it is direct evidence of
+      layout-specific memorisation.
+    test_only: true
+
+  L03:
+    kind: aisle_shift
+    title: Aisle shift
+    description: >-
+      The two racks moved along x and swapped to the opposite sides of the
+      aisle, each still crossing the straight start-goal line by a sampled
+      overlap. Columns and the crate stack are re-drawn in the free margins.
+      Same asset count as L00, different route topology.
+    test_only: true
+    seed: 20261127
+    rack_a_x_range_m: [2.6, 3.6]
+    rack_b_x_range_m: [6.2, 7.2]
+    # Depth to which each rack crosses y = 0, sampled per rack.
+    intrusion_range_m: [0.15, 0.45]
+    # Sides are swapped relative to L00: rack_a goes right, rack_b goes left.
+    swap_sides: true
+
+  L04:
+    kind: clutter
+    title: Clutter
+    description: >-
+      The L03-style aisle plus three extra crate stacks drawn by rejection
+      sampling under the minimum-gap constraints. Raises occupied area and
+      shortens sight lines without narrowing the primary route below L00's.
+    test_only: true
+    seed: 20261127
+    extra_crates: 3
+    crate_yaw_range_deg: [-45.0, 45.0]
+    # Extra crates are kept out of the cart lane and off the final goal approach.
+    exclude_radius_from_goal_m: 1.30
+
+  L05:
+    kind: hard
+    title: Hard
+    description: >-
+      The hardest rung. Built like L04 but with five extra crate stacks and an
+      additional acceptance test: the layout is redrawn until the widest-path
+      bottleneck of the whole arena falls inside `target_corridor_width_m`, so
+      the narrow passage is MEASURED rather than hand-placed. A crate is also
+      required on the final approach to occlude the goal.
+
+      Why rejection sampling rather than placing a gate directly: a 2.4 m rack
+      in a 6 m-wide arena cannot simultaneously cross the y = 0 centre line
+      (required, so static mode stays discriminative) and leave a sub-0.7 m gap
+      to the far wall -- the two constraints are algebraically incompatible for
+      a single rack. A narrow gate therefore has to emerge from a combination of
+      bodies, and searching for it against the measured descriptor is both
+      simpler and more honest than asserting a geometry that does not hold.
+
+      Expected to be the hardest layout; included so the ladder has a rung where
+      a drop is anticipated rather than surprising.
+    test_only: true
+    seed: 20261127
+    extra_crates: 5
+    crate_yaw_range_deg: [-45.0, 45.0]
+    # Accept only if the widest-path bottleneck leaves this much physical free
+    # width. Lower bound is above min_passage_width_m (0.42 m) with margin;
+    # upper bound is below L00's own 0.80 m narrowest gap, so L05 is strictly
+    # tighter than the training layout.
+    target_corridor_width_m: [0.50, 0.78]
+    # A crate must sit within this annulus of the goal to break line of sight on
+    # the final approach, while respecting the start/goal keep-out.
+    occluder_radius_from_goal_m: [0.95, 1.60]

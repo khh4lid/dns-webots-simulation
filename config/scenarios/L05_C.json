@@ -1,0 +1,308 @@
+{
+  "arena": {
+    "floor_grid": true,
+    "high_xy": [
+      10.0,
+      3.0
+    ],
+    "low_xy": [
+      0.0,
+      -3.0
+    ],
+    "wall_height_m": 2.5,
+    "wall_thickness_m": 0.1
+  },
+  "camera": {
+    "enabled": true,
+    "height": 720,
+    "width": 1280
+  },
+  "collision": {
+    "mode": "geometric"
+  },
+  "control": {
+    "basic_timestep_ms": 8,
+    "command_period_s": 0.2,
+    "max_speed_mps": 1.2,
+    "settle_altitude_tol_m": 0.02,
+    "settle_speed_tol_mps": 0.02,
+    "settle_timeout_s": 6.0
+  },
+  "description": "The hardest rung. Built like L04 but with five extra crate stacks and an additional acceptance test: the layout is redrawn until the widest-path bottleneck of the whole arena falls inside `target_corridor_width_m`, so the narrow passage is MEASURED rather than hand-placed. A crate is also required on the final approach to occlude the goal. Why rejection sampling rather than placing a gate directly: a 2.4 m rack in a 6 m-wide arena cannot simultaneously cross the y = 0 centre line (required, so static mode stays discriminative) and leave a sub-0.7 m gap to the far wall -- the two constraints are algebraically incompatible for a single rack. A narrow gate therefore has to emerge from a combination of bodies, and searching for it against the measured descriptor is both simpler and more honest than asserting a geometry that does not hold. Expected to be the hardest layout; included so the ladder has a rung where a drop is anticipated rather than surprising.",
+  "drone": {
+    "collision_radius_m": 0.18,
+    "cruise_altitude_m": 1.0,
+    "fixed_yaw_rad": 0.0,
+    "start_xy": [
+      0.85,
+      0.0
+    ]
+  },
+  "dynamics": {
+    "mode": "physical"
+  },
+  "goal": {
+    "tolerance_m": 0.4,
+    "xy": [
+      9.15,
+      0.0
+    ]
+  },
+  "name": "l05_dynamic",
+  "obstacles": [
+    {
+      "asset": "rack",
+      "colour": [
+        0.33,
+        0.36,
+        0.4
+      ],
+      "height_m": 2.0,
+      "id": "rack_a",
+      "label": "storage rack",
+      "purpose": "Blocks part of the aisle and forces a lateral deviation. Its flat 2.4 m face is the primary lidar calibration target: a plane returns a predictable range profile, unlike a cylinder.",
+      "shape": "box",
+      "size_xy": [
+        0.8,
+        2.4
+      ],
+      "xy": [
+        2.885046,
+        0.759358
+      ]
+    },
+    {
+      "asset": "rack",
+      "colour": [
+        0.33,
+        0.36,
+        0.4
+      ],
+      "height_m": 2.0,
+      "id": "rack_b",
+      "label": "storage rack",
+      "purpose": "Blocks part of the aisle and forces a lateral deviation. Its flat 2.4 m face is the primary lidar calibration target: a plane returns a predictable range profile, unlike a cylinder.",
+      "shape": "box",
+      "size_xy": [
+        0.8,
+        2.4
+      ],
+      "xy": [
+        6.43803,
+        -0.835119
+      ]
+    },
+    {
+      "asset": "crate",
+      "colour": [
+        0.46,
+        0.38,
+        0.27
+      ],
+      "height_m": 1.6,
+      "id": "gate_crate",
+      "label": "crate stack",
+      "purpose": "Stacked pallet load off the route. Tests whether clearance is kept while converging on the goal, and gives a short wide return.",
+      "shape": "box",
+      "size_xy": [
+        0.7,
+        0.7
+      ],
+      "xy": [
+        6.43803,
+        1.332878
+      ]
+    },
+    {
+      "asset": "column",
+      "colour": [
+        0.55,
+        0.56,
+        0.59
+      ],
+      "height_m": 2.5,
+      "id": "gate_column",
+      "label": "structural column",
+      "purpose": "Off-route building column. Gives a precisely known square return for sector calibration and adds a wall-clearance hazard.",
+      "shape": "box",
+      "size_xy": [
+        0.4,
+        0.4
+      ],
+      "xy": [
+        6.43803,
+        2.58
+      ]
+    },
+    {
+      "asset": "cart",
+      "colour": [
+        0.92,
+        0.45,
+        0.13
+      ],
+      "height_m": 1.5,
+      "id": "cart",
+      "label": "powered transfer cart",
+      "motion": {
+        "amplitude_m": 1.9,
+        "axis": "y",
+        "phase_rad": 0.0,
+        "speed_mps": 0.45,
+        "type": "linear"
+      },
+      "purpose": "The dynamic hazard. Crosses the aisle perpendicular to the direction of travel at constant speed, so free space in its lane is a function of time and the policy must solve a timing problem, not only a geometric one.",
+      "shape": "box",
+      "size_xy": [
+        0.9,
+        0.55
+      ],
+      "xy": [
+        5.1,
+        0.0
+      ]
+    },
+    {
+      "asset": "crate",
+      "colour": [
+        0.46,
+        0.38,
+        0.27
+      ],
+      "height_m": 1.6,
+      "id": "crate_occluder",
+      "label": "crate stack",
+      "purpose": "Stacked pallet load off the route. Tests whether clearance is kept while converging on the goal, and gives a short wide return.",
+      "shape": "box",
+      "size_xy": [
+        0.7,
+        0.7
+      ],
+      "xy": [
+        8.197886,
+        0.818775
+      ],
+      "yaw_rad": -0.135461
+    },
+    {
+      "asset": "crate",
+      "colour": [
+        0.46,
+        0.38,
+        0.27
+      ],
+      "height_m": 1.6,
+      "id": "crate_extra_1",
+      "label": "crate stack",
+      "purpose": "Stacked pallet load off the route. Tests whether clearance is kept while converging on the goal, and gives a short wide return.",
+      "shape": "box",
+      "size_xy": [
+        0.7,
+        0.7
+      ],
+      "xy": [
+        2.616046,
+        -1.478644
+      ],
+      "yaw_rad": 0.127863
+    },
+    {
+      "asset": "crate",
+      "colour": [
+        0.46,
+        0.38,
+        0.27
+      ],
+      "height_m": 1.6,
+      "id": "crate_extra_2",
+      "label": "crate stack",
+      "purpose": "Stacked pallet load off the route. Tests whether clearance is kept while converging on the goal, and gives a short wide return.",
+      "shape": "box",
+      "size_xy": [
+        0.7,
+        0.7
+      ],
+      "xy": [
+        7.863572,
+        -0.866678
+      ],
+      "yaw_rad": -0.17258
+    },
+    {
+      "asset": "crate",
+      "colour": [
+        0.46,
+        0.38,
+        0.27
+      ],
+      "height_m": 1.6,
+      "id": "crate_extra_3",
+      "label": "crate stack",
+      "purpose": "Stacked pallet load off the route. Tests whether clearance is kept while converging on the goal, and gives a short wide return.",
+      "shape": "box",
+      "size_xy": [
+        0.7,
+        0.7
+      ],
+      "xy": [
+        8.182158,
+        -2.332521
+      ],
+      "yaw_rad": -0.251813
+    },
+    {
+      "asset": "crate",
+      "colour": [
+        0.46,
+        0.38,
+        0.27
+      ],
+      "height_m": 1.6,
+      "id": "crate_extra_4",
+      "label": "crate stack",
+      "purpose": "Stacked pallet load off the route. Tests whether clearance is kept while converging on the goal, and gives a short wide return.",
+      "shape": "box",
+      "size_xy": [
+        0.7,
+        0.7
+      ],
+      "xy": [
+        8.352793,
+        2.314189
+      ],
+      "yaw_rad": 0.417831
+    }
+  ],
+  "provenance": {
+    "draw_attempts": 1,
+    "family_kind": "hard",
+    "generator": "dns.generator",
+    "generator_config": "07_SCENARIOS/generator_config.yaml",
+    "generator_config_sha256": "16f0f82db01d89091a5011299fecf22442dba89325714f9c4cf1c8a4c8847ca3",
+    "layout_id": "L05",
+    "layout_title": "Hard",
+    "mode": "C",
+    "mode_meaning": "C_dynamic: the cart sweeps the aisle",
+    "rejections_by_rule": {},
+    "scenario_sha256": "69434582238af1244c790e3deaea47d15f71c8117f840c00609a5ff031e0d779",
+    "seed": 20261127,
+    "test_only": true
+  },
+  "schema": "dns-scenario-v1",
+  "sensing": {
+    "beams": 720,
+    "max_range_m": 5.0,
+    "mode": "lidar",
+    "mount": "stabilised",
+    "mount_height_m": 0.14,
+    "sectors": 12
+  },
+  "viewpoint": {
+    "follow": false,
+    "position": [
+      5.0,
+      -12.0,
+      8.0
+    ]
+  }
+}

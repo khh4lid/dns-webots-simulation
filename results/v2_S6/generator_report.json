@@ -1,0 +1,45 @@
+{
+  "generator_config_sha256": "16f0f82db01d89091a5011299fecf22442dba89325714f9c4cf1c8a4c8847ca3",
+  "families": {
+    "L00": {
+      "seed": null,
+      "draw_attempts": 1,
+      "rejections_by_rule": {},
+      "n_obstacles": 6
+    },
+    "L01": {
+      "seed": 20261127,
+      "draw_attempts": 9,
+      "rejections_by_rule": {
+        "cart_lane_clear": 4,
+        "obstacle_gap": 3,
+        "start_goal_keepout": 1
+      },
+      "n_obstacles": 6
+    },
+    "L02": {
+      "seed": null,
+      "draw_attempts": 1,
+      "rejections_by_rule": {},
+      "n_obstacles": 6
+    },
+    "L03": {
+      "seed": 20261127,
+      "draw_attempts": 1,
+      "rejections_by_rule": {},
+      "n_obstacles": 6
+    },
+    "L04": {
+      "seed": 20261127,
+      "draw_attempts": 1,
+      "rejections_by_rule": {},
+      "n_obstacles": 9
+    },
+    "L05": {
+      "seed": 20261127,
+      "draw_attempts": 1,
+      "rejections_by_rule": {},
+      "n_obstacles": 10
+    }
+  }
+}

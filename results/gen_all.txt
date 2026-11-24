@@ -1,0 +1,14 @@
+wrote L00_C.json  sha256=5534382b31b76579  obstacles=6
+wrote L00_B.json  sha256=4fbe82cc9abfd9c8  obstacles=6
+wrote L01_C.json  sha256=24a2333ede977cc7  obstacles=6
+wrote L01_B.json  sha256=cf8daef6e70fda9d  obstacles=6
+wrote L02_C.json  sha256=e9b0f444ee3ea76f  obstacles=6
+wrote L02_B.json  sha256=376649c58d03b126  obstacles=6
+wrote L03_C.json  sha256=a8c1460847f2aff7  obstacles=6
+wrote L03_B.json  sha256=9f0cc8100cd04e21  obstacles=6
+wrote L04_C.json  sha256=c6cb2456dc4fa33c  obstacles=9
+wrote L04_B.json  sha256=fbd6c8232a3aebf1  obstacles=9
+wrote L05_C.json  sha256=69434582238af124  obstacles=10
+wrote L05_B.json  sha256=8bcba22aec52a0c6  obstacles=10
+
+wrote D:\Download\drone_navigation_system\DNS_FRIDAY_MEETING_2026-11-27\07_SCENARIOS\HASHES.txt (12 scenarios)

@@ -1,0 +1,22 @@
+{
+  "L01": {
+    "exit_code": 0,
+    "wall_s": 198.8
+  },
+  "L02": {
+    "exit_code": 0,
+    "wall_s": 169.4
+  },
+  "L03": {
+    "exit_code": 0,
+    "wall_s": 173.4
+  },
+  "L04": {
+    "exit_code": 0,
+    "wall_s": 120.5
+  },
+  "L05": {
+    "exit_code": 0,
+    "wall_s": 462.0
+  }
+}

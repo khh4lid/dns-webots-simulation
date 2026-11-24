@@ -12,15 +12,23 @@
 *.gitattributes text
 *.gitignore     text
 
-# Binary assets: never diffed, never line-ending converted.
+# Binary assets: never diffed, never line-ending converted. A GIF or MP4 that
+# gets CRLF-translated is silently corrupted, and the corruption only shows up
+# when someone tries to play it.
 *.png     binary
 *.jpg     binary
 *.jpeg    binary
-*.svg     binary
+*.gif     binary
 *.pdf     binary
 *.mp4     binary
+*.webm    binary
 *.npz     binary
+*.npy     binary
 *.zip     binary
+*.ico     binary
+# SVG is XML, so it is text -- but never line-ending-mangled for other
+# platforms, and excluded from diffs because generated plot SVGs are enormous.
+*.svg     text eol=lf -diff
 
 # Generated or bulky paths collapsed in diffs and excluded from language
 # statistics, so the repository is reported as the Python/simulation project it
