@@ -296,9 +296,17 @@ def main() -> int:
         writer.writeheader()
         writer.writerows(summary)
 
+    # Ask Webots which world is actually loaded rather than naming one here --
+    # the client is run against whichever world with_webots.py was pointed at,
+    # so a hard-coded literal silently misreports the provenance of the run.
+    try:
+        world_name = Path(backend.robot.getWorldPath()).name
+    except Exception:                                             # noqa: BLE001
+        world_name = "unknown.wbt"
+
     (args.out / "protocol.json").write_text(json.dumps({
         "webots_version": "R2025a",
-        "world": "worlds/DNS_Research_World.wbt",
+        "world": f"worlds/{world_name}",
         "configs": {"static": str(args.static_config),
                     "dynamic": str(args.dynamic_config)},
         "modes": {

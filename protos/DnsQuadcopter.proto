@@ -1,6 +1,6 @@
 ﻿#VRML_SIM R2025a utf8
 # license: Apache License 2.0
-# documentation url: ../docs/DESIGN_NOTES.md
+# documentation url: ../docs/SIMULATION_METHODS.md
 # template language: javascript
 # tags: static
 #
@@ -16,7 +16,7 @@
 #   boundingObject Cylinder radius 0.18 m  -> Webots contact physics and the
 #                                             geometric collision model agree.
 #
-# Mass budget (see docs/DESIGN_NOTES.md for the inertia derivation):
+# Mass budget (see docs/SIMULATION_METHODS.md section 7 for the derivation):
 #   whole airframe 0.55 kg, Ixx = Iyy = 0.00272, Izz = 0.00513 kg m^2
 #   (0.35 kg body box plus four 0.05 kg rotor groups as point masses).
 #
@@ -24,7 +24,7 @@
 # is how the stock Propeller sample and Mavic2Pro are built. Giving them their
 # own boundingObject puts a collider inside the airframe's own bounding
 # cylinder; the resulting permanent contact absorbed several newtons of thrust
-# and stopped the vehicle taking off (measured, see docs/DESIGN_NOTES.md).
+# and stopped the vehicle taking off (measured, see docs/SIMULATION_METHODS.md).
 #
 # Rotor layout (Webots robot frame: +x front, +y left, +z up), X configuration:
 #   m0 front left  (+a, +a) CCW      m1 front right (+a, -a) CW

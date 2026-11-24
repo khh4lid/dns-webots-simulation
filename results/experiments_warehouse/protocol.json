@@ -1,6 +1,6 @@
 {
   "webots_version": "R2025a",
-  "world": "worlds/DNS_Research_World.wbt",
+  "world": "worlds/DNS_Warehouse.wbt",
   "configs": {
     "static": "config\\scenario_warehouse_static.json",
     "dynamic": "config\\scenario_warehouse.json"
@@ -67,6 +67,6 @@
   },
   "denominator_note": "every rate is successes / episodes in that mode+controller cell; no episode was excluded",
   "limitation": "ONE fixed obstacle layout throughout. Mode C varies the crossing phase only. No spatial-generalisation claim.",
-  "wall_clock_s": 159.78,
+  "wall_clock_s": 156.69,
   "total_episodes": 90
 }
