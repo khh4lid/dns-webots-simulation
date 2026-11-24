@@ -15,14 +15,25 @@ old `main`) · **Remote:** `khh4lid/dns-webots-simulation` (private)
 | **A** | Freeze, tag, branch, security scans, file map, migration | **Done** |
 | **B** | Visuals: 4 GIFs, demo MP4 + poster, F4, mirror evidence, ADR images, C2 | **Done** |
 | **C** | 14 ADRs, 4 role guides, 2 interfaces, CHANGELOG/CITATION/CONTRIBUTING, folder READMEs | **Done** |
-| **D** | README v2, RESULTS_v2, reproduce.py | **Done** |
+| **D** | README v2, RESULTS_v2, reproduce.py, Watch section + new figures | **Done** |
+| **Videos** | V-TOP (L00 / L02 / L05), V-SIDE, obstacle catalogue, side elevation | **Done** |
+| **Slides** | 12 + 6 backups, PPTX + PDF, speaker notes, 18 PNG previews | **Done — names pending** |
+| **Presenter kit** | TALKING_POINTS.md: 60 s, 3 min, timing, Q&A, fallbacks | **Done** |
 | **E** | Branch and tag **pushed**; PR, merge, v2.0 tag, releases, issues, About/topics | **Blocked — needs `gh` or a token** |
 | **F** | Security scan CLEAN, link check clean; fresh-clone repro + screenshots | Partial |
 | **G** | Report PDF + slides | Not started |
 
 ## Where it stands
 
-- Branch `v2-transparency-release` is pushed (4 commits); tag `v1.0` is pushed.
+- Branch `v2-transparency-release` is pushed (7 commits); tag `v1.0` is pushed.
+- All four presentation clips reproduce their logged episode to **4.99e-06 m**
+  after the capture client replays the session prefix. Without that replay a
+  fresh single-episode session drifts 0.287 m, because the simulator is
+  deterministic given the episode SEQUENCE rather than in isolation.
+- `gh` re-checked at 06:13 on 25 Nov: still not on PATH and not in any standard
+  install location. Remaining API steps are in `GITHUB_TODO.md`.
+- **Names were never supplied.** The deck and docs carry visible `NAME NEEDED`
+  / `TBC` placeholders; the deck must not be treated as final until filled.
 - **PR not opened**: `gh` is not installed and no `GH_TOKEN`/`GITHUB_TOKEN` is
   in the environment, so no GitHub API call can be made. Open it at
   <https://github.com/khh4lid/dns-webots-simulation/pull/new/v2-transparency-release>
@@ -98,8 +109,10 @@ old `main`) · **Remote:** `khh4lid/dns-webots-simulation` (private)
 
 ## Next action
 
-Stage B: produce the missing visuals. Inputs already present —
-`results/v2_S6/runs/` (540 trajectories, 60 with `lidar.npz`),
-`config/scenarios/` (12 layouts), `assets/figures/` (12 PNG),
-`scripts/make_figures.py` + `scripts/dns_style.py` (palette already
-CVD-validated).
+1. Fill the four names, then re-run `scripts/make_team_docs.py`,
+   `scripts/make_slides.py` and `scripts/make_support_docs.py`.
+2. Work `GITHUB_TODO.md` once `gh` is on PATH: PR, merge, `v2.0`, both
+   releases, About/topics/labels/issues, collaborators.
+3. Outstanding, none blocking Friday: V-OBS orbit video, the composite and
+   showreel, `evidence/SLIDES_CLAIMS_CHECK.csv`, `evidence/REPRO_CHECK.md`
+   (fresh-clone `reproduce.py --fast`), and Phase 5's progress report.
