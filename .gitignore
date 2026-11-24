@@ -92,3 +92,11 @@ desktop.ini
 .DS_Store
 .idea/
 .vscode/
+
+# Captured frame sequences: large, regenerable from tests/client_capture.py.
+# The assembled GIFs in assets/gifs are committed; the raw PNGs are not.
+results/capture/
+
+# MP4s are Release assets, not repository files (GitHub does not play
+# repository MP4s inline and they bloat every clone).
+results/video/*.mp4

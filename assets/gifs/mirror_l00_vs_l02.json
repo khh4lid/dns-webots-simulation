@@ -1,0 +1,16 @@
+{
+  "asset": "assets/gifs/mirror_l00_vs_l02.gif",
+  "provenance": "WEBOTS CAPTURE (offscreen Camera node)",
+  "left": {
+    "run_id": "L00_C_ppo_seed7_v00",
+    "outcome": "collision",
+    "matches_logged_outcome": null
+  },
+  "right": {
+    "run_id": "L02_C_ppo_seed7_v00",
+    "outcome": "collision",
+    "matches_logged_outcome": true
+  },
+  "cart_phase_rad": 2.574102,
+  "note": "Same checkpoint, same cart phase, mirrored geometry. Both episodes end in a cart collision, at different times and places, because the route is reflected."
+}
