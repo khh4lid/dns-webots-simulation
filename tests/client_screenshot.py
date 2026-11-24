@@ -68,8 +68,13 @@ def main() -> int:
     # inside the room. A camera pulled far back at a shallow angle is hidden
     # behind the 2.5 m wall: from (5, -11.5, 8.5) the wall occludes
     # 2.5 / tan(33 deg) = 3.9 m of the 6 m depth, which swallows the start pad.
+    # "hero" mirrors "overview_3d" about the mid-span x = 5 m, which puts the
+    # goal pad in the foreground instead of the start pad. overview_3d shows the
+    # start pad clearly but rack_b occludes the goal, so the two views together
+    # cover both pads; hero is the one used as the README figure.
     views = {
         "overview_3d": (np.array([-2.2, -4.6, 9.2]), np.array([6.3, 0.1, 0.7])),
+        "hero": (np.array([12.2, -4.6, 9.2]), np.array([3.7, 0.1, 0.7])),
         "topdown": (np.array([5.0, 0.0, 11.0]), np.array([5.0, 0.0, 0.0])),
         "aisle_low": (np.array([0.35, -2.1, 2.4]), np.array([7.5, 0.3, 0.9])),
         "corner": (np.array([11.5, -4.0, 6.0]), np.array([3.5, 0.3, 0.7])),

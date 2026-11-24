@@ -22,6 +22,21 @@
       "unique_colours": 110
     },
     {
+      "view": "hero",
+      "file": "D:\\Download\\drone_navigation_system\\webots_dns\\results\\screenshots\\hero.png",
+      "eye_webots": [
+        12.2,
+        -4.6,
+        9.2
+      ],
+      "target_webots": [
+        3.7,
+        0.1,
+        0.7
+      ],
+      "unique_colours": 137
+    },
+    {
       "view": "topdown",
       "file": "D:\\Download\\drone_navigation_system\\webots_dns\\results\\screenshots\\topdown.png",
       "eye_webots": [
@@ -34,7 +49,7 @@
         0.0,
         0.0
       ],
-      "unique_colours": 131
+      "unique_colours": 126
     },
     {
       "view": "aisle_low",
@@ -49,7 +64,7 @@
         0.3,
         0.9
       ],
-      "unique_colours": 65
+      "unique_colours": 66
     },
     {
       "view": "corner",
@@ -64,7 +79,7 @@
         0.3,
         0.7
       ],
-      "unique_colours": 151
+      "unique_colours": 150
     }
   ]
 }
