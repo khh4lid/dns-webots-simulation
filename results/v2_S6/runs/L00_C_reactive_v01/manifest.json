@@ -1,0 +1,55 @@
+{
+  "run_id": "L00_C_reactive_v01",
+  "layout_id": "L00",
+  "mode": "C_dynamic",
+  "mode_meaning": "cart sweeping",
+  "variant": "v01",
+  "variant_definition": "cart initial phase = 2.738020 rad",
+  "distinct_configuration": true,
+  "controller": "reactive",
+  "controller_kind": "untuned_reference",
+  "controller_source": "evaluate.gap_rule",
+  "controller_sha256": "eec2ee61f018fa0a4f9b7a62b23bbb244def34d1020fb82552d3ac113722eceb",
+  "controller_determinism": "deterministic function of the observation",
+  "scenario_sha256": "5534382b31b7657957532bb3abe26262fe90e6055bd8b052fc37831cfc7e5884",
+  "scenario_file": "07_SCENARIOS/L00_C.json",
+  "snapshot": "webots_dns_BASELINE_SNAPSHOT_2026-11-24",
+  "webots_version": "R2025a",
+  "basic_timestep_ms": 8,
+  "observation_interval_s": 0.2,
+  "steps_per_command": 25,
+  "horizon_steps": 90,
+  "seed": 200000001,
+  "outcome": "timeout",
+  "termination_step": 90,
+  "lidar_archived": false,
+  "lidar_archive_policy": "full sector log kept for variant 00 of each cell only",
+  "world_check": {
+    "basic_timestep_ms": 8,
+    "steps_per_command": 25,
+    "command_period_s": 0.2,
+    "obstacle_t0_pose_max_error_m": 0.0,
+    "lidar_beams": 720,
+    "lidar_fov_rad": 6.283185307179586,
+    "lidar_max_range_m": 5.0,
+    "arena_low_xy": [
+      0.0,
+      -3.0
+    ],
+    "arena_high_xy": [
+      10.0,
+      3.0
+    ],
+    "start_xy": [
+      0.85,
+      0.0
+    ],
+    "goal_xy": [
+      9.15,
+      0.0
+    ],
+    "goal_tolerance_m": 0.4,
+    "cruise_altitude_m": 1.0,
+    "scenario_sha256": "5534382b31b7657957532bb3abe26262fe90e6055bd8b052fc37831cfc7e5884"
+  }
+}

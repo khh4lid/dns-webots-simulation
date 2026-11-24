@@ -1,0 +1,356 @@
+{
+  "what": "measured 12-sector LiDAR vs an independent analytic ray caster evaluated at the logged drone and cart poses",
+  "why": "replaces v1's 'cart vs model 0.00e+00 m', which was true by construction for a kinematically driven body (correction C2)",
+  "method": "only sectors whose analytic expectation is inside the 5 m cap are compared; an out-of-range beam carries no positional information",
+  "runs": [
+    {
+      "run_id": "L00_C_ppo_seed7_v00",
+      "control_steps": 20,
+      "sector_comparisons": 240,
+      "all_sectors": {
+        "mae_m": 0.07885,
+        "rmse_m": 0.35228,
+        "p95_m": 0.0905,
+        "max_m": 3.44567
+      },
+      "cart_sector_only": {
+        "comparisons": 20,
+        "mae_m": 0.01671,
+        "rmse_m": 0.02111,
+        "p95_m": 0.04479,
+        "max_m": 0.04593
+      },
+      "layout": "L00"
+    },
+    {
+      "run_id": "L00_C_ppo_seed19_v00",
+      "control_steps": 18,
+      "sector_comparisons": 216,
+      "all_sectors": {
+        "mae_m": 0.03693,
+        "rmse_m": 0.14527,
+        "p95_m": 0.06053,
+        "max_m": 1.86727
+      },
+      "cart_sector_only": {
+        "comparisons": 18,
+        "mae_m": 0.01751,
+        "rmse_m": 0.02138,
+        "p95_m": 0.04715,
+        "max_m": 0.0498
+      },
+      "layout": "L00"
+    },
+    {
+      "run_id": "L00_C_ppo_seed43_v00",
+      "control_steps": 20,
+      "sector_comparisons": 238,
+      "all_sectors": {
+        "mae_m": 0.07728,
+        "rmse_m": 0.33762,
+        "p95_m": 0.08812,
+        "max_m": 3.31063
+      },
+      "cart_sector_only": {
+        "comparisons": 20,
+        "mae_m": 0.01403,
+        "rmse_m": 0.01981,
+        "p95_m": 0.0501,
+        "max_m": 0.05018
+      },
+      "layout": "L00"
+    },
+    {
+      "run_id": "L01_C_ppo_seed7_v00",
+      "control_steps": 20,
+      "sector_comparisons": 240,
+      "all_sectors": {
+        "mae_m": 0.11736,
+        "rmse_m": 0.51639,
+        "p95_m": 0.12915,
+        "max_m": 3.73723
+      },
+      "cart_sector_only": {
+        "comparisons": 20,
+        "mae_m": 0.0211,
+        "rmse_m": 0.0343,
+        "p95_m": 0.05302,
+        "max_m": 0.12675
+      },
+      "layout": "L01"
+    },
+    {
+      "run_id": "L01_C_ppo_seed19_v00",
+      "control_steps": 18,
+      "sector_comparisons": 216,
+      "all_sectors": {
+        "mae_m": 0.03801,
+        "rmse_m": 0.21875,
+        "p95_m": 0.0716,
+        "max_m": 3.17098
+      },
+      "cart_sector_only": {
+        "comparisons": 18,
+        "mae_m": 0.01735,
+        "rmse_m": 0.02038,
+        "p95_m": 0.03829,
+        "max_m": 0.0419
+      },
+      "layout": "L01"
+    },
+    {
+      "run_id": "L01_C_ppo_seed43_v00",
+      "control_steps": 63,
+      "sector_comparisons": 753,
+      "all_sectors": {
+        "mae_m": 0.03721,
+        "rmse_m": 0.17717,
+        "p95_m": 0.07348,
+        "max_m": 3.10639
+      },
+      "cart_sector_only": {
+        "comparisons": 63,
+        "mae_m": 0.02722,
+        "rmse_m": 0.09026,
+        "p95_m": 0.03551,
+        "max_m": 0.68751
+      },
+      "layout": "L01"
+    },
+    {
+      "run_id": "L02_C_ppo_seed7_v00",
+      "control_steps": 28,
+      "sector_comparisons": 334,
+      "all_sectors": {
+        "mae_m": 0.03625,
+        "rmse_m": 0.21105,
+        "p95_m": 0.04997,
+        "max_m": 2.66786
+      },
+      "cart_sector_only": {
+        "comparisons": 28,
+        "mae_m": 0.01427,
+        "rmse_m": 0.01773,
+        "p95_m": 0.03254,
+        "max_m": 0.03857
+      },
+      "layout": "L02"
+    },
+    {
+      "run_id": "L02_C_ppo_seed19_v00",
+      "control_steps": 39,
+      "sector_comparisons": 468,
+      "all_sectors": {
+        "mae_m": 0.02418,
+        "rmse_m": 0.11781,
+        "p95_m": 0.05181,
+        "max_m": 2.48743
+      },
+      "cart_sector_only": {
+        "comparisons": 39,
+        "mae_m": 0.01925,
+        "rmse_m": 0.02564,
+        "p95_m": 0.04892,
+        "max_m": 0.06555
+      },
+      "layout": "L02"
+    },
+    {
+      "run_id": "L02_C_ppo_seed43_v00",
+      "control_steps": 25,
+      "sector_comparisons": 300,
+      "all_sectors": {
+        "mae_m": 0.04852,
+        "rmse_m": 0.27321,
+        "p95_m": 0.05707,
+        "max_m": 3.10072
+      },
+      "cart_sector_only": {
+        "comparisons": 25,
+        "mae_m": 0.01525,
+        "rmse_m": 0.02239,
+        "p95_m": 0.04688,
+        "max_m": 0.05748
+      },
+      "layout": "L02"
+    },
+    {
+      "run_id": "L03_C_ppo_seed7_v00",
+      "control_steps": 44,
+      "sector_comparisons": 528,
+      "all_sectors": {
+        "mae_m": 0.18402,
+        "rmse_m": 0.51545,
+        "p95_m": 1.48961,
+        "max_m": 2.69476
+      },
+      "cart_sector_only": {
+        "comparisons": 44,
+        "mae_m": 0.01778,
+        "rmse_m": 0.02285,
+        "p95_m": 0.04368,
+        "max_m": 0.0641
+      },
+      "layout": "L03"
+    },
+    {
+      "run_id": "L03_C_ppo_seed19_v00",
+      "control_steps": 24,
+      "sector_comparisons": 288,
+      "all_sectors": {
+        "mae_m": 0.09882,
+        "rmse_m": 0.29306,
+        "p95_m": 0.89696,
+        "max_m": 2.07659
+      },
+      "cart_sector_only": {
+        "comparisons": 24,
+        "mae_m": 0.01656,
+        "rmse_m": 0.02238,
+        "p95_m": 0.05138,
+        "max_m": 0.05794
+      },
+      "layout": "L03"
+    },
+    {
+      "run_id": "L03_C_ppo_seed43_v00",
+      "control_steps": 23,
+      "sector_comparisons": 276,
+      "all_sectors": {
+        "mae_m": 0.08213,
+        "rmse_m": 0.26086,
+        "p95_m": 0.59165,
+        "max_m": 1.96859
+      },
+      "cart_sector_only": {
+        "comparisons": 23,
+        "mae_m": 0.01718,
+        "rmse_m": 0.02261,
+        "p95_m": 0.03901,
+        "max_m": 0.04911
+      },
+      "layout": "L03"
+    },
+    {
+      "run_id": "L04_C_ppo_seed7_v00",
+      "control_steps": 11,
+      "sector_comparisons": 132,
+      "all_sectors": {
+        "mae_m": 0.33409,
+        "rmse_m": 0.79958,
+        "p95_m": 1.91662,
+        "max_m": 3.31878
+      },
+      "cart_sector_only": {
+        "comparisons": 11,
+        "mae_m": 0.0159,
+        "rmse_m": 0.02051,
+        "p95_m": 0.03777,
+        "max_m": 0.03911
+      },
+      "layout": "L04"
+    },
+    {
+      "run_id": "L04_C_ppo_seed19_v00",
+      "control_steps": 11,
+      "sector_comparisons": 132,
+      "all_sectors": {
+        "mae_m": 0.46077,
+        "rmse_m": 0.97449,
+        "p95_m": 1.96276,
+        "max_m": 3.94809
+      },
+      "cart_sector_only": {
+        "comparisons": 11,
+        "mae_m": 0.14902,
+        "rmse_m": 0.44883,
+        "p95_m": 0.76216,
+        "max_m": 1.48734
+      },
+      "layout": "L04"
+    },
+    {
+      "run_id": "L04_C_ppo_seed43_v00",
+      "control_steps": 13,
+      "sector_comparisons": 156,
+      "all_sectors": {
+        "mae_m": 0.41497,
+        "rmse_m": 0.89028,
+        "p95_m": 1.90976,
+        "max_m": 3.3433
+      },
+      "cart_sector_only": {
+        "comparisons": 13,
+        "mae_m": 0.1078,
+        "rmse_m": 0.3398,
+        "p95_m": 0.51596,
+        "max_m": 1.22302
+      },
+      "layout": "L04"
+    },
+    {
+      "run_id": "L05_C_ppo_seed7_v00",
+      "control_steps": 91,
+      "sector_comparisons": 1092,
+      "all_sectors": {
+        "mae_m": 0.01105,
+        "rmse_m": 0.04535,
+        "p95_m": 0.03331,
+        "max_m": 0.98972
+      },
+      "cart_sector_only": {
+        "comparisons": 91,
+        "mae_m": 0.00625,
+        "rmse_m": 0.01069,
+        "p95_m": 0.02265,
+        "max_m": 0.0412
+      },
+      "layout": "L05"
+    },
+    {
+      "run_id": "L05_C_ppo_seed19_v00",
+      "control_steps": 91,
+      "sector_comparisons": 1092,
+      "all_sectors": {
+        "mae_m": 0.03161,
+        "rmse_m": 0.12886,
+        "p95_m": 0.07246,
+        "max_m": 1.20973
+      },
+      "cart_sector_only": {
+        "comparisons": 91,
+        "mae_m": 0.02014,
+        "rmse_m": 0.03676,
+        "p95_m": 0.10717,
+        "max_m": 0.1317
+      },
+      "layout": "L05"
+    },
+    {
+      "run_id": "L05_C_ppo_seed43_v00",
+      "control_steps": 91,
+      "sector_comparisons": 1092,
+      "all_sectors": {
+        "mae_m": 0.01035,
+        "rmse_m": 0.04956,
+        "p95_m": 0.0234,
+        "max_m": 0.85591
+      },
+      "cart_sector_only": {
+        "comparisons": 91,
+        "mae_m": 0.00522,
+        "rmse_m": 0.00897,
+        "p95_m": 0.01737,
+        "max_m": 0.04375
+      },
+      "layout": "L05"
+    }
+  ],
+  "cart_sector_pooled": {
+    "comparisons": 650,
+    "mae_m": 0.01935,
+    "rmse_m": 0.08344,
+    "p95_m": 0.04578,
+    "max_m": 1.48734
+  }
+}

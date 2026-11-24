@@ -1,0 +1,42 @@
+{
+  "asset": "V-TOP_L02_mirror.mp4",
+  "provenance": "WEBOTS CAPTURE (offscreen Camera node); overlays composited in post-processing",
+  "run_id": "L02_C_ppo_seed7_v01",
+  "selection_rule": "Selection rule: the L00 episode's configuration, mirrored",
+  "layout": "L02",
+  "mode": "C_dynamic",
+  "controller": "ppo_seed7",
+  "variant": "v01",
+  "cart_phase_rad": 2.73802,
+  "outcome": "goal",
+  "logged_outcome": "goal",
+  "max_path_delta_m": 4.987e-06,
+  "warmup_replayed": true,
+  "camera": {
+    "view": "plan",
+    "fov_rad": 0.3704,
+    "eye_webots": [
+      5.0,
+      0.0,
+      30.0
+    ],
+    "target_webots": [
+      5.0,
+      0.0,
+      1.0
+    ],
+    "tracks_drone": false
+  },
+  "projection_offscreen_px": 0.0,
+  "simulated_span_s": 8.8,
+  "playback": "1x",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "capture_world": "worlds/CAPTURE_DNS_L02_C_plan.wbt",
+  "capture_world_note": "identical to the experiment world except the sceneCameraFov field; no helper geometry added",
+  "gif": "assets/gifs/V-TOP_L02_mirror.gif",
+  "poster": "assets/renders/V-TOP_L02_mirror_poster.png"
+}

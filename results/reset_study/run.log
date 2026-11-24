@@ -1,0 +1,76 @@
+  [with_webots] Webots R2025a at D:\Program files\Webots
+  [with_webots] world  : worlds\DNS_L00_C.wbt
+  [with_webots] client : client_reset_determinism.py --layout L00 --controller ppo_seed7 --variant 0 --arm isolated
+  [with_webots] port   : 1234
+  [L00_C_ppo_seed7_v00] arm=isolated prefix= 0 outcome=collision  steps= 19 delta_vs_log=5.449e-03 m
+  [with_webots] client exit code 0
+  [with_webots] Webots R2025a at D:\Program files\Webots
+  [with_webots] world  : worlds\DNS_L00_C.wbt
+  [with_webots] client : client_reset_determinism.py --layout L00 --controller ppo_seed7 --variant 0 --arm sequence
+  [with_webots] port   : 1234
+  [L00_C_ppo_seed7_v00] arm=sequence prefix=15 outcome=collision  steps= 19 delta_vs_log=4.949e-06 m
+  [with_webots] client exit code 0
+  [with_webots] Webots R2025a at D:\Program files\Webots
+  [with_webots] world  : worlds\DNS_L00_C.wbt
+  [with_webots] client : client_reset_determinism.py --layout L00 --controller ppo_seed7 --variant 1 --arm isolated
+  [with_webots] port   : 1234
+  [L00_C_ppo_seed7_v01] arm=isolated prefix= 0 outcome=goal       steps= 59 delta_vs_log=2.874e-01 m
+  [with_webots] client exit code 0
+  [with_webots] Webots R2025a at D:\Program files\Webots
+  [with_webots] world  : worlds\DNS_L00_C.wbt
+  [with_webots] client : client_reset_determinism.py --layout L00 --controller ppo_seed7 --variant 1 --arm sequence
+  [with_webots] port   : 1234
+  [L00_C_ppo_seed7_v01] arm=sequence prefix=16 outcome=goal       steps= 60 delta_vs_log=4.993e-06 m
+  [with_webots] client exit code 0
+  [with_webots] Webots R2025a at D:\Program files\Webots
+  [with_webots] world  : worlds\DNS_L00_C.wbt
+  [with_webots] client : client_reset_determinism.py --layout L00 --controller ppo_seed7 --variant 2 --arm isolated
+  [with_webots] port   : 1234
+  [L00_C_ppo_seed7_v02] arm=isolated prefix= 0 outcome=goal       steps= 46 delta_vs_log=2.271e-03 m
+  [with_webots] client exit code 0
+  [with_webots] Webots R2025a at D:\Program files\Webots
+  [with_webots] world  : worlds\DNS_L00_C.wbt
+  [with_webots] client : client_reset_determinism.py --layout L00 --controller ppo_seed7 --variant 2 --arm sequence
+  [with_webots] port   : 1234
+  [L00_C_ppo_seed7_v02] arm=sequence prefix=17 outcome=goal       steps= 46 delta_vs_log=4.845e-06 m
+  [with_webots] client exit code 0
+  [with_webots] Webots R2025a at D:\Program files\Webots
+  [with_webots] world  : worlds\DNS_L00_C.wbt
+  [with_webots] client : client_reset_determinism.py --layout L00 --controller ppo_seed7 --variant 5 --arm isolated
+  [with_webots] port   : 1234
+  [L00_C_ppo_seed7_v05] arm=isolated prefix= 0 outcome=goal       steps= 56 delta_vs_log=3.129e-02 m
+  [with_webots] client exit code 0
+  [with_webots] Webots R2025a at D:\Program files\Webots
+  [with_webots] world  : worlds\DNS_L00_C.wbt
+  [with_webots] client : client_reset_determinism.py --layout L00 --controller ppo_seed7 --variant 5 --arm sequence
+  [with_webots] port   : 1234
+  [L00_C_ppo_seed7_v05] arm=sequence prefix=20 outcome=goal       steps= 56 delta_vs_log=4.974e-06 m
+  [with_webots] client exit code 0
+  [with_webots] Webots R2025a at D:\Program files\Webots
+  [with_webots] world  : worlds\DNS_L00_C.wbt
+  [with_webots] client : client_reset_determinism.py --layout L00 --controller ppo_seed7 --variant 10 --arm isolated
+  [with_webots] port   : 1234
+  [L00_C_ppo_seed7_v10] arm=isolated prefix= 0 outcome=collision  steps= 19 delta_vs_log=1.583e-03 m
+  [with_webots] client exit code 0
+  [with_webots] Webots R2025a at D:\Program files\Webots
+  [with_webots] world  : worlds\DNS_L00_C.wbt
+  [with_webots] client : client_reset_determinism.py --layout L00 --controller ppo_seed7 --variant 10 --arm sequence
+  [with_webots] port   : 1234
+  [L00_C_ppo_seed7_v10] arm=sequence prefix=25 outcome=collision  steps= 19 delta_vs_log=4.974e-06 m
+  [with_webots] client exit code 0
+
+ variant        arm     outcome      logged  steps  Δsteps    max path Δ
+       0   isolated   collisioncollision_cart     19       0     5.449e-03
+       0   sequence   collisioncollision_cart     19       0     4.949e-06
+       1   isolated        goal        goal     59      -1     2.874e-01
+       1   sequence        goal        goal     60       0     4.993e-06
+       2   isolated        goal        goal     46       0     2.271e-03
+       2   sequence        goal        goal     46       0     4.845e-06
+       5   isolated        goal        goal     56       0     3.129e-02
+       5   sequence        goal        goal     56       0     4.974e-06
+      10   isolated   collisioncollision_cart     19       0     1.583e-03
+      10   sequence   collisioncollision_cart     19       0     4.974e-06
+
+isolated: outcome matched log 5/5, step count matched 4/5, worst path delta 0.287388893 m
+
+sequence: outcome matched log 5/5, step count matched 5/5, worst path delta 4.993e-06 m

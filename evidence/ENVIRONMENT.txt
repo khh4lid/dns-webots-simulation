@@ -1,0 +1,35 @@
+DNS v2 -- execution environment
+============================================================
+
+[machine]
+  os                 : Windows 10 build 10.0.19045
+  os_product         : Microsoft Windows 10 Pro
+  cpu                : AMD Ryzen 5 3600 6-Core Processor
+  cpu_cores_logical  : 12
+  gpu                : NVIDIA GeForce RTX 2060
+  machine            : AMD64
+
+[webots]
+  WEBOTS_HOME        : D:\Program files\Webots
+  binary             : D:\Program files\Webots\msys64\mingw64\bin\webots.exe
+  version            : Webots version: R2025a
+
+[python]
+  version            : 3.15.2 (tags/v3.15.2:5e58eaa, Oct 25 2026, 17:27:03) [MSC v.1951 64 bit (AMD64)]
+  executable         : C:\Python315\python.exe
+  implementation     : CPython
+
+[pip freeze]
+  contourpy==1.4.0
+  cycler==0.12.1
+  fonttools==4.68.0
+  imageio-ffmpeg==0.8.1
+  kiwisolver==1.5.1
+  matplotlib==3.11.2
+  numpy==2.3.5
+  packaging==26.4
+  pillow==13.0.0
+  pyparsing==3.3.3
+  pypdf==7.1.1
+  python-dateutil==4.0.0
+  tzdata==2026.6

@@ -1,0 +1,11 @@
+run_id,variant,arm,prefix_episodes,outcome,logged_outcome,outcome_matches,steps,logged_steps,steps_delta,max_path_delta_m,start_altitude_m_delta,start_roll_rad_delta,start_pitch_rad_delta
+L00_C_ppo_seed7_v00,0,isolated,0,collision,collision_cart,1,19,19,0,0.005449120059938917,0.001550914,0.0,0.001778
+L00_C_ppo_seed7_v00,0,sequence,15,collision,collision_cart,1,19,19,0,4.9489799309881954e-06,4.872e-06,-2e-09,4.43e-07
+L00_C_ppo_seed7_v01,1,isolated,0,goal,goal,1,59,60,-1,0.28738889305910487,0.000860914,0.0005,0.000573
+L00_C_ppo_seed7_v01,1,sequence,16,goal,goal,1,60,60,0,4.9930024397237815e-06,4.073e-06,-2.9e-07,-4.85e-07
+L00_C_ppo_seed7_v02,2,isolated,0,goal,goal,1,46,46,0,0.0022707013681888544,0.001560914,2.9e-05,5.6e-05
+L00_C_ppo_seed7_v02,2,sequence,17,goal,goal,1,46,46,0,4.845271256992412e-06,2.447e-06,1.98e-07,4.5e-07
+L00_C_ppo_seed7_v05,5,isolated,0,goal,goal,1,56,56,0,0.03128838238817422,0.001490914,0.000102,-0.000141
+L00_C_ppo_seed7_v05,5,sequence,20,goal,goal,1,56,56,0,4.974309931959908e-06,6.11e-07,-1.9e-08,-4.23e-07
+L00_C_ppo_seed7_v10,10,isolated,0,collision,collision_cart,1,19,19,0,0.0015834287625029475,0.001550914,8.6e-05,0.000152
+L00_C_ppo_seed7_v10,10,sequence,25,collision,collision_cart,1,19,19,0,4.974238143606868e-06,-3.889e-06,3.38e-07,-4e-07

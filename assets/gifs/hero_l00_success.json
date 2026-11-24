@@ -1,0 +1,14 @@
+{
+  "asset": "assets/gifs/hero_l00_success.gif",
+  "provenance": "WEBOTS CAPTURE (offscreen Camera node)",
+  "run_id": "L00_C_ppo_seed7_v01",
+  "outcome": "goal",
+  "logged_outcome": null,
+  "matches_logged_outcome": null,
+  "logged_termination_step": null,
+  "control_steps": 59,
+  "simulated_span_s": 11.8,
+  "cart_phase_rad": 2.73802,
+  "note": null,
+  "source_row": "results/v2_S6/results_v2.csv"
+}

@@ -1,0 +1,220 @@
+{
+  "arena": {
+    "floor_grid": true,
+    "high_xy": [
+      10.0,
+      3.0
+    ],
+    "low_xy": [
+      0.0,
+      -3.0
+    ],
+    "wall_height_m": 2.5,
+    "wall_thickness_m": 0.1
+  },
+  "camera": {
+    "enabled": true,
+    "height": 720,
+    "width": 1280
+  },
+  "collision": {
+    "mode": "geometric"
+  },
+  "control": {
+    "basic_timestep_ms": 8,
+    "command_period_s": 0.2,
+    "max_speed_mps": 1.2,
+    "settle_altitude_tol_m": 0.02,
+    "settle_speed_tol_mps": 0.02,
+    "settle_timeout_s": 6.0
+  },
+  "description": "The training layout, unchanged. Read directly from config/scenario_warehouse.json and re-emitted in canonical form so that L00 and L01-L05 are byte-comparable and share one hash scheme.",
+  "drone": {
+    "collision_radius_m": 0.18,
+    "cruise_altitude_m": 1.0,
+    "fixed_yaw_rad": 0.0,
+    "start_xy": [
+      0.85,
+      0.0
+    ]
+  },
+  "dynamics": {
+    "mode": "physical"
+  },
+  "goal": {
+    "tolerance_m": 0.4,
+    "xy": [
+      9.15,
+      0.0
+    ]
+  },
+  "name": "l00_dynamic",
+  "obstacles": [
+    {
+      "asset": "rack",
+      "colour": [
+        0.33,
+        0.36,
+        0.4
+      ],
+      "height_m": 2.0,
+      "id": "rack_a",
+      "label": "storage rack",
+      "purpose": "Blocks part of the aisle and forces a lateral deviation. Its flat 2.4 m face is the primary lidar calibration target: a plane returns a predictable range profile, unlike a cylinder.",
+      "shape": "box",
+      "size_xy": [
+        0.8,
+        2.4
+      ],
+      "xy": [
+        3.5,
+        -1.0
+      ]
+    },
+    {
+      "asset": "rack",
+      "colour": [
+        0.33,
+        0.36,
+        0.4
+      ],
+      "height_m": 2.0,
+      "id": "rack_b",
+      "label": "storage rack",
+      "purpose": "Blocks part of the aisle and forces a lateral deviation. Its flat 2.4 m face is the primary lidar calibration target: a plane returns a predictable range profile, unlike a cylinder.",
+      "shape": "box",
+      "size_xy": [
+        0.8,
+        2.4
+      ],
+      "xy": [
+        6.5,
+        1.0
+      ]
+    },
+    {
+      "asset": "column",
+      "colour": [
+        0.55,
+        0.56,
+        0.59
+      ],
+      "height_m": 2.5,
+      "id": "column_1",
+      "label": "structural column",
+      "purpose": "Off-route building column. Gives a precisely known square return for sector calibration and adds a wall-clearance hazard.",
+      "shape": "box",
+      "size_xy": [
+        0.4,
+        0.4
+      ],
+      "xy": [
+        2.0,
+        2.3
+      ]
+    },
+    {
+      "asset": "column",
+      "colour": [
+        0.55,
+        0.56,
+        0.59
+      ],
+      "height_m": 2.5,
+      "id": "column_2",
+      "label": "structural column",
+      "purpose": "Off-route building column. Gives a precisely known square return for sector calibration and adds a wall-clearance hazard.",
+      "shape": "box",
+      "size_xy": [
+        0.4,
+        0.4
+      ],
+      "xy": [
+        8.0,
+        -2.3
+      ]
+    },
+    {
+      "asset": "crate",
+      "colour": [
+        0.46,
+        0.38,
+        0.27
+      ],
+      "height_m": 1.6,
+      "id": "crate_stack",
+      "label": "crate stack",
+      "purpose": "Stacked pallet load off the route. Tests whether clearance is kept while converging on the goal, and gives a short wide return.",
+      "shape": "box",
+      "size_xy": [
+        0.7,
+        0.7
+      ],
+      "xy": [
+        7.9,
+        0.9
+      ],
+      "yaw_rad": 0.35
+    },
+    {
+      "asset": "cart",
+      "colour": [
+        0.92,
+        0.45,
+        0.13
+      ],
+      "height_m": 1.5,
+      "id": "cart",
+      "label": "powered transfer cart",
+      "motion": {
+        "amplitude_m": 1.9,
+        "axis": "y",
+        "phase_rad": 0.0,
+        "speed_mps": 0.45,
+        "type": "linear"
+      },
+      "purpose": "The dynamic hazard. Crosses the aisle perpendicular to the direction of travel at constant speed, so free space in its lane is a function of time and the policy must solve a timing problem, not only a geometric one.",
+      "shape": "box",
+      "size_xy": [
+        0.9,
+        0.55
+      ],
+      "xy": [
+        5.1,
+        0.0
+      ]
+    }
+  ],
+  "provenance": {
+    "draw_attempts": 1,
+    "family_kind": "reference",
+    "generator": "dns.generator",
+    "generator_config": "07_SCENARIOS/generator_config.yaml",
+    "generator_config_sha256": "16f0f82db01d89091a5011299fecf22442dba89325714f9c4cf1c8a4c8847ca3",
+    "layout_id": "L00",
+    "layout_title": "Baseline",
+    "mode": "C",
+    "mode_meaning": "C_dynamic: the cart sweeps the aisle",
+    "rejections_by_rule": {},
+    "scenario_sha256": "5534382b31b7657957532bb3abe26262fe90e6055bd8b052fc37831cfc7e5884",
+    "seed": null,
+    "test_only": false
+  },
+  "schema": "dns-scenario-v1",
+  "sensing": {
+    "beams": 720,
+    "max_range_m": 5.0,
+    "mode": "lidar",
+    "mount": "stabilised",
+    "mount_height_m": 0.14,
+    "sectors": 12
+  },
+  "viewpoint": {
+    "follow": false,
+    "position": [
+      5.0,
+      -12.0,
+      8.0
+    ]
+  }
+}

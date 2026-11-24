@@ -1,0 +1,282 @@
+claim_context,value,status,backed_by
+"Build the 27 Nov 2026 deck: 12 slides plus 6 backups, PPTX and PDF. Assertion-evidence structure: every body s",27,structural,slide numbering / layout constant
+"Build the 27 Nov 2026 deck: 12 slides plus 6 backups, PPTX and PDF. Assertion-evidence structure: every body s",2026,structural,slide numbering / layout constant
+"Build the 27 Nov 2026 deck: 12 slides plus 6 backups, PPTX and PDF. Assertion-evidence structure: every body s",12,structural,slide numbering / layout constant
+"Build the 27 Nov 2026 deck: 12 slides plus 6 backups, PPTX and PDF. Assertion-evidence structure: every body s",6,structural,slide numbering / layout constant
+"Build the 27 Nov 2026 deck: 12 slides plus 6 backups, PPTX and PDF. Assertion-evidence structure: every body s",4,structural,slide numbering / layout constant
+Khaled (@khh4lid),4,structural,slide numbering / layout constant
+2026-11-27,2026,structural,slide numbering / layout constant
+2026-11-27,11,structural,slide numbering / layout constant
+2026-11-27,27,structural,slide numbering / layout constant
+v2_S6,2,structural,slide numbering / layout constant
+v2_S6,6,structural,slide numbering / layout constant
+"A 16:9 slide with a sentence headline, tracker and footer.",16,structural,slide numbering / layout constant
+"A 16:9 slide with a sentence headline, tracker and footer.",9,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,00,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,4,structural,slide numbering / layout constant
+the PPO policy (NAME NEEDED) and raw-sensor processing (NAME NEEDED). I record their interfaces and the SHA-25,256,structural,slide numbering / layout constant
+assets/diagrams/SV1_sensor_schematic.png,1,structural,slide numbering / layout constant
+"The drone must cross a 10 × 6 m aisle, sensing obstacles only through a 360° LiDAR",10,structural,slide numbering / layout constant
+"The drone must cross a 10 × 6 m aisle, sensing obstacles only through a 360° LiDAR",6,structural,slide numbering / layout constant
+"The drone must cross a 10 × 6 m aisle, sensing obstacles only through a 360° LiDAR",360,matched,"lidar field of view, degrees"
+V-TOP_L00_success.mp4,00,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,4,structural,slide numbering / layout constant
+V-SIDE_L00_altitude.mp4,00,structural,slide numbering / layout constant
+V-SIDE_L00_altitude.mp4,4,structural,slide numbering / layout constant
+"start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",0.85,matched,scenario_table.csv L04
+"start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",0.00,matched,pooled_rates.csv L00/B_static/reactive
+"start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",9.15,matched,"goal x, config/scenarios"
+"start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",0.00,matched,pooled_rates.csv L00/B_static/reactive
+"start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",0.4,matched,pooled_rates.csv L01/C_dynamic/ppo_seed7
+"start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",1.0,matched,config/scenarios cruise_altitude_m
+"start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",0.2,matched,pooled_rates.csv L00/C_dynamic/reactive
+"Selection rationale, not a benchmark: no competing simulator was installed or timed. Full criteria and sources",001,structural,slide numbering / layout constant
+results/v2_S6/v1_reproduction.csv,2,structural,slide numbering / layout constant
+results/v2_S6/v1_reproduction.csv,6,structural,slide numbering / layout constant
+results/v2_S6/v1_reproduction.csv,1,structural,slide numbering / layout constant
+assets/diagrams/SV1_sensor_schematic.png,1,structural,slide numbering / layout constant
+"racks collided as circles · camera rotated instead of tilting cart written at its sweep centre, not its t = 0 ",0,structural,slide numbering / layout constant
+"racks collided as circles · camera rotated instead of tilting cart written at its sweep centre, not its t = 0 ",1,structural,slide numbering / layout constant
+assets/figures/F4_verification_panel.png,4,structural,slide numbering / layout constant
+config/scenarios/L0*_C.json,0,structural,slide numbering / layout constant
+Success on L01–L03 is not distinguishable from the training layout; on the hardest layout it falls to 0/45,01,structural,slide numbering / layout constant
+Success on L01–L03 is not distinguishable from the training layout; on the hardest layout it falls to 0/45,03,structural,slide numbering / layout constant
+Success on L01–L03 is not distinguishable from the training layout; on the hardest layout it falls to 0/45,0,structural,slide numbering / layout constant
+Success on L01–L03 is not distinguishable from the training layout; on the hardest layout it falls to 0/45,45,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+results/v2_S6/pooled_rates.csv,2,structural,slide numbering / layout constant
+results/v2_S6/pooled_rates.csv,6,structural,slide numbering / layout constant
+"L04 is excluded: no controller and no reference-tracker setting reaches the goal inside the 90-step horizon, s",04,structural,slide numbering / layout constant
+"L04 is excluded: no controller and no reference-tracker setting reaches the goal inside the 90-step horizon, s",90,matched,layout_gate L04 traversal steps
+"L04 is excluded: no controller and no reference-tracker setting reaches the goal inside the 90-step horizon, s",0,structural,slide numbering / layout constant
+"L04 is excluded: no controller and no reference-tracker setting reaches the goal inside the 90-step horizon, s",45,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+assets/figures/E15_mirror_overlay.png,15,matched,pooled_rates.csv L00/C_dynamic/ppo_seed7
+V-TOP_L02_mirror.mp4,02,structural,slide numbering / layout constant
+V-TOP_L02_mirror.mp4,4,structural,slide numbering / layout constant
+"Same pooled result on both: 24/45. This is NOT a claim that the policy generalises — on L05, whose traversabil",24,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+"Same pooled result on both: 24/45. This is NOT a claim that the policy generalises — on L05, whose traversabil",45,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+"Same pooled result on both: 24/45. This is NOT a claim that the policy generalises — on L05, whose traversabil",05,structural,slide numbering / layout constant
+"Same pooled result on both: 24/45. This is NOT a claim that the policy generalises — on L05, whose traversabil",0,structural,slide numbering / layout constant
+"Same pooled result on both: 24/45. This is NOT a claim that the policy generalises — on L05, whose traversabil",45,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+Corrected from v1,1,structural,slide numbering / layout constant
+"Mode B was 1 configuration, not 3 — v1's “3/3” is 1/1 The reactive explanation used the crate's centre (1.54 m",1,structural,slide numbering / layout constant
+"Mode B was 1 configuration, not 3 — v1's “3/3” is 1/1 The reactive explanation used the crate's centre (1.54 m",3,structural,slide numbering / layout constant
+"Mode B was 1 configuration, not 3 — v1's “3/3” is 1/1 The reactive explanation used the crate's centre (1.54 m",1,structural,slide numbering / layout constant
+"Mode B was 1 configuration, not 3 — v1's “3/3” is 1/1 The reactive explanation used the crate's centre (1.54 m",3,structural,slide numbering / layout constant
+"Mode B was 1 configuration, not 3 — v1's “3/3” is 1/1 The reactive explanation used the crate's centre (1.54 m",3,structural,slide numbering / layout constant
+"Mode B was 1 configuration, not 3 — v1's “3/3” is 1/1 The reactive explanation used the crate's centre (1.54 m",1,structural,slide numbering / layout constant
+"Mode B was 1 configuration, not 3 — v1's “3/3” is 1/1 The reactive explanation used the crate's centre (1.54 m",1,structural,slide numbering / layout constant
+"Mode B was 1 configuration, not 3 — v1's “3/3” is 1/1 The reactive explanation used the crate's centre (1.54 m",1.54,matched,reactive_gnron_analysis.json crate centre
+"Mode B was 1 configuration, not 3 — v1's “3/3” is 1/1 The reactive explanation used the crate's centre (1.54 m",1.0582,matched,reactive_gnron_analysis.json crate surface
+"Mode B was 1 configuration, not 3 — v1's “3/3” is 1/1 The reactive explanation used the crate's centre (1.54 m",0.00e+00,matched,"v1 cart-vs-model check, reframed as C2"
+"Mode B was 1 configuration, not 3 — v1's “3/3” is 1/1 The reactive explanation used the crate's centre (1.54 m",1,structural,slide numbering / layout constant
+"Cart is kinematic — no physical contact response LiDAR gimbal is ideal — a best case, not a real sensor Three ",90,matched,layout_gate L04 traversal steps
+"Cart is kinematic — no physical contact response LiDAR gimbal is ideal — a best case, not a real sensor Three ",0.0536,matched,v1 min_sensed_clearance anomaly
+"Cart is kinematic — no physical contact response LiDAR gimbal is ideal — a best case, not a real sensor Three ",0.62,matched,v1 ground-truth clearance at the anomaly
+finish the progress report · stabilisation bracket (ideal vs body-fixed gimbal) · dynamic-obstacle variants C1,1,structural,slide numbering / layout constant
+finish the progress report · stabilisation bracket (ideal vs body-fixed gimbal) · dynamic-obstacle variants C1,3,structural,slide numbering / layout constant
+github.com/khh4lid/dns-webots-simulation,4,structural,slide numbering / layout constant
+results/v2_S6/scenario_table.csv,2,structural,slide numbering / layout constant
+results/v2_S6/scenario_table.csv,6,structural,slide numbering / layout constant
+"001 Webots R2025a 002 keep 10 × 6 m 003 planar, one scan layer",001,structural,slide numbering / layout constant
+"001 Webots R2025a 002 keep 10 × 6 m 003 planar, one scan layer",2025,structural,slide numbering / layout constant
+"001 Webots R2025a 002 keep 10 × 6 m 003 planar, one scan layer",002,structural,slide numbering / layout constant
+"001 Webots R2025a 002 keep 10 × 6 m 003 planar, one scan layer",10,structural,slide numbering / layout constant
+"001 Webots R2025a 002 keep 10 × 6 m 003 planar, one scan layer",6,structural,slide numbering / layout constant
+"001 Webots R2025a 002 keep 10 × 6 m 003 planar, one scan layer",003,structural,slide numbering / layout constant
+004 exact boxes 005 racks cross line 006 kinematic cart,004,structural,slide numbering / layout constant
+004 exact boxes 005 racks cross line 006 kinematic cart,005,structural,slide numbering / layout constant
+004 exact boxes 005 racks cross line 006 kinematic cart,006,structural,slide numbering / layout constant
+007 ideal gimbal 008 5 Hz / 125 Hz / 8 ms 009 seeded generator,007,structural,slide numbering / layout constant
+007 ideal gimbal 008 5 Hz / 125 Hz / 8 ms 009 seeded generator,008,structural,slide numbering / layout constant
+007 ideal gimbal 008 5 Hz / 125 Hz / 8 ms 009 seeded generator,5,structural,slide numbering / layout constant
+007 ideal gimbal 008 5 Hz / 125 Hz / 8 ms 009 seeded generator,125,matched,"autopilot inner loop, Hz"
+007 ideal gimbal 008 5 Hz / 125 Hz / 8 ms 009 seeded generator,8,structural,slide numbering / layout constant
+007 ideal gimbal 008 5 Hz / 125 Hz / 8 ms 009 seeded generator,009,structural,slide numbering / layout constant
+010 mirror test 011 distinct configs 012 one geometry source,010,structural,slide numbering / layout constant
+010 mirror test 011 distinct configs 012 one geometry source,011,structural,slide numbering / layout constant
+010 mirror test 011 distinct configs 012 one geometry source,012,structural,slide numbering / layout constant
+013 Camera capture 014 L04 excluded (pending),013,structural,slide numbering / layout constant
+013 Camera capture 014 L04 excluded (pending),014,structural,slide numbering / layout constant
+013 Camera capture 014 L04 excluded (pending),04,structural,slide numbering / layout constant
+results/v2_S6/reactive_gnron_analysis.json,2,structural,slide numbering / layout constant
+results/v2_S6/reactive_gnron_analysis.json,6,structural,slide numbering / layout constant
+Backup — why L04 is excluded,04,structural,slide numbering / layout constant
+"The reference tracker is GIVEN the correct route and still cannot fly it inside the horizon, so 0/90 cannot be",0,structural,slide numbering / layout constant
+"The reference tracker is GIVEN the correct route and still cannot fly it inside the horizon, so 0/90 cannot be",90,matched,layout_gate L04 traversal steps
+assets/decisions/ADR-008_timing_ladder.png,008,structural,slide numbering / layout constant
+I corrected four things from v1 and I am still carrying six limitations.,1,structural,slide numbering / layout constant
+DNS_SimEnv_2026-11-27.pdf,2026,structural,slide numbering / layout constant
+DNS_SimEnv_2026-11-27.pdf,11,structural,slide numbering / layout constant
+DNS_SimEnv_2026-11-27.pdf,27,structural,slide numbering / layout constant
+DNS_SimEnv_2026-11-27.pptx,2026,structural,slide numbering / layout constant
+DNS_SimEnv_2026-11-27.pptx,11,structural,slide numbering / layout constant
+DNS_SimEnv_2026-11-27.pptx,27,structural,slide numbering / layout constant
+· 27 Nov 2026,27,structural,slide numbering / layout constant
+· 27 Nov 2026,2026,structural,slide numbering / layout constant
+1/12,1,structural,slide numbering / layout constant
+1/12,12,structural,slide numbering / layout constant
+Team: PPO policy — NAME NEEDED · Sensor & perception — NAME NEEDED 27 November 2026,27,structural,slide numbering / layout constant
+Team: PPO policy — NAME NEEDED · Sensor & perception — NAME NEEDED 27 November 2026,2026,structural,slide numbering / layout constant
+V-TOP_L00_success_poster.png,00,structural,slide numbering / layout constant
+2/12,2,structural,slide numbering / layout constant
+2/12,12,structural,slide numbering / layout constant
+SV1_sensor_schematic.png,1,structural,slide numbering / layout constant
+3/12,3,structural,slide numbering / layout constant
+3/12,12,structural,slide numbering / layout constant
+V-TOP_L00_success_poster.png,00,structural,slide numbering / layout constant
+V-SIDE_L00_altitude_poster.png,00,structural,slide numbering / layout constant
+4/12,4,structural,slide numbering / layout constant
+4/12,12,structural,slide numbering / layout constant
+5/12,5,structural,slide numbering / layout constant
+5/12,12,structural,slide numbering / layout constant
+L00 re-run reproduced all 10 cells with 0 m path difference,00,structural,slide numbering / layout constant
+L00 re-run reproduced all 10 cells with 0 m path difference,10,structural,slide numbering / layout constant
+L00 re-run reproduced all 10 cells with 0 m path difference,0,structural,slide numbering / layout constant
+E9_l00_reproduction.png,9,structural,slide numbering / layout constant
+E9_l00_reproduction.png,00,structural,slide numbering / layout constant
+6/12,6,structural,slide numbering / layout constant
+6/12,12,structural,slide numbering / layout constant
+SV1_sensor_schematic.png,1,structural,slide numbering / layout constant
+7/12,7,structural,slide numbering / layout constant
+7/12,12,structural,slide numbering / layout constant
+F4_verification_panel.png,4,structural,slide numbering / layout constant
+8/12,8,structural,slide numbering / layout constant
+8/12,12,structural,slide numbering / layout constant
+F1_shift_ladder.png,1,structural,slide numbering / layout constant
+9/12,9,structural,slide numbering / layout constant
+9/12,12,structural,slide numbering / layout constant
+F2_generalization.png,2,structural,slide numbering / layout constant
+10/12,10,structural,slide numbering / layout constant
+10/12,12,structural,slide numbering / layout constant
+E15_mirror_overlay.png,15,matched,pooled_rates.csv L00/C_dynamic/ppo_seed7
+V-TOP_L02_mirror_poster.png,02,structural,slide numbering / layout constant
+11/12,11,structural,slide numbering / layout constant
+11/12,12,structural,slide numbering / layout constant
+12/12,12,structural,slide numbering / layout constant
+12/12,12,structural,slide numbering / layout constant
+E1_descriptors.png,1,structural,slide numbering / layout constant
+ADR-C1_reactive_zone.png,1,structural,slide numbering / layout constant
+ADR-008_timing_ladder.png,008,structural,slide numbering / layout constant
+I record their interfaces and the SHA-256 of the files I ran against.,256,structural,slide numbering / layout constant
+"Start left, goal right, 0.4 m tolerance, fixed 1.0 m altitude.",0.4,matched,pooled_rates.csv L01/C_dynamic/ppo_seed7
+"Start left, goal right, 0.4 m tolerance, fixed 1.0 m altitude.",1.0,matched,config/scenarios cruise_altitude_m
+One velocity command every 0.2 s — five per second.,0.2,matched,pooled_rates.csv L00/C_dynamic/reactive
+Every one rises above the 1.14 m scan plane — nothing is solid but invisible.,1.14,matched,"cruise 1.0 + mount 0.14, config/scenarios/L00_C.json"
+The evidence that matters is determinism: the v1 run reproduced with zero path difference.,1,structural,slide numbering / layout constant
+Define 'sector': the 360° scan is binned into 12 wedges of 30°.,360,matched,"lidar field of view, degrees"
+Define 'sector': the 360° scan is binned into 12 wedges of 30°.,12,structural,slide numbering / layout constant
+Define 'sector': the 360° scan is binned into 12 wedges of 30°.,30,structural,slide numbering / layout constant
+"0 is front, 3 right, 6 back, 9 left — verified per layout, not documented and hoped for.",0,structural,slide numbering / layout constant
+"0 is front, 3 right, 6 back, 9 left — verified per layout, not documented and hoped for.",3,structural,slide numbering / layout constant
+"0 is front, 3 right, 6 back, 9 left — verified per layout, not documented and hoped for.",6,structural,slide numbering / layout constant
+"0 is front, 3 right, 6 back, 9 left — verified per layout, not documented and hoped for.",9,structural,slide numbering / layout constant
+Timing is exact by construction: 0.2 s is exactly 25 physics steps.,0.2,matched,pooled_rates.csv L00/C_dynamic/reactive
+Timing is exact by construction: 0.2 s is exactly 25 physics steps.,25,structural,slide numbering / layout constant
+"L01 and L03 overlap L00 — I cannot distinguish them, and I do not claim to.",01,structural,slide numbering / layout constant
+"L01 and L03 overlap L00 — I cannot distinguish them, and I do not claim to.",03,structural,slide numbering / layout constant
+"L01 and L03 overlap L00 — I cannot distinguish them, and I do not claim to.",00,structural,slide numbering / layout constant
+"540 episodes, but 480 distinct configurations: Mode B's three runs are one configuration.",540,matched,results_v2.csv row count
+"540 episodes, but 480 distinct configurations: Mode B's three runs are one configuration.",480,matched,results_v2.csv distinct_configuration sum
+L04 is excluded — my own reference tracker could not fly it either.,04,structural,slide numbering / layout constant
+Define 'IoU': overlap of the two layouts' obstacle footprints. 0.074 is almost none.,0.074,matched,scenario_table.csv L02
+"Same pooled result, 24 of 45 on both.",24,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+"Same pooled result, 24 of 45 on both.",45,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+"L04 is the one that blocks a result — exclude it, or authorise a diagnostic run?",04,structural,slide numbering / layout constant
+More seeds would narrow every interval on slide 9.,9,structural,slide numbering / layout constant
+The sensor anomaly matters because repulsion scales with 1.45 minus the range.,1.45,matched,evaluate.gap_rule repulsion radius
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+1 · Simulator selection and setup,1,structural,slide numbering / layout constant
+Webots R2025a,2025,structural,slide numbering / layout constant
+2 · Navigation environment design,2,structural,slide numbering / layout constant
+"10 × 6 m, 1.0 m cruise",10,structural,slide numbering / layout constant
+"10 × 6 m, 1.0 m cruise",6,structural,slide numbering / layout constant
+"10 × 6 m, 1.0 m cruise",1.0,matched,config/scenarios cruise_altitude_m
+3 · Start and goal definition,3,structural,slide numbering / layout constant
+"fixed, identical in 6 layouts",6,structural,slide numbering / layout constant
+4 · Static obstacle development,4,structural,slide numbering / layout constant
+5 · Moving obstacle modelling,5,structural,slide numbering / layout constant
+"Apache 2.0, active",2.0,matched,rack height_m
+Beams over 360°,360,matched,"lidar field of view, degrees"
+720 (0.5° spacing),720,matched,DnsQuadcopter.proto lidarResolution
+720 (0.5° spacing),0.5,matched,"lidar beam spacing, degrees"
+5.0 m,5.0,matched,navigation.RANGE
+"12 × 30°, 0/3/6/9 = front/right/back/left",12,structural,slide numbering / layout constant
+"12 × 30°, 0/3/6/9 = front/right/back/left",30,structural,slide numbering / layout constant
+"12 × 30°, 0/3/6/9 = front/right/back/left",0,structural,slide numbering / layout constant
+"12 × 30°, 0/3/6/9 = front/right/back/left",3,structural,slide numbering / layout constant
+"12 × 30°, 0/3/6/9 = front/right/back/left",6,structural,slide numbering / layout constant
+"12 × 30°, 0/3/6/9 = front/right/back/left",9,structural,slide numbering / layout constant
+1.14 m (1.0 m cruise + 0.14 m mount),1.14,matched,"cruise 1.0 + mount 0.14, config/scenarios/L00_C.json"
+1.14 m (1.0 m cruise + 0.14 m mount),1.0,matched,config/scenarios cruise_altitude_m
+1.14 m (1.0 m cruise + 0.14 m mount),0.14,matched,scenario_table.csv L05
+26 / 26,26,matched,layout_gate L00 contract tests
+26 / 26,26,matched,layout_gate L00 contract tests
+0.200000 s (error < 3e−16 s),0.200000,matched,v1 Verification_Report timing
+0.200000 s (error < 3e−16 s),3e-16,matched,v1 Verification_Report observation-interval error
+2.8 µm,2.8,matched,v1 Verification_Report reset error (um)
+"≤ 4.0e−06 m, all 6 layouts",4.0e-06,matched,layout_gate SUMMARY worst t=0 pose error
+"≤ 4.0e−06 m, all 6 layouts",6,structural,slide numbering / layout constant
+0.048 m mean per beam,0.048,matched,v1 Verification_Report lidar full-scan mean
+L00 reproduction,00,structural,slide numbering / layout constant
+"10/10 cells, 0 m",10,structural,slide numbering / layout constant
+"10/10 cells, 0 m",10,structural,slide numbering / layout constant
+"10/10 cells, 0 m",0,structural,slide numbering / layout constant
+en-route corridor width L00→L05:,00,structural,slide numbering / layout constant
+en-route corridor width L00→L05:,05,structural,slide numbering / layout constant
+L00 baseline,00,structural,slide numbering / layout constant
+L01 perturbed,01,structural,slide numbering / layout constant
+"20/45 [0.31, 0.59]",20,structural,slide numbering / layout constant
+"20/45 [0.31, 0.59]",45,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+"20/45 [0.31, 0.59]",0.31,matched,pooled_rates.csv L01/C_dynamic/ppo_pooled
+"20/45 [0.31, 0.59]",0.59,matched,pooled_rates.csv L01/C_dynamic/ppo_pooled
+L02 mirrored,02,structural,slide numbering / layout constant
+"24/45 [0.39, 0.67]",24,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+"24/45 [0.39, 0.67]",45,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+"24/45 [0.39, 0.67]",0.39,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+"24/45 [0.39, 0.67]",0.67,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+L03 aisle shift,03,structural,slide numbering / layout constant
+"20/45 [0.31, 0.59]",20,structural,slide numbering / layout constant
+"20/45 [0.31, 0.59]",45,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+"20/45 [0.31, 0.59]",0.31,matched,pooled_rates.csv L01/C_dynamic/ppo_pooled
+"20/45 [0.31, 0.59]",0.59,matched,pooled_rates.csv L01/C_dynamic/ppo_pooled
+L05 hard,05,structural,slide numbering / layout constant
+"vs L00,",00,structural,slide numbering / layout constant
+"L04: exclude, or run a longer-horizon diagnostic?",04,structural,slide numbering / layout constant
+More PPO training seeds — 3 cannot separate variance,3,structural,slide numbering / layout constant
+The 0.0536 m vs 0.62 m sensor anomaly,0.0536,matched,v1 min_sensed_clearance anomaly
+The 0.0536 m vs 0.62 m sensor anomaly,0.62,matched,v1 ground-truth clearance at the anomaly
+"margin 0.22 m, ≤ 0.48 m/s",0.22,matched,L04 reference planning margin
+"margin 0.22 m, ≤ 0.48 m/s",0.48,matched,pooled_rates.csv L02/C_dynamic/ppo_seed19
+"timeout at 90 steps, no collision",90,matched,layout_gate L04 traversal steps
+"margin 0.22 m, ≤ 0.84 m/s",0.22,matched,L04 reference planning margin
+"margin 0.22 m, ≤ 0.84 m/s",0.84,matched,"layout_gate L04 tracker speed, profile 1"
+collision at 13 steps,13,structural,slide numbering / layout constant
+"margin 0.12 m, ≤ 1.08 m/s",0.12,matched,"layout_gate L04 planning margin, tumbled attempt"
+"margin 0.12 m, ≤ 1.08 m/s",1.08,matched,scenario_table.csv L00
+"tumbled, peak tilt 1.5905 rad",1.5905,matched,"layout_gate L04 peak tilt, tumbled"
+PPO episodes exceeding 0.50 rad,0.50,matched,tilt threshold used for the exceedance count
+0 of 90,0,structural,slide numbering / layout constant
+0 of 90,90,matched,layout_gate L04 traversal steps
+"yes, 0.85 m",0.85,matched,scenario_table.csv L04
+Re-run all 540 episodes,540,matched,results_v2.csv row count
+python reproduce.py --full (~19 min),19,matched,"run_s6 wall clock for 540 episodes, minutes"
+26 / 26,26,matched,layout_gate L00 contract tests
+26 / 26,26,matched,layout_gate L00 contract tests
+26 contract tests + A* + flown traversal,26,matched,layout_gate L00 contract tests
+results_v2.csv,2,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,00,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,4,structural,slide numbering / layout constant
+V-TOP_L00_success_poster.png,00,structural,slide numbering / layout constant
+V-SIDE_L00_altitude.mp4,00,structural,slide numbering / layout constant
+V-SIDE_L00_altitude.mp4,4,structural,slide numbering / layout constant
+V-SIDE_L00_altitude_poster.png,00,structural,slide numbering / layout constant
+V-TOP_L02_mirror.mp4,02,structural,slide numbering / layout constant
+V-TOP_L02_mirror.mp4,4,structural,slide numbering / layout constant
+V-TOP_L02_mirror_poster.png,02,structural,slide numbering / layout constant
+L04.json,04,structural,slide numbering / layout constant
+video/mp4,4,structural,slide numbering / layout constant
+iou_to_L00,00,structural,slide numbering / layout constant

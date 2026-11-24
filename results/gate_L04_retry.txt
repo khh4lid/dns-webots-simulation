@@ -1,0 +1,26 @@
+[with_webots] Webots R2025a at D:\Program files\Webots
+[with_webots] world  : worlds\DNS_L04_C.wbt
+[with_webots] client : client_layout_gate.py --layout L04
+[with_webots] port   : 1235  (already in use by other Webots instances: [1234])
+Traceback (most recent call last):
+  File "D:\Download\drone_navigation_system\webots_dns\tests\client_layout_gate.py", line 427, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "D:\Download\drone_navigation_system\webots_dns\tests\client_layout_gate.py", line 393, in main
+    traversal = reference_traversal(backend, static)
+  File "D:\Download\drone_navigation_system\webots_dns\tests\client_layout_gate.py", line 251, in reference_traversal
+    result = _track_once(backend, scenario, *profile, margin=margin)
+  File "D:\Download\drone_navigation_system\webots_dns\tests\client_layout_gate.py", line 297, in _track_once
+    env.reset(200_000_000, "static")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Download\drone_navigation_system\DroneNavPPO\DroneNavPPO\navigation.py", line 80, in reset
+    f = self.backend.reset(seed, scene)
+  File "D:\Download\drone_navigation_system\webots_dns\dns\backend.py", line 501, in reset
+    self._settle()
+    ~~~~~~~~~~~~^^
+  File "D:\Download\drone_navigation_system\webots_dns\dns\backend.py", line 482, in _settle
+    raise BackendError(
+    ...<4 lines>...
+        "interface test.")
+dns.backend.BackendError: drone did not settle within 6.0 s (altitude 1.000 m, speed 0.023 m/s). Use dynamics mode 'kinematic' for a flight-control-independent interface test.
+[with_webots] client exit code 1

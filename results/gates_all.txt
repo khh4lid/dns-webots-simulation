@@ -1,0 +1,41 @@
+[L00] world check      : OK (max t=0 pose error 0.00e+00 m)
+[L00] contract tests   : 26/26 pass
+[L00] reference travers: goal in 50 steps (10.0 s), 0 waypoints
+[L00] VERDICT          : PASS
+  -> L00: PASS (15.1 s)
+
+[L01] world check      : OK (max t=0 pose error 4.00e-06 m)
+[L01] contract tests   : 26/26 pass
+[L01] reference travers: goal in 50 steps (10.0 s), 0 waypoints
+[L01] VERDICT          : PASS
+  -> L01: PASS (15.0 s)
+
+[L02] world check      : OK (max t=0 pose error 4.19e-07 m)
+[L02] contract tests   : 26/26 pass
+[L02] reference travers: goal in 51 steps (10.2 s), 0 waypoints
+[L02] VERDICT          : PASS
+  -> L02: PASS (15.2 s)
+
+[L03] world check      : OK (max t=0 pose error 4.00e-06 m)
+[L03] contract tests   : 26/26 pass
+[L03] reference travers: goal in 52 steps (10.4 s), 0 waypoints
+[L03] VERDICT          : PASS
+  -> L03: PASS (15.1 s)
+
+  -> L04: FAIL (32.0 s)
+
+[L05] world check      : OK (max t=0 pose error 4.00e-06 m)
+[L05] contract tests   : 26/26 pass
+[L05] reference travers: goal in 56 steps (11.2 s), 0 waypoints
+[L05] VERDICT          : PASS
+  -> L05: PASS (15.6 s)
+
+==============================================================
+L00  PASS   contracts=26/26   traversal=goal       t0_err=0.0e+00 m
+L01  PASS   contracts=26/26   traversal=goal       t0_err=4.0e-06 m
+L02  PASS   contracts=26/26   traversal=goal       t0_err=4.2e-07 m
+L03  PASS   contracts=26/26   traversal=goal       t0_err=4.0e-06 m
+L04  FAIL   contracts=26/26   traversal=timeout    t0_err=4.0e-06 m
+L05  PASS   contracts=26/26   traversal=goal       t0_err=4.0e-06 m
+
+5/6 layouts cleared; BLOCKED: ['L04']

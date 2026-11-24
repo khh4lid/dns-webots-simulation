@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+title: >-
+  DNS Webots simulation environment for UAV navigation among static and
+  dynamic obstacles
+message: >-
+  If you use this simulation environment, please cite it. The author's given
+  name and GitHub handle are confirmed; the full legal name is still to be
+  supplied and is marked below rather than guessed.
+type: software
+version: "2.0"
+date-released: "2026-11-25"
+repository-code: "https://github.com/khh4lid/dns-webots-simulation"
+abstract: >-
+  A reproducible Webots simulation environment for UAV navigation research: a
+  seeded scenario generator producing byte-identical layouts, a six-layout
+  distribution-shift ladder with validated feasibility, a kinematic moving
+  obstacle, a verified twelve-sector LiDAR contract, and a pre-registered
+  spatial-generalisation experiment of 540 episodes over 480 distinct
+  configurations.
+keywords:
+  - webots
+  - uav
+  - quadcopter
+  - robotics-simulation
+  - autonomous-navigation
+  - lidar
+  - reproducibility
+  - reinforcement-learning
+authors:
+  - given-names: Khaled
+    # family-names deliberately omitted: not on record for this release.
+    # Supply it and re-run scripts/make_support_docs.py before citing.
+    alias: khh4lid
+    affiliation: "Taylor's University, Malaysia"

@@ -1,0 +1,30 @@
+{
+  "asset": "V1_main_demo.mp4",
+  "provenance": "WEBOTS CAPTURE (offscreen Camera node)",
+  "distribution": "GitHub Release asset for v2.0 (not committed to git)",
+  "fps": 30,
+  "segments": [
+    {
+      "segment": "L00 baseline \u2014 PPO reaches the goal",
+      "run_id": "L00_C_ppo_seed7_v01",
+      "frames": 295,
+      "outcome": "goal",
+      "matches_logged_outcome": null
+    },
+    {
+      "segment": "L00 top-down \u2014 the cart crossing",
+      "run_id": "L00_C_ppo_seed7_v00",
+      "frames": 95,
+      "outcome": "collision",
+      "matches_logged_outcome": null
+    },
+    {
+      "segment": "L02 mirrored \u2014 same policy, reflected layout",
+      "run_id": "L02_C_ppo_seed7_v00",
+      "frames": 135,
+      "outcome": "collision",
+      "matches_logged_outcome": true
+    }
+  ],
+  "poster": "assets/renders/demo_poster.png"
+}

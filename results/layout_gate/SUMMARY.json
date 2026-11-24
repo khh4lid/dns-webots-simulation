@@ -1,0 +1,62 @@
+{
+  "L00": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "wall_s": 15.1,
+    "contract_tests": "26/26",
+    "reference_traversal_outcome": "goal",
+    "reference_traversal_steps": 50,
+    "max_t0_pose_error_m": 0.0,
+    "scenario_sha256": "5534382b31b7657957532bb3abe26262fe90e6055bd8b052fc37831cfc7e5884"
+  },
+  "L01": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "wall_s": 15.0,
+    "contract_tests": "26/26",
+    "reference_traversal_outcome": "goal",
+    "reference_traversal_steps": 50,
+    "max_t0_pose_error_m": 4.000000000115023e-06,
+    "scenario_sha256": "24a2333ede977cc7b0375f24127fa29035d175bd17c88b0c087e9cb76251e828"
+  },
+  "L02": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "wall_s": 15.2,
+    "contract_tests": "26/26",
+    "reference_traversal_outcome": "goal",
+    "reference_traversal_steps": 51,
+    "max_t0_pose_error_m": 4.19010014907073e-07,
+    "scenario_sha256": "e9b0f444ee3ea76f789b2345f485fdab4621eb2279414191e2fc8eb673773822"
+  },
+  "L03": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "wall_s": 15.1,
+    "contract_tests": "26/26",
+    "reference_traversal_outcome": "goal",
+    "reference_traversal_steps": 52,
+    "max_t0_pose_error_m": 4.000000000559112e-06,
+    "scenario_sha256": "a8c1460847f2aff7dc6b3575efdbd71bef4bef3b8246faca352c247956fe0bfe"
+  },
+  "L04": {
+    "verdict": "FAIL",
+    "exit_code": 1,
+    "wall_s": 32.0,
+    "contract_tests": "26/26",
+    "reference_traversal_outcome": "timeout",
+    "reference_traversal_steps": 90,
+    "max_t0_pose_error_m": 4.000000000115023e-06,
+    "scenario_sha256": "c6cb2456dc4fa33c0a1f66484e8ad0a6197ec8634b27e66fd70655a52828884e"
+  },
+  "L05": {
+    "verdict": "PASS",
+    "exit_code": 0,
+    "wall_s": 15.6,
+    "contract_tests": "26/26",
+    "reference_traversal_outcome": "goal",
+    "reference_traversal_steps": 56,
+    "max_t0_pose_error_m": 4.000000000115023e-06,
+    "scenario_sha256": "69434582238af1244c790e3deaea47d15f71c8117f840c00609a5ff031e0d779"
+  }
+}

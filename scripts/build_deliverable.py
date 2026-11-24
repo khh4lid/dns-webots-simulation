@@ -30,9 +30,21 @@ PACKAGE = WORKSPACE / "DNS_SIMULATION_RESEARCH_DELIVERABLE"
 
 RUN_BAT = """@echo off
 REM Launch the DNS warehouse world in Webots.
-REM Set WEBOTS_HOME first if Webots is not on the default path.
+REM WEBOTS_HOME is honoured if set; otherwise the usual install locations are
+REM probed. No machine-specific path is baked in, so this runs on any Windows
+REM box with Webots installed.
 setlocal
-if "%WEBOTS_HOME%"=="" set WEBOTS_HOME=D:\\Program files\\Webots
+if not "%WEBOTS_HOME%"=="" goto :found
+for %%D in ("C:\\Program Files\\Webots" "D:\\Program Files\\Webots" ^
+            "C:\\Program Files (x86)\\Webots" "%LOCALAPPDATA%\\Programs\\Webots") do (
+  if exist "%%~D\\msys64\\mingw64\\bin\\webots.exe" set WEBOTS_HOME=%%~D
+)
+if "%WEBOTS_HOME%"=="" (
+  echo Webots not found. Set WEBOTS_HOME to the installation directory, e.g.
+  echo     set WEBOTS_HOME=C:\\Program Files\\Webots
+  exit /b 1
+)
+:found
 start "" "%WEBOTS_HOME%\\msys64\\mingw64\\bin\\webots.exe" "%~dp0worlds\\DNS_Warehouse.wbt"
 echo.
 echo The drone uses an ^<extern^> controller, so it will sit still until a

@@ -1,0 +1,6 @@
+{
+  "asset": "assets/gifs/lidar_sectors.gif",
+  "provenance": "left WEBOTS CAPTURE, right LOGGED-DATA RENDER",
+  "run_id": "L00_C_ppo_seed7_v00",
+  "note": "The 12 packed sectors the policy actually receives, drawn from results/v2_S6/runs/<run_id>/lidar.npz and synchronised to the captured frames by simulated time. Sector 0 is front, 3 right, 6 back, 9 left; bars turn orange inside 2 m."
+}

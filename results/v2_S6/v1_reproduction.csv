@@ -1,0 +1,11 @@
+mode,controller,v1_k,v1_n,v2_k,v2_n,outcomes_match,v1_outcomes,v2_outcomes,max_path_delta_m,mean_path_delta_m
+B_static,ppo_seed7,3,3,3,3,1,goal:3,goal:3,0.0,0.0
+B_static,ppo_seed19,3,3,3,3,1,goal:3,goal:3,0.0,0.0
+B_static,ppo_seed43,3,3,3,3,1,goal:3,goal:3,0.0,0.0
+B_static,reactive,0,3,0,3,1,timeout:3,timeout:3,0.0,0.0
+B_static,direct,0,3,0,3,1,collision:3,collision:3,0.0,0.0
+C_dynamic,ppo_seed7,9,15,9,15,1,collision:6|goal:9,collision:6|goal:9,0.0,0.0
+C_dynamic,ppo_seed19,8,15,8,15,1,collision:7|goal:8,collision:7|goal:8,0.0,0.0
+C_dynamic,ppo_seed43,7,15,7,15,1,collision:8|goal:7,collision:8|goal:7,0.0,0.0
+C_dynamic,reactive,0,15,0,15,1,collision:5|timeout:10,collision:5|timeout:10,0.0,0.0
+C_dynamic,direct,0,15,0,15,1,collision:15,collision:15,0.0,0.0

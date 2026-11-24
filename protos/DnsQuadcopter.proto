@@ -93,6 +93,12 @@ PROTO DnsQuadcopter [
   # while the drone flies, which is what makes a legible overview shot.
   field SFVec3f    sceneCameraOffset -3.2 0 1.8
   field SFRotation sceneCameraRotation 0 1 0 0.42
+  # Horizontal field of view of the demonstration camera [rad]. Default is 1.35, the
+  # value the Camera node used to hard-code, so a world that does not set it renders exactly as
+  # before. Presentation captures use a narrow fov from a high eye to
+  # approximate an orthographic plan view; a Camera is a sensor rather than
+  # geometry, so neither the lidar nor the collision test can see it.
+  field SFFloat    sceneCameraFov    1.35
   field SFInt32    sceneCameraWidth  1280
   field SFInt32    sceneCameraHeight 720
 ]
@@ -288,12 +294,16 @@ ${visual}
         children [
           Camera {
             name "scene_camera"
+            fieldOfView %<= fields.sceneCameraFov.value >%
             width %<= fields.sceneCameraWidth.value >%
             height %<= fields.sceneCameraHeight.value >%
-            # 1.35 rad (77 deg). A 10 x 6 m room has to fit in frame from a
-            # viewpoint that still clears the 2.5 m wall, and 1.1 rad was too
-            # narrow to hold the start pad and the goal pad at once.
-            fieldOfView 1.35
+            # The field of view now comes from sceneCameraFov above, whose
+            # default is 1.35 rad (77 deg) -- the value this line used to hold.
+            # A 10 x 6 m room has to fit in frame from a viewpoint that still
+            # clears the 2.5 m wall, and 1.1 rad was too narrow to hold the
+            # start pad and the goal pad at once. Presentation captures
+            # override it: a narrow fov from a high eye approximates an
+            # orthographic plan, so the racks stand up instead of leaning.
             near 0.1
             far 60
           }

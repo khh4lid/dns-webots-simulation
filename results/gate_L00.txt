@@ -1,0 +1,11 @@
+[with_webots] Webots R2025a at D:\Program files\Webots
+[with_webots] world  : worlds\DNS_L00_C.wbt
+[with_webots] client : client_layout_gate.py --layout L00
+[with_webots] port   : 1234
+D:\Download\drone_navigation_system\webots_dns\tests\client_layout_gate.py:168: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  worst = max(worst, abs(float(np.cross(span, mid - a)) / length))
+[L00] world check      : OK (max t=0 pose error 0.00e+00 m)
+[L00] contract tests   : 26/26 pass
+[L00] reference travers: collision in 10 steps (2.0 s), 7 waypoints
+[L00] VERDICT          : FAIL
+[with_webots] client exit code 1

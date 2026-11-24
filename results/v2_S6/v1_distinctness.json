@@ -1,0 +1,550 @@
+{
+  "question": "What differs between episodes inside each v1 cell?",
+  "method": "For each (mode, controller) cell, list the distinct values of every field that could define a configuration.",
+  "cells": {
+    "B_static/ppo_seed7": {
+      "episodes": 3,
+      "distinct_configurations": 1,
+      "field_values": {
+        "seed": [
+          "200000000",
+          "200000001",
+          "200000002"
+        ],
+        "obstacle_phase_rad": [
+          ""
+        ],
+        "start_x_m": [
+          "0.85"
+        ],
+        "start_y_m": [
+          "-0.0"
+        ],
+        "goal_x_m": [
+          "9.15"
+        ],
+        "goal_y_m": [
+          "0.0"
+        ],
+        "scenario": [
+          "warehouse_static"
+        ]
+      },
+      "outcomes": {
+        "goal": 3
+      },
+      "path_length_spread_m": 0.001,
+      "control_steps": [
+        47
+      ]
+    },
+    "B_static/ppo_seed19": {
+      "episodes": 3,
+      "distinct_configurations": 1,
+      "field_values": {
+        "seed": [
+          "200000000",
+          "200000001",
+          "200000002"
+        ],
+        "obstacle_phase_rad": [
+          ""
+        ],
+        "start_x_m": [
+          "0.85"
+        ],
+        "start_y_m": [
+          "-0.0",
+          "0.0"
+        ],
+        "goal_x_m": [
+          "9.15"
+        ],
+        "goal_y_m": [
+          "0.0"
+        ],
+        "scenario": [
+          "warehouse_static"
+        ]
+      },
+      "outcomes": {
+        "goal": 3
+      },
+      "path_length_spread_m": 0.0006,
+      "control_steps": [
+        37
+      ]
+    },
+    "B_static/ppo_seed43": {
+      "episodes": 3,
+      "distinct_configurations": 1,
+      "field_values": {
+        "seed": [
+          "200000000",
+          "200000001",
+          "200000002"
+        ],
+        "obstacle_phase_rad": [
+          ""
+        ],
+        "start_x_m": [
+          "0.85"
+        ],
+        "start_y_m": [
+          "-0.0",
+          "0.0"
+        ],
+        "goal_x_m": [
+          "9.15"
+        ],
+        "goal_y_m": [
+          "0.0"
+        ],
+        "scenario": [
+          "warehouse_static"
+        ]
+      },
+      "outcomes": {
+        "goal": 3
+      },
+      "path_length_spread_m": 0.0001,
+      "control_steps": [
+        40
+      ]
+    },
+    "B_static/reactive": {
+      "episodes": 3,
+      "distinct_configurations": 1,
+      "field_values": {
+        "seed": [
+          "200000000",
+          "200000001",
+          "200000002"
+        ],
+        "obstacle_phase_rad": [
+          ""
+        ],
+        "start_x_m": [
+          "0.85"
+        ],
+        "start_y_m": [
+          "-0.0",
+          "0.0"
+        ],
+        "goal_x_m": [
+          "9.15"
+        ],
+        "goal_y_m": [
+          "0.0"
+        ],
+        "scenario": [
+          "warehouse_static"
+        ]
+      },
+      "outcomes": {
+        "timeout": 3
+      },
+      "path_length_spread_m": 0.0065,
+      "control_steps": [
+        90
+      ]
+    },
+    "B_static/direct": {
+      "episodes": 3,
+      "distinct_configurations": 1,
+      "field_values": {
+        "seed": [
+          "200000000",
+          "200000001",
+          "200000002"
+        ],
+        "obstacle_phase_rad": [
+          ""
+        ],
+        "start_x_m": [
+          "0.85"
+        ],
+        "start_y_m": [
+          "-0.0",
+          "0.0"
+        ],
+        "goal_x_m": [
+          "9.15"
+        ],
+        "goal_y_m": [
+          "0.0"
+        ],
+        "scenario": [
+          "warehouse_static"
+        ]
+      },
+      "outcomes": {
+        "collision": 3
+      },
+      "path_length_spread_m": 0.0989,
+      "control_steps": [
+        10,
+        12
+      ]
+    },
+    "C_dynamic/ppo_seed7": {
+      "episodes": 15,
+      "distinct_configurations": 15,
+      "field_values": {
+        "seed": [
+          "200000000",
+          "200000001",
+          "200000002",
+          "200000003",
+          "200000004",
+          "200000005",
+          "200000006",
+          "200000007",
+          "200000008",
+          "200000009",
+          "200000010",
+          "200000011",
+          "200000012",
+          "200000013",
+          "200000014"
+        ],
+        "obstacle_phase_rad": [
+          "0.066499",
+          "0.652161",
+          "0.999146",
+          "1.286426",
+          "1.396483",
+          "1.494555",
+          "2.111229",
+          "2.195236",
+          "2.197861",
+          "2.574102",
+          "2.73802",
+          "2.962298",
+          "3.482583",
+          "3.818426",
+          "4.889143"
+        ],
+        "start_x_m": [
+          "0.85",
+          "0.8957"
+        ],
+        "start_y_m": [
+          "-0.0",
+          "-0.0001",
+          "0.0",
+          "0.0402"
+        ],
+        "goal_x_m": [
+          "9.15"
+        ],
+        "goal_y_m": [
+          "0.0"
+        ],
+        "scenario": [
+          "warehouse_dynamic"
+        ]
+      },
+      "outcomes": {
+        "collision": 6,
+        "goal": 9
+      },
+      "path_length_spread_m": 8.32,
+      "control_steps": [
+        18,
+        19,
+        20,
+        22,
+        39,
+        46,
+        51,
+        52,
+        53,
+        56,
+        60
+      ]
+    },
+    "C_dynamic/ppo_seed19": {
+      "episodes": 15,
+      "distinct_configurations": 15,
+      "field_values": {
+        "seed": [
+          "200000000",
+          "200000001",
+          "200000002",
+          "200000003",
+          "200000004",
+          "200000005",
+          "200000006",
+          "200000007",
+          "200000008",
+          "200000009",
+          "200000010",
+          "200000011",
+          "200000012",
+          "200000013",
+          "200000014"
+        ],
+        "obstacle_phase_rad": [
+          "0.066499",
+          "0.652161",
+          "0.999146",
+          "1.286426",
+          "1.396483",
+          "1.494555",
+          "2.111229",
+          "2.195236",
+          "2.197861",
+          "2.574102",
+          "2.73802",
+          "2.962298",
+          "3.482583",
+          "3.818426",
+          "4.889143"
+        ],
+        "start_x_m": [
+          "0.85"
+        ],
+        "start_y_m": [
+          "-0.0",
+          "0.0"
+        ],
+        "goal_x_m": [
+          "9.15"
+        ],
+        "goal_y_m": [
+          "0.0"
+        ],
+        "scenario": [
+          "warehouse_dynamic"
+        ]
+      },
+      "outcomes": {
+        "collision": 7,
+        "goal": 8
+      },
+      "path_length_spread_m": 8.2851,
+      "control_steps": [
+        17,
+        18,
+        19,
+        21,
+        27,
+        37,
+        39,
+        42,
+        49
+      ]
+    },
+    "C_dynamic/ppo_seed43": {
+      "episodes": 15,
+      "distinct_configurations": 15,
+      "field_values": {
+        "seed": [
+          "200000000",
+          "200000001",
+          "200000002",
+          "200000003",
+          "200000004",
+          "200000005",
+          "200000006",
+          "200000007",
+          "200000008",
+          "200000009",
+          "200000010",
+          "200000011",
+          "200000012",
+          "200000013",
+          "200000014"
+        ],
+        "obstacle_phase_rad": [
+          "0.066499",
+          "0.652161",
+          "0.999146",
+          "1.286426",
+          "1.396483",
+          "1.494555",
+          "2.111229",
+          "2.195236",
+          "2.197861",
+          "2.574102",
+          "2.73802",
+          "2.962298",
+          "3.482583",
+          "3.818426",
+          "4.889143"
+        ],
+        "start_x_m": [
+          "0.8261",
+          "0.85"
+        ],
+        "start_y_m": [
+          "-0.0",
+          "-0.0241",
+          "0.0"
+        ],
+        "goal_x_m": [
+          "9.15"
+        ],
+        "goal_y_m": [
+          "0.0"
+        ],
+        "scenario": [
+          "warehouse_dynamic"
+        ]
+      },
+      "outcomes": {
+        "collision": 8,
+        "goal": 7
+      },
+      "path_length_spread_m": 9.7113,
+      "control_steps": [
+        18,
+        19,
+        20,
+        24,
+        27,
+        50,
+        52,
+        53,
+        59,
+        60
+      ]
+    },
+    "C_dynamic/reactive": {
+      "episodes": 15,
+      "distinct_configurations": 15,
+      "field_values": {
+        "seed": [
+          "200000000",
+          "200000001",
+          "200000002",
+          "200000003",
+          "200000004",
+          "200000005",
+          "200000006",
+          "200000007",
+          "200000008",
+          "200000009",
+          "200000010",
+          "200000011",
+          "200000012",
+          "200000013",
+          "200000014"
+        ],
+        "obstacle_phase_rad": [
+          "0.066499",
+          "0.652161",
+          "0.999146",
+          "1.286426",
+          "1.396483",
+          "1.494555",
+          "2.111229",
+          "2.195236",
+          "2.197861",
+          "2.574102",
+          "2.73802",
+          "2.962298",
+          "3.482583",
+          "3.818426",
+          "4.889143"
+        ],
+        "start_x_m": [
+          "0.85",
+          "0.8519"
+        ],
+        "start_y_m": [
+          "-0.0",
+          "-0.0007",
+          "0.0"
+        ],
+        "goal_x_m": [
+          "9.15"
+        ],
+        "goal_y_m": [
+          "0.0"
+        ],
+        "scenario": [
+          "warehouse_dynamic"
+        ]
+      },
+      "outcomes": {
+        "timeout": 10,
+        "collision": 5
+      },
+      "path_length_spread_m": 5.1033,
+      "control_steps": [
+        43,
+        61,
+        77,
+        83,
+        89,
+        90
+      ]
+    },
+    "C_dynamic/direct": {
+      "episodes": 15,
+      "distinct_configurations": 15,
+      "field_values": {
+        "seed": [
+          "200000000",
+          "200000001",
+          "200000002",
+          "200000003",
+          "200000004",
+          "200000005",
+          "200000006",
+          "200000007",
+          "200000008",
+          "200000009",
+          "200000010",
+          "200000011",
+          "200000012",
+          "200000013",
+          "200000014"
+        ],
+        "obstacle_phase_rad": [
+          "0.066499",
+          "0.652161",
+          "0.999146",
+          "1.286426",
+          "1.396483",
+          "1.494555",
+          "2.111229",
+          "2.195236",
+          "2.197861",
+          "2.574102",
+          "2.73802",
+          "2.962298",
+          "3.482583",
+          "3.818426",
+          "4.889143"
+        ],
+        "start_x_m": [
+          "0.85"
+        ],
+        "start_y_m": [
+          "-0.0",
+          "0.0"
+        ],
+        "goal_x_m": [
+          "9.15"
+        ],
+        "goal_y_m": [
+          "0.0"
+        ],
+        "scenario": [
+          "warehouse_dynamic"
+        ]
+      },
+      "outcomes": {
+        "collision": 15
+      },
+      "path_length_spread_m": 0.0993,
+      "control_steps": [
+        10,
+        12
+      ]
+    }
+  }
+}
