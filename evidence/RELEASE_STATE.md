@@ -13,12 +13,20 @@ old `main`) · **Remote:** `khh4lid/dns-webots-simulation` (private)
 | Stage | What it covers | Status |
 |---|---|---|
 | **A** | Freeze, tag, branch, security scans, file map, migration | **Done** |
-| **B** | Missing visuals: GIFs, V1 demo MP4, F4, ADR images | Not started |
-| **C** | Team docs, ADRs, interfaces v2 | Not started |
-| **D** | README v2 | Not started |
-| **E** | GitHub operations: commits, PR, merge, tags, releases, issues | Not started |
-| **F** | Fresh-clone verification, link check, screenshots | Not started |
-| **G** | Report PDF + slides (only after A–F) | Not started |
+| **B** | Visuals: 4 GIFs, demo MP4 + poster, F4, mirror evidence, ADR images, C2 | **Done** |
+| **C** | 14 ADRs, 4 role guides, 2 interfaces, CHANGELOG/CITATION/CONTRIBUTING, folder READMEs | **Done** |
+| **D** | README v2, RESULTS_v2, reproduce.py | **Done** |
+| **E** | Branch and tag **pushed**; PR, merge, v2.0 tag, releases, issues, About/topics | **Blocked — needs `gh` or a token** |
+| **F** | Security scan CLEAN, link check clean; fresh-clone repro + screenshots | Partial |
+| **G** | Report PDF + slides | Not started |
+
+## Where it stands
+
+- Branch `v2-transparency-release` is pushed (4 commits); tag `v1.0` is pushed.
+- **PR not opened**: `gh` is not installed and no `GH_TOKEN`/`GITHUB_TOKEN` is
+  in the environment, so no GitHub API call can be made. Open it at
+  <https://github.com/khh4lid/dns-webots-simulation/pull/new/v2-transparency-release>
+- Nothing was merged and no history was rewritten. `main` is untouched.
 
 ---
 
