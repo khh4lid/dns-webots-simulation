@@ -1,0 +1,13 @@
+test,trials,measured_quantity,expected,observed,deviation,status,evidence
+Control timing,5 steps,command period,0.200000 s,0.200000 s,< 3e-16 s,PASS,validation_physical_lidar.json
+Axis mapping,4 axes,commanded vs measured direction,sign match on all four,all four correct,cross-axis < 0.15 m,PASS,validation_physical_lidar.json
+Velocity source,1,measured vs commanded after 0.2 s,differs (physical lag),0.280 vs 1.2 m/s,-,PASS,validation_physical_lidar.json
+Reset repeatability,2 x 3 cmds,trajectory divergence,< 2e-2 m,7.09e-3 m,-,PASS,validation_physical_lidar.json
+Obstacle trajectory,90 steps,supervisor pose vs centre_at(t),0 m,0.00e+00 m,0.00e+00 m,PASS,moving_obstacle_warehouse.json
+Obstacle speed,90 steps,median travel speed,0.45 m/s,0.4500 m/s,0.0000 m/s,PASS,moving_obstacle_warehouse.json
+LiDAR vs analytic scene,90 steps x 12 sectors,worst per-sector range error,< 0.35 m,0.2900 m,mean 0.0475 m,PASS,moving_obstacle_warehouse.json
+LiDAR angular mapping,720 beams,fitted index->bearing,"direction +1, offset 180 deg","+1, 180.50 deg",RMS 0.0245 m,PASS,calibration_warehouse.json
+Mount ablation,29 steps each,range error vs tilt,flat for a levelled plane,stabilised worst 0.071 m,body-fixed worst 0.197 m,PASS,lidar_attitude_warehouse.json
+PPO observation,1,feature vector length,52,52,-,PASS,validation_physical_lidar.json
+Demonstration video,1,"container, frames, variation","valid MP4, >900 frames","1255 frames, 1028 distinct sizes",-,PASS,mp4_verification.json
+Unit tests,46,"geometry, binning, config guards",all pass,46/46,-,PASS,test_log.txt

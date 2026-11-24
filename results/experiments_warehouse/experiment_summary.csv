@@ -1,0 +1,11 @@
+mode,controller,kind,episodes,goal,collision,timeout,success_rate,success_rate_ci95_low,success_rate_ci95_high,mean_path_m,mean_completion_s,mean_min_truth_clearance_m,mean_velocity_rmse_mps
+B_static,ppo_seed7,ppo_checkpoint,3,3,0,0,1.0,0.4385,1.0,11.8159,9.4,0.4534,0.3252
+B_static,ppo_seed19,ppo_checkpoint,3,3,0,0,1.0,0.4385,1.0,10.8295,7.4,0.436,0.344
+B_static,ppo_seed43,ppo_checkpoint,3,3,0,0,1.0,0.4385,1.0,11.2553,8.0,0.4603,0.331
+B_static,reactive,scripted,3,0,0,3,0.0,0.0,0.5615,13.1469,,0.6248,0.4066
+B_static,direct,scripted,3,0,3,0,0.0,0.0,0.5615,2.0962,,0.1969,0.7016
+C_dynamic,ppo_seed7,ppo_checkpoint,15,9,6,0,0.6,0.3575,0.8018,9.0633,9.9778,0.2755,0.3616
+C_dynamic,ppo_seed19,ppo_checkpoint,15,8,7,0,0.5333,0.3012,0.7519,8.3104,8.0,0.2354,0.4016
+C_dynamic,ppo_seed43,ppo_checkpoint,15,7,8,0,0.4667,0.2481,0.6988,8.8073,10.8571,0.2578,0.3778
+C_dynamic,reactive,scripted,15,0,5,10,0.0,0.0,0.2039,10.3829,,0.4652,0.3654
+C_dynamic,direct,scripted,15,0,15,0,0.0,0.0,0.2039,2.0754,,0.2029,0.6727

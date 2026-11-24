@@ -1,0 +1,7 @@
+label=quad_e_step32_fasthelix_resend  basicTimeStep=8  controller step=32  resend=True
+speed=200.0 rad/s -> 10.400 N/rotor, 41.600 N total (weight 5.396 N, TWR 7.71)
+
+   t[s]    z[m]     vz[m/s]
+   0.80    0.154    -1.284
+
+final z = 0.0350 (start 1.0) -> FELL (no thrust)

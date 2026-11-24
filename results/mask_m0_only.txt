@@ -1,0 +1,14 @@
+label=mask_m0_only  basicTimeStep=8  controller step=8  resend=False
+speed=200.0 rad/s -> 10.400 N/rotor, 41.600 N total (weight 5.396 N, TWR 7.71)
+rotor mask=0001 (m3 m2 m1 m0 reading right to left)
+
+   t[s]    z[m]     vz[m/s]
+   0.20    0.780    -2.039
+   0.40    0.169    -3.992
+   0.60    0.251    +0.517
+   0.80    0.155    -1.398
+   1.00    0.085    -0.110
+   1.20    0.037    +0.133
+   1.40    0.035    +0.001
+
+final z = 0.0350 (start 1.0) -> FELL (no thrust)

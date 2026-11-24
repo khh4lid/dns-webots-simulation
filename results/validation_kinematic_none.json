@@ -1,0 +1,185 @@
+{
+  "scenario": "default_10x6",
+  "config": "D:\\Download\\drone_navigation_system\\webots_dns\\config\\scenario_default.json",
+  "dynamics": "kinematic",
+  "sensing": "none",
+  "collision": "geometric",
+  "basic_timestep_ms": 8,
+  "steps_per_command": 25,
+  "axes": [
+    {
+      "label": "+x forward",
+      "command_mps": [
+        0.6,
+        0.0
+      ],
+      "displacement_m": [
+        0.5999999999999929,
+        0.0
+      ],
+      "measured_velocity_mps": [
+        0.6,
+        0.0
+      ]
+    },
+    {
+      "label": "-x back",
+      "command_mps": [
+        -0.6,
+        0.0
+      ],
+      "displacement_m": [
+        -0.6000000000000033,
+        0.0
+      ],
+      "measured_velocity_mps": [
+        -0.6,
+        0.0
+      ]
+    },
+    {
+      "label": "+y right",
+      "command_mps": [
+        0.0,
+        0.6
+      ],
+      "displacement_m": [
+        0.0,
+        0.6000000000000019
+      ],
+      "measured_velocity_mps": [
+        0.0,
+        0.6
+      ]
+    },
+    {
+      "label": "-y left",
+      "command_mps": [
+        0.0,
+        -0.6
+      ],
+      "displacement_m": [
+        0.0,
+        -0.6000000000000019
+      ],
+      "measured_velocity_mps": [
+        0.0,
+        -0.6
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "check": "world_loads",
+      "pass": true,
+      "detail": "basicTimeStep 8 ms, 25 steps per 0.2 s command"
+    },
+    {
+      "check": "vehicle_parameters",
+      "pass": true,
+      "detail": "mass 0.55 kg, thrust/weight 4.00, collision radius 0.18 m"
+    },
+    {
+      "check": "start_inside_arena",
+      "pass": true,
+      "detail": "start [0.85, -0.0] within [0.0, -3.0] .. [10.0, 3.0]"
+    },
+    {
+      "check": "start_matches_config",
+      "pass": true,
+      "detail": "config [0.85, 0.0], actual [0.85, -0.0]"
+    },
+    {
+      "check": "goal_matches_config",
+      "pass": true,
+      "detail": "goal [9.15, 0.0], tolerance 0.4 m"
+    },
+    {
+      "check": "reset_time_is_zero",
+      "pass": true,
+      "detail": "time_s 0.0"
+    },
+    {
+      "check": "reset_altitude",
+      "pass": true,
+      "detail": "altitude 0.9994 m (target 1.0 m)"
+    },
+    {
+      "check": "command_rate_5hz",
+      "pass": true,
+      "detail": "5 steps, deltas [0.2, 0.2, 0.2, 0.2, 0.2] s (max error 5.55e-17 s)"
+    },
+    {
+      "check": "timestamps_monotonic",
+      "pass": true,
+      "detail": "t [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]"
+    },
+    {
+      "check": "axis_+x_forward",
+      "pass": true,
+      "detail": "command [0.6, 0.0] -> moved [0.6, 0.0] m, measured v [0.6, 0.0] m/s"
+    },
+    {
+      "check": "axis_-x_back",
+      "pass": true,
+      "detail": "command [-0.6, 0.0] -> moved [-0.6, 0.0] m, measured v [-0.6, 0.0] m/s"
+    },
+    {
+      "check": "axis_+y_right",
+      "pass": true,
+      "detail": "command [0.0, 0.6] -> moved [0.0, 0.6] m, measured v [0.0, 0.6] m/s"
+    },
+    {
+      "check": "axis_-y_left",
+      "pass": true,
+      "detail": "command [0.0, -0.6] -> moved [0.0, -0.6] m, measured v [0.0, -0.6] m/s"
+    },
+    {
+      "check": "velocity_is_measured",
+      "pass": true,
+      "detail": "kinematic mode integrates the command exactly, so measured equals commanded by construction (labelled, not a flight model)"
+    },
+    {
+      "check": "no_false_collision",
+      "pass": true,
+      "detail": "at start [0.85, -0.0] collision=False"
+    },
+    {
+      "check": "collision_detected",
+      "pass": true,
+      "detail": "wall contact reported at [0.13, 0.0] after 3 steps"
+    },
+    {
+      "check": "reset_restores_start",
+      "pass": true,
+      "detail": "[0.85, -0.0] vs [0.85, -0.0]"
+    },
+    {
+      "check": "reset_is_reproducible",
+      "pass": true,
+      "detail": "max divergence over 3 identical commands: 0.000e+00 m"
+    },
+    {
+      "check": "observation_dim",
+      "pass": true,
+      "detail": "reset observation shape (52,), expected (52,)"
+    },
+    {
+      "check": "observation_finite_and_bounded",
+      "pass": true,
+      "detail": "range [0.0000, 0.8300]"
+    },
+    {
+      "check": "step_through_navigation",
+      "pass": true,
+      "detail": "action [0.5, -0.25] -> reward 0.099560, outcome running, terminated False, truncated False"
+    },
+    {
+      "check": "frame_passes_validate",
+      "pass": true,
+      "detail": "navigation.validate accepted every frame (it raises otherwise)"
+    }
+  ],
+  "passed": 22,
+  "total": 22
+}

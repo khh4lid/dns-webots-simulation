@@ -1,0 +1,97 @@
+{
+  "schema": "dns-scenario-v1",
+  "name": "default_10x6",
+  "description": "Indoor 10 x 6 m navigation arena. Dimensions mirror Spencer's planar.py benchmark (LOW=[0,-3], HIGH=[10,3]) so trained PPO policies see a familiar workspace. All coordinates are in the DNS frame: +x forward, +y right, fixed altitude, fixed yaw.",
+
+  "arena": {
+    "low_xy": [0.0, -3.0],
+    "high_xy": [10.0, 3.0],
+
+    "_wall_height_note": "2.5 m, raised from 1.2 m. A 1.2 m parapet is not a credible boundary for a drone cruising at 1.0 m, and it left only 0.125 m of wall above the lidar plane -- so any airframe tilt beyond 6 deg sent the beams over the top and the sensor reported open space where a wall stood (results/lidar_attitude.json). 2.5 m keeps the walls in view for the full altitude and tilt envelope.",
+    "wall_height_m": 2.5,
+    "wall_thickness_m": 0.1
+  },
+
+  "drone": {
+    "start_xy": [0.85, 0.0],
+    "cruise_altitude_m": 1.0,
+    "collision_radius_m": 0.18,
+    "fixed_yaw_rad": 0.0
+  },
+
+  "goal": {
+    "xy": [9.15, 0.0],
+    "tolerance_m": 0.4
+  },
+
+  "obstacles": [
+    {
+      "id": "obs_a",
+      "xy": [3.5, -0.35],
+      "radius_m": 0.55,
+      "height_m": 1.8,
+      "colour": [0.80, 0.30, 0.20],
+      "motion": { "type": "static" }
+    },
+    {
+      "id": "obs_b",
+      "xy": [6.6, 0.55],
+      "radius_m": 0.50,
+      "height_m": 1.8,
+      "colour": [0.85, 0.55, 0.15],
+      "motion": { "type": "static" }
+    }
+  ],
+
+  "control": {
+    "command_period_s": 0.2,
+    "max_speed_mps": 1.2,
+    "basic_timestep_ms": 8,
+    "settle_timeout_s": 6.0,
+    "settle_speed_tol_mps": 0.02,
+    "settle_altitude_tol_m": 0.02
+  },
+
+  "dynamics": {
+    "mode": "physical",
+    "_mode_options": [
+      "physical  - full quadcopter rigid-body physics with a cascaded autopilot",
+      "kinematic - LABELLED INTERFACE TEST ONLY: integrates the commanded velocity directly. Not a flight model."
+    ]
+  },
+
+  "sensing": {
+    "mode": "none",
+    "_mode_options": [
+      "none      - every sector reported as (0.0, False) = unobserved. Correct default until the sensor owner delivers processing.",
+      "lidar     - real Webots Lidar returns binned into 12 sectors by Spencer's navigation.pack_scan",
+      "geometric - GROUND TRUTH ray-cast from supervisor positions. Debug/reference only, not a sensor."
+    ],
+    "max_range_m": 5.0,
+    "sectors": 12,
+
+    "mount": "stabilised",
+    "_mount_options": [
+      "stabilised - ideal gimbal: the mount is counter-rotated each control tick so the scan plane stays horizontal. Makes the flat 12-sector contract true.",
+      "body_fixed - bolted to the airframe, so the scan plane tilts with it. MEASURABLY CORRUPTS the scan during manoeuvres (see docs/SENSOR_ATTITUDE.md); kept as the S7 independent variable."
+    ],
+    "mount_height_m": 0.14,
+
+    "_beams_note": "720 beams over 360 deg = 0.5 deg spacing, 60 beams per 30 deg sector. Raised from 360 because beam pitch bounds the worst-case grazing error: a cylinder overlapping a sector boundary by less than one beam pitch can be missed by that sector entirely and read as clear-to-cap, even though the neighbouring sector still holds the return (results/lidar_attitude.json).",
+    "beams": 720
+  },
+
+  "collision": {
+    "mode": "geometric",
+    "_mode_options": [
+      "geometric - swept-segment test against obstacle discs and arena walls, matching planar.py. Keeps the contract identical to PPO training.",
+      "physical  - Webots contact points on the drone body",
+      "either    - logical OR of the two"
+    ]
+  },
+
+  "viewpoint": {
+    "position": [5.0, -11.5, 9.0],
+    "orientation": [0.46, 0.13, 0.88, 0.62]
+  }
+}

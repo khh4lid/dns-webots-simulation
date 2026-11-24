@@ -1,0 +1,122 @@
+{
+  "schema": "dns-scenario-v1",
+  "name": "warehouse_static",
+  "description": "MODE B - static warehouse navigation, in the same DNS_Warehouse.wbt world. The transfer cart is parked against the left wall, out of the aisle, so only the fixed racks, columns and crate stack obstruct the route. Sharing one world with the dynamic scenario means geometry, lighting, materials and camera are byte-identical and the single changed factor is whether the cart moves.",
+
+  "_parking_note": "The cart keeps motion type 'oscillate' with amplitude 0 rather than type 'static'. The backend only skips supervisor repositioning for type 'static', so amplitude 0 makes the cart actively pinned to the parked coordinate on every step, which is what guarantees it cannot drift between episodes. Parked at y = -2.5: the 0.55 m deep body spans y in [-2.775, -2.225], clearing the wall face at y = -3.0 by 0.225 m and leaving the whole aisle free.",
+
+  "arena": {
+    "low_xy": [0.0, -3.0],
+    "high_xy": [10.0, 3.0],
+    "wall_height_m": 2.5,
+    "wall_thickness_m": 0.1,
+    "floor_grid": true
+  },
+
+  "drone": {
+    "start_xy": [0.85, 0.0],
+    "cruise_altitude_m": 1.0,
+    "collision_radius_m": 0.18,
+    "fixed_yaw_rad": 0.0
+  },
+
+  "goal": { "xy": [9.15, 0.0], "tolerance_m": 0.4 },
+
+  "obstacles": [
+    {
+      "id": "rack_a",
+      "label": "storage rack A",
+      "purpose": "Blocks the left half of the aisle and forces the first lateral deviation.",
+      "shape": "box",
+      "xy": [3.5, -1.0],
+      "size_xy": [0.8, 2.4],
+      "height_m": 2.0,
+      "colour": [0.33, 0.36, 0.40]
+    },
+    {
+      "id": "rack_b",
+      "label": "storage rack B",
+      "purpose": "Mirrors rack A on the right, forcing a second deviation the other way.",
+      "shape": "box",
+      "xy": [6.5, 1.0],
+      "size_xy": [0.8, 2.4],
+      "height_m": 2.0,
+      "colour": [0.33, 0.36, 0.40]
+    },
+    {
+      "id": "column_1",
+      "label": "structural column",
+      "purpose": "Off-route building column near the right boundary.",
+      "shape": "box",
+      "xy": [2.0, 2.3],
+      "size_xy": [0.4, 0.4],
+      "height_m": 2.5,
+      "colour": [0.55, 0.56, 0.59]
+    },
+    {
+      "id": "column_2",
+      "label": "structural column",
+      "purpose": "Mirror column near the left boundary, late in the route.",
+      "shape": "box",
+      "xy": [8.0, -2.3],
+      "size_xy": [0.4, 0.4],
+      "height_m": 2.5,
+      "colour": [0.55, 0.56, 0.59]
+    },
+    {
+      "id": "crate_stack",
+      "label": "crate stack",
+      "purpose": "Stacked pallet load just off the final approach to the goal.",
+      "shape": "box",
+      "xy": [7.9, 0.9],
+      "size_xy": [0.7, 0.7],
+      "yaw_rad": 0.35,
+      "height_m": 1.6,
+      "colour": [0.46, 0.38, 0.27]
+    },
+    {
+      "id": "cart",
+      "label": "powered transfer cart (parked)",
+      "purpose": "Present but stationary, so the obstacle count and the lidar scene stay identical to Mode C and only the motion differs.",
+      "shape": "box",
+      "xy": [5.1, -2.5],
+      "size_xy": [0.9, 0.55],
+      "height_m": 1.5,
+      "colour": [0.92, 0.45, 0.13],
+      "motion": {
+        "type": "oscillate",
+        "axis": "y",
+        "amplitude_m": 0.0,
+        "period_s": 4.0,
+        "phase_rad": 0.0
+      }
+    }
+  ],
+
+  "control": {
+    "command_period_s": 0.2,
+    "max_speed_mps": 1.2,
+    "basic_timestep_ms": 8,
+    "settle_timeout_s": 6.0,
+    "settle_speed_tol_mps": 0.02,
+    "settle_altitude_tol_m": 0.02
+  },
+
+  "dynamics": { "mode": "physical" },
+
+  "sensing": {
+    "mode": "lidar",
+    "max_range_m": 5.0,
+    "sectors": 12,
+    "mount": "stabilised",
+    "mount_height_m": 0.14,
+    "beams": 720
+  },
+
+  "collision": { "mode": "geometric" },
+
+  "camera": { "enabled": true, "width": 1280, "height": 720 },
+
+  "viewpoint": { "position": [5.0, -12.0, 8.0], "follow": false }
+}
+

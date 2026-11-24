@@ -1,0 +1,85 @@
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ---------------------------------------------------------------------------
+# Webots
+# ---------------------------------------------------------------------------
+# Per-user world view state, rewritten whenever a world is opened in the GUI.
+*.wbproj
+.*.wbproj
+
+# ---------------------------------------------------------------------------
+# Harness transients
+# ---------------------------------------------------------------------------
+# Truncated and rewritten by scripts/with_webots.py on every launch, so they
+# dirty the tree after any test run and carry no evidential value.
+results/webots.log
+results/world_load.log
+results/wb_out.txt
+results/wb_err.txt
+results/wbbin_out.txt
+results/wbbin_err.txt
+
+# ---------------------------------------------------------------------------
+# Oversized negative-result captures
+# ---------------------------------------------------------------------------
+# Three 2.9 MB exports that are byte-identical blank fills -- the evidence of
+# the failed GUI render path. The measurement that proves it is kept in
+# results/render_probe/render_probe.json ("distinct_images": 1, matching
+# sha256), so the finding survives without 8.8 MB of empty pixels.
+results/render_probe/*.png
+
+# ---------------------------------------------------------------------------
+# Generated deliverable packages
+# ---------------------------------------------------------------------------
+# scripts/build_deliverable.py and scripts/build_package.py assemble these
+# from tracked sources; they are rebuildable and must not be committed.
+DNS_SIMULATION_RESEARCH_DELIVERABLE/
+DNS_FINAL_RESEARCH_PACKAGE/
+*.zip
+
+# ---------------------------------------------------------------------------
+# Not ours / not for publication
+# ---------------------------------------------------------------------------
+# Spencer's PPO package is teammate-owned and resolved at runtime from outside
+# this repository (see dns/spencer_link.py). Never vendor it in.
+DroneNavPPO/
+navigation.py
+planar.py
+ppo.py
+handoff.py
+
+# Local backups and snapshots
+*_BASELINE_SNAPSHOT_*/
+*.bak
+*.orig
+*~
+
+# ---------------------------------------------------------------------------
+# Credentials
+# ---------------------------------------------------------------------------
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+credentials*.json
+secrets*.json
+.netrc
+
+# ---------------------------------------------------------------------------
+# OS / editor
+# ---------------------------------------------------------------------------
+Thumbs.db
+desktop.ini
+.DS_Store
+.idea/
+.vscode/

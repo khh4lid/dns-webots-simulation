@@ -1,0 +1,11 @@
+basicTimeStep=32.0  controller step=64  velocity sign=+1
+
+   t[s]     z[m]
+   0.51    0.0315
+   1.98    0.0324
+   2.50    0.0326
+   3.01    0.0327
+   4.99    0.0329
+   5.50    0.0329
+
+final z = 0.0329  peak 0.0329  initial 0.0049 -> FELL (no thrust)

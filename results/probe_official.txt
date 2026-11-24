@@ -1,0 +1,12 @@
+basicTimeStep=8.0  controller step=64
+thrust at w=100: 0.00163465*100*100 = 16.346 N
+
+   t[s]     z[m]
+   0.51    0.1057
+   1.98    0.0999
+   2.50    0.1000
+   3.01    0.1014
+   4.99    0.0997
+   5.50    0.0997
+
+final z = 0.0997 -> FELL (Propeller broken)

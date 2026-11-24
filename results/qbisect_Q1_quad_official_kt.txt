@@ -1,0 +1,11 @@
+label=Q1_quad_official_kt  rotors=4  speed=100.0  step=32 ms
+
+   t[s]     z[m]      vz[m/s]
+   1.25     0.030     +0.001
+   1.50     0.030     +0.001
+   2.50     0.859     +3.141
+   2.75     2.027     +5.728
+
+start z = 0.0041   peak z = 3.9765   gain = +3.9724 m
+net vertical acceleration over first 0.224 s = -0.842 m/s^2   (free fall = -9.81)
+verdict: THRUST PRESENT

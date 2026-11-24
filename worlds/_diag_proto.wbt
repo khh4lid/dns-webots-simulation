@@ -1,0 +1,254 @@
+﻿#VRML_SIM R2025a utf8
+
+EXTERNPROTO "../protos/DnsQuadcopter.proto"
+
+# ---------------------------------------------------------------------------
+# Drone Navigation System - Phase 1 navigation arena
+#
+# GENERATED FILE. Edit config/scenario_default.json and re-run:
+#     python -m dns.worldgen
+#
+# Scenario : default_10x6
+# Arena    : 10 6 m, DNS bounds [0.0, -3.0] -> [10.0, 3.0]
+# Start    : DNS [0.85, 0.0] at 1.0 m altitude
+# Goal     : DNS [9.15, 0.0], tolerance 0.4 m
+# Frames   : DNS +x forward / +y right;  Webots ENU +x east / +y north / +z up
+#            x_dns = x_webots,  y_dns = -y_webots   (see dns/scenario.py)
+#
+# The drone controller is "<extern>": start Webots first, then run the Python
+# client (see README.md). Only base nodes and the local PROTO are referenced,
+# so this world loads without network access.
+# ---------------------------------------------------------------------------
+
+WorldInfo {
+  info [
+    "Drone Navigation System - Phase 1 navigation arena"
+    "Scenario: default_10x6"
+    "Owner: Khaled (Simulation Environment)"
+  ]
+  title "DNS Navigation Arena"
+  basicTimeStep 8
+  coordinateSystem "ENU"
+  defaultDamping Damping {
+    linear 0.5
+    angular 0.5
+  }
+}
+Viewpoint {
+  orientation 0.46 0.13 0.88 0.62
+  position 5 -11.5 9
+  near 0.2
+  follow "DnsDrone"
+  followSmoothness 0.3
+}
+Background {
+  skyColor [
+    0.18 0.21 0.27
+  ]
+}
+DirectionalLight {
+  ambientIntensity 0.6
+  direction -0.4 0.6 -1
+  intensity 2.2
+  castShadows TRUE
+}
+DirectionalLight {
+  ambientIntensity 0.4
+  direction 0.5 -0.4 -1
+  intensity 1.1
+}
+
+DEF DNS_FLOOR Solid {
+  translation 5 0 -0.01
+  name "DNS_FLOOR"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.82 0.82 0.84
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 10 6 0.02
+      }
+    }
+  ]
+  boundingObject Box {
+    size 10 6 0.02
+  }
+}
+
+DEF DNS_WALL_XLOW Solid {
+  translation -0.05 0 0.6
+  name "DNS_WALL_XLOW"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.45 0.48 0.52
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 6.2 1.2
+      }
+    }
+  ]
+  boundingObject Box {
+    size 0.1 6.2 1.2
+  }
+}
+
+DEF DNS_WALL_XHIGH Solid {
+  translation 10.05 0 0.6
+  name "DNS_WALL_XHIGH"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.45 0.48 0.52
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 6.2 1.2
+      }
+    }
+  ]
+  boundingObject Box {
+    size 0.1 6.2 1.2
+  }
+}
+
+DEF DNS_WALL_YLOW Solid {
+  translation 5 -3.05 0.6
+  name "DNS_WALL_YLOW"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.45 0.48 0.52
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 10 0.1 1.2
+      }
+    }
+  ]
+  boundingObject Box {
+    size 10 0.1 1.2
+  }
+}
+
+DEF DNS_WALL_YHIGH Solid {
+  translation 5 3.05 0.6
+  name "DNS_WALL_YHIGH"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.45 0.48 0.52
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 10 0.1 1.2
+      }
+    }
+  ]
+  boundingObject Box {
+    size 10 0.1 1.2
+  }
+}
+
+DEF DNS_START_MARKER Solid {
+  translation 0.85 -0 0.003
+  name "DNS_START_MARKER"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.15 0.7 0.25
+        transparency 0
+        roughness 0.7
+        metalness 0
+      }
+      geometry Cylinder {
+        height 0.006
+        radius 0.288
+      }
+    }
+  ]
+}
+
+DEF DNS_GOAL_MARKER Solid {
+  translation 9.15 -0 0.003
+  name "DNS_GOAL_MARKER"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.9 0.15 0.15
+        transparency 0
+        roughness 0.7
+        metalness 0
+      }
+      geometry Cylinder {
+        height 0.006
+        radius 0.4
+      }
+    }
+  ]
+}
+
+DEF DNS_OBSTACLE_OBS_A Solid {
+  translation 3.5 0.35 0.9
+  name "DNS_OBSTACLE_OBS_A"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.3 0.2
+        transparency 0
+        roughness 0.7
+        metalness 0
+      }
+      geometry Cylinder {
+        height 1.8
+        radius 0.55
+      }
+    }
+  ]
+  boundingObject Cylinder {
+    height 1.8
+    radius 0.55
+  }
+}
+
+DEF DNS_OBSTACLE_OBS_B Solid {
+  translation 6.6 -0.55 0.9
+  name "DNS_OBSTACLE_OBS_B"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.85 0.55 0.15
+        transparency 0
+        roughness 0.7
+        metalness 0
+      }
+      geometry Cylinder {
+        height 1.8
+        radius 0.5
+      }
+    }
+  ]
+  boundingObject Cylinder {
+    height 1.8
+    radius 0.5
+  }
+}
+
+DEF DNS_DRONE DnsQuadcopter {
+  translation 0.85 -0 1
+  rotation 0 0 1 0
+  name "DnsDrone"
+  controller "dns_diag"
+  supervisor TRUE
+  collisionRadius 0.18
+  lidarMaxRange 5
+}
+

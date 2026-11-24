@@ -1,0 +1,9 @@
+id,label,shape,position_xy_m,dimensions_m,class,motion_model,speed_mps,research_purpose
+rack_a,storage rack A,box,"(3.5, -1)",0.8 x 2.4 x 2,static,-,0,"Blocks the left half of the aisle and forces the first lateral deviation. Its flat 2.4 m face is also the primary calibration target for the lidar: a plane returns a predictable range profile, unlike a cylinder."
+rack_b,storage rack B,box,"(6.5, 1)",0.8 x 2.4 x 2,static,-,0,"Mirrors rack A on the right, forcing a second deviation the other way, so a policy cannot succeed by committing to one side."
+column_1,structural column,box,"(2, 2.3)",0.4 x 0.4 x 2.5,static,-,0,"Off-route building column. Provides a fixed, precisely known square return for sector calibration and adds a wall-clearance hazard near the right boundary."
+column_2,structural column,box,"(8, -2.3)",0.4 x 0.4 x 2.5,static,-,0,"Mirror column near the left boundary, late in the route."
+crate_stack,crate stack,box,"(7.9, 0.9)",0.7 x 0.7 x 1.6,static,-,0,"Low stacked pallet load just off the final approach. Tests whether the policy keeps clearance while converging on the goal, and gives a short, wide return close to the goal pad."
+cart,powered transfer cart,box,"(5.1, 0)",0.9 x 0.55 x 1.5,dynamic,"linear along y, +/-1.9 m",0.45,"The dynamic hazard. Crosses the aisle perpendicular to the drone's intended direction of travel at a constant speed, so the free space at x = 5.1 m is a function of time and the policy must solve a timing problem rather than a purely geometric one."
+start,start pad,-,"(0.85, 0)",altitude 1,-,-,-,"Episode origin; collision-free, 2.25 m from the nearest rack"
+goal,goal pad,-,"(9.15, 0)",tolerance 0.4,-,-,-,Success when the drone centre is within the tolerance radius

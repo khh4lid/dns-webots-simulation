@@ -1,0 +1,18 @@
+{
+  "path": "D:\\Download\\drone_navigation_system\\webots_dns\\results\\movie_probe\\probe.mp4",
+  "exists": true,
+  "size_bytes": 9614,
+  "movie_is_ready": true,
+  "movie_failed": false,
+  "requested": {
+    "width": 1280,
+    "height": 720,
+    "quality": 95,
+    "acceleration": 1,
+    "sim_seconds": 6.0
+  },
+  "ffprobe": {
+    "available": false
+  },
+  "verdict": "NOT USABLE"
+}

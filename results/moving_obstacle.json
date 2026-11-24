@@ -1,0 +1,2158 @@
+{
+  "scenario": "s2_single_moving",
+  "config": "config\\scenario_s2_single_moving.json",
+  "obstacle": {
+    "id": "mover",
+    "base_xy": [
+      5.0,
+      0.0
+    ],
+    "radius_m": 0.5,
+    "height_m": 1.8,
+    "motion": {
+      "type": "linear",
+      "axis": "y",
+      "amplitude_m": 2.0,
+      "speed_mps": 0.5,
+      "phase_rad": 0.0,
+      "period_s": 16.0
+    }
+  },
+  "measured_median_speed_mps": 0.4999999999999982,
+  "steps": [
+    {
+      "t": 0.19999999999999996,
+      "expected_xy": [
+        5.0,
+        -1.9
+      ],
+      "actual_xy": [
+        5.0,
+        -1.9
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 4.064263357870578,
+      "true_bearing_deg": 335.40020939484253,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 4.055526256561279,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 1.002974217407813
+    },
+    {
+      "t": 0.40000000000000013,
+      "expected_xy": [
+        5.0,
+        -1.7999999999999998
+      ],
+      "actual_xy": [
+        5.0,
+        -1.7999999999999998
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 4.023549491273418,
+      "true_bearing_deg": 336.5519374220422,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 4.019429683685303,
+      "neighbourhood_min_m": 3.1094939708709717,
+      "nearest_sector": 6,
+      "altitude_m": 1.0029300426217125
+    },
+    {
+      "t": 0.5999999999999999,
+      "expected_xy": [
+        5.0,
+        -1.7000000000000002
+      ],
+      "actual_xy": [
+        5.0,
+        -1.7000000000000002
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.9846961992982317,
+      "true_bearing_deg": 337.724102151741,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.9769532680511475,
+      "neighbourhood_min_m": 3.1094939708709717,
+      "nearest_sector": 6,
+      "altitude_m": 1.0021875666633302
+    },
+    {
+      "t": 0.8,
+      "expected_xy": [
+        5.0,
+        -1.6
+      ],
+      "actual_xy": [
+        5.0,
+        -1.6
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.9477522413012176,
+      "true_bearing_deg": 338.91624541761934,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.9517245292663574,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 1.0013761632899392
+    },
+    {
+      "t": 1.0000000000000002,
+      "expected_xy": [
+        5.0,
+        -1.5
+      ],
+      "actual_xy": [
+        5.0,
+        -1.5
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.912765572744603,
+      "true_bearing_deg": 340.1278241807561,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.909128189086914,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 1.0007409634786322
+    },
+    {
+      "t": 1.2,
+      "expected_xy": [
+        5.0,
+        -1.4
+      ],
+      "actual_xy": [
+        5.0,
+        -1.4
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.879783099652311,
+      "true_bearing_deg": 341.35820810630065,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.8745439052581787,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 1.0003270979960466
+    },
+    {
+      "t": 1.4000000000000001,
+      "expected_xy": [
+        5.0,
+        -1.2999999999999998
+      ],
+      "actual_xy": [
+        5.0,
+        -1.2999999999999998
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.848850422812907,
+      "true_bearing_deg": 342.60667785308794,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.8544321060180664,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 1.0000960418091092
+    },
+    {
+      "t": 1.5999999999999999,
+      "expected_xy": [
+        5.0,
+        -1.2000000000000002
+      ],
+      "actual_xy": [
+        5.0,
+        -1.2000000000000002
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.8200115740585705,
+      "true_bearing_deg": 343.8724241740402,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.821350336074829,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999885106834454
+    },
+    {
+      "t": 1.8,
+      "expected_xy": [
+        5.0,
+        -1.1
+      ],
+      "actual_xy": [
+        5.0,
+        -1.1
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.7933087473416123,
+      "true_bearing_deg": 345.1545479179162,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.7917091846466064,
+      "neighbourhood_min_m": 3.7917091846466064,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999523975341423
+    },
+    {
+      "t": 2.0,
+      "expected_xy": [
+        5.0,
+        -1.0
+      ],
+      "actual_xy": [
+        5.0,
+        -1.0
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.7687820276982995,
+      "true_bearing_deg": 346.4520610119995,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.7651596069335938,
+      "neighbourhood_min_m": 3.7651596069335938,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999511151229612
+    },
+    {
+      "t": 2.2,
+      "expected_xy": [
+        5.0,
+        -0.8999999999999999
+      ],
+      "actual_xy": [
+        5.0,
+        -0.8999999999999999
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.746469121517311,
+      "true_bearing_deg": 347.76388849058367,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.746467351913452,
+      "neighbourhood_min_m": 3.746467351913452,
+      "nearest_sector": 6,
+      "altitude_m": 0.999962770904853
+    },
+    {
+      "t": 2.4000000000000004,
+      "expected_xy": [
+        5.0,
+        -0.7999999999999998
+      ],
+      "actual_xy": [
+        5.0,
+        -0.7999999999999998
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.7264050918008325,
+      "true_bearing_deg": 349.08887161571664,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.730821132659912,
+      "neighbourhood_min_m": 3.730821132659912,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999762246710134
+    },
+    {
+      "t": 2.6000000000000005,
+      "expected_xy": [
+        5.0,
+        -0.6999999999999997
+      ],
+      "actual_xy": [
+        5.0,
+        -0.6999999999999997
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.708622102303793,
+      "true_bearing_deg": 350.42577211490817,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.711665153503418,
+      "neighbourhood_min_m": 3.711665153503418,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999869941961592
+    },
+    {
+      "t": 2.8000000000000007,
+      "expected_xy": [
+        5.0,
+        -0.5999999999999996
+      ],
+      "actual_xy": [
+        5.0,
+        -0.5999999999999996
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.693149174546501,
+      "true_bearing_deg": 351.77327753589185,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.695665121078491,
+      "neighbourhood_min_m": 3.695665121078491,
+      "nearest_sector": 6,
+      "altitude_m": 0.999994120982301
+    },
+    {
+      "t": 3.0,
+      "expected_xy": [
+        5.0,
+        -0.5
+      ],
+      "actual_xy": [
+        5.0,
+        -0.5
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6800119617053735,
+      "true_bearing_deg": 353.13000769178575,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.6823713779449463,
+      "neighbourhood_min_m": 3.6823713779449463,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999981608714491
+    },
+    {
+      "t": 3.2,
+      "expected_xy": [
+        5.0,
+        -0.3999999999999999
+      ],
+      "actual_xy": [
+        5.0,
+        -0.3999999999999999
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6692325432865944,
+      "true_bearing_deg": 354.49452214202165,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.67172908782959,
+      "neighbourhood_min_m": 3.67172908782959,
+      "nearest_sector": 6,
+      "altitude_m": 1.000000080636561
+    },
+    {
+      "t": 3.4000000000000004,
+      "expected_xy": [
+        5.0,
+        -0.2999999999999998
+      ],
+      "actual_xy": [
+        5.0,
+        -0.2999999999999998
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6608292442733097,
+      "true_bearing_deg": 355.8653286262636,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.662663221359253,
+      "neighbourhood_min_m": 3.662663221359253,
+      "nearest_sector": 6,
+      "altitude_m": 1.0000007562328563
+    },
+    {
+      "t": 3.6000000000000005,
+      "expected_xy": [
+        5.0,
+        -0.19999999999999973
+      ],
+      "actual_xy": [
+        5.0,
+        -0.19999999999999973
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.654816482108446,
+      "true_bearing_deg": 357.2408923413797,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.6560165882110596,
+      "neighbourhood_min_m": 3.6560165882110596,
+      "nearest_sector": 6,
+      "altitude_m": 1.0000008135227412
+    },
+    {
+      "t": 3.8000000000000007,
+      "expected_xy": [
+        5.0,
+        -0.09999999999999964
+      ],
+      "actual_xy": [
+        5.0,
+        -0.09999999999999964
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6512046444375645,
+      "true_bearing_deg": 358.61964592655556,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.6523032188415527,
+      "neighbourhood_min_m": 3.6523032188415527,
+      "nearest_sector": 6,
+      "altitude_m": 1.000000632577076
+    },
+    {
+      "t": 4.0,
+      "expected_xy": [
+        5.0,
+        0.0
+      ],
+      "actual_xy": [
+        5.0,
+        0.0
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6500000000000004,
+      "true_bearing_deg": 0.0,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.6510753631591797,
+      "neighbourhood_min_m": 3.6510753631591797,
+      "nearest_sector": 6,
+      "altitude_m": 1.0000004101195483
+    },
+    {
+      "t": 4.2,
+      "expected_xy": [
+        5.0,
+        0.10000000000000009
+      ],
+      "actual_xy": [
+        5.0,
+        0.10000000000000009
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6512046444375645,
+      "true_bearing_deg": 1.380354073444453,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.652320384979248,
+      "neighbourhood_min_m": 3.652320384979248,
+      "nearest_sector": 6,
+      "altitude_m": 1.0000002273069575
+    },
+    {
+      "t": 4.4,
+      "expected_xy": [
+        5.0,
+        0.20000000000000018
+      ],
+      "actual_xy": [
+        5.0,
+        0.20000000000000018
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.654816482108446,
+      "true_bearing_deg": 2.7591076586202754,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.656057119369507,
+      "neighbourhood_min_m": 3.656057119369507,
+      "nearest_sector": 6,
+      "altitude_m": 1.000000104032032
+    },
+    {
+      "t": 4.6000000000000005,
+      "expected_xy": [
+        5.0,
+        0.30000000000000027
+      ],
+      "actual_xy": [
+        5.0,
+        0.30000000000000027
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6608292442733097,
+      "true_bearing_deg": 4.134671373736427,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.6622657775878906,
+      "neighbourhood_min_m": 3.6622657775878906,
+      "nearest_sector": 6,
+      "altitude_m": 1.0000000338734325
+    },
+    {
+      "t": 4.800000000000001,
+      "expected_xy": [
+        5.0,
+        0.40000000000000036
+      ],
+      "actual_xy": [
+        5.0,
+        0.40000000000000036
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6692325432865944,
+      "true_bearing_deg": 5.5054778579783505,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.6706626415252686,
+      "neighbourhood_min_m": 3.6706626415252686,
+      "nearest_sector": 6,
+      "altitude_m": 1.0000000007746683
+    },
+    {
+      "t": 5.0,
+      "expected_xy": [
+        5.0,
+        0.5
+      ],
+      "actual_xy": [
+        5.0,
+        0.5
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6800119617053735,
+      "true_bearing_deg": 6.869992308214258,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.6810545921325684,
+      "neighbourhood_min_m": 3.6810545921325684,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999892835392
+    },
+    {
+      "t": 5.2,
+      "expected_xy": [
+        5.0,
+        0.6000000000000001
+      ],
+      "actual_xy": [
+        5.0,
+        0.6000000000000001
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.693149174546501,
+      "true_bearing_deg": 8.226722464108173,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.6939938068389893,
+      "neighbourhood_min_m": 3.6939938068389893,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999884650171
+    },
+    {
+      "t": 5.4,
+      "expected_xy": [
+        5.0,
+        0.7000000000000002
+      ],
+      "actual_xy": [
+        5.0,
+        0.7000000000000002
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.708622102303794,
+      "true_bearing_deg": 9.574227885091826,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.709510564804077,
+      "neighbourhood_min_m": 3.709510564804077,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999917455922
+    },
+    {
+      "t": 5.6000000000000005,
+      "expected_xy": [
+        5.0,
+        0.8000000000000003
+      ],
+      "actual_xy": [
+        5.0,
+        0.8000000000000003
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.7264050918008325,
+      "true_bearing_deg": 10.911128384283387,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.7271344661712646,
+      "neighbourhood_min_m": 3.7271344661712646,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999955770044
+    },
+    {
+      "t": 5.800000000000001,
+      "expected_xy": [
+        5.0,
+        0.9000000000000004
+      ],
+      "actual_xy": [
+        5.0,
+        0.9000000000000004
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.746469121517311,
+      "true_bearing_deg": 12.23611150941634,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.74686598777771,
+      "neighbourhood_min_m": 3.74686598777771,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999983783352
+    },
+    {
+      "t": 6.0,
+      "expected_xy": [
+        5.0,
+        1.0
+      ],
+      "actual_xy": [
+        5.0,
+        1.0
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.7687820276982995,
+      "true_bearing_deg": 13.547938988000494,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.767392158508301,
+      "neighbourhood_min_m": 3.767392158508301,
+      "nearest_sector": 6,
+      "altitude_m": 1.0000000002713987
+    },
+    {
+      "t": 6.2,
+      "expected_xy": [
+        5.0,
+        1.1
+      ],
+      "actual_xy": [
+        5.0,
+        1.1
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.7933087473416123,
+      "true_bearing_deg": 14.84545208208382,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.794200897216797,
+      "neighbourhood_min_m": 3.7935874462127686,
+      "nearest_sector": 6,
+      "altitude_m": 1.0000000013737693
+    },
+    {
+      "t": 6.400000000000001,
+      "expected_xy": [
+        5.0,
+        1.2000000000000006
+      ],
+      "actual_xy": [
+        5.0,
+        1.2000000000000006
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.8200115740585705,
+      "true_bearing_deg": 16.127575825959816,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 3.8203816413879395,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 1.000000001787801
+    },
+    {
+      "t": 6.6000000000000005,
+      "expected_xy": [
+        5.0,
+        1.3000000000000003
+      ],
+      "actual_xy": [
+        5.0,
+        1.3000000000000003
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.848850422812908,
+      "true_bearing_deg": 17.39332214691204,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 3.8489089012145996,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 1.0000000016026005
+    },
+    {
+      "t": 6.8,
+      "expected_xy": [
+        5.0,
+        1.4
+      ],
+      "actual_xy": [
+        5.0,
+        1.4
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.879783099652311,
+      "true_bearing_deg": 18.64179189369933,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 3.880117893218994,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 1.000000000895737
+    },
+    {
+      "t": 7.000000000000001,
+      "expected_xy": [
+        5.0,
+        1.5000000000000004
+      ],
+      "actual_xy": [
+        5.0,
+        1.5000000000000004
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.912765572744603,
+      "true_bearing_deg": 19.872175819243903,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 3.9111006259918213,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999997347393
+    },
+    {
+      "t": 7.2,
+      "expected_xy": [
+        5.0,
+        1.6
+      ],
+      "actual_xy": [
+        5.0,
+        1.6
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.9477522413012176,
+      "true_bearing_deg": 21.083754582380646,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 3.9471302032470703,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.999999998220335
+    },
+    {
+      "t": 7.400000000000001,
+      "expected_xy": [
+        5.0,
+        1.7000000000000006
+      ],
+      "actual_xy": [
+        5.0,
+        1.7000000000000006
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.9846961992982317,
+      "true_bearing_deg": 22.275897848258975,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 3.982404947280884,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999980211226
+    },
+    {
+      "t": 7.6000000000000005,
+      "expected_xy": [
+        5.0,
+        1.8000000000000003
+      ],
+      "actual_xy": [
+        5.0,
+        1.8000000000000003
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 4.023549491273418,
+      "true_bearing_deg": 23.44806257795782,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 4.023421764373779,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999992017404
+    },
+    {
+      "t": 7.8,
+      "expected_xy": [
+        5.0,
+        1.9
+      ],
+      "actual_xy": [
+        5.0,
+        1.9
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 4.064263357870578,
+      "true_bearing_deg": 24.599790605157462,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 4.0628862380981445,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999997751117
+    },
+    {
+      "t": 8.0,
+      "expected_xy": [
+        5.0,
+        2.0
+      ],
+      "actual_xy": [
+        5.0,
+        2.0
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 4.106788469204984,
+      "true_bearing_deg": 25.730705601531195,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 4.106649875640869,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999996826984
+    },
+    {
+      "t": 8.2,
+      "expected_xy": [
+        5.0,
+        1.9000000000000004
+      ],
+      "actual_xy": [
+        5.0,
+        1.9000000000000004
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 4.064263357870578,
+      "true_bearing_deg": 24.59979060515747,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 4.0668792724609375,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999990106859
+    },
+    {
+      "t": 8.4,
+      "expected_xy": [
+        5.0,
+        1.7999999999999998
+      ],
+      "actual_xy": [
+        5.0,
+        1.7999999999999998
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 4.023549491273418,
+      "true_bearing_deg": 23.448062577957813,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 4.026672840118408,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999978466588
+    },
+    {
+      "t": 8.6,
+      "expected_xy": [
+        5.0,
+        1.7000000000000002
+      ],
+      "actual_xy": [
+        5.0,
+        1.7000000000000002
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.9846961992982317,
+      "true_bearing_deg": 22.275897848258975,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 3.98637056350708,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999977297759
+    },
+    {
+      "t": 8.799999999999999,
+      "expected_xy": [
+        5.0,
+        1.6000000000000005
+      ],
+      "actual_xy": [
+        5.0,
+        1.6000000000000005
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.9477522413012176,
+      "true_bearing_deg": 21.083754582380653,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 3.950233221054077,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.999999999047315
+    },
+    {
+      "t": 9.0,
+      "expected_xy": [
+        5.0,
+        1.5
+      ],
+      "actual_xy": [
+        5.0,
+        1.5
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.912765572744603,
+      "true_bearing_deg": 19.8721758192439,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 3.914149761199951,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999997395987
+    },
+    {
+      "t": 9.2,
+      "expected_xy": [
+        5.0,
+        1.4000000000000004
+      ],
+      "actual_xy": [
+        5.0,
+        1.4000000000000004
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.879783099652311,
+      "true_bearing_deg": 18.641791893699338,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 3.882190465927124,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999996760416
+    },
+    {
+      "t": 9.4,
+      "expected_xy": [
+        5.0,
+        1.2999999999999998
+      ],
+      "actual_xy": [
+        5.0,
+        1.2999999999999998
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.848850422812907,
+      "true_bearing_deg": 17.393322146912034,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 3.850980281829834,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999989544867
+    },
+    {
+      "t": 9.6,
+      "expected_xy": [
+        5.0,
+        1.2000000000000002
+      ],
+      "actual_xy": [
+        5.0,
+        1.2000000000000002
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.8200115740585705,
+      "true_bearing_deg": 16.12757582595981,
+      "obstacle_sector": 1,
+      "obstacle_sector_range_m": 3.8224525451660156,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999978103707
+    },
+    {
+      "t": 9.799999999999999,
+      "expected_xy": [
+        5.0,
+        1.1000000000000005
+      ],
+      "actual_xy": [
+        5.0,
+        1.1000000000000005
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.7933087473416123,
+      "true_bearing_deg": 14.845452082083828,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.796267032623291,
+      "neighbourhood_min_m": 3.795846939086914,
+      "nearest_sector": 6,
+      "altitude_m": 0.999999998104856
+    },
+    {
+      "t": 10.0,
+      "expected_xy": [
+        5.0,
+        1.0
+      ],
+      "actual_xy": [
+        5.0,
+        1.0
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.7687820276982995,
+      "true_bearing_deg": 13.547938988000494,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.7699391841888428,
+      "neighbourhood_min_m": 3.7699391841888428,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999993799735
+    },
+    {
+      "t": 10.2,
+      "expected_xy": [
+        5.0,
+        0.9000000000000004
+      ],
+      "actual_xy": [
+        5.0,
+        0.9000000000000004
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.746469121517311,
+      "true_bearing_deg": 12.23611150941634,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.748781681060791,
+      "neighbourhood_min_m": 3.748781681060791,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999998421165
+    },
+    {
+      "t": 10.4,
+      "expected_xy": [
+        5.0,
+        0.7999999999999998
+      ],
+      "actual_xy": [
+        5.0,
+        0.7999999999999998
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.7264050918008325,
+      "true_bearing_deg": 10.91112838428338,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.728522300720215,
+      "neighbourhood_min_m": 3.728522300720215,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999995397242
+    },
+    {
+      "t": 10.6,
+      "expected_xy": [
+        5.0,
+        0.7000000000000002
+      ],
+      "actual_xy": [
+        5.0,
+        0.7000000000000002
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.708622102303794,
+      "true_bearing_deg": 9.574227885091826,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.710214853286743,
+      "neighbourhood_min_m": 3.710214853286743,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999985717645
+    },
+    {
+      "t": 10.799999999999999,
+      "expected_xy": [
+        5.0,
+        0.6000000000000005
+      ],
+      "actual_xy": [
+        5.0,
+        0.6000000000000005
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.693149174546501,
+      "true_bearing_deg": 8.226722464108178,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.6946983337402344,
+      "neighbourhood_min_m": 3.6946983337402344,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999978034918
+    },
+    {
+      "t": 11.0,
+      "expected_xy": [
+        5.0,
+        0.5
+      ],
+      "actual_xy": [
+        5.0,
+        0.5
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6800119617053735,
+      "true_bearing_deg": 6.869992308214258,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.681755542755127,
+      "neighbourhood_min_m": 3.681755542755127,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999987916293
+    },
+    {
+      "t": 11.2,
+      "expected_xy": [
+        5.0,
+        0.40000000000000036
+      ],
+      "actual_xy": [
+        5.0,
+        0.40000000000000036
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6692325432865944,
+      "true_bearing_deg": 5.5054778579783505,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.671358108520508,
+      "neighbourhood_min_m": 3.671358108520508,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999996953398
+    },
+    {
+      "t": 11.4,
+      "expected_xy": [
+        5.0,
+        0.2999999999999998
+      ],
+      "actual_xy": [
+        5.0,
+        0.2999999999999998
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6608292442733097,
+      "true_bearing_deg": 4.1346713737364205,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.6629207134246826,
+      "neighbourhood_min_m": 3.6629207134246826,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999998046246
+    },
+    {
+      "t": 11.6,
+      "expected_xy": [
+        5.0,
+        0.20000000000000018
+      ],
+      "actual_xy": [
+        5.0,
+        0.20000000000000018
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.654816482108446,
+      "true_bearing_deg": 2.7591076586202754,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.656158685684204,
+      "neighbourhood_min_m": 3.656158685684204,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999992223214
+    },
+    {
+      "t": 11.799999999999999,
+      "expected_xy": [
+        5.0,
+        0.10000000000000053
+      ],
+      "actual_xy": [
+        5.0,
+        0.10000000000000053
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6512046444375645,
+      "true_bearing_deg": 1.3803540734444593,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.652344226837158,
+      "neighbourhood_min_m": 3.652344226837158,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999980630712
+    },
+    {
+      "t": 12.0,
+      "expected_xy": [
+        5.0,
+        0.0
+      ],
+      "actual_xy": [
+        5.0,
+        0.0
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6500000000000004,
+      "true_bearing_deg": 0.0,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.6510775089263916,
+      "neighbourhood_min_m": 3.6510775089263916,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999979532788
+    },
+    {
+      "t": 12.2,
+      "expected_xy": [
+        5.0,
+        -0.09999999999999964
+      ],
+      "actual_xy": [
+        5.0,
+        -0.09999999999999964
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6512046444375645,
+      "true_bearing_deg": 358.61964592655556,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.652322292327881,
+      "neighbourhood_min_m": 3.652322292327881,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999992068119
+    },
+    {
+      "t": 12.4,
+      "expected_xy": [
+        5.0,
+        -0.20000000000000018
+      ],
+      "actual_xy": [
+        5.0,
+        -0.20000000000000018
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.654816482108446,
+      "true_bearing_deg": 357.2408923413797,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.6561031341552734,
+      "neighbourhood_min_m": 3.6561031341552734,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999998187192
+    },
+    {
+      "t": 12.6,
+      "expected_xy": [
+        5.0,
+        -0.2999999999999998
+      ],
+      "actual_xy": [
+        5.0,
+        -0.2999999999999998
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6608292442733097,
+      "true_bearing_deg": 355.8653286262636,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.6624300479888916,
+      "neighbourhood_min_m": 3.6624300479888916,
+      "nearest_sector": 6,
+      "altitude_m": 0.999999999665673
+    },
+    {
+      "t": 12.799999999999999,
+      "expected_xy": [
+        5.0,
+        -0.39999999999999947
+      ],
+      "actual_xy": [
+        5.0,
+        -0.39999999999999947
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6692325432865944,
+      "true_bearing_deg": 354.49452214202165,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.671034097671509,
+      "neighbourhood_min_m": 3.671034097671509,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999988466962
+    },
+    {
+      "t": 13.0,
+      "expected_xy": [
+        5.0,
+        -0.5
+      ],
+      "actual_xy": [
+        5.0,
+        -0.5
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.6800119617053735,
+      "true_bearing_deg": 353.13000769178575,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.6816699504852295,
+      "neighbourhood_min_m": 3.6816699504852295,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999978207956
+    },
+    {
+      "t": 13.2,
+      "expected_xy": [
+        5.0,
+        -0.5999999999999996
+      ],
+      "actual_xy": [
+        5.0,
+        -0.5999999999999996
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.693149174546501,
+      "true_bearing_deg": 351.77327753589185,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.694959878921509,
+      "neighbourhood_min_m": 3.694959878921509,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999984463871
+    },
+    {
+      "t": 13.4,
+      "expected_xy": [
+        5.0,
+        -0.7000000000000002
+      ],
+      "actual_xy": [
+        5.0,
+        -0.7000000000000002
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.708622102303794,
+      "true_bearing_deg": 350.42577211490817,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.710958480834961,
+      "neighbourhood_min_m": 3.710958480834961,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999996148048
+    },
+    {
+      "t": 13.6,
+      "expected_xy": [
+        5.0,
+        -0.7999999999999998
+      ],
+      "actual_xy": [
+        5.0,
+        -0.7999999999999998
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.7264050918008325,
+      "true_bearing_deg": 349.08887161571664,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.729731559753418,
+      "neighbourhood_min_m": 3.729731559753418,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999998814646
+    },
+    {
+      "t": 13.799999999999999,
+      "expected_xy": [
+        5.0,
+        -0.8999999999999995
+      ],
+      "actual_xy": [
+        5.0,
+        -0.8999999999999995
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.746469121517311,
+      "true_bearing_deg": 347.76388849058367,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.7457692623138428,
+      "neighbourhood_min_m": 3.7457692623138428,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999993593297
+    },
+    {
+      "t": 14.0,
+      "expected_xy": [
+        5.0,
+        -1.0
+      ],
+      "actual_xy": [
+        5.0,
+        -1.0
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.7687820276982995,
+      "true_bearing_deg": 346.4520610119995,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.763099193572998,
+      "neighbourhood_min_m": 3.763099193572998,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999982128699
+    },
+    {
+      "t": 14.2,
+      "expected_xy": [
+        5.0,
+        -1.0999999999999996
+      ],
+      "actual_xy": [
+        5.0,
+        -1.0999999999999996
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.7933087473416123,
+      "true_bearing_deg": 345.1545479179162,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.7896435260772705,
+      "neighbourhood_min_m": 3.7896435260772705,
+      "nearest_sector": 6,
+      "altitude_m": 0.999999998191176
+    },
+    {
+      "t": 14.399999999999999,
+      "expected_xy": [
+        5.0,
+        -1.1999999999999993
+      ],
+      "actual_xy": [
+        5.0,
+        -1.1999999999999993
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.8200115740585696,
+      "true_bearing_deg": 343.8724241740402,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.8192811012268066,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.999999999435712
+    },
+    {
+      "t": 14.600000000000001,
+      "expected_xy": [
+        5.0,
+        -1.3000000000000007
+      ],
+      "actual_xy": [
+        5.0,
+        -1.3000000000000007
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.848850422812908,
+      "true_bearing_deg": 342.60667785308794,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.8523571491241455,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999999493385
+    },
+    {
+      "t": 14.8,
+      "expected_xy": [
+        5.0,
+        -1.4000000000000004
+      ],
+      "actual_xy": [
+        5.0,
+        -1.4000000000000004
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.879783099652311,
+      "true_bearing_deg": 341.35820810630065,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.872479200363159,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999996197488
+    },
+    {
+      "t": 15.0,
+      "expected_xy": [
+        5.0,
+        -1.5
+      ],
+      "actual_xy": [
+        5.0,
+        -1.5
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.912765572744603,
+      "true_bearing_deg": 340.1278241807561,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.9059150218963623,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999985560967
+    },
+    {
+      "t": 15.2,
+      "expected_xy": [
+        5.0,
+        -1.5999999999999996
+      ],
+      "actual_xy": [
+        5.0,
+        -1.5999999999999996
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.9477522413012176,
+      "true_bearing_deg": 338.91624541761934,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.9490244388580322,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999980675762
+    },
+    {
+      "t": 15.399999999999999,
+      "expected_xy": [
+        5.0,
+        -1.6999999999999993
+      ],
+      "actual_xy": [
+        5.0,
+        -1.6999999999999993
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.984696199298231,
+      "true_bearing_deg": 337.724102151741,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.9741592407226562,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999991864237
+    },
+    {
+      "t": 15.600000000000001,
+      "expected_xy": [
+        5.0,
+        -1.8000000000000007
+      ],
+      "actual_xy": [
+        5.0,
+        -1.8000000000000007
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 4.023549491273418,
+      "true_bearing_deg": 336.55193742204216,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 4.015351295471191,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999999093102
+    },
+    {
+      "t": 15.8,
+      "expected_xy": [
+        5.0,
+        -1.9000000000000004
+      ],
+      "actual_xy": [
+        5.0,
+        -1.9000000000000004
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 4.064263357870578,
+      "true_bearing_deg": 335.40020939484253,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 4.0527729988098145,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999997730785
+    },
+    {
+      "t": 16.0,
+      "expected_xy": [
+        5.0,
+        -2.0
+      ],
+      "actual_xy": [
+        5.0,
+        -2.0
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 4.106788469204984,
+      "true_bearing_deg": 334.2692943984688,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 4.094829082489014,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999988889413
+    },
+    {
+      "t": 16.2,
+      "expected_xy": [
+        5.0,
+        -1.9000000000000004
+      ],
+      "actual_xy": [
+        5.0,
+        -1.9000000000000004
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 4.064263357870578,
+      "true_bearing_deg": 335.40020939484253,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 4.055526256561279,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999979824089
+    },
+    {
+      "t": 16.4,
+      "expected_xy": [
+        5.0,
+        -1.8000000000000007
+      ],
+      "actual_xy": [
+        5.0,
+        -1.8000000000000007
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 4.023549491273418,
+      "true_bearing_deg": 336.55193742204216,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 4.019429683685303,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999987948871
+    },
+    {
+      "t": 16.6,
+      "expected_xy": [
+        5.0,
+        -1.6999999999999993
+      ],
+      "actual_xy": [
+        5.0,
+        -1.6999999999999993
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.984696199298231,
+      "true_bearing_deg": 337.724102151741,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.9769532680511475,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999997953927
+    },
+    {
+      "t": 16.8,
+      "expected_xy": [
+        5.0,
+        -1.5999999999999996
+      ],
+      "actual_xy": [
+        5.0,
+        -1.5999999999999996
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.9477522413012176,
+      "true_bearing_deg": 338.91624541761934,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.9517245292663574,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999998894001
+    },
+    {
+      "t": 17.0,
+      "expected_xy": [
+        5.0,
+        -1.5
+      ],
+      "actual_xy": [
+        5.0,
+        -1.5
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.912765572744603,
+      "true_bearing_deg": 340.1278241807561,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.909128189086914,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999991942555
+    },
+    {
+      "t": 17.2,
+      "expected_xy": [
+        5.0,
+        -1.4000000000000004
+      ],
+      "actual_xy": [
+        5.0,
+        -1.4000000000000004
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.879783099652311,
+      "true_bearing_deg": 341.35820810630065,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.8745439052581787,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999980857406
+    },
+    {
+      "t": 17.4,
+      "expected_xy": [
+        5.0,
+        -1.3000000000000007
+      ],
+      "actual_xy": [
+        5.0,
+        -1.3000000000000007
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.848850422812908,
+      "true_bearing_deg": 342.60667785308794,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.8544321060180664,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999984710382
+    },
+    {
+      "t": 17.6,
+      "expected_xy": [
+        5.0,
+        -1.1999999999999993
+      ],
+      "actual_xy": [
+        5.0,
+        -1.1999999999999993
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.8200115740585696,
+      "true_bearing_deg": 343.8724241740402,
+      "obstacle_sector": 11,
+      "obstacle_sector_range_m": 3.821350336074829,
+      "neighbourhood_min_m": 3.1094937324523926,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999996481141
+    },
+    {
+      "t": 17.8,
+      "expected_xy": [
+        5.0,
+        -1.0999999999999996
+      ],
+      "actual_xy": [
+        5.0,
+        -1.0999999999999996
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.7933087473416123,
+      "true_bearing_deg": 345.1545479179162,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.7917091846466064,
+      "neighbourhood_min_m": 3.7917091846466064,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999999439004
+    },
+    {
+      "t": 18.0,
+      "expected_xy": [
+        5.0,
+        -1.0
+      ],
+      "actual_xy": [
+        5.0,
+        -1.0
+      ],
+      "error_m": 0.0,
+      "drone_xy": [
+        0.85,
+        -0.0
+      ],
+      "true_clearance_m": 3.7687820276982995,
+      "true_bearing_deg": 346.4520610119995,
+      "obstacle_sector": 0,
+      "obstacle_sector_range_m": 3.7651596069335938,
+      "neighbourhood_min_m": 3.7651596069335938,
+      "nearest_sector": 6,
+      "altitude_m": 0.9999999994354734
+    }
+  ],
+  "checks": [
+    {
+      "check": "simulator_matches_trajectory_model",
+      "pass": true,
+      "detail": "max |supervisor - centre_at(t)| = 0.000e+00 m over 90 steps"
+    },
+    {
+      "check": "stays_in_declared_envelope",
+      "pass": true,
+      "detail": "y in [-2.0000, 2.0000], declared -2.00 .. +2.00 m"
+    },
+    {
+      "check": "stays_inside_arena",
+      "pass": true,
+      "detail": "x [5.00, 5.00], y [-2.00, 2.00] within walls inset by r"
+    },
+    {
+      "check": "other_axis_untouched",
+      "pass": true,
+      "detail": "x held at 5.0 m (motion axis is 'y')"
+    },
+    {
+      "check": "travel_speed_matches_config",
+      "pass": true,
+      "detail": "median 0.5000 m/s vs configured 0.5 m/s"
+    },
+    {
+      "check": "crosses_the_route",
+      "pass": true,
+      "detail": "obstacle centre crossed y=0.0 4 time(s) in 18.0 s"
+    },
+    {
+      "check": "obstacle_replays_exactly",
+      "pass": true,
+      "detail": "max divergence between two resets: 2.665e-15 m"
+    },
+    {
+      "check": "obstacle_sector_migrates",
+      "pass": true,
+      "detail": "obstacle swept 3 sectors: [0, 1, 11] (bearing 0.0..358.6 deg)"
+    },
+    {
+      "check": "measured_range_tracks_true_clearance",
+      "pass": true,
+      "detail": "|lidar - ground truth| max 0.0120 m, mean 0.0028 m over 90 of 90 steps"
+    },
+    {
+      "check": "measured_range_follows_the_crossing",
+      "pass": true,
+      "detail": "range in the obstacle's sector varied by 0.456 m as it crossed"
+    },
+    {
+      "check": "drone_held_altitude_while_hovering",
+      "pass": true,
+      "detail": "altitude in [1.0000, 1.0030] m (target 1.0 m)"
+    },
+    {
+      "check": "collision_with_mover_detected",
+      "pass": true,
+      "detail": "collision reported at [4.473, 0.028] after 16 steps"
+    }
+  ],
+  "passed": 12,
+  "total": 12
+}

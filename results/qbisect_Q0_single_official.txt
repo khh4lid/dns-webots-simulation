@@ -1,0 +1,11 @@
+label=Q0_single_official  rotors=1  speed=100.0  step=32 ms
+
+   t[s]     z[m]      vz[m/s]
+   1.25     0.029     +0.000
+   1.50     0.029     +0.000
+   2.50     0.030     +0.001
+   2.75     0.052     +0.218
+
+start z = 0.0041   peak z = 0.1250   gain = +0.1209 m
+net vertical acceleration over first 0.224 s = -0.842 m/s^2   (free fall = -9.81)
+verdict: THRUST PRESENT

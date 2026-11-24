@@ -1,0 +1,178 @@
+#VRML_SIM R2025a utf8
+
+# quad bisect: Q1_quad_official_kt
+WorldInfo {
+  title "quad bisect Q1_quad_official_kt"
+}
+Viewpoint {
+  orientation -0.286 0.493 0.821 1.23
+  position -0.76 -1.35 1.14
+}
+Background {
+  skyColor [
+    0.2 0.2 0.3
+  ]
+}
+DirectionalLight {
+  direction 0 0 -1
+  intensity 2
+}
+DEF PLATFORM Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+      }
+      geometry Plane {
+      }
+    }
+  ]
+  boundingObject Pose {
+    children [
+      Plane {
+      }
+    ]
+  }
+  locked TRUE
+}
+DEF HELI Robot {
+  translation 0 0 -0.01
+  children [
+    GPS {
+    }
+    InertialUnit {
+    }
+    DEF BODY Pose {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.03 0.04 0.94
+          }
+          geometry Box {
+            size 0.18 0.18 0.06
+          }
+        }
+      ]
+    }
+    Propeller {
+      shaftAxis 0 0 1
+      centerOfThrust 0.09 0.09 0.015
+      thrustConstants 0.00163465 0.001
+      torqueConstants 1e-07 0
+      device RotationalMotor {
+        name "m0"
+        maxVelocity 600
+        maxTorque 30
+      }
+      slowHelix Solid {
+        translation 0.09 0.09 0.015
+        name "helix0"
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+            }
+            geometry Cylinder {
+              height 0.004
+              radius 0.05
+            }
+          }
+        ]
+      }
+    }
+    Propeller {
+      shaftAxis 0 0 1
+      centerOfThrust 0.09 -0.09 0.015
+      thrustConstants -0.00163465 0.001
+      torqueConstants 1e-07 0
+      device RotationalMotor {
+        name "m1"
+        maxVelocity 600
+        maxTorque 30
+      }
+      slowHelix Solid {
+        translation 0.09 -0.09 0.015
+        name "helix1"
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+            }
+            geometry Cylinder {
+              height 0.004
+              radius 0.05
+            }
+          }
+        ]
+      }
+    }
+    Propeller {
+      shaftAxis 0 0 1
+      centerOfThrust -0.09 0.09 0.015
+      thrustConstants -0.00163465 0.001
+      torqueConstants 1e-07 0
+      device RotationalMotor {
+        name "m2"
+        maxVelocity 600
+        maxTorque 30
+      }
+      slowHelix Solid {
+        translation -0.09 0.09 0.015
+        name "helix2"
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+            }
+            geometry Cylinder {
+              height 0.004
+              radius 0.05
+            }
+          }
+        ]
+      }
+    }
+    Propeller {
+      shaftAxis 0 0 1
+      centerOfThrust -0.09 -0.09 0.015
+      thrustConstants 0.00163465 0.001
+      torqueConstants 1e-07 0
+      device RotationalMotor {
+        name "m3"
+        maxVelocity 600
+        maxTorque 30
+      }
+      slowHelix Solid {
+        translation -0.09 -0.09 0.015
+        name "helix3"
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+            }
+            geometry Cylinder {
+              height 0.004
+              radius 0.05
+            }
+          }
+        ]
+      }
+    }
+  ]
+  name "heli"
+  boundingObject Group {
+    children [
+      USE BODY
+    ]
+  }
+  physics Physics {
+    damping Damping {
+    }
+  }
+  controller "probe_multi"
+  controllerArgs [
+    "Q1_quad_official_kt"
+    "100"
+  ]
+  supervisor TRUE
+}

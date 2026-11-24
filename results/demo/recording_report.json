@@ -1,0 +1,96 @@
+{
+  "path": "results\\demo\\DNS_Webots_Research_Demo.mp4",
+  "width": 1280,
+  "height": 720,
+  "fps": 25.0,
+  "frames": 1255,
+  "duration_s": 50.2,
+  "playback": "1:1 with simulation time; no frames duplicated or stretched",
+  "frame_source": "Webots Camera node (offscreen render), NOT the GUI viewport, which renders nothing in this session",
+  "policy": "D:\\Download\\drone_navigation_system\\DroneNavPPO\\DroneNavPPO\\evidence\\seed19\\model.npz",
+  "scenarios": {
+    "static_segment": "warehouse_static",
+    "dynamic_segment": "warehouse_dynamic"
+  },
+  "timeline": [
+    {
+      "segment": "1_environment_overview",
+      "frames": 300,
+      "sim_seconds": 12.0
+    },
+    {
+      "segment": "2_drone_start_and_goal",
+      "frames": 150,
+      "sim_seconds": 6.0
+    },
+    {
+      "segment": "3_static_navigation_overview",
+      "frames": 185,
+      "outcome": "goal",
+      "steps": 37,
+      "sim_seconds": 7.4,
+      "final_xy": [
+        8.995524406080312,
+        0.02868314971915734
+      ],
+      "remaining_m": 0.15711598325648482
+    },
+    {
+      "segment": "4_static_navigation_topdown",
+      "frames": 185,
+      "outcome": "goal",
+      "steps": 37,
+      "sim_seconds": 7.4,
+      "final_xy": [
+        8.995387890287503,
+        0.028584308963489527
+      ],
+      "remaining_m": 0.1572322078604427
+    },
+    {
+      "segment": "5_crossing_obstacle_intro",
+      "frames": 100,
+      "sim_seconds": 4.0
+    },
+    {
+      "segment": "6_dynamic_navigation_overview",
+      "frames": 105,
+      "outcome": "collision",
+      "steps": 21,
+      "sim_seconds": 4.2,
+      "final_xy": [
+        5.479582835791277,
+        0.4267729005888445
+      ],
+      "remaining_m": 3.6951450943088857
+    },
+    {
+      "segment": "7_dynamic_navigation_lowangle",
+      "frames": 105,
+      "outcome": "collision",
+      "steps": 21,
+      "sim_seconds": 4.2,
+      "final_xy": [
+        5.3855168184031905,
+        0.43504251767324126
+      ],
+      "remaining_m": 3.789537652103316
+    },
+    {
+      "segment": "8_final_state",
+      "frames": 125,
+      "sim_seconds": 5.0
+    }
+  ],
+  "episode_outcomes": {
+    "static": [
+      "goal",
+      "goal"
+    ],
+    "dynamic": [
+      "collision",
+      "collision"
+    ]
+  },
+  "ffmpeg_stderr": ""
+}

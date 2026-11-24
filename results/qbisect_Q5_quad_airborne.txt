@@ -1,0 +1,10 @@
+label=Q5_quad_airborne  rotors=4  speed=200.0  step=32 ms
+
+   t[s]     z[m]      vz[m/s]
+   1.25     0.044     -0.034
+   1.50     0.033     +0.014
+   2.50     0.073     +0.348
+   2.75     0.289     +1.330
+
+net vertical acceleration over first 0.224 s = -9.753 m/s^2   (free fall = -9.81)
+verdict: NO THRUST (free fall)

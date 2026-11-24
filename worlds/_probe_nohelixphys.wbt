@@ -1,0 +1,178 @@
+﻿#VRML_SIM R2025a utf8
+
+# Minimal hand-written Propeller test. No PROTO, no templating.
+# One robot, four propellers, constants copied from the stock Mavic2Pro.
+# The controller spins every rotor up and reports the altitude.
+
+WorldInfo {
+  basicTimeStep 8
+  coordinateSystem "ENU"
+}
+Viewpoint {
+  orientation 0 0 1 0
+  position 0 -6 3
+}
+Background {
+  skyColor [
+    0.2 0.2 0.3
+  ]
+}
+DirectionalLight {
+  direction 0 0 -1
+  intensity 2
+}
+DEF PROBE_FLOOR Solid {
+  translation 0 0 -0.05
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.7 0.7 0.7
+      }
+      geometry Box {
+        size 20 20 0.1
+      }
+    }
+  ]
+  boundingObject Box {
+    size 20 20 0.1
+  }
+}
+DEF PROBE_ROBOT Robot {
+  translation 0 0 1
+  name "ProbeDrone"
+  controller "probe_propeller"
+  supervisor TRUE
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.2 0.4 0.8
+      }
+      geometry Box {
+        size 0.18 0.18 0.06
+      }
+    }
+    GPS {
+      name "gps"
+    }
+    InertialUnit {
+      name "imu"
+    }
+    Propeller {
+      shaftAxis 0 0 1
+      centerOfThrust 0.09 0.09 0.015
+      thrustConstants 0.00026 0
+      torqueConstants 0.0000052 0
+      fastHelixThreshold 50
+      device RotationalMotor {
+        name "m0"
+        maxVelocity 600
+        maxTorque 30
+      }
+      slowHelix DEF HELIX0 Solid {
+        translation 0.09 0.09 0.015
+        name "helix0"
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.9 0.2 0.2
+            }
+            geometry Cylinder {
+              height 0.004
+              radius 0.05
+            }
+          }
+        ]
+      }
+    }
+    Propeller {
+      shaftAxis 0 0 1
+      centerOfThrust 0.09 -0.09 0.015
+      thrustConstants -0.00026 0
+      torqueConstants 0.0000052 0
+      fastHelixThreshold 50
+      device RotationalMotor {
+        name "m1"
+        maxVelocity 600
+        maxTorque 30
+      }
+      slowHelix DEF HELIX1 Solid {
+        translation 0.09 -0.09 0.015
+        name "helix1"
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.9 0.2 0.2
+            }
+            geometry Cylinder {
+              height 0.004
+              radius 0.05
+            }
+          }
+        ]
+      }
+    }
+    Propeller {
+      shaftAxis 0 0 1
+      centerOfThrust -0.09 0.09 0.015
+      thrustConstants -0.00026 0
+      torqueConstants 0.0000052 0
+      fastHelixThreshold 50
+      device RotationalMotor {
+        name "m2"
+        maxVelocity 600
+        maxTorque 30
+      }
+      slowHelix DEF HELIX2 Solid {
+        translation -0.09 0.09 0.015
+        name "helix2"
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.9 0.2 0.2
+            }
+            geometry Cylinder {
+              height 0.004
+              radius 0.05
+            }
+          }
+        ]
+      }
+    }
+    Propeller {
+      shaftAxis 0 0 1
+      centerOfThrust -0.09 -0.09 0.015
+      thrustConstants 0.00026 0
+      torqueConstants 0.0000052 0
+      fastHelixThreshold 50
+      device RotationalMotor {
+        name "m3"
+        maxVelocity 600
+        maxTorque 30
+      }
+      slowHelix DEF HELIX3 Solid {
+        translation -0.09 -0.09 0.015
+        name "helix3"
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.9 0.2 0.2
+            }
+            geometry Cylinder {
+              height 0.004
+              radius 0.05
+            }
+          }
+        ]
+      }
+    }
+  ]
+  boundingObject Cylinder {
+    height 0.07
+    radius 0.18
+  }
+  physics Physics {
+    density -1
+    mass 0.49
+  }
+}
+

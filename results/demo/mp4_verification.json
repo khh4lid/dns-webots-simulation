@@ -1,0 +1,31 @@
+{
+  "path": "results\\demo\\DNS_Webots_Research_Demo.mp4",
+  "size_bytes": 3872929,
+  "boxes": [
+    "ftyp",
+    "moov",
+    "free",
+    "mdat"
+  ],
+  "tracks": [
+    {
+      "width": 1280,
+      "height": 720,
+      "stts_samples": 1255,
+      "stts_total_units": 642560,
+      "frame_count": 1255,
+      "frame_bytes_min": 46,
+      "frame_bytes_max": 51329,
+      "frame_bytes_mean": 3073.3314741035856,
+      "distinct_frame_sizes": 1028
+    }
+  ],
+  "errors": [],
+  "has_ftyp": true,
+  "has_moov": true,
+  "has_mdat": true,
+  "timescale": 1000,
+  "duration_s": 50.2,
+  "verdict": "VALID",
+  "problems": []
+}

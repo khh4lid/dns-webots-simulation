@@ -1,0 +1,24 @@
+name='DnsDrone'
+basicTimeStep=8.0
+supervisor=True
+devices=8
+  device[0] 'gps' nodeType=44
+  device[1] 'gyro' nodeType=45
+  device[2] 'imu' nodeType=46
+  device[3] 'lidar' nodeType=48
+  device[4] 'm0' nodeType=57
+  device[5] 'm1' nodeType=57
+  device[6] 'm2' nodeType=57
+  device[7] 'm3' nodeType=57
+  DEF DNS_DRONE -> DnsQuadcopter
+  DEF DNS_FLOOR -> Solid
+  DEF DNS_OBSTACLE_OBS_A -> Solid
+  DEF DNS_GOAL_MARKER -> Solid
+  param mass -> present
+  param armOffset -> present
+  param thrustConstant -> present
+  param torqueConstant -> present
+  param collisionRadius -> present
+  param lidarResolution -> present
+time_after_one_step=0.008
+DIAG_OK

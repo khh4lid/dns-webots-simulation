@@ -1,0 +1,70 @@
+{
+  "scenario": "warehouse_dynamic",
+  "look_at": [
+    5.0,
+    -0.0,
+    0.9
+  ],
+  "views": [
+    {
+      "view": "overview_3d",
+      "file": "D:\\Download\\drone_navigation_system\\webots_dns\\results\\screenshots\\overview_3d.png",
+      "eye_webots": [
+        -2.2,
+        -4.6,
+        9.2
+      ],
+      "target_webots": [
+        6.3,
+        0.1,
+        0.7
+      ],
+      "unique_colours": 110
+    },
+    {
+      "view": "topdown",
+      "file": "D:\\Download\\drone_navigation_system\\webots_dns\\results\\screenshots\\topdown.png",
+      "eye_webots": [
+        5.0,
+        0.0,
+        11.0
+      ],
+      "target_webots": [
+        5.0,
+        0.0,
+        0.0
+      ],
+      "unique_colours": 131
+    },
+    {
+      "view": "aisle_low",
+      "file": "D:\\Download\\drone_navigation_system\\webots_dns\\results\\screenshots\\aisle_low.png",
+      "eye_webots": [
+        0.35,
+        -2.1,
+        2.4
+      ],
+      "target_webots": [
+        7.5,
+        0.3,
+        0.9
+      ],
+      "unique_colours": 65
+    },
+    {
+      "view": "corner",
+      "file": "D:\\Download\\drone_navigation_system\\webots_dns\\results\\screenshots\\corner.png",
+      "eye_webots": [
+        11.5,
+        -4.0,
+        6.0
+      ],
+      "target_webots": [
+        3.5,
+        0.3,
+        0.7
+      ],
+      "unique_colours": 151
+    }
+  ]
+}

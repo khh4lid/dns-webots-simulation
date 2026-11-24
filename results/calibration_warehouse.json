@@ -1,0 +1,99 @@
+{
+  "webots_basic_timestep_ms": 8,
+  "vehicle": {
+    "mass_kg": 0.55,
+    "inertia": [
+      0.00272,
+      0.00272,
+      0.00513
+    ],
+    "arm_offset_m": 0.09,
+    "hover_rotor_thrust_N": 1.3488750000000003,
+    "max_rotor_thrust_N": 5.4,
+    "thrust_to_weight": 4.0033361134278564,
+    "yaw_moment_per_newton_m": 0.015999999999999997
+  },
+  "yaw": {
+    "measured_yaw_rate_rad_s": -1.7673016141736155,
+    "measured_yaw_change_rad": -0.47523297420545363,
+    "yaw_mix_sign": -1.0,
+    "note": "rotors 0 and 3 (CCW) heavy = positive tau_z in the autopilot mix"
+  },
+  "axes": {
+    "+x_forward": {
+      "command_mps": [
+        0.6,
+        0.0
+      ],
+      "displacement_dns_m": [
+        0.793012352122922,
+        4.514079206302048e-08
+      ],
+      "measured_velocity_dns_mps": [
+        0.6365150905919763,
+        -1.722064043452785e-08
+      ],
+      "direction_correct": true
+    },
+    "+y_right": {
+      "command_mps": [
+        0.0,
+        0.6
+      ],
+      "displacement_dns_m": [
+        -0.001333825148431167,
+        0.7930131677031707
+      ],
+      "measured_velocity_dns_mps": [
+        -0.0006857455612567722,
+        0.6365147477773112
+      ],
+      "direction_correct": true
+    }
+  },
+  "lidar": {
+    "resolution": 720,
+    "direction": 1.0,
+    "offset_rad": 3.1503192998497647,
+    "offset_deg": 180.5,
+    "rms_error_m": 0.02453103455024295,
+    "probe_position_dns": [
+      1.600002837888389,
+      1.0973513815451765
+    ],
+    "finite_beams": 671,
+    "sector_check": {
+      "lidar_ranges_m": [
+        4.500040054321289,
+        2.7265584468841553,
+        1.0417726039886475,
+        1.0241193771362305,
+        1.9674965143203735,
+        1.6583997011184692,
+        1.60001802444458,
+        1.6545261144638062,
+        2.2529358863830566,
+        4.097379684448242,
+        2.149503231048584,
+        2.0524308681488037
+      ],
+      "geometric_ranges_m": [
+        4.499997162111611,
+        2.959995789873215,
+        1.0669963733633048,
+        1.1517377538808369,
+        2.0247563685916257,
+        1.7026874559792042,
+        1.600002837888389,
+        1.7026874559792038,
+        2.489162537947244,
+        4.0973513815451765,
+        2.3335813253200364,
+        2.1738928387661454
+      ],
+      "max_abs_diff_m": 0.23622665156418732
+    }
+  },
+  "scenario": "warehouse_dynamic",
+  "config": "config\\scenario_warehouse.json"
+}

@@ -1,0 +1,11 @@
+basicTimeStep=32.0  controller step=64  velocity sign=+1
+
+   t[s]     z[m]
+   0.51   -0.0459
+   1.98   -0.0002
+   2.50    8.7821
+   3.01   16.4390
+   4.99   16.7224
+   5.50   11.9135
+
+final z = 5.8857  peak 21.7732  initial -0.0401 -> CLIMBED (thrust present)

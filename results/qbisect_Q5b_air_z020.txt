@@ -1,0 +1,11 @@
+label=Q5b_air_z020  rotors=4  speed=200.0  step=32 ms
+
+   t[s]     z[m]      vz[m/s]
+   1.25     0.035     +0.000
+   1.50     0.035     +0.000
+   2.50     0.073     +0.347
+   2.75     0.289     +1.330
+
+start z = 0.1699   peak z = 0.8565   gain = +0.6866 m
+net vertical acceleration over first 0.224 s = +4.156 m/s^2   (free fall = -9.81)
+verdict: THRUST PRESENT

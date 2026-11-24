@@ -1,0 +1,113 @@
+#VRML_SIM R2025a utf8
+
+# bisect step: S4_rotor_position
+WorldInfo {
+  title "bisect S4_rotor_position"
+}
+Viewpoint {
+  orientation -0.286 0.493 0.821 1.23
+  position -0.76 -1.35 1.14
+}
+Background {
+  skyColor [
+    0.2 0.2 0.3
+  ]
+}
+DirectionalLight {
+  direction 0 0 -1
+  intensity 2
+}
+DEF PLATFORM Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+      }
+      geometry Plane {
+      }
+    }
+  ]
+  boundingObject Pose {
+    children [
+      Plane {
+      }
+    ]
+  }
+  locked TRUE
+}
+DEF HELI Robot {
+  translation 0 0 -0.01
+  children [
+    GPS {
+    }
+    InertialUnit {
+    }
+    DEF BODY Pose {
+      translation 0 0 0.1
+      rotation -0.5773509358554485 -0.5773509358554485 -0.5773489358556708 -2.094397
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.03 0.04 0.94
+          }
+          geometry Capsule {
+            height 0.1
+            radius 0.05
+            subdivision 24
+          }
+        }
+      ]
+    }
+    DEF ROTOR Propeller {
+      shaftAxis 0 0 1
+      centerOfThrust 0.09 0.09 0.015
+      thrustConstants 0.00163465 0.001
+      torqueConstants 1e-07 1e-07
+      fastHelixThreshold 50
+      device RotationalMotor {
+        name "motor"
+        maxVelocity 600
+        maxTorque 30
+      }
+      slowHelix Solid {
+        translation 0.09 0.09 0.015
+        name "helix0"
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+            }
+            geometry Cylinder {
+              height 0.004
+              radius 0.05
+            }
+          }
+        ]
+        boundingObject Cylinder {
+          height 0.004
+          radius 0.05
+        }
+        physics Physics {
+          density -1
+          mass 0.015
+        }
+      }
+    }
+  ]
+  name "heli"
+  boundingObject Group {
+    children [
+      USE BODY
+    ]
+  }
+  physics Physics {
+    damping Damping {
+    }
+  }
+  controller "probe_official"
+  controllerArgs [
+    "S4_rotor_position"
+    "+1"
+  ]
+  supervisor TRUE
+}

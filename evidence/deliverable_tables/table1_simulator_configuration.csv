@@ -1,0 +1,20 @@
+parameter,value,unit,justification
+Simulator,Webots R2025a,-,"Python controllers, built-in Lidar/GPS/IMU/Propeller, scriptable Supervisor, offline worlds"
+Drone model,DnsQuadcopter,-,"0.55 kg, thrust/weight 4.0, four Propeller rotors, custom PROTO from base nodes"
+Arena,10 x 6,m,Matches the planar.py bounds the PPO checkpoints were fitted on
+Wall height,2.5,m,Keeps the boundary inside the scan plane across the tilt envelope
+Coordinate frame,"+x fwd, +y right",-,"x_dns = x_webots, y_dns = -y_webots; one conversion module"
+Origin,"(0, 0) at corner",m,"Arena spans [0,10] x [-3,3]"
+Flight altitude,1,m,Held by the altitude cascade; planar navigation task
+Collision radius,0.18,m,Equals navigation.RADIUS so simulator and policy agree
+Physics timestep,8,ms,Divides 200 ms exactly (25 steps); no clock drift
+Control rate,5,Hz,"navigation.DT = 0.2 s, the agreed PPO interface"
+Inner loop,125,Hz,Autopilot at the physics step; a quadcopter cannot track 5 Hz open-loop
+Velocity limit,1.2,m/s per axis,navigation.SPEED; the bridge scales the action once
+LiDAR coverage,360,deg,"Cylindrical projection, required above pi"
+LiDAR range,5,m,navigation.RANGE cap
+Beam count,720,beams,"0.5 deg spacing, 60 per sector"
+Sectors,12,-,"30 deg each; 0 forward, clockwise positive"
+Mount,stabilised,-,Idealised gimbal at 0.14 m above the body origin
+Goal tolerance,0.4,m,navigation.GOAL_TOL
+Episode horizon,90,steps,navigation.HORIZON = 18 s simulated

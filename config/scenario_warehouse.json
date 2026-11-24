@@ -1,0 +1,127 @@
+{
+  "schema": "dns-scenario-v1",
+  "name": "warehouse_dynamic",
+  "description": "DNS primary research environment: an indoor warehouse inspection aisle, 10 x 6 m, with two storage racks offset on opposite sides of the route, two structural columns, a crate stack, and a powered transfer cart that crosses the aisle. The drone must thread the aisle while the cart sweeps it. Coordinates are DNS: +x forward, +y right, fixed altitude, fixed yaw.",
+
+  "_dimension_justification": "10 x 6 m is retained deliberately. Spencer's PPO checkpoints were fitted in planar.py on exactly LOW=[0,-3] HIGH=[10,3], and navigation.observation divides the relative goal vector by 10 while capping lidar range at 5 m. Enlarging the room to 12 x 8 m would move the goal feature and the free-space statistics outside the distribution the policies saw, so any comparison with the baseline would be confounded by the arena change rather than by the obstacle layout. A larger hall is a legitimate out-of-distribution generalisation study and must be reported as one.",
+
+  "_layout_justification": "The racks straddle the straight start-to-goal line so that a controller flying directly at the goal cannot succeed, which is what makes the scene discriminative. An earlier layout placed them clear of the centre line by 0.30 m; the goal-direct baseline then threaded the gap and scored 3/3, so the static condition measured nothing. rack_a now occupies y in [-2.20, +0.20] at x in [3.1, 3.9] and rack_b occupies y in [-0.20, +2.20] at x in [6.1, 6.9], each overlapping y = 0 by 0.20 m. After inflating by the 0.18 m drone radius, passing rack_a requires y >= +0.38 and passing rack_b requires y <= -0.38, forcing an S-shaped route. Free widths at those two stations: 2.44 m on the main side and 0.44 m on the far side, so a narrower alternative route also exists. The cart blocks 0.91 m of the 5.64 m usable width at x = 5.1, leaving at least 2.37 m beside it. Every passage exceeds the 0.36 m drone diameter and the scene is navigable throughout.",
+
+  "arena": {
+    "low_xy": [0.0, -3.0],
+    "high_xy": [10.0, 3.0],
+    "wall_height_m": 2.5,
+    "wall_thickness_m": 0.1,
+    "floor_grid": true
+  },
+
+  "drone": {
+    "start_xy": [0.85, 0.0],
+    "cruise_altitude_m": 1.0,
+    "collision_radius_m": 0.18,
+    "fixed_yaw_rad": 0.0
+  },
+
+  "goal": {
+    "xy": [9.15, 0.0],
+    "tolerance_m": 0.4
+  },
+
+  "obstacles": [
+    {
+      "id": "rack_a",
+      "label": "storage rack A",
+      "purpose": "Blocks the left half of the aisle and forces the first lateral deviation. Its flat 2.4 m face is also the primary calibration target for the lidar: a plane returns a predictable range profile, unlike a cylinder.",
+      "shape": "box",
+      "xy": [3.5, -1.0],
+      "size_xy": [0.8, 2.4],
+      "height_m": 2.0,
+      "colour": [0.33, 0.36, 0.40]
+    },
+    {
+      "id": "rack_b",
+      "label": "storage rack B",
+      "purpose": "Mirrors rack A on the right, forcing a second deviation the other way, so a policy cannot succeed by committing to one side.",
+      "shape": "box",
+      "xy": [6.5, 1.0],
+      "size_xy": [0.8, 2.4],
+      "height_m": 2.0,
+      "colour": [0.33, 0.36, 0.40]
+    },
+    {
+      "id": "column_1",
+      "label": "structural column",
+      "purpose": "Off-route building column. Provides a fixed, precisely known square return for sector calibration and adds a wall-clearance hazard near the right boundary.",
+      "shape": "box",
+      "xy": [2.0, 2.3],
+      "size_xy": [0.4, 0.4],
+      "height_m": 2.5,
+      "colour": [0.55, 0.56, 0.59]
+    },
+    {
+      "id": "column_2",
+      "label": "structural column",
+      "purpose": "Mirror column near the left boundary, late in the route.",
+      "shape": "box",
+      "xy": [8.0, -2.3],
+      "size_xy": [0.4, 0.4],
+      "height_m": 2.5,
+      "colour": [0.55, 0.56, 0.59]
+    },
+    {
+      "id": "crate_stack",
+      "label": "crate stack",
+      "purpose": "Low stacked pallet load just off the final approach. Tests whether the policy keeps clearance while converging on the goal, and gives a short, wide return close to the goal pad.",
+      "shape": "box",
+      "xy": [7.9, 0.9],
+      "size_xy": [0.7, 0.7],
+      "yaw_rad": 0.35,
+      "height_m": 1.6,
+      "colour": [0.46, 0.38, 0.27]
+    },
+    {
+      "id": "cart",
+      "label": "powered transfer cart",
+      "purpose": "The dynamic hazard. Crosses the aisle perpendicular to the drone's intended direction of travel at a constant speed, so the free space at x = 5.1 m is a function of time and the policy must solve a timing problem rather than a purely geometric one.",
+      "shape": "box",
+      "xy": [5.1, 0.0],
+      "size_xy": [0.9, 0.55],
+      "height_m": 1.5,
+      "colour": [0.92, 0.45, 0.13],
+      "motion": {
+        "type": "linear",
+        "axis": "y",
+        "amplitude_m": 1.9,
+        "speed_mps": 0.45,
+        "phase_rad": 0.0
+      }
+    }
+  ],
+
+  "control": {
+    "command_period_s": 0.2,
+    "max_speed_mps": 1.2,
+    "basic_timestep_ms": 8,
+    "settle_timeout_s": 6.0,
+    "settle_speed_tol_mps": 0.02,
+    "settle_altitude_tol_m": 0.02
+  },
+
+  "dynamics": { "mode": "physical" },
+
+  "sensing": {
+    "mode": "lidar",
+    "max_range_m": 5.0,
+    "sectors": 12,
+    "mount": "stabilised",
+    "mount_height_m": 0.14,
+    "beams": 720
+  },
+
+  "collision": { "mode": "geometric" },
+
+  "camera": { "enabled": true, "width": 1280, "height": 720 },
+
+  "viewpoint": { "position": [5.0, -12.0, 8.0], "follow": false }
+}
+

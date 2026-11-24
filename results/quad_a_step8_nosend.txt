@@ -1,0 +1,13 @@
+label=quad_a_step8_nosend  basicTimeStep=8  controller step=8  resend=False
+speed=200.0 rad/s -> 10.400 N/rotor, 41.600 N total (weight 5.396 N, TWR 7.71)
+
+   t[s]    z[m]     vz[m/s]
+   0.20    0.780    -2.035
+   0.40    0.172    -3.960
+   0.60    0.230    +0.710
+   0.80    0.186    -1.061
+   1.00    0.083    +0.237
+   1.20    0.047    +0.075
+   1.40    0.035    -0.000
+
+final z = 0.0350 (start 1.0) -> FELL (no thrust)

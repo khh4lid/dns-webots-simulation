@@ -1,0 +1,42 @@
+{
+  "mass_kg": 0.55,
+  "thrust_constant": 1.5e-05,
+  "drop_altitude_m": 400.0,
+  "fall_s": 12.0,
+  "terminal_velocity_rotors_off_mps": -14.108677275667478,
+  "measured_linear_damping_per_s": 0.6953167762167762,
+  "samples": [
+    {
+      "commanded_per_rotor_N": 0.7,
+      "commanded_total_N": 2.8,
+      "omega_rad_s": 216.02468994692867,
+      "v_terminal_mps": -6.90553492898515,
+      "measured_total_N": 2.754656143319136,
+      "ratio": 0.98380576547112
+    },
+    {
+      "commanded_per_rotor_N": 1.35,
+      "commanded_total_N": 5.4,
+      "omega_rad_s": 300.0,
+      "v_terminal_mps": 0.0064582922420610206,
+      "measured_total_N": 5.397969807417889,
+      "ratio": 0.9996240384107201
+    },
+    {
+      "commanded_per_rotor_N": 2.7,
+      "commanded_total_N": 10.8,
+      "omega_rad_s": 424.26406871192853,
+      "v_terminal_mps": 14.106383158252495,
+      "measured_total_N": 10.790122673921115,
+      "ratio": 0.9990854327704736
+    },
+    {
+      "commanded_per_rotor_N": 5.4,
+      "commanded_total_N": 21.6,
+      "omega_rad_s": 600.0,
+      "v_terminal_mps": 42.231190466234956,
+      "measured_total_N": 21.54573036592853,
+      "ratio": 0.9974875169411356
+    }
+  ]
+}

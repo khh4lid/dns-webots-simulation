@@ -1,0 +1,20 @@
+parameter,value,unit,justification
+Simulator,Webots R2025a,-,"Native Python controllers, built-in Lidar/GPS/IMU/Propeller nodes, runs offline"
+Physics timestep,8,ms,"Divides 200 ms exactly (25 steps), so the PPO clock never drifts"
+PPO control period,0.2,s,Spencer's navigation.DT; 5 Hz is the agreed interface
+Inner loop rate,125,Hz,Autopilot runs at the physics timestep; a quadcopter cannot track 5 Hz setpoints open-loop
+Arena,10 x 6,m,Matches planar.py training bounds; see section 3
+Wall height,2.5,m,Raised from 1.2 m: a low wall left only 0.125 m above the scan plane
+Drone mass,0.55,kg,Whole airframe; thrust/weight 4.0
+Collision radius,0.18,m,"Equals navigation.RADIUS, so sim and policy agree"
+Flight altitude,1,m,Held by the altitude cascade; planar task by design
+Max speed,1.2,m/s per axis,"navigation.SPEED; action is scaled once, by the bridge"
+Sensor,360 deg LiDAR,-,Full-circle planar scan feeding the 12-sector contract
+Field of view,360,deg,Cylindrical projection; required above pi
+Sensor range,5,m,navigation.RANGE cap
+Beam count,720,beams,"0.5 deg spacing, 60 per sector; halved the grazing error"
+Sectors,12,-,"30 deg each, 0 forward, clockwise positive"
+Mount,stabilised,-,Ideal gimbal holding the scan plane horizontal
+Mount height,0.14,m,Above the body origin; clears the rotor discs at max tilt
+Goal tolerance,0.4,m,navigation.GOAL_TOL
+Episode horizon,90,steps,navigation.HORIZON = 18 s of simulated time

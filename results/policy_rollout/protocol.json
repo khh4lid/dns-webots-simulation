@@ -1,0 +1,46 @@
+{
+  "scenario": "default_10x6",
+  "config": "D:\\Download\\drone_navigation_system\\webots_dns\\config\\scenario_default.json",
+  "layout": "SINGLE FIXED LAYOUT -- repeated episodes vary only by flight-control noise. Not a success-rate estimate and not a generalisation test; that requires randomised layouts (S6).",
+  "dynamics": "physical",
+  "sensing": "lidar",
+  "lidar_mount": "stabilised",
+  "lidar_beams": 720,
+  "collision": "geometric",
+  "scene_label": "static",
+  "episodes_per_controller": 3,
+  "map_seeds": [
+    200000000,
+    200000001,
+    200000002
+  ],
+  "horizon_steps": 90,
+  "command_period_s": 0.2,
+  "max_speed_mps_per_axis": 1.2,
+  "goal_tolerance_m": 0.4,
+  "webots_version": "R2025a",
+  "observation_builder": "navigation.observation (Spencer, unmodified)",
+  "controllers": {
+    "direct": {
+      "kind": "scripted",
+      "source": "evaluate.goal_direct"
+    },
+    "reactive": {
+      "kind": "scripted",
+      "source": "evaluate.gap_rule"
+    },
+    "ppo_seed7": {
+      "kind": "ppo_checkpoint",
+      "source": "D:\\Download\\drone_navigation_system\\DroneNavPPO\\DroneNavPPO\\evidence\\seed7\\model.npz"
+    },
+    "ppo_seed19": {
+      "kind": "ppo_checkpoint",
+      "source": "D:\\Download\\drone_navigation_system\\DroneNavPPO\\DroneNavPPO\\evidence\\seed19\\model.npz"
+    },
+    "ppo_seed43": {
+      "kind": "ppo_checkpoint",
+      "source": "D:\\Download\\drone_navigation_system\\DroneNavPPO\\DroneNavPPO\\evidence\\seed43\\model.npz"
+    }
+  },
+  "wall_clock_s": 17.60974931716919
+}

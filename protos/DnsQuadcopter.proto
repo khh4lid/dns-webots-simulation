@@ -1,0 +1,323 @@
+﻿#VRML_SIM R2025a utf8
+# license: Apache License 2.0
+# documentation url: ../docs/DESIGN_NOTES.md
+# template language: javascript
+# tags: static
+#
+# DNS research quadcopter (Drone Navigation System, Taylor's University).
+#
+# Self-contained: built only from Webots base nodes, so the world loads with no
+# network access and no remote EXTERNPROTO downloads.
+#
+# Geometry matches the clearance model used by Spencer's planar benchmark
+# (navigation.RADIUS = 0.18 m):
+#   rotor hubs at (+-a, +-a), a = 0.09 m   -> hub radius 0.1273 m
+#   rotor radius 0.05 m                    -> tip radius 0.1773 m ~= 0.18 m
+#   boundingObject Cylinder radius 0.18 m  -> Webots contact physics and the
+#                                             geometric collision model agree.
+#
+# Mass budget (see docs/DESIGN_NOTES.md for the inertia derivation):
+#   whole airframe 0.55 kg, Ixx = Iyy = 0.00272, Izz = 0.00513 kg m^2
+#   (0.35 kg body box plus four 0.05 kg rotor groups as point masses).
+#
+# The helix Solids are graphical only -- no physics, no boundingObject -- which
+# is how the stock Propeller sample and Mavic2Pro are built. Giving them their
+# own boundingObject puts a collider inside the airframe's own bounding
+# cylinder; the resulting permanent contact absorbed several newtons of thrust
+# and stopped the vehicle taking off (measured, see docs/DESIGN_NOTES.md).
+#
+# Rotor layout (Webots robot frame: +x front, +y left, +z up), X configuration:
+#   m0 front left  (+a, +a) CCW      m1 front right (+a, -a) CW
+#   m2 rear  left  (-a, +a) CW       m3 rear  right (-a, -a) CCW
+#
+# Webots Propeller node model (official reference):
+#   T = t1 * |w| * w - t2 * |w| * V     along shaftAxis
+#   Q = q1 * |w| * w - q2 * |w| * V     about  shaftAxis
+# CW rotors are driven with negative w and carry t1 = -thrustConstant, so every
+# rotor produces +z thrust while Q keeps the sign of w and cancels in hover.
+#
+# motorMaxTorque is deliberately large and is NOT a physical motor rating. The
+# rotor speed inside Webots' propeller model ramps at a rate proportional to
+# maxTorque: with the usual 30 N m the rotors needed about 8 s to reach a
+# commanded 424 rad/s, so the vehicle could not take off. At 2000 the rotors
+# reach 97% of the commanded speed in 0.1 s and the physically meaningful limit
+# becomes motorAcceleration (5000 rad/s^2, i.e. 0 -> 600 rad/s in 0.12 s, which
+# is realistic for a small quadcopter). Measured in tests/client_spinup.py;
+# numbers in results/spinup.json.
+#
+PROTO DnsQuadcopter [
+  field SFVec3f    translation       0 0 1
+  field SFRotation rotation          0 0 1 0
+  field SFString   name              "DnsDrone"
+  field SFString   controller        "<extern>"
+  field MFString   controllerArgs    []
+  field SFBool     supervisor        TRUE
+  field SFString   customData        ""
+  field SFFloat    mass              0.55        # whole airframe [kg]
+  field SFVec3f    inertia           0.00272 0.00272 0.00513   # Ixx Iyy Izz [kg m^2]
+  field SFFloat    armOffset         0.09        # rotor hub offset on each body axis [m]
+  field SFFloat    rotorRadius       0.05        # [m]
+  field SFFloat    collisionRadius   0.18        # boundingObject radius [m]
+  field SFFloat    thrustConstant    1.5e-05     # t1 [N s^2]
+  field SFFloat    torqueConstant    2.4e-07     # q1 [N m s^2]
+  field SFFloat    motorMaxVelocity  600         # [rad/s]
+  field SFFloat    motorAcceleration 5000        # [rad/s^2] rotor spin-up limit
+  field SFFloat    motorMaxTorque    2000        # see note below
+  field SFFloat    lidarMaxRange     5.0         # [m], matches navigation.RANGE
+  field SFInt32    lidarResolution   360         # beams over the full 360 deg
+  field SFFloat    lidarNoise        0.0         # relative noise, 0 = ideal
+  # Mount height above the body origin [m]. Must keep a levelled scan plane
+  # clear of the drone's own rotor discs: the plane drops by
+  # tipRadius * tan(maxTilt) = 0.1773 * tan(0.45) = 0.0857 m on the low side,
+  # and the rotors sit at z = 0.015, so the lidar needs z > 0.1007. At the
+  # original 0.075 the levelled plane clipped the rear rotor and two sectors
+  # read a constant 0.177 m -- exactly the rotor tip radius. Measured in
+  # results/lidar_attitude.json; the clearance is asserted in dns/scenario.py.
+  field SFFloat    lidarHeight       0.14
+  # Orientation of the lidar mount relative to the airframe. Identity leaves the
+  # sensor body-fixed, which is what a bolted-on scanner does. Writing this field
+  # every control tick with the inverse of the measured roll/pitch models an
+  # ideal gimbal and keeps the scan plane horizontal; see dns/autopilot.py
+  # (Autopilot.stabilise_lidar) and docs/SENSOR_ATTITUDE.md.
+  field SFRotation lidarMountRotation 0 1 0 0
+  field SFColor    bodyColour        0.15 0.35 0.75
+  # Optional chase camera, used only to capture demonstration footage. A Camera
+  # renders offscreen to a texture, which is a different path from the GUI
+  # viewport, and it carries no mass or collider, so enabling it cannot change
+  # the flight dynamics or any recorded measurement.
+  field SFBool     sceneCamera       FALSE
+  # Pose of the camera **in the drone's frame**. Both are plain IS links, never
+  # read by the template engine, so a Supervisor can rewrite them every tick
+  # without regenerating the node. Driving them with the inverse of the
+  # airframe pose world-locks the camera: it holds a fixed studio viewpoint
+  # while the drone flies, which is what makes a legible overview shot.
+  field SFVec3f    sceneCameraOffset -3.2 0 1.8
+  field SFRotation sceneCameraRotation 0 1 0 0.42
+  field SFInt32    sceneCameraWidth  1280
+  field SFInt32    sceneCameraHeight 720
+]
+{
+  %<
+    const a  = fields.armOffset.value;
+    const rr = fields.rotorRadius.value;
+    const kt = fields.thrustConstant.value;
+    const kq = fields.torqueConstant.value;
+    const In = fields.inertia.value;
+    const zr = 0.015;                   // rotor plane height above body origin
+
+    const rotors = [
+      {n: 0, x: +a, y: +a, ccw: true },   // front left
+      {n: 1, x: +a, y: -a, ccw: false},   // front right
+      {n: 2, x: -a, y: +a, ccw: false},   // rear left
+      {n: 3, x: -a, y: -a, ccw: true }    // rear right
+    ];
+
+    // Graphical only: no physics and no boundingObject, matching the stock
+    // Propeller sample. A collider here sits inside the airframe's own bounding
+    // cylinder, and the resulting permanent contact absorbs the thrust.
+    function helixBody(name, posStr, visual) {
+      return `Solid {
+          translation ${posStr}
+          name "${name}"
+          children [
+${visual}
+          ]
+        }`;
+    }
+
+    function rotorNode(r) {
+      const t1 = r.ccw ? kt : -kt;
+      const pos = `${r.x} ${r.y} ${zr}`;
+      const slowVisual =
+`            Shape {
+              appearance PBRAppearance {
+                baseColor 0.2 0.2 0.22
+                roughness 0.8
+                metalness 0.1
+              }
+              geometry Cylinder {
+                height 0.012
+                radius 0.018
+              }
+            }
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.9 0.2 0.15
+                roughness 0.5
+                metalness 0
+              }
+              geometry Box {
+                size ${2 * rr} 0.012 0.003
+              }
+            }`;
+      const fastVisual =
+`            Shape {
+              appearance PBRAppearance {
+                baseColor 0.9 0.2 0.15
+                transparency 0.72
+                roughness 0.5
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.004
+                radius ${rr}
+              }
+            }`;
+      return `
+      Propeller {
+        shaftAxis 0 0 1
+        centerOfThrust ${pos}
+        thrustConstants ${t1} 0
+        torqueConstants ${kq} 0
+        fastHelixThreshold 50
+        device RotationalMotor {
+          name "m${r.n}"
+          maxVelocity ${fields.motorMaxVelocity.value}
+          acceleration ${fields.motorAcceleration.value}
+          maxTorque ${fields.motorMaxTorque.value}
+        }
+        slowHelix ${helixBody(`helix${r.n}`, pos, slowVisual)}
+        fastHelix ${helixBody(`fasthelix${r.n}`, pos, fastVisual)}
+      }`;
+    }
+
+    function armNode(r) {
+      // slim strut from the body centre out to the hub, purely visual
+      const ang = Math.atan2(r.y, r.x);
+      const len = Math.hypot(r.x, r.y);
+      return `
+      Pose {
+        translation ${r.x / 2} ${r.y / 2} 0
+        rotation 0 0 1 ${ang}
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.25 0.25 0.28
+              roughness 0.8
+              metalness 0.2
+            }
+            geometry Box {
+              size ${len} 0.018 0.012
+            }
+          }
+        ]
+      }`;
+    }
+  >%
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    controller IS controller
+    controllerArgs IS controllerArgs
+    supervisor IS supervisor
+    customData IS customData
+    model "DNS research quadcopter"
+    children [
+      # ----------------------------------------------------------------- body
+      Shape {
+        appearance PBRAppearance {
+          baseColor IS bodyColour
+          roughness 0.6
+          metalness 0.2
+        }
+        geometry Box {
+          size 0.18 0.18 0.06
+        }
+      }
+      # nose marker, makes +x (forward) visible in the 3D view
+      Pose {
+        translation 0.105 0 0
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 1 0.85 0.1
+              roughness 0.5
+              metalness 0
+            }
+            geometry Box {
+              size 0.05 0.035 0.025
+            }
+          }
+        ]
+      }
+      %<= rotors.map(armNode).join("\n") >%
+      # -------------------------------------------------------------- sensors
+      GPS {
+        name "gps"
+      }
+      Gyro {
+        name "gyro"
+      }
+      InertialUnit {
+        name "imu"
+      }
+      # The lidar hangs off an orientable mount rather than the airframe itself.
+      # A Pose carries no mass, inertia or collider, so switching between the
+      # body-fixed and stabilised sensor models leaves the calibrated 0.55 kg
+      # mass budget and the flight dynamics untouched.
+      DEF DNS_LIDAR_MOUNT Pose {
+        translation 0 0 %<= fields.lidarHeight.value >%
+        rotation IS lidarMountRotation
+        children [
+          Lidar {
+            name "lidar"
+            # Horizontal 360 deg planar scan. Cylindrical projection is required
+            # because the field of view exceeds pi.
+            type "fixed"
+            projection "cylindrical"
+            fieldOfView 6.283185307179586
+            verticalFieldOfView 0.01
+            numberOfLayers 1
+            horizontalResolution IS lidarResolution
+            near 0.05
+            minRange 0.05
+            maxRange IS lidarMaxRange
+            noise IS lidarNoise
+            resolution -1
+          }
+        ]
+      }
+      # ------------------------------------------------- demonstration camera
+%< if (fields.sceneCamera.value) { >%
+      DEF DNS_SCENE_CAMERA Pose {
+        # Webots sensors look along their local +x; a positive rotation about
+        # +y pitches that axis downward.
+        translation IS sceneCameraOffset
+        rotation IS sceneCameraRotation
+        children [
+          Camera {
+            name "scene_camera"
+            width %<= fields.sceneCameraWidth.value >%
+            height %<= fields.sceneCameraHeight.value >%
+            # 1.35 rad (77 deg). A 10 x 6 m room has to fit in frame from a
+            # viewpoint that still clears the 2.5 m wall, and 1.1 rad was too
+            # narrow to hold the start pad and the goal pad at once.
+            fieldOfView 1.35
+            near 0.1
+            far 60
+          }
+        ]
+      }
+%< } >%
+      # --------------------------------------------------------------- rotors
+      %<= rotors.map(rotorNode).join("\n") >%
+    ]
+    boundingObject Cylinder {
+      height 0.07
+      radius IS collisionRadius
+    }
+    physics Physics {
+      density -1
+      mass IS mass
+      centerOfMass [
+        0 0 0
+      ]
+      inertiaMatrix [
+        %<= In.x >% %<= In.y >% %<= In.z >%
+        0 0 0
+      ]
+    }
+  }
+}
+

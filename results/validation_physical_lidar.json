@@ -1,0 +1,185 @@
+{
+  "scenario": "warehouse_dynamic",
+  "config": "config\\scenario_warehouse.json",
+  "dynamics": "physical",
+  "sensing": "lidar",
+  "collision": "geometric",
+  "basic_timestep_ms": 8,
+  "steps_per_command": 25,
+  "axes": [
+    {
+      "label": "+x forward",
+      "command_mps": [
+        0.6,
+        0.0
+      ],
+      "displacement_m": [
+        0.4657114920479478,
+        4.453837184963774e-17
+      ],
+      "measured_velocity_mps": [
+        0.6684235783221845,
+        8.418959314206641e-17
+      ]
+    },
+    {
+      "label": "-x back",
+      "command_mps": [
+        -0.6,
+        0.0
+      ],
+      "displacement_m": [
+        -0.46550086212806907,
+        -3.985946954614362e-17
+      ],
+      "measured_velocity_mps": [
+        -0.6685327563593512,
+        -1.0739127684529999e-16
+      ]
+    },
+    {
+      "label": "+y right",
+      "command_mps": [
+        0.0,
+        0.6
+      ],
+      "displacement_m": [
+        -0.00019809595896014276,
+        0.4657132403455269
+      ],
+      "measured_velocity_mps": [
+        0.00011012323059529753,
+        0.6684227412285859
+      ]
+    },
+    {
+      "label": "-y left",
+      "command_mps": [
+        0.0,
+        -0.6
+      ],
+      "displacement_m": [
+        4.946098249858366e-07,
+        -0.46550087616769775
+      ],
+      "measured_velocity_mps": [
+        -2.86313006448286e-07,
+        -0.6685327495021938
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "check": "world_loads",
+      "pass": true,
+      "detail": "basicTimeStep 8 ms, 25 steps per 0.2 s command"
+    },
+    {
+      "check": "vehicle_parameters",
+      "pass": true,
+      "detail": "mass 0.55 kg, thrust/weight 4.00, collision radius 0.18 m"
+    },
+    {
+      "check": "start_inside_arena",
+      "pass": true,
+      "detail": "start [0.85, -0.0] within [0.0, -3.0] .. [10.0, 3.0]"
+    },
+    {
+      "check": "start_matches_config",
+      "pass": true,
+      "detail": "config [0.85, 0.0], actual [0.85, -0.0]"
+    },
+    {
+      "check": "goal_matches_config",
+      "pass": true,
+      "detail": "goal [9.15, 0.0], tolerance 0.4 m"
+    },
+    {
+      "check": "reset_time_is_zero",
+      "pass": true,
+      "detail": "time_s 0.0"
+    },
+    {
+      "check": "reset_altitude",
+      "pass": true,
+      "detail": "altitude 1.0011 m (target 1.0 m)"
+    },
+    {
+      "check": "command_rate_5hz",
+      "pass": true,
+      "detail": "5 steps, deltas [0.2, 0.2, 0.2, 0.2, 0.2] s (max error 2.78e-16 s)"
+    },
+    {
+      "check": "timestamps_monotonic",
+      "pass": true,
+      "detail": "t [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]"
+    },
+    {
+      "check": "axis_+x_forward",
+      "pass": true,
+      "detail": "command [0.6, 0.0] -> moved [0.4657, 0.0] m, measured v [0.6684, 0.0] m/s"
+    },
+    {
+      "check": "axis_-x_back",
+      "pass": true,
+      "detail": "command [-0.6, 0.0] -> moved [-0.4655, -0.0] m, measured v [-0.6685, -0.0] m/s"
+    },
+    {
+      "check": "axis_+y_right",
+      "pass": true,
+      "detail": "command [0.0, 0.6] -> moved [-0.0002, 0.4657] m, measured v [0.0001, 0.6684] m/s"
+    },
+    {
+      "check": "axis_-y_left",
+      "pass": true,
+      "detail": "command [0.0, -0.6] -> moved [0.0, -0.4655] m, measured v [-0.0, -0.6685] m/s"
+    },
+    {
+      "check": "velocity_is_measured",
+      "pass": true,
+      "detail": "after one 0.2 s step the commanded [1.2, 0.0] reads [0.2801, -0.0008] m/s (a real quadcopter cannot reach the setpoint instantly)"
+    },
+    {
+      "check": "no_false_collision",
+      "pass": true,
+      "detail": "at start [0.85, -0.0] collision=False"
+    },
+    {
+      "check": "collision_detected",
+      "pass": true,
+      "detail": "wall contact reported at [0.255, 0.0] after 5 steps"
+    },
+    {
+      "check": "reset_restores_start",
+      "pass": true,
+      "detail": "[0.850001, -0.0] vs [0.849999, 2e-06] (gap 2.758e-06 m, tolerance 1e-03)"
+    },
+    {
+      "check": "reset_is_reproducible",
+      "pass": true,
+      "detail": "max divergence over 3 identical commands: 7.091e-03 m (tolerance 2e-02 m, physical mode)"
+    },
+    {
+      "check": "observation_dim",
+      "pass": true,
+      "detail": "reset observation shape (52,), expected (52,)"
+    },
+    {
+      "check": "observation_finite_and_bounded",
+      "pass": true,
+      "detail": "range [-0.0001, 1.0000]"
+    },
+    {
+      "check": "step_through_navigation",
+      "pass": true,
+      "detail": "action [0.5, -0.25] -> reward -0.017423, outcome running, terminated False, truncated False"
+    },
+    {
+      "check": "frame_passes_validate",
+      "pass": true,
+      "detail": "navigation.validate accepted every frame (it raises otherwise)"
+    }
+  ],
+  "passed": 22,
+  "total": 22
+}

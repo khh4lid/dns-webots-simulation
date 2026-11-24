@@ -1,0 +1,46 @@
+{
+  "schema": "dns-scenario-v1",
+  "name": "empty_12x8",
+  "description": "Obstacle-free arena used to characterise the flight controller. Velocity-tracking tests need room to accelerate without a collision confounding the measurement. Same frames, altitude and command rate as the default scenario.",
+
+  "arena": {
+    "low_xy": [0.0, -4.0],
+    "high_xy": [12.0, 4.0],
+    "wall_height_m": 1.2,
+    "wall_thickness_m": 0.1
+  },
+
+  "drone": {
+    "start_xy": [2.0, 0.0],
+    "cruise_altitude_m": 1.0,
+    "collision_radius_m": 0.18,
+    "fixed_yaw_rad": 0.0
+  },
+
+  "goal": {
+    "xy": [10.0, 0.0],
+    "tolerance_m": 0.4
+  },
+
+  "obstacles": [],
+
+  "control": {
+    "command_period_s": 0.2,
+    "max_speed_mps": 1.2,
+    "basic_timestep_ms": 8,
+    "settle_timeout_s": 6.0,
+    "settle_speed_tol_mps": 0.02,
+    "settle_altitude_tol_m": 0.02
+  },
+
+  "dynamics": { "mode": "physical" },
+
+  "sensing": { "mode": "none", "max_range_m": 5.0, "sectors": 12 },
+
+  "collision": { "mode": "geometric" },
+
+  "viewpoint": {
+    "position": [6.0, -13.0, 10.0],
+    "orientation": [0.46, 0.13, 0.88, 0.62]
+  }
+}

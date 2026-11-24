@@ -1,0 +1,72 @@
+{
+  "webots_version": "R2025a",
+  "world": "worlds/DNS_Research_World.wbt",
+  "configs": {
+    "static": "config\\scenario_warehouse_static.json",
+    "dynamic": "config\\scenario_warehouse.json"
+  },
+  "modes": {
+    "B_static": "crossing obstacle parked at the arena edge; fixed layout, physical mode near-deterministic, so repeats measure run-to-run variation only",
+    "C_dynamic": "crossing obstacle sweeping; each seed selects a different initial phase, so episodes are distinct scenario instances"
+  },
+  "episodes_per_controller": {
+    "B_static": 3,
+    "C_dynamic": 15
+  },
+  "seeds": [
+    200000000,
+    200000001,
+    200000002,
+    200000003,
+    200000004,
+    200000005,
+    200000006,
+    200000007,
+    200000008,
+    200000009,
+    200000010,
+    200000011,
+    200000012,
+    200000013,
+    200000014
+  ],
+  "phase_rule": "numpy default_rng(seed).uniform(0, 2*pi)",
+  "horizon_steps": 90,
+  "command_period_s": 0.2,
+  "max_speed_mps_per_axis": 1.2,
+  "goal_tolerance_m": 0.4,
+  "collision_rule": "geometric",
+  "sensing": {
+    "mode": "lidar",
+    "mount": "stabilised",
+    "beams": 720,
+    "max_range_m": 5.0
+  },
+  "observation_builder": "navigation.observation (Spencer, unmodified)",
+  "controllers": {
+    "ppo_seed7": {
+      "kind": "ppo_checkpoint",
+      "source": "D:\\Download\\drone_navigation_system\\DroneNavPPO\\DroneNavPPO\\evidence\\seed7\\model.npz"
+    },
+    "ppo_seed19": {
+      "kind": "ppo_checkpoint",
+      "source": "D:\\Download\\drone_navigation_system\\DroneNavPPO\\DroneNavPPO\\evidence\\seed19\\model.npz"
+    },
+    "ppo_seed43": {
+      "kind": "ppo_checkpoint",
+      "source": "D:\\Download\\drone_navigation_system\\DroneNavPPO\\DroneNavPPO\\evidence\\seed43\\model.npz"
+    },
+    "reactive": {
+      "kind": "scripted",
+      "source": "evaluate.gap_rule"
+    },
+    "direct": {
+      "kind": "scripted",
+      "source": "evaluate.goal_direct"
+    }
+  },
+  "denominator_note": "every rate is successes / episodes in that mode+controller cell; no episode was excluded",
+  "limitation": "ONE fixed obstacle layout throughout. Mode C varies the crossing phase only. No spatial-generalisation claim.",
+  "wall_clock_s": 159.78,
+  "total_episodes": 90
+}

@@ -1,0 +1,25 @@
+# DNS simulation environment -- Python dependencies.
+#
+# Two imports are deliberately absent from this file because pip cannot supply
+# them:
+#   controller  -- ships with Webots; scripts/with_webots.py puts the Webots
+#                  libController directory on the child process's path.
+#   navigation  -- Spencer's PPO package, resolved at runtime by
+#                  dns/spencer_link.py (see README, "Teammate code").
+#
+# Versions are the ones this project was last verified against
+# (Python 3.15.2, Windows 10, Webots R2025a).
+
+# --- required: core simulation, tests, and the PPO bridge ---
+numpy==2.3.5
+
+# --- optional: regenerating figures and the research report ---
+matplotlib==3.11.2
+
+# --- optional: image inspection probes and frame analysis ---
+Pillow==13.0.0
+
+# --- optional: encoding the demonstration video ---
+# Webots' bundled ffmpeg.exe does not run in this environment (exit 53), so
+# tests/client_record_demo.py uses this wheel's ffmpeg binary instead.
+imageio-ffmpeg==0.8.1

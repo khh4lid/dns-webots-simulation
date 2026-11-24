@@ -1,0 +1,95 @@
+{
+  "schema": "dns-scenario-v1",
+  "name": "research_demo",
+  "description": "DNS research demonstration scene. Two static obstacles plus one obstacle that crosses the route, in the same 10 x 6 m arena as the PPO baseline. This is the scene used for the demonstration recording and for the dynamic-navigation experiment. All coordinates are DNS: +x forward, +y right, fixed altitude, fixed yaw.",
+
+  "_dimension_justification": "10 x 6 m is kept, NOT enlarged to 12 x 8 m. Spencer's policies were trained in planar.py on LOW=[0,-3] HIGH=[10,3], and navigation.observation divides the goal vector by 10 and caps lidar at 5 m. Widening the arena would push the relative-goal feature and the free-space statistics outside the distribution the policies saw, so results would no longer be comparable with the static baseline. A larger arena belongs in a clearly labelled out-of-distribution generalisation study, not in the headline demonstration.",
+
+  "arena": {
+    "low_xy": [0.0, -3.0],
+    "high_xy": [10.0, 3.0],
+    "wall_height_m": 2.5,
+    "wall_thickness_m": 0.1
+  },
+
+  "drone": {
+    "start_xy": [0.85, 0.0],
+    "cruise_altitude_m": 1.0,
+    "collision_radius_m": 0.18,
+    "fixed_yaw_rad": 0.0
+  },
+
+  "goal": {
+    "xy": [9.15, 0.0],
+    "tolerance_m": 0.4
+  },
+
+  "obstacles": [
+    {
+      "id": "obs_a",
+      "_comment": "Static pillar, offset left of the straight line so the direct route is blocked but a route exists on either side.",
+      "xy": [3.5, -0.35],
+      "radius_m": 0.55,
+      "height_m": 1.8,
+      "colour": [0.72, 0.74, 0.78],
+      "motion": { "type": "static" }
+    },
+    {
+      "id": "obs_b",
+      "_comment": "Second static pillar, offset the other way, so the drone has to change side at least once.",
+      "xy": [6.6, 0.55],
+      "radius_m": 0.50,
+      "height_m": 1.8,
+      "colour": [0.72, 0.74, 0.78],
+      "motion": { "type": "static" }
+    },
+    {
+      "id": "mover",
+      "_comment": "Crossing obstacle at constant speed. Placed between the two pillars at x=5.1 so it sweeps the corridor the drone must transit. amplitude 1.6 m and speed 0.45 m/s give a period of 4*1.6/0.45 = 14.22 s. At phase 0 it starts at y=-1.6, which is 4.5 m from the start point, so it never overlaps the drone at reset. Closest approach between the mover envelope and either pillar leaves about 0.98 m of free gap, comfortably more than the drone's 0.36 m diameter, so the scene is always navigable.",
+      "xy": [5.1, 0.0],
+      "radius_m": 0.5,
+      "height_m": 1.8,
+      "colour": [0.92, 0.45, 0.13],
+      "motion": {
+        "type": "linear",
+        "axis": "y",
+        "amplitude_m": 1.6,
+        "speed_mps": 0.45,
+        "phase_rad": 0.0
+      }
+    }
+  ],
+
+  "control": {
+    "command_period_s": 0.2,
+    "max_speed_mps": 1.2,
+    "basic_timestep_ms": 8,
+    "settle_timeout_s": 6.0,
+    "settle_speed_tol_mps": 0.02,
+    "settle_altitude_tol_m": 0.02
+  },
+
+  "dynamics": { "mode": "physical" },
+
+  "sensing": {
+    "mode": "lidar",
+    "max_range_m": 5.0,
+    "sectors": 12,
+    "mount": "stabilised",
+    "mount_height_m": 0.14,
+    "beams": 720
+  },
+
+  "collision": { "mode": "geometric" },
+
+  "camera": {
+    "enabled": true,
+    "width": 1280,
+    "height": 720
+  },
+
+  "viewpoint": {
+    "position": [5.0, -12.0, 7.0],
+    "follow": false
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "shots": [
+    {
+      "exists": true,
+      "size_bytes": 3010848,
+      "sha256": "cf8362eff0b22bdf",
+      "index": 0,
+      "command": [
+        0.0,
+        0.0
+      ],
+      "drone_xy": [
+        0.85,
+        -0.0
+      ]
+    },
+    {
+      "exists": true,
+      "size_bytes": 3010848,
+      "sha256": "cf8362eff0b22bdf",
+      "index": 1,
+      "command": [
+        1.0,
+        0.0
+      ],
+      "drone_xy": [
+        2.7795768290270844,
+        -5.359532777835932e-17
+      ]
+    },
+    {
+      "exists": true,
+      "size_bytes": 3010848,
+      "sha256": "cf8362eff0b22bdf",
+      "index": 2,
+      "command": [
+        0.0,
+        1.0
+      ],
+      "drone_xy": [
+        2.8960705754264264,
+        1.9247212159862717
+      ]
+    }
+  ],
+  "all_written": true,
+  "distinct_images": 1,
+  "size_range": [
+    3010848,
+    3010848
+  ],
+  "conclusion": "A: every export is byte-identical -- the view is not rendering scene content"
+}
