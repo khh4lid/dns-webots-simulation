@@ -1,0 +1,28 @@
+{
+  "question": "Is a single episode reproducible on its own, or only when the preceding episode sequence is replayed?",
+  "layout": "L00",
+  "controller": "ppo_seed7",
+  "variants": [
+    0,
+    1,
+    2,
+    5,
+    10
+  ],
+  "arms": {
+    "isolated": {
+      "episodes": 5,
+      "outcome_matches_log": 5,
+      "step_count_matches_log": 4,
+      "max_path_delta_m_median": 0.00544912,
+      "max_path_delta_m_worst": 0.287388893
+    },
+    "sequence": {
+      "episodes": 5,
+      "outcome_matches_log": 5,
+      "step_count_matches_log": 5,
+      "max_path_delta_m_median": 4.974e-06,
+      "max_path_delta_m_worst": 4.993e-06
+    }
+  }
+}

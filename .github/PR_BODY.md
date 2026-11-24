@@ -38,7 +38,7 @@ tell navigation competence from memorising one room.
 - [x] Every number traced in `evidence/CLAIMS_EVIDENCE.csv`
 - [x] Every visual carries a provenance label
 - [x] No history rewrite, no force push; `v1.0` tagged and pushed
-- [ ] **Names still `NAME NEEDED` / `TBC`** — fill before merging
+- [ ] Three identity details still to confirm (full legal name for `CITATION.cff`, Spencer's surname + handle, sensor teammate's name + handle) — shown as explicit gaps, not guesses
 - [ ] Reviewer eye-check (below)
 
 ### Please eye-check on this branch

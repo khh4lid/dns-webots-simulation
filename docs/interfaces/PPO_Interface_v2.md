@@ -2,8 +2,8 @@
 
 *The v1 interface document is unchanged; this is the v2 revision.*
 
-**Owner of this document:** TBC (@khh4lid) ·
-**You:** TBC (TBC)
+**Owner of this document:** Khaled (@khh4lid) ·
+**You:** Spencer (handle to confirm)
 
 > [!IMPORTANT]
 > **Nothing of yours is in this repository.** Your `DroneNavPPO/` tree, your

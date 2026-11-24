@@ -1,12 +1,13 @@
 # For the supervisor — one page
 
-**Student:** TBC (@khh4lid) ·
+**Student:** Khaled (@khh4lid) ·
 **Supervisor:** Dr. Mehdi Samieiyeganeh ·
 **Contribution:** the Webots simulation environment
 
 > [!NOTE]
-> Names marked **TBC** were not supplied when this release was generated. They
-> are placeholders, not omissions — tell me the spellings and I will fill them in.
+> Still to confirm: my full legal name for the citation file, Spencer's surname
+> and GitHub handle, and the sensor teammate's name and handle. Everything else
+> here is final.
 
 ## What was done since v1
 

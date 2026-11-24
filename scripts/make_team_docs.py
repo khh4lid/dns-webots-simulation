@@ -4,8 +4,9 @@ Four role guides plus two interface specifications. Numbers are pulled from the
 result files at generation time, so a document cannot quote a figure that the
 data no longer supports.
 
-Identity fields that were never supplied are written as **TBC** rather than
-guessed, and are listed at the top of each document that needs them.
+Identity fields are resolved only as far as the project record supports; what
+is not on record is shown as an explicit "to confirm" rather than guessed, and
+is listed at the top of each document that needs it.
 
 Run::
 
@@ -22,18 +23,26 @@ RESULTS = ROOT / "results" / "v2_S6"
 TEAM = ROOT / "docs" / "team"
 INTERFACES = ROOT / "docs" / "interfaces"
 
-#: Section 0 of the brief left every identity field in brackets. Per its own
-#: instruction these are written as TBC and reported, never guessed. The GitHub
-#: owner handle is the one fact that WAS given (the repository URL).
+#: Identity fields, each resolved ONLY as far as the project record supports.
+#: The brief's Section 0 was submitted twice with every field still in
+#: brackets, so nothing here is guessed: a value is filled in only where it
+#: appears in the repository, the supervisor's own name, or the GitHub URL.
+#: Anything else stays an explicit "to confirm", because a plausible-looking
+#: invented surname on a citation file is worse than a visible gap.
 PEOPLE = {
-    "me_name": "TBC",
+    # Given name and handle are on record (repository owner, project docs).
+    # The full legal name for CITATION.cff is not.
+    "me_name": "Khaled",
     "me_handle": "@khh4lid",
-    "spencer_name": "TBC",
-    "spencer_handle": "TBC",
-    "sensor_name": "TBC",
-    "sensor_handle": "TBC",
+    "me_fullname_status": "full name to confirm",
+    # Used consistently throughout the project; surname and handle never given.
+    "spencer_name": "Spencer",
+    "spencer_handle": "handle to confirm",
+    # Nothing at all is on record for this teammate.
+    "sensor_name": "name to confirm",
+    "sensor_handle": "handle to confirm",
     "supervisor_name": "Dr. Mehdi Samieiyeganeh",
-    "supervisor_handle": "TBC",
+    "supervisor_handle": "handle to confirm",
 }
 
 
@@ -102,8 +111,9 @@ FOR_SUPERVISOR = f"""# For the supervisor — one page
 **Contribution:** the Webots simulation environment
 
 > [!NOTE]
-> Names marked **TBC** were not supplied when this release was generated. They
-> are placeholders, not omissions — tell me the spellings and I will fill them in.
+> Still to confirm: my full legal name for the citation file, Spencer's surname
+> and GitHub handle, and the sensor teammate's name and handle. Everything else
+> here is final.
 
 ## What was done since v1
 

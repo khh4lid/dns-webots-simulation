@@ -42,12 +42,16 @@ VIDEOS = ROOT / "results" / "video"
 DIAGRAMS = ROOT / "assets" / "diagrams"
 RESULTS = ROOT / "results" / "v2_S6"
 
-#: Section 0 of the brief still had every identity field in brackets, so the
-#: deck is built with a VISIBLE placeholder rather than a guess, and must not
-#: be exported as final until it is filled in.
-PRESENTER = "NAME NEEDED"
+#: Resolved only as far as the project record supports. "Khaled" and the
+#: @khh4lid handle are on record; the full legal name, Spencer's surname and
+#: the sensor teammate's name are not, and are shown as explicit gaps rather
+#: than invented. The deck is presentable as-is; the title slide carries the
+#: one outstanding item.
+PRESENTER = "Khaled (@khh4lid)"
 SUPERVISOR = "Dr. Mehdi Samieiyeganeh"
-NAMES_PENDING = True
+SPENCER = "Spencer"
+SENSOR = "[sensor teammate — name to confirm]"
+NAMES_PENDING = True        # full name / surnames still outstanding
 
 SECTIONS = ["Role", "World", "Verification", "Results", "Decisions"]
 
@@ -381,8 +385,8 @@ def s12():
         section="Decisions", number="12/12")
     kv_table(axis, [
         ("L04: exclude, or run a longer-horizon diagnostic?", SUPERVISOR),
-        ("More PPO training seeds — 3 cannot separate variance", "NAME NEEDED"),
-        ("The 0.0536 m vs 0.62 m sensor anomaly", "NAME NEEDED"),
+        ("More PPO training seeds — 3 cannot separate variance", SPENCER),
+        ("The 0.0536 m vs 0.62 m sensor anomaly", "sensor teammate"),
     ], y=0.70, width=0.60, key_size=13, value_size=12)
     axis.text(0.055, 0.44, "My next steps", fontsize=13, fontweight="bold",
               color=S.INK, va="top")
@@ -435,6 +439,8 @@ def b3():
 
 
 def b4():
+    g4 = json.loads((ROOT / "results" / "layout_gate" / "L04.json")
+                    .read_text(encoding="utf8"))["reference_traversal"]
     figure, axis = new_slide("Backup — why L04 is excluded", number="B4")
     kv_table(axis, [
         ("margin 0.22 m, ≤ 0.48 m/s", "timeout at 90 steps, no collision"),

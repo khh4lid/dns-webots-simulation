@@ -2,7 +2,7 @@
 
 What I was responsible for, what I delivered, and where the evidence is.
 
-**Owner:** TBC (@khh4lid) ·
+**Owner:** Khaled (@khh4lid) ·
 **Supervisor:** Dr. Mehdi Samieiyeganeh
 
 My contribution is the **simulation environment**. I do not own the PPO policy

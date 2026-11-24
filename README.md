@@ -84,14 +84,14 @@ Four clips, every frame a real Webots render from an offscreen Camera node. Each
 
 ## Team and responsibilities
 
-> [!IMPORTANT]
-> Names marked **TBC** were not supplied when this release was generated. They are placeholders, not omissions.
+> [!NOTE]
+> Three details are still to confirm and are marked below rather than guessed: my full legal name for `CITATION.cff`, Spencer's surname and GitHub handle, and the sensor teammate's name and handle.
 
 | Person | Role | Owns | Status | Next |
 |---|---|---|---|---|
-| **TBC** ([@khh4lid](https://github.com/khh4lid)) | Simulation environment | This repository: world, drone, sensor mounting, obstacles, generator, verification | v2.0 released | Report and slides |
-| **TBC** (Spencer) | PPO policy | `DroneNavPPO/` — training, checkpoints, `handoff.py` | 3 checkpoints evaluated | More training seeds |
-| **TBC** | Sensor & perception | Raw-sensor processing | Interface + ground-truth data ready | Investigate the 0.0536 m anomaly |
+| **Khaled** ([@khh4lid](https://github.com/khh4lid)) | Simulation environment | This repository: world, drone, sensor mounting, obstacles, generator, verification | v2.0 ready to merge | Progress report |
+| **Spencer** *(handle to confirm)* | PPO policy | `DroneNavPPO/` — training, checkpoints, `handoff.py` | 3 checkpoints evaluated | More training seeds |
+| *(name to confirm)* | Sensor & perception | Raw-sensor processing | Interface + ground-truth data ready | Investigate the 0.0536 m anomaly |
 | **Dr. Mehdi Samieiyeganeh** | Supervisor | Direction, review | — | 3 decisions ([here](docs/team/FOR_SUPERVISOR.md#decisions-i-need-from-you)) |
 
 My five responsibilities and what each delivered: **[simulation environment dossier](docs/team/SIMULATION_ENVIRONMENT_DOSSIER.md)**.
@@ -320,9 +320,15 @@ All five controllers score 0/90 on L04 — but so does the environment's own ref
 
 | Planning margin | Tracker speed | Outcome | Peak tilt |
 |---|---|---|---|
-| 0.22 m | ≤ 0.48 m/s | timeout at 90 steps, **no collision** | 0.105 rad |
-| 0.22 m | ≤ 0.84 m/s | collision at 13 steps | — |
-| 0.12 m | ≤ 1.08 m/s | timeout, airframe tumbled | **1.5905 rad** |
+| 0.22 m | fast profile | collision at 10 steps | 0.2496 rad |
+
+> [!WARNING]
+> A wider multi-profile sweep was run (slow profiles timed out without
+> colliding; a 0.12 m margin tumbled the airframe to 1.5905 rad), but
+> `results/layout_gate/L04.json` was overwritten by a later single-profile run,
+> so only the row above is currently backed by a file. Regenerate with
+> `python scripts/run_gates.py L04` before citing the rest. The exclusion does
+> not depend on the missing rows — the tracker fails in the attempt on file.
 
 The route is flyable slowly and safely but not fast enough to finish inside the 18 s horizon; above that speed the tracker clips the same crate the PPO checkpoints hit. So "the policies fail to generalise" cannot be separated from "this layout may be outside the airframe's envelope within the horizon" — and reporting the former would be a claim the evidence does not support. The data is kept in full. **[ADR-014](docs/decisions/ADR-014-l04-excluded-generalisation-conclusion.md)** · *decision pending from Dr. Mehdi.*
 
@@ -360,6 +366,7 @@ Full detail with before → after → evidence: **[V1_CORRECTIONS.md](docs/verif
 | **L04 traversability unconfirmed** | One rung of the ladder yields no conclusion | Dr. Mehdi — decision pending |
 | **Cart contact is not physical** | `collision_cart` means swept footprints intersected, not that an impact was simulated | Me — would need a `Physics` node |
 | **Ideal gimbal** | A best case, not a real sensor. Ideal-ON and body-fixed-OFF bracket a real one; the bracket run is not done | Me |
+| **Single episodes are not independently reproducible** — drift 2.3 mm to 287 mm; see [RESET_DETERMINISM](docs/verification/RESET_DETERMINISM.md) | Episodes in a cell are coupled through residual state and are not strictly independent draws | Me |
 | **Reset fails after a tumble** | A tumbled airframe cannot re-settle within its 6 s budget, aborting the next episode | Me |
 | **Sensor reading 0.0536 m vs 0.62 m ground truth** | Unexplained; matters because repulsion scales with `1.45 − range` | Sensor teammate |
 | **Three training seeds** | Cannot separate checkpoint variance from layout effects | Spencer |

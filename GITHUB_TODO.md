@@ -23,14 +23,14 @@ If `gh` is on PATH in a fresh terminal, run `python scripts/github_finalise.py`
 
 ## 0. Before anything — fill in the names
 
-Still `NAME NEEDED` / `TBC` in the deck, the README team table, `CITATION.cff`
-and the role guides:
+Resolved from the project record: **Khaled (@khh4lid)**, **Spencer**,
+**Dr. Mehdi Samieiyeganeh**. Still genuinely unknown:
 
 | Field | Set in |
 |---|---|
-| My full name | `scripts/make_slides.py` (`PRESENTER`), `scripts/make_team_docs.py` (`PEOPLE["me_name"]`) |
-| Spencer's name + handle | `scripts/make_team_docs.py` (`PEOPLE["spencer_*"]`) |
-| Sensor teammate's name + handle | `scripts/make_team_docs.py` (`PEOPLE["sensor_*"]`) |
+| My **full legal name** (needed only by `CITATION.cff`) | `scripts/make_team_docs.py` (`PEOPLE`) |
+| Spencer's **surname** + GitHub handle | `scripts/make_team_docs.py` (`PEOPLE["spencer_*"]`) |
+| Sensor teammate's name + GitHub handle | `scripts/make_team_docs.py` (`PEOPLE["sensor_*"]`) |
 | Dr. Mehdi's handle (optional) | `scripts/make_team_docs.py` (`PEOPLE["supervisor_handle"]`) |
 
 Then:

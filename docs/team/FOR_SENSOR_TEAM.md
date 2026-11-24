@@ -1,7 +1,7 @@
 # For the sensor and perception teammate
 
-**Owner of this document:** TBC (@khh4lid) ·
-**You:** TBC (TBC)
+**Owner of this document:** Khaled (@khh4lid) ·
+**You:** name to confirm (handle to confirm)
 
 > [!NOTE]
 > I own sensor **mounting and configuration** inside the simulator. You own raw

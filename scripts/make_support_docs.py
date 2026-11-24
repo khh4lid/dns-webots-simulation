@@ -95,8 +95,9 @@ title: >-
   DNS Webots simulation environment for UAV navigation among static and
   dynamic obstacles
 message: >-
-  If you use this simulation environment, please cite it. Author names marked
-  TBC were not available when this release was generated.
+  If you use this simulation environment, please cite it. The author's given
+  name and GitHub handle are confirmed; the full legal name is still to be
+  supplied and is marked below rather than guessed.
 type: software
 version: "2.0"
 date-released: "2026-11-25"
@@ -118,8 +119,9 @@ keywords:
   - reproducibility
   - reinforcement-learning
 authors:
-  - given-names: TBC
-    family-names: TBC
+  - given-names: Khaled
+    # family-names deliberately omitted: not on record for this release.
+    # Supply it and re-run scripts/make_support_docs.py before citing.
     alias: khh4lid
     affiliation: "Taylor's University, Malaysia"
 """

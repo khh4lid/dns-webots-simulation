@@ -1,13 +1,14 @@
 # Presenter kit — 27 November 2026
 
-**Presenter:** NAME NEEDED · **Supervisor:** Dr. Mehdi Samieiyeganeh ·
+**Presenter:** Khaled (@khh4lid) · **Supervisor:** Dr. Mehdi Samieiyeganeh ·
 **Deck:** `DNS_SimEnv_2026-11-27.pdf` / `.pptx` (12 slides + 6 backups)
 
-> [!WARNING]
-> The deck still carries visible **NAME NEEDED** placeholders — mine, Spencer's
-> and the sensor teammate's. Fill them in `scripts/make_slides.py` (`PRESENTER`)
-> and `scripts/make_team_docs.py` (`PEOPLE`), then re-run both, before this is
-> treated as final.
+> [!NOTE]
+> The deck is presentable. Three details are still to confirm and appear as
+> explicit gaps rather than guesses: my full legal name (`CITATION.cff` only),
+> Spencer's surname and handle, and the sensor teammate's name. Set them in
+> `scripts/make_team_docs.py` (`PEOPLE`) and `scripts/make_slides.py`, then
+> re-run both.
 
 ---
 
