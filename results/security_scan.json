@@ -2,27 +2,45 @@
   "tree": [
     {
       "rule": "personal_abs_path",
-      "severity": "medium",
-      "where": "README.md",
-      "match": "D:\\Program"
+      "severity": "low",
+      "where": "evidence/ENVIRONMENT.txt",
+      "match": "D:\\Program",
+      "note": "generated log, not documentation"
     },
     {
       "rule": "personal_abs_path",
-      "severity": "medium",
-      "where": "dns/launcher.py",
-      "match": "D:\\Program"
+      "severity": "low",
+      "where": "evidence/ENVIRONMENT.txt",
+      "match": "D:\\Program",
+      "note": "generated log, not documentation"
     },
     {
       "rule": "personal_abs_path",
-      "severity": "medium",
-      "where": "dns/launcher.py",
-      "match": "C:\\Program"
+      "severity": "low",
+      "where": "evidence/TASK_PROMPT_v2.md",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
     },
     {
       "rule": "personal_abs_path",
-      "severity": "medium",
-      "where": "dns/launcher.py",
-      "match": "C:\\Program"
+      "severity": "low",
+      "where": "evidence/TASK_PROMPT_v2.md",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/build_worlds.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/build_worlds.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
     },
     {
       "rule": "personal_abs_path",
@@ -34,8 +52,15 @@
     {
       "rule": "personal_abs_path",
       "severity": "low",
-      "where": "results/experiments/protocol.json",
-      "match": "D:\\\\Download",
+      "where": "results/descriptors.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/descriptors.txt",
+      "match": "D:\\Download",
       "note": "generated log, not documentation"
     },
     {
@@ -69,22 +94,85 @@
     {
       "rule": "personal_abs_path",
       "severity": "low",
-      "where": "results/experiments_warehouse/protocol.json",
+      "where": "results/experiments/protocol.json",
       "match": "D:\\\\Download",
       "note": "generated log, not documentation"
     },
     {
       "rule": "personal_abs_path",
       "severity": "low",
-      "where": "results/experiments_warehouse/protocol.json",
-      "match": "D:\\\\Download",
+      "where": "results/gate_L00.txt",
+      "match": "D:\\Program",
       "note": "generated log, not documentation"
     },
     {
       "rule": "personal_abs_path",
       "severity": "low",
-      "where": "results/experiments_warehouse/protocol.json",
-      "match": "D:\\\\Download",
+      "where": "results/gate_L00.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/gate_L04_retry.txt",
+      "match": "D:\\Program",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/gate_L04_retry.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/gate_L04_retry.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/gate_L04_retry.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/gate_L04_retry.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/gate_L04_retry.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/gate_L04_retry.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/gate_L04_retry.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/gen_all.txt",
+      "match": "D:\\Download",
       "note": "generated log, not documentation"
     },
     {
@@ -125,8 +213,57 @@
     {
       "rule": "personal_abs_path",
       "severity": "low",
-      "where": "results/screenshots/screenshots.json",
-      "match": "D:\\\\Download",
+      "where": "results/s6_L00.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/s6_L00.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/s6_rest.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/s6_rest.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/s6_rest.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/s6_rest.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/s6_rest.txt",
+      "match": "D:\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/s6_rest.txt",
+      "match": "D:\\Download",
       "note": "generated log, not documentation"
     },
     {
@@ -154,6 +291,2617 @@
       "rule": "personal_abs_path",
       "severity": "low",
       "where": "results/screenshots/screenshots.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/screenshots/screenshots.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Program",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Program",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Program",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Program",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/security_scan.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v1_L00/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v1_L00/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v1_L00/protocol.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L00.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L00.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L00.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L01.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L01.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L01.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L02.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L02.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L02.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L03.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L03.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L03.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L04.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L04.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L04.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L05.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L05.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/_session_logs/run_meta_L05.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_B_ppo_seed19_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_B_ppo_seed19_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_B_ppo_seed19_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_B_ppo_seed43_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_B_ppo_seed43_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_B_ppo_seed43_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_B_ppo_seed7_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_B_ppo_seed7_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_B_ppo_seed7_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed19_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed43_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L00_C_ppo_seed7_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_B_ppo_seed19_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_B_ppo_seed19_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_B_ppo_seed19_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_B_ppo_seed43_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_B_ppo_seed43_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_B_ppo_seed43_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_B_ppo_seed7_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_B_ppo_seed7_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_B_ppo_seed7_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed19_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed43_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L01_C_ppo_seed7_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_B_ppo_seed19_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_B_ppo_seed19_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_B_ppo_seed19_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_B_ppo_seed43_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_B_ppo_seed43_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_B_ppo_seed43_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_B_ppo_seed7_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_B_ppo_seed7_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_B_ppo_seed7_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed19_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed43_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L02_C_ppo_seed7_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_B_ppo_seed19_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_B_ppo_seed19_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_B_ppo_seed19_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_B_ppo_seed43_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_B_ppo_seed43_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_B_ppo_seed43_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_B_ppo_seed7_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_B_ppo_seed7_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_B_ppo_seed7_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed19_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed43_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L03_C_ppo_seed7_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_B_ppo_seed19_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_B_ppo_seed19_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_B_ppo_seed19_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_B_ppo_seed43_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_B_ppo_seed43_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_B_ppo_seed43_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_B_ppo_seed7_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_B_ppo_seed7_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_B_ppo_seed7_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed19_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed43_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L04_C_ppo_seed7_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_B_ppo_seed19_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_B_ppo_seed19_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_B_ppo_seed19_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_B_ppo_seed43_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_B_ppo_seed43_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_B_ppo_seed43_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_B_ppo_seed7_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_B_ppo_seed7_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_B_ppo_seed7_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed19_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed43_v14/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v00/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v01/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v02/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v03/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v04/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v05/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v06/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v07/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v08/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v09/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v10/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v11/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v12/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v13/manifest.json",
+      "match": "D:\\\\Download",
+      "note": "generated log, not documentation"
+    },
+    {
+      "rule": "personal_abs_path",
+      "severity": "low",
+      "where": "results/v2_S6/runs/L05_C_ppo_seed7_v14/manifest.json",
       "match": "D:\\\\Download",
       "note": "generated log, not documentation"
     },
@@ -170,17 +2918,11 @@
       "where": "results/validation_physical_none.json",
       "match": "D:\\\\Download",
       "note": "generated log, not documentation"
-    },
-    {
-      "rule": "personal_abs_path",
-      "severity": "medium",
-      "where": "scripts/build_deliverable.py",
-      "match": "D:\\\\Program"
     }
   ],
   "sizes": [],
   "history": [],
-  "verdict": "FINDINGS",
+  "verdict": "CLEAN",
   "limits": {
     "max_file_mb": 50.0,
     "max_gif_mb": 8.0

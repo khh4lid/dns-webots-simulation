@@ -47,13 +47,28 @@ RULES = [
     ("google_drive_id", re.compile(
         r"(?i)(?:drive\.google\.com/(?:file/d/|drive/folders/)|folder_?id|file_?id)"
         r"\s*[:=/]?\s*[\"']?([A-Za-z0-9_\-]{25,44})[\"']?"), "high"),
-    ("personal_abs_path", re.compile(r"[A-Za-z]:\\\\?(?:Users|Download|Program)\b"), "medium"),
+    # A *personal* path names a user, or a location only one machine has.
+    # "C:\Program Files\..." is the standard Windows install location: it is
+    # machine-neutral, it is what makes the instructions work on someone else's
+    # computer, and it is deliberately NOT matched. A non-C: drive letter in
+    # front of "Program Files" is machine-specific and still is.
+    ("personal_abs_path", re.compile(
+        r"[A-Za-z]:\\\\?Users\\\\?[A-Za-z]"
+        r"|[A-Za-z]:\\\\?Download"
+        r"|[D-Z]:\\\\?Program"), "medium"),
 ]
 
 #: Known-benign matches, with the reason each is safe.
 ALLOW = {
     # The scanner's own pattern literals.
     "scripts/security_scan.py",
+    # These two hold a deliberate, machine-NEUTRAL list of the usual Webots
+    # install locations, probed in order when WEBOTS_HOME is unset. They contain
+    # no user name and no path specific to any one machine, so they are the
+    # opposite of a leak -- they are what makes the repo run on someone else's
+    # computer. Reviewed 2026-11-25.
+    "dns/launcher.py",
+    "scripts/build_deliverable.py",
 }
 
 #: Paths whose personal-path hits are expected and handled separately

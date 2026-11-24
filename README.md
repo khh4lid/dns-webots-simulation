@@ -1,562 +1,459 @@
-# DNS — Webots Drone Navigation Simulation
+<div align="center">
 
-*A reproducible simulation environment for autonomous UAV navigation in static
-and dynamic environments.*
+# DNS — Webots simulation environment for UAV navigation
 
-**Institution** Taylor's University, Malaysia · **Supervisor** Dr. Mehdi
-Samieiyeganeh · **Simulator** Webots R2025a
+**A reproducible warehouse world where a quadcopter has to reach a goal past fixed racks and a cart that keeps crossing its path.**
 
-A simulated quadcopter must fly from a start point to a goal across an indoor
-warehouse aisle without hitting anything. It perceives the world only through a
-LiDAR mounted on it — it is never told where the obstacles are. Some obstacles
-are fixed; one is a powered cart that crosses its route.
+![Webots](https://img.shields.io/badge/Webots-R2025a-0072B2)
+![Python](https://img.shields.io/badge/Python-3.15.2-0072B2)
+![Release](https://img.shields.io/badge/release-v2.0%20·%20S6%20complete-009E73)
+![Tests](https://img.shields.io/badge/generator%20tests-26%2F26-009E73)
+![Contracts](https://img.shields.io/badge/contract%20tests-26%2F26%20·%206%20layouts-009E73)
+![Licence](https://img.shields.io/badge/licence-not%20yet%20decided-9aa0a6)
 
-This repository contains the **simulation environment** for the Drone Navigation
-System project: the world, the aircraft, its flight controller, the sensor
-mounting, the obstacle geometry and motion, the collision ground truth, and the
-interfaces that let teammates plug in. The reinforcement-learning algorithm and
-the sensor-processing pipeline are owned by teammates and are **not** part of
-this repository ([§4](#4-research-team-and-contributions)).
+<img src="assets/gifs/hero_l00_success.gif" width="820" alt="A quadcopter flying through a warehouse past two storage racks while an orange cart crosses the aisle, reaching the blue goal pad">
 
-![Annotated overview of the Webots warehouse scene, showing the green start pad at (0.85, 0.00) m, the blue goal pad at (9.15, 0.00) m with its 0.40 m tolerance, two 0.8 × 2.4 m storage racks straddling the centre line, two 0.4 × 0.4 m structural columns, a 0.7 × 0.7 m crate stack, and the orange 0.9 × 0.55 m transfer cart that crosses the aisle at 0.45 m/s](assets/screenshots/hero_annotated.png)
+<sub>**Figure 1** — PPO checkpoint `seed7` reaching the goal on the training layout while the cart sweeps the aisle · WEBOTS CAPTURE (offscreen Camera node) · source: `assets/gifs/hero_l00_success.gif`, run `L00_C_ppo_seed7_v01`</sub>
 
-*A real Webots render of `worlds/DNS_Warehouse.wbt`, captured through the
-drone's offscreen `Camera` node. Labels are placed by projecting the configured
-world coordinates through the recorded camera pose — nothing in the scene was
-redrawn.*
+| 540 episodes | 480 distinct configurations | 6 layouts | 10/10 cells reproduced |
+|:---:|:---:|:---:|:---:|
+| every one logged | identical repeats counted once | all validated and frozen first | max path difference **0 m** |
+
+</div>
 
 ---
 
-## 2. Project at a glance
+## In one minute
+
+A navigation policy that only ever saw **one** obstacle layout might have learned to navigate — or it might have learned that one room. You cannot tell the difference from inside that room.
+
+**This repository is the room**, and the instruments that check it: the Webots world, the drone, the sensor configuration, the moving obstacle, a seeded generator that produces new layouts, and the verification that says whether any of it can be believed.
+
+> [!NOTE]
+> **What this is not.** It does not contain the PPO training code or the raw-sensor processing. Those belong to teammates and are theirs to publish. This repo records the *interfaces* and the SHA-256 fingerprints of the files it ran against.
+
+The story in three steps:
+
+1. **v1 built and verified one layout** — 10 × 6 m, two racks, two columns, a crate stack, and a cart crossing the aisle — and ran 90 episodes on it.
+2. **v2 added five more layouts** on a graded ladder from "barely perturbed" to "deliberately hard", each validated and frozen *before* any controller saw it, then re-ran the same protocol across all six.
+3. **What came out:** on a perfectly mirrored layout the policies score exactly what they score on the original — but on a harder layout whose traversability was *confirmed*, they score zero. Both results are below, with their intervals.
+
+---
+
+## Start here — pick your role
+
+| You are… | Read this | The one command you need |
+|---|---|---|
+| **Dr. Mehdi (supervisor)** | [One-page summary](docs/team/FOR_SUPERVISOR.md) — results, the three decisions I need from you, honest limitations | — |
+| **Spencer (PPO)** | [Evaluating checkpoints](docs/team/FOR_SPENCER.md) — the contract, the TEST-ONLY rule, your results | `python scripts/run_s6.py` |
+| **Sensor & perception** | [Sensor guide](docs/team/FOR_SENSOR_TEAM.md) — beam→bearing, sectors, ground-truth data, one open anomaly | `python scripts/analyse_lidar_cart.py` |
+| **New contributor** | [CONTRIBUTING](CONTRIBUTING.md) and the [decision records](docs/decisions/README.md) | `python tests/test_generator.py` |
+| **Just checking a number** | [`evidence/CLAIMS_EVIDENCE.csv`](evidence/CLAIMS_EVIDENCE.csv) — every claim → file → script | — |
+
+---
+
+## Team and responsibilities
+
+> [!IMPORTANT]
+> Names marked **TBC** were not supplied when this release was generated. They are placeholders, not omissions.
+
+| Person | Role | Owns | Status | Next |
+|---|---|---|---|---|
+| **TBC** ([@khh4lid](https://github.com/khh4lid)) | Simulation environment | This repository: world, drone, sensor mounting, obstacles, generator, verification | v2.0 released | Report and slides |
+| **TBC** (Spencer) | PPO policy | `DroneNavPPO/` — training, checkpoints, `handoff.py` | 3 checkpoints evaluated | More training seeds |
+| **TBC** | Sensor & perception | Raw-sensor processing | Interface + ground-truth data ready | Investigate the 0.0536 m anomaly |
+| **Dr. Mehdi Samieiyeganeh** | Supervisor | Direction, review | — | 3 decisions ([here](docs/team/FOR_SUPERVISOR.md#decisions-i-need-from-you)) |
+
+My five responsibilities and what each delivered: **[simulation environment dossier](docs/team/SIMULATION_ENVIRONMENT_DOSSIER.md)**.
+
+---
+
+## The world
+
+<table>
+<tr>
+<td width="50%"><img src="assets/renders/demo_poster.png" alt="Webots render of the warehouse arena with racks, columns, a crate stack and an orange cart"></td>
+<td width="50%"><img src="assets/figures/F1_shift_ladder.png" alt="Six scaled plan views of the layouts L00 to L05"></td>
+</tr>
+<tr>
+<td><sub><b>Figure 2</b> — the arena as Webots renders it · WEBOTS CAPTURE · source: <code>assets/renders/demo_poster.png</code></sub></td>
+<td><sub><b>Figure 3</b> — the six layouts at identical metric scale · LOGGED-DATA RENDER · source: <code>assets/figures/F1_shift_ladder.png</code></sub></td>
+</tr>
+</table>
+
+<details>
+<summary><b>Specification — every value read from <code>config/scenarios/L00_C.json</code></b></summary>
 
 | | |
 |---|---|
-| Simulator | Webots **R2025a** |
-| Simulation type | rigid-body quadcopter flight, 8 ms physics step |
-| Drone model | custom `DnsQuadcopter` PROTO, 0.55 kg, thrust/weight 4.00 — **not** a commercial platform |
-| Environment | indoor warehouse aisle, **10.0 × 6.0 m**, 2.5 m walls |
-| Flight altitude | **1.0 m**, held; fixed yaw |
-| Control mode | horizontal velocity `[vx, vy]`, max **±1.2 m/s** per axis |
-| Command rate | **5 Hz** (0.200000 s, error < 3e-16 s) |
-| Inner control loop | 125 Hz cascaded autopilot |
-| LiDAR | Webots `Lidar`, 360° horizontal, **720 beams**, 1 layer, gimbal-stabilised |
-| Effective range | **5.0 m** (matches `navigation.RANGE`) |
-| PPO sectors | **12 × 30°**, sector 0 forward, 3 right, 6 back, 9 left |
-| Static obstacles | 2 storage racks, 2 columns, 1 crate stack |
-| Moving obstacles | 1 transfer cart, 0.45 m/s across ±1.9 m |
-| Verification | 46 unit tests, 22 simulator checks, 13 moving-obstacle checks — all passing |
-| Experiment status | 90 episodes recorded across 2 modes and 5 controllers, **one fixed layout** |
+| Simulator | Webots R2025a, `basicTimeStep` 8 ms, ENU coordinates |
+| Arena | 10.0 × 6.0 m, DNS bounds `[0, −3] → [10, 3]`, walls 2.5 m |
+| Drone | `DnsQuadcopter`, 4 × `Propeller`, collision radius 0.18 m, fixed yaw |
+| Flight | cruise 1.0 m, cascaded autopilot at 125 Hz, tilt limit 0.45 rad |
+| Control interface | velocity setpoint every 0.200000 s (5 Hz) = exactly 25 physics steps |
+| Speed cap | 1.2 m/s per axis |
+| Horizon | 90 control steps (18 s) |
+| Start → goal | (0.85, 0.00) → (9.15, 0.00) m, tolerance 0.4 m |
+| LiDAR | 720 beams, 360°, 5.0 m cap, single layer at 1.14 m, ideal gimbal |
+| Sectors | 12 × 30°; **0 front, 3 right, 6 back, 9 left** |
+| Collision | geometric swept test against exact box footprints |
 
-Every value above is read from `config/scenario_warehouse.json` or a measurement
-file in `results/`. Nothing here is provisional.
+**Obstacles on the training layout, and why each is there**
 
----
-
-## 3. Research overview
-
-Autonomous UAV navigation is the problem of getting an aircraft from where it is
-to where it needs to be, using only what it can sense, without hitting anything.
-Indoors there is no GPS-quality position fix and no map handed down in advance,
-so the aircraft has to infer free space from range measurements as it flies.
-
-Static obstacles make that a geometry problem: the free space is fixed, and a
-good route exists before the drone takes off. A **moving** obstacle changes the
-character of the task — the free space at a given place is now a function of
-*time*, so the controller has to solve a timing problem as well as a spatial
-one. That difference is the research question the wider project asks, and it is
-why this environment is built in two modes that differ in exactly one factor:
-whether the transfer cart sweeps the aisle or is parked against the wall.
-
-Simulation matters here because the failure mode under study is collision. A
-learned policy needs thousands of episodes including the ones that end badly,
-which is not something to do with a physical aircraft. Simulation also makes
-the comparison *controlled* — the same seed produces the same episode, so a
-difference between two runs is attributable to the thing that was changed.
-
-The environment exists to serve the other two workstreams: it presents the
-observation contract the PPO policies were trained against, and it mounts and
-configures the sensor whose raw output the perception workstream processes.
-
----
-
-## 4. Research team and contributions
-
-| Member | Research responsibility | Main deliverable / interface |
+| Body | Size (m) | Why it exists |
 |---|---|---|
-| **Dr. Mehdi Samieiyeganeh** | Research supervision, scientific direction, methodology oversight | — |
-| **Khaled** | **Simulation Environment Development** — simulator selection, Webots environment, start/goal placement, static obstacle configuration, moving-obstacle development, collision geometry validation, scenario design, integration interfaces, verification and reproducibility | **This repository** |
-| **Spencer** | Deep reinforcement learning — PPO training and evaluation, policy development, action/observation processing | `DroneNavPPO` package; `navigation.py` is the authoritative observation contract |
-| *Sensors and perception* ⚠️ | LiDAR and depth sensing research, sensor measurement processing, observation preparation | Raw-scan processing — interface documented in [TEAM_INTEGRATION.md §B](docs/TEAM_INTEGRATION.md) |
+| `rack_a`, `rack_b` | 0.8 × 2.4 × 2.0 | Each crosses the straight start–goal line by 0.20 m, forcing an S-shaped route. A flat 2.4 m face is also the cleanest LiDAR calibration target. |
+| `column_1`, `column_2` | 0.4 × 0.4 × 2.5 | Off-route building columns: a precisely known square return, plus a wall-clearance hazard. |
+| `crate_stack` | 0.7 × 0.7 × 1.6, yaw 0.35 rad | Sits near the final approach — tests whether clearance is kept while converging on the goal. |
+| `cart` | 0.9 × 0.55 × 1.5 | The dynamic hazard: ±1.9 m along y at 0.45 m/s, period 16.8889 s. Free space in its lane is a function of *time*, so the policy has a timing problem, not only a geometric one. |
 
-> ⚠️ **Roster gap.** The name of the sensor and perception teammate does not
-> appear in any file in this project, so the role is listed unnamed rather than
-> guessed. Confirm the correct name and preferred attribution before sharing
-> this repository beyond the team.
-
-**What is mine and what is not.** This repository is the simulation environment
-only. Spencer's PPO implementation and the trained checkpoints are his work and
-are neither vendored nor modified here — `dns/spencer_link.py` places his
-package on `sys.path` at runtime precisely so his constants cannot drift out of
-sync, and his own `handoff.py` verifier is used to check our output rather than
-adjusting his code to fit ours. Sensor *processing* belongs to the perception
-workstream; what this repository owns is sensor *mounting and configuration*.
+</details>
 
 ---
 
-## 5. System architecture
+## How it works
 
 ```mermaid
-flowchart TB
-  subgraph SIM["Simulation environment — this repository"]
-    direction TB
-    PHY["Webots physics<br/>rigid body, 8 ms step"]
-    AP["Cascaded autopilot<br/>velocity → attitude → thrust, 125 Hz"]
-    LID["LiDAR device<br/>360°, 720 beams, gimbal-stabilised"]
-    SEC["Sector binning<br/>12 × 30°, metres"]
-    MOV["Moving-obstacle driver<br/>Supervisor-kinematic"]
-    GT["Collision and clearance<br/>ground truth"]
-    LOG["Experiment logger<br/>CSV · JSON · traces"]
+flowchart LR
+  subgraph ME["Simulation environment — this repository"]
+    W["Webots world<br/>generated from scenario JSON"]
+    P["Physics 8 ms<br/>+ autopilot 125 Hz"]
+    L["LiDAR 720 beams<br/>360°, 5 m cap"]
+    S["pack_scan<br/>12 sectors"]
+    G["Supervisor<br/>ground truth + logging"]
   end
-
-  subgraph PERC["Sensors and perception — teammate"]
-    PROC["Raw-scan processing<br/>(interface reserved,<br/>not yet in the loop)"]
+  subgraph SP["Spencer — PPO"]
+    N["navigation.observation<br/>52 floats"]
+    PI["PPO.predict"]
   end
-
-  subgraph DRL["Deep RL — Spencer"]
-    OBS["navigation.observation<br/>52 features"]
-    PPO["PPO policy"]
+  subgraph SE["Sensor teammate"]
+    PR["raw-sensor processing<br/>(plugs in at pack_scan)"]
   end
-
-  PHY --> LID --> SEC --> OBS --> PPO
-  PPO -->|"vx, vy m/s at 5 Hz"| AP
-  AP -->|"rotor thrust"| PHY
-  MOV --> PHY
-  PHY --> GT --> OBS
-  GT --> LOG
-  PPO -.-> LOG
-  LID -.-> PROC
-  PROC -.-> SEC
-
-  classDef mine fill:#dbe9fb,stroke:#2a78d6,stroke-width:1px,color:#0b0b0b
-  classDef drl fill:#fde3d6,stroke:#eb6834,stroke-width:1px,color:#0b0b0b
-  classDef perc fill:#d4f2e5,stroke:#1baf7a,stroke-width:1px,color:#0b0b0b
-  class PHY,AP,LID,SEC,MOV,GT,LOG mine
-  class OBS,PPO drl
-  class PROC perc
+  W --> P --> L --> S --> N --> PI
+  PI -->|"action in [-1,1]^2 x 1.2 m/s"| P
+  G -.->|"clearance, poses<br/>never in an observation"| G
+  PR -.-> S
+  style ME fill:#e8f1f8,stroke:#0072B2
+  style SP fill:#e9f7f1,stroke:#009E73
+  style SE fill:#fdf0e6,stroke:#E69F00
 ```
 
-**Data flow.** Webots advances the rigid body every 8 ms. The LiDAR renders a
-360° scan, which is binned into 12 sectors in metres and passed — unnormalised —
-into Spencer's `observation()`, together with the drone's measured velocity and
-the relative goal vector, to form the 52-feature vector his policy expects. The
-policy returns one horizontal velocity command every 0.2 s; the autopilot holds
-that command while closing three nested loops at 125 Hz, and the resulting rotor
-thrust is what actually moves the aircraft. Nothing writes the drone's position
-directly. In parallel, the Supervisor drives the transfer cart along its
-kinematic path, and a separate ground-truth routine computes collision and
-clearance from true geometry rather than from the sensor, so measured and true
-clearance can be compared.
-
-The dashed path is the documented but **not yet integrated** handoff to the
-perception workstream: today the simulator bins the raw scan itself.
+Three clocks nest exactly: **8 ms** physics, **125 Hz** inner attitude loop, **5 Hz** policy command. 0.2 s is exactly 25 physics steps, so the simulation clock cannot drift from the contract — see [ADR-008](docs/decisions/ADR-008-5-hz-velocity-commands-125-hz-loop-8-ms-step.md).
 
 ---
 
-## 6. Simulation environment
+## The sensor
 
-![Scaled top-down plan of the 10.0 × 6.0 m warehouse arena, drawn from the scenario configuration, showing start at (0.85, 0.00) m, goal at (9.15, 0.00) m with a 0.40 m tolerance circle, two storage racks straddling the centre line, two columns, a yawed crate stack, and the transfer cart with its ±1.90 m swept band at x = 5.1 m](assets/figures/environment_map.png)
+<table>
+<tr>
+<td width="46%"><img src="assets/diagrams/SV1_sensor_schematic.png" alt="Schematic of the LiDAR: top view showing 12 sectors with indices, side view showing mount height and scan plane"></td>
+<td width="54%"><img src="assets/gifs/lidar_sectors.gif" alt="Top-down Webots capture beside a synchronised polar plot of the 12 sector ranges as the cart crosses"></td>
+</tr>
+<tr>
+<td><sub><b>Figure 4</b> — sensor geometry, dimensions read from the scenario and the PROTO · SCHEMATIC · source: <code>assets/diagrams/SV1_sensor_schematic.png</code></sub></td>
+<td><sub><b>Figure 5</b> — the 12 sectors the policy actually receives, during a cart crossing · left WEBOTS CAPTURE, right LOGGED-DATA RENDER · source: <code>assets/gifs/lidar_sectors.gif</code></sub></td>
+</tr>
+</table>
 
-*Drawn directly from `config/scenario_warehouse.json` — the same file that
-generates the Webots world — so the plan cannot drift from the simulated
-geometry.*
-
-| | |
-|---|---|
-| Type | indoor warehouse inspection aisle |
-| Extent | `low_xy = [0.0, −3.0]` → `high_xy = [10.0, 3.0]`, **10.0 × 6.0 m** |
-| Walls | 2.5 m high, 0.1 m thick; 1 m floor grid |
-| Frame | DNS: **+x forward, +y right**; Webots is ENU, mapped `y_dns = −y_webots` |
-| Altitude | 1.0 m held, yaw fixed at 0 rad |
-| Start | (0.85, 0.00) m |
-| Goal | (9.15, 0.00) m, success within **0.40 m** |
-
-The 10 × 6 m extent is deliberate: the PPO checkpoints were fitted on exactly
-that workspace, so enlarging the room would move the goal feature outside the
-distribution they saw and confound any comparison. Walls were raised from 1.2 m
-to 2.5 m because at 1.2 m only 0.125 m of wall stood above the scan plane and
-tilt beyond ~6° sent beams over the top, reporting open space where a wall
-stood. Both decisions are argued in full in
-[SIMULATION_METHODS.md §4](docs/SIMULATION_METHODS.md).
-
-| Obstacle | Footprint | Height | Role |
-|---|---|---|---|
-| `rack_a` (3.50, −1.00) | 0.8 × 2.4 m | 2.0 m | forces the first lateral deviation; flat face is the LiDAR calibration target |
-| `rack_b` (6.50, +1.00) | 0.8 × 2.4 m | 2.0 m | forces a second deviation the other way |
-| `column_1` (2.00, +2.30) | 0.4 × 0.4 m | 2.5 m | off-route column; known square return for calibration |
-| `column_2` (8.00, −2.30) | 0.4 × 0.4 m | 2.5 m | mirror column, late in the route |
-| `crate_stack` (7.90, +0.90) | 0.7 × 0.7 m, yaw 0.35 rad | 1.6 m | clearance test on the final approach |
-| `cart` (5.10, 0.00) | 0.9 × 0.55 m | 1.5 m | **moving** — see §7 |
-
-Full coordinates, justifications and navigability margins:
-[SIMULATION_METHODS.md §5](docs/SIMULATION_METHODS.md).
+Index → bearing is **measured, not assumed**: `bearing(i) = +1.0 × (2πi / 720) + π`. Both the sweep direction and the angular origin were recovered by fitting against an analytic ray cast from a known pose. Full spec: **[Sensor interface v2](docs/interfaces/Sensor_Interface_v2.md)**.
 
 ---
 
-## 7. Static and moving obstacles
+## Why it is built this way
 
-The two racks exist to make the scene **discriminative**. An earlier layout kept
-them 0.30 m clear of the straight start-to-goal line, and a baseline that simply
-flies at the goal threaded the gap and scored 3/3 — so the static condition
-measured nothing. Each rack now overlaps y = 0 by 0.20 m; after inflating by the
-drone's 0.18 m radius, passing `rack_a` requires y ≥ +0.38 m and passing
-`rack_b` requires y ≤ −0.38 m, forcing an S-shaped route. The columns and crate
-stack add off-route hazards and precisely known calibration returns.
+Fourteen decision records. Each states the context, the options that were on the table, what was decided, the evidence, and what it costs.
 
-The transfer cart is the dynamic hazard:
-
-| Property | Value |
-|---|---|
-| Motion | `linear` — constant-speed back-and-forth along the y axis |
-| Amplitude | ±1.90 m about y = 0, at x = 5.10 m |
-| Speed | **0.45 m/s** (measured median 0.4500 m/s) |
-| Period | T = 4A/v = **16.889 s** |
-| Initial phase | per-seed, `default_rng(seed).uniform(0, 2π)` |
-| Repeatability | replays across resets to **2.554e-15 m** |
-| Collision | exact rectangular footprint, swept against the drone's 0.18 m disc |
-
-Because it crosses perpendicular to the direction of travel, the free space at
-x = 5.1 m is a function of time and the controller must solve a timing problem
-rather than a purely geometric one.
-
-> **This motion is kinematic, not rigid-body.** The Supervisor writes the cart's
-> pose each step from its motion equation. The cart cannot be pushed, pushes
-> nothing, and carries no momentum. That buys exact repeatability — which is
-> what makes the static-versus-dynamic comparison meaningful — at the cost of
-> contact realism. It should not be described as physical simulation of a
-> vehicle.
-
-![Two-panel validation of the moving obstacle. The top panel overlays the supervisor-reported cart position on the commanded triangle-wave path; they coincide exactly. The bottom panel plots the worst per-sector disagreement between the measured LiDAR scan and an analytic ray-cast over the same episode, averaging 0.0475 m with a single 0.2900 m boundary-graze spike](assets/figures/moving_obstacle_validation.png)
-
-*13/13 checks over 90 control steps. The top panel agrees to 0.000e+00 m **by
-construction** — the cart is driven from that equation — so it verifies the
-implementation, not physical fidelity. The independent evidence is the bottom
-panel: the measured scan against a separately implemented analytic ray-cast of
-the same moving scene, occlusion included.*
-
----
-
-## 8. Drone and simulator specifications
-
-The aircraft is a **custom research PROTO** (`protos/DnsQuadcopter.proto`) built
-only from Webots base nodes, so a world loads with no network access and no
-`EXTERNPROTO` download.
-
-> **It does not represent a physical platform.** This is not a Crazyflie, a
-> Mavic, or any commercial airframe, and no claim is made about a real
-> flight-controller board, microcontroller or physical sensor. Accordingly no
-> manufacturer photograph appears in this repository — every image here is
-> genuine output of this project.
-
-| Property | Value |
-|---|---|
-| Model | `DnsQuadcopter`, X configuration |
-| Mass | 0.55 kg (0.35 kg body + 4 × 0.05 kg rotor groups) |
-| Inertia | Ixx = Iyy = 0.00272, Izz = 0.00513 kg·m² |
-| Arm offset | 0.09 m → tip radius 0.1773 m |
-| Collision radius | **0.18 m**, matching `navigation.RADIUS` |
-| Propulsion | 4 × Webots `Propeller`, t₁ = 1.5e-05 N·s², q₁ = 2.4e-07 N·m·s² |
-| Hover / max thrust | 1.3489 N per rotor / 5.4 N at 600 rad/s |
-| Thrust-to-weight | **4.003** (measured) |
-| Linear damping | 0.695 s⁻¹ (measured, rotors-off terminal velocity 14.11 m/s) |
-| Max tilt | 0.45 rad ≈ **25.78°** |
-| Control interface | `<extern>` controller; horizontal velocity at 5 Hz |
-| Simulated sensors | `Lidar`, `GPS`, `Gyro`, `InertialUnit`, optional `Camera` (1280 × 720) |
-| Dependencies | Python 3.11+, `numpy`; Webots supplies `controller` |
-
-Two parameters are deliberately non-physical and are declared as such:
-`motorMaxTorque` = 2000 N·m is a spin-up rate knob, not a motor rating, and the
-rotor helices are graphical only. Both are explained, with the measurements that
-forced them, in [SIMULATION_METHODS.md §7](docs/SIMULATION_METHODS.md).
-
----
-
-## 9. Sensor and PPO compatibility
-
-**PPO interface** — the backend implements Spencer's `Backend` protocol, so it
-drops into `Navigation` unchanged:
-
-| | |
-|---|---|
-| Action | horizontal velocity `[vx, vy]` in m/s, already scaled |
-| Limit | ±1.2 m/s per axis (`navigation.SPEED`); exceeding raises `BackendError` |
-| Interval | 0.200000 s = 25 × 8 ms, **5 Hz** |
-| Frame | +x forward, +y right, altitude 1.0 m, yaw 0 |
-| Feedback | `velocity` is **measured** from GPS, not the command echoed back |
-| Observation | 52 features, built by Spencer's own `observation()` |
-| Reset | restores pose, obstacles and phase; repeats to 2.758e-06 m |
-| Termination | exactly one of `goal` / `collision` / `timeout`, horizon 90 steps |
-
-**LiDAR interface:**
-
-| | |
-|---|---|
-| Scan | 360° horizontal, `projection "cylindrical"` |
-| Beams | **720** (0.5°, 60 per sector), **1 layer**, zero noise |
-| Range | 0.05 – **5.0 m** cap |
-| Sectors | 12 × 30°; **0 forward, 3 right, 6 back, 9 left**, clockwise |
-| Angular mapping | **measured**: direction +1, offset 180.50°, RMS 0.0245 m |
-| Encoding | `(d, True)` seen · `(5.0, True)` observed-clear · `(0.0, False)` unobserved |
-| Timestamps | simulation seconds since reset; two-frame packets exactly 0.200000 s apart |
-
-The simulator provides the environment and the raw measurements. It does **not**
-implement the PPO algorithm or the sensor-processing pipeline. Detailed
-contracts, worked examples, calibration commands and the known failure modes to
-design against: **[TEAM_INTEGRATION.md](docs/TEAM_INTEGRATION.md)**.
-
----
-
-## 10. Evaluation and verification
-
-Software verification — *does the simulator do what it claims* — is reported
-separately from research evaluation — *how does a controller behave in it*.
-
-| Category | Test | Measured result | Tests | Status | Evidence |
-|---|---|---|---|---|---|
-| Flight is physical | rotor thrust only, nothing teleports | commanded 1.2 m/s reads **0.2801 m/s** after one 0.2 s step | 1 | PASS | `results/validation_physical_lidar.json` |
-| Coordinates | all four commanded directions | +x → `[0.4657, 0.0]`, +y → `[−0.0002, 0.4657]` m | 4 | PASS | same |
-| Command timing | 5 Hz contract | max error **2.78e-16 s** | 2 | PASS | same |
-| Velocity feedback | measured, not echoed | measured ≠ commanded throughout | 1 | PASS | same |
-| Collision geometry | exact footprints + walls | fires at `[0.255, 0.0]`; no false positive at start | 2 | PASS | same |
-| Reset repeatability | same seed, same episode | **2.758e-06 m**; 3-command trajectory to 7.091e-03 m | 2 | PASS | same |
-| PPO handoff | Spencer's own verifier | `navigation.validate` accepts every frame; obs shape (52,) | 4 | PASS | same |
-| LiDAR angular mapping | fitted against known geometry | direction +1, offset **180.50°**, RMS **0.0245 m** | — | PASS | `results/calibration_warehouse.json` |
-| Sensor consistency | scan vs independent ray-cast | mean **0.0475 m**, worst 0.2900 m over 90 steps × 12 sectors | 1 | PASS | `results/moving_obstacle_warehouse.json` |
-| Obstacle trajectory | path, speed, replay | speed **0.4500** vs 0.45 configured; replay **2.554e-15 m** | 13 | PASS | same |
-| Scenario & geometry | pure-function suite | — | 46 | PASS | `tests/unit_tests.py` |
-
-**Totals: 46 unit tests, 22 simulator checks, 13 moving-obstacle checks — all
-passing.** Full tables, methodology and the class of each claim (measured /
-ground truth / exact by construction / derived) are in
-**[VALIDATION_EVIDENCE.md](docs/VALIDATION_EVIDENCE.md)**.
-
-### Research evaluation — 90 episodes
-
-Five controllers across two modes. **Three are trained PPO checkpoints; two are
-hand-written scripted baselines** (`evaluate.gap_rule` and `evaluate.go_to_goal`)
-included as a sanity floor, not as competing methods.
-
-| Mode | PPO seed 7 | PPO seed 19 | PPO seed 43 | reactive (scripted) | goal-direct (scripted) |
-|---|---|---|---|---|---|
-| B static (3 ep. each) | 3/3 | 3/3 | 3/3 | 0/3 — 3 timeouts | 0/3 — 3 collisions |
-| C dynamic (15 ep. each) | 9/15 (60.0%) | 8/15 (53.3%) | 7/15 (46.7%) | 0/15 — 5 collisions, 10 timeouts | 0/15 — 15 collisions |
-
-No episode was excluded; every rate is successes ÷ episodes in that cell.
-
----
-
-## 11. Key figures and results
-
-![Goal-reaching rate with 95% Wilson confidence intervals for five controllers in two modes. In static mode all three PPO checkpoints reach 3/3 with intervals spanning 43.9–100%. In dynamic mode they reach 9/15, 8/15 and 7/15 with heavily overlapping intervals, while both scripted baselines reach 0](assets/figures/success_rate.png)
-
-*Moving the cart drops PPO goal-reaching from 3/3 to roughly half, and the
-failures become collisions rather than timeouts — the environment discriminates
-between the two conditions. The intervals overlap heavily: with 3 episodes per
-static cell and 15 per dynamic cell, **this does not rank the three seeds
-against each other**, and the untuned baselines are a floor, not a comparison.
-Data: `results/experiments_warehouse/experiment_summary.csv`.*
-
-![Flown trajectories for the first episode of each controller, in both modes, overlaid on the obstacle layout. In static mode the PPO seeds trace an S-shaped route around both racks and finish inside the goal tolerance; the goal-direct baseline flies straight into rack A at x ≈ 2.9 m; the reactive rule wanders and times out 1.61 m short. In dynamic mode all three PPO seeds collide near the cart at x ≈ 4.4 m](assets/figures/trajectories.png)
-
-*Recorded paths, including the episodes that failed. The S-shape is the layout
-working as designed. The goal-direct baseline collides with `rack_a` at
-x ≈ 2.9 m, and the reactive rule stalls because its fixed 1.45 m repulsion
-radius exceeds the 1.54 m crate-to-goal distance — a statement about an untuned
-constant, not about reactive navigation.
-Data: `results/experiments_warehouse/traces.json`.*
-
-![LiDAR sector validation: measured ranges from the 720-beam Webots scan binned into 12 sectors, plotted beside an independent analytic ray-cast of the same scene from the same pose, with per-sector differences labelled above each pair](assets/figures/lidar_validation.png)
-
-*The angular mapping was **measured**, not assumed — fitting against known arena
-geometry gives offset 180.50° with an RMS residual of 0.0245 m, one beam pitch.
-Worst single-sector disagreement is 0.236 m, a boundary graze.
-Data: `results/calibration_warehouse.json`.*
-
-Raw per-episode data: `results/experiments_warehouse/experiment_results.csv`
-(90 rows). All figures are regenerated by `python scripts/make_assets.py`, with
-sources recorded in `assets/ASSET_PROVENANCE.json`.
-
----
-
-## 12. Demonstration video
-
-[![Frame from the demonstration video showing the Webots warehouse scene in Mode B static navigation, with the drone mid-aisle between the two storage racks](assets/demo-thumbnail.jpg)](assets/demo-thumbnail.jpg)
-
-**Demonstration video — hosted link pending.**
-`results/demo/DNS_Webots_Research_Demo.mp4` · 1280 × 720 · 25 fps · 1255 frames
-· **50.2 s** · verified `VALID` by `scripts/verify_mp4.py` (1028 distinct frame
-sizes, so the capture is not static or blank).
-
-Every frame is a real Webots render of a real run, captured through an in-scene
-`Camera` node — Webots' own screen recorder produces blank frames in this
-automated setup ([VALIDATION_EVIDENCE.md §8.7](docs/VALIDATION_EVIDENCE.md)).
-Playback is 1:1 with simulation time; no frames are duplicated or stretched.
-
-**What it records,** flown by PPO checkpoint seed 19 across 8 segments:
-
-| Segments | Scenario | Outcome |
+| Decision | In one line | ADR |
 |---|---|---|
-| 1–2 — environment and start/goal overview | — | — |
-| 3–4 — static navigation, overview and top-down | `warehouse_static` | **goal reached**, 37 steps / 7.4 s, stopping 0.157 m from the goal |
-| 5 — crossing-obstacle introduction | — | — |
-| 6–7 — dynamic navigation, overview and low angle | `warehouse_dynamic` | **collision** in both, after 21 steps / 4.2 s at x ≈ 5.4 m, 3.7 m short of the goal |
-| 8 — final state | — | — |
+| **Webots R2025a** | The only candidate with a built-in LiDAR, a supervisor API, rotor physics *and* native Windows, without middleware | [001](docs/decisions/ADR-001-webots-r2025a-simulator.md) |
+| **Keep 10 × 6 m** | The checkpoints were fitted on exactly this arena; enlarging it would confound layout with distribution | [002](docs/decisions/ADR-002-keep-10-x-6-m-arena.md) |
+| **Fixed 1.0 m, one scan layer** | Matches the planar observation contract; every obstacle must rise above the scan plane | [003](docs/decisions/ADR-003-fixed-1.0-m-altitude-single-layer-360-deg-lidar.md) |
+| **Exact boxes, not circles** | A circle around a 0.8 × 2.4 m rack reports collisions 0.50 m into empty aisle | [004](docs/decisions/ADR-004-exact-box-footprints-bounding-circles.md) |
+| **Racks cross the centre line** | With the line open, "fly straight at the goal" scored 3/3 and the static test measured nothing | [005](docs/decisions/ADR-005-racks-deliberately-cross-straight-start-goal-lin.md) |
+| **Kinematic cart** | Exact reproducibility — at the cost of no physical contact response | [006](docs/decisions/ADR-006-cart-is-kinematic.md) |
+| **Ideal gimbal** | Makes the sector contract true; it is a best case, not a real sensor | [007](docs/decisions/ADR-007-gimbal-stabilised-lidar-mount.md) |
+| **5 Hz over 125 Hz over 8 ms** | 0.2 s is exactly 25 steps, so timing is exact by construction | [008](docs/decisions/ADR-008-5-hz-velocity-commands-125-hz-loop-8-ms-step.md) |
+| **Seeded generator + ladder** | A layout is data, not a hand-edited file; byte-identical across processes | [009](docs/decisions/ADR-009-seeded-generator-graded-shift-ladder.md) |
+| **The mirror test** | Maximally different geometry, identical difficulty — the one clean memorisation probe | [010](docs/decisions/ADR-010-mirror-test-memorisation-probe.md) |
+| **Distinct configurations, Wilson** | Identical deterministic repeats count once; seeds are never ranked | [011](docs/decisions/ADR-011-distinct-configurations-wilson-intervals-no-seed.md) |
+| **One source of geometry** | The run refuses to proceed if the world disagrees with the scenario | [012](docs/decisions/ADR-012-one-source-geometry-checked-against-loaded-world.md) |
+| **Offscreen Camera capture** | Webots' own recorder produced 148 frames averaging 47 bytes | [013](docs/decisions/ADR-013-offscreen-camera-capture-built-in-recorder.md) |
+| **L04 excluded** | 0/90 there, but the reference traversal never reached the goal either — unattributable | [014](docs/decisions/ADR-014-l04-excluded-generalisation-conclusion.md) |
 
-> The recording is **not** a clean success reel. Its two dynamic segments both
-> end in a collision with the transfer cart. That is the characteristic failure
-> this environment was built to expose, and it is left in deliberately.
+<details>
+<summary><b>Two of these, with their evidence images</b></summary>
 
----
+<img src="assets/decisions/ADR-005_line_block.png" width="700" alt="Plan view showing the straight start-goal line crossed by both racks">
 
-## 13. Quick start
+<sub>**Figure 6** — both racks cross y = 0 by 0.20 m, so flying straight at the goal cannot work · LOGGED-DATA RENDER · source: `assets/decisions/ADR-005_line_block.png`</sub>
 
-Verified on Windows 10 with Webots R2025a and Python 3.15.2.
+<img src="assets/decisions/ADR-006_cart_spacetime.png" width="700" alt="The cart's y position against time, a triangle wave of period 16.89 s">
 
-```bash
-# 1. dependencies
-pip install -r requirements.txt
+<sub>**Figure 7** — the cart's pose is an exact function of time; its t = 0 pose is the −1.9 m extreme, not the sweep centre · LOGGED-DATA RENDER · source: `assets/decisions/ADR-006_cart_spacetime.png`</sub>
 
-# 2. set WEBOTS_HOME only if Webots is not auto-detected
-#    PowerShell:  $env:WEBOTS_HOME = "D:\Program files\Webots"
-
-# 3. checks that need no simulator at all -- 46 tests, a few seconds
-python tests/unit_tests.py
-```
-
-**Core simulator setup** — open `worlds/DNS_Warehouse.wbt` in Webots. The
-drone's controller is `<extern>`: Webots loads the scene and then **waits** for
-a Python program to connect and fly it, so a motionless drone is expected. Drive
-it with:
-
-```bash
-python scripts/with_webots.py --timeout 420 --world worlds/DNS_Warehouse.wbt \
-    tests/client_validation.py -- --config config/scenario_warehouse.json \
-    --dynamics physical --sensing lidar        # expect 22/22
-```
-
-Regenerate a world after editing `config/*.json` or the PROTO — worlds are
-generated, so hand-edits are overwritten:
-
-```bash
-python -m dns.worldgen --config config/scenario_warehouse.json \
-    --out worlds/DNS_Warehouse.wbt
-```
-
-### Optional — PPO integration
-
-Needs Spencer's package, which is **not on PyPI and is not vendored here**. Place
-`DroneNavPPO/` beside this repository, or set `DNS_PPO_DIR` to the directory
-containing `navigation.py`. The 90-episode experiment additionally needs his
-trained checkpoints (`evidence/seed*/model.npz`), which are his to share:
-
-```bash
-python scripts/with_webots.py --timeout 3000 --world worlds/DNS_Warehouse.wbt \
-    tests/client_experiments.py -- \
-    --dynamic-config config/scenario_warehouse.json \
-    --static-config  config/scenario_warehouse_static.json \
-    --out results/experiments_warehouse
-```
-
-`tests/unit_tests.py` is the only suite that runs without his package. Full
-reproduction recipe for every figure, table and video:
-[VALIDATION_EVIDENCE.md §8](docs/VALIDATION_EVIDENCE.md).
+</details>
 
 ---
 
-## 14. Project structure
+## Verification — we check the simulator instead of trusting it
 
-```text
-config/      scenario definitions -- the single source of truth for geometry
-dns/         the simulation package
-  scenario.py    config loading, validation, DNS <-> Webots transform
-  worldgen.py    writes .wbt worlds from a scenario JSON
-  backend.py     implements Spencer's navigation.Backend protocol
-  autopilot.py   cascaded velocity -> attitude -> rotor-thrust controller
-  sensing.py     12 x 30 deg sector sensing (none / lidar / geometric)
-  launcher.py    starts Webots, prepares the <extern> controller environment
-  spencer_link.py  locates and imports Spencer's PPO package
-protos/      DnsQuadcopter.proto -- airframe, rotors, sensor mounts
-worlds/      generated Webots worlds (files prefixed "_" are the retained
-             physics-bisection ladder, not deliverables)
-controllers/ small in-simulator diagnostic controllers
-tests/       unit_tests.py runs standalone; client_*.py run against Webots
-scripts/     harness, asset/figure/report generators, MP4 verifier
-results/     raw measured output -- the provenance behind every claim
-assets/      README figures, annotated screenshots, ASSET_PROVENANCE.json
-docs/        the three technical documents plus the sensor-attitude study
-evidence/    payloads assembled into the supervisor/Drive bundle by
-             scripts/build_deliverable.py -- not separate documentation
+<img src="assets/figures/F4_verification_panel.png" width="860" alt="Four panels: observation interval histogram, LiDAR error bars per run, cart range tracked over time, and the box-versus-circle geometry">
+
+<sub>**Figure 8** — verification panel · LOGGED-DATA RENDER and SCHEMATIC · source: `assets/figures/F4_verification_panel.png`</sub>
+
+| Check | Method | Result |
+|---|---|---|
+| Observation interval | measured as simulated time, every logged step | **0.200000 s**, error < 3e−16 s |
+| Reset repeatability | repeated teleport-and-settle | **2.8 µm** |
+| World ↔ scenario | every obstacle's t = 0 pose read back from the running simulator | **≤ 4.0e−06 m**, all 6 layouts |
+| Frozen contracts | 26 executable tests per layout | **26/26**, all 6 layouts |
+| LiDAR angular map | fit index→bearing against analytic geometry | RMS **0.025 m** per beam |
+| LiDAR full scan | vs analytic ray caster, all beams incl. occlusion | mean **0.048 m** per beam |
+| **LiDAR ↔ moving cart** | measured sector vs ray caster at the *logged cart pose* | **MAE 0.0193 m**, n = 650 |
+| L00 reproduction | re-run v1's protocol on the regenerated world | **10/10 cells, 0 m path difference** |
+| Airframe stability | peak tilt per episode | 3 of 540 exceeded 0.50 rad |
+
+<details>
+<summary><b>What verification actually caught — five real defects</b></summary>
+
+These are the reason the checks exist. Each is now a regression test.
+
+1. **Racks collided as circles.** A 0.8 × 2.4 m rack has a 1.265 m bounding radius, so the drone "collided" 0.50 m deep in empty aisle. Fixed with exact box distance, slab ray intersection and a swept test.
+2. **The camera generator rotated about the vertical axis instead of tilting** — every rendered frame was empty sky. Invisible because the runs were headless.
+3. **The world file placed the cart at its motion centre, not its t = 0 pose** — a 1.9 m mismatch that corrupted a calibration reference by 1.34 m.
+4. **The calibration tool loaded a fixed scenario**, so it compared one world's measurements against another world's geometry.
+5. **v1 shipped a `protocol.json` describing a different run than its own `results.csv`** (found during this release). Fixed by per-run manifests and scenario hashes stamped into every world.
+
+Full corrections C1–C9: **[V1_CORRECTIONS.md](docs/verification/V1_CORRECTIONS.md)**.
+
+</details>
+
+---
+
+## Results
+
+### The ladder
+
+<img src="assets/figures/scorecard.png" width="900" alt="Six layout thumbnails, each with its pooled PPO success rate underneath">
+
+<sub>**Figure 9** — results scorecard · LOGGED-DATA RENDER · source: `assets/figures/scorecard.png`</sub>
+
+| Layout | What changes | IoU vs L00 | Corridor (m) | **PPO Mode C pooled [Wilson 95%]** | Reference traversal |
+|---|---|---|---|---|---|
+| **L00** Baseline | the training layout | 1.000 | 2.08 | **24/45 = 0.533** [0.391, 0.671] | goal, 50 steps |
+| **L01** Perturbed | positions ±0.3 m, yaw ±10° | 0.589 | 1.87 | **20/45 = 0.444** [0.309, 0.588] | goal, 50 steps |
+| **L02** Mirrored | reflected about y = 0 | 0.074 | 2.08 | **24/45 = 0.533** [0.391, 0.671] | goal, 51 steps |
+| **L03** Aisle shift | racks moved, sides swapped | 0.093 | 1.31 | **20/45 = 0.444** [0.309, 0.588] | goal, 52 steps |
+| **L04** Clutter | extra crate stacks | 0.135 | 0.85 | *0/45 — **excluded**, see below* | **not reached** |
+| **L05** Hard | narrow gate + occluded goal | 0.141 | 0.68 | **0/45** [0.000, 0.079] | goal, 56 steps |
+
+<img src="assets/figures/F2_generalization.png" width="860" alt="Pooled success with Wilson intervals per layout for both modes, and the outcome taxonomy">
+
+<sub>**Figure 10** — generalisation across the ladder, with per-checkpoint points and the failure taxonomy · LOGGED-DATA RENDER · source: `assets/figures/F2_generalization.png`</sub>
+
+> [!IMPORTANT]
+> **How to read these numbers.**
+> - **540 episodes, 480 distinct configurations.** Mode C varies the cart phase 15 ways, so n = 15 per cell. Mode B's three episodes are the *same* configuration run three times — the episode seed is accepted by `reset()` and never used — so **n = 1** there. Identical deterministic repeats count once.
+> - Rates are **pooled over the three checkpoints** with Wilson 95% intervals. Per-checkpoint values are plotted but **never ranked**: their intervals overlap almost completely (on L00 they are 9/15, 8/15 and 7/15).
+> - **No significance tests.** Six layouts with one seed per family is a pilot, not a distribution; no trend is fitted.
+
+### The mirror test
+
+L02 is L00 reflected about y = 0 — so it is maximally *different* (occupancy IoU **0.074**, mean obstacle displacement **3.00 m**) while being exactly as *hard*: identical A\* length (9.004 m), tortuosity (1.085), corridor width (2.080 m) and intrusion depth (0.200 m), all asserted by unit test.
+
+<img src="assets/figures/E15_mirror_overlay.png" width="760" alt="Three panels: trajectories on L00 going right, on L02 going left, and L02 reflected back onto L00">
+
+<sub>**Figure 11** — visual proof the mirrored layout was actually flown mirrored · LOGGED-DATA RENDER · source: `assets/figures/E15_mirror_overlay.png`</sub>
+
+<img src="assets/gifs/mirror_l00_vs_l02.gif" width="900" alt="Side-by-side Webots capture of the same checkpoint and cart phase on L00 and on the mirrored L02">
+
+<sub>**Figure 12** — same checkpoint, same cart phase, mirrored geometry · WEBOTS CAPTURE · source: `assets/gifs/mirror_l00_vs_l02.gif`</sub>
+
+> [!NOTE]
+> **The claim, stated narrowly.** The pooled result is the same on L00 and L02 (24/45 both), and the reflected trajectories do **not** retrace the originals — the same checkpoint flies a genuinely different route. That is **no evidence of left/right layout memorisation in this test**.
+>
+> It is **not** a claim that the policy generalises. The counterweight is **L05: 0/45**, on a layout whose traversability was confirmed by a flown reference traversal reaching the goal in 56 steps. Read the two together.
+
+A phase-by-phase comparison is in [`assets/figures/E16_mirror_phases.png`](assets/figures/E16_mirror_phases.png); the full analysis is in [RESULTS_v2](docs/results/RESULTS_v2.md).
+
+### Why L04 is excluded
+
+All five controllers score 0/90 on L04 — but so does the environment's own reference tracker, which is *given* the correct route:
+
+| Planning margin | Tracker speed | Outcome | Peak tilt |
+|---|---|---|---|
+| 0.22 m | ≤ 0.48 m/s | timeout at 90 steps, **no collision** | 0.105 rad |
+| 0.22 m | ≤ 0.84 m/s | collision at 13 steps | — |
+| 0.12 m | ≤ 1.08 m/s | timeout, airframe tumbled | **1.5905 rad** |
+
+The route is flyable slowly and safely but not fast enough to finish inside the 18 s horizon; above that speed the tracker clips the same crate the PPO checkpoints hit. So "the policies fail to generalise" cannot be separated from "this layout may be outside the airframe's envelope within the horizon" — and reporting the former would be a claim the evidence does not support. The data is kept in full. **[ADR-014](docs/decisions/ADR-014-l04-excluded-generalisation-conclusion.md)** · *decision pending from Dr. Mehdi.*
+
+### Why `direct` and `reactive` score 0
+
+Both are untuned reference controllers from Spencer's code, shown for context and never used to rank methods.
+
+- **`direct`** flies straight at the goal. Both racks cross that line by design ([ADR-005](docs/decisions/ADR-005-racks-deliberately-cross-straight-start-goal-lin.md)), so it collides with `rack_a` at x ≈ 2.98 m every time.
+- **`reactive`** is a potential field. v1 explained its failure by comparing the 1.45 m repulsion radius against the crate's **centre** distance (1.54 m) — but the controller reacts to the nearest **LiDAR return**, i.e. the *surface*, which is **1.0582 m** away. The conclusion survived; the arithmetic did not. The measured mechanism is cumulative repulsion from the racks and walls (peak magnitude **1.8654** against a unit attractive term) slowing it until it times out **1.6167 m** short.
+
+---
+
+## What we corrected from v1
+
+| # | v1 said | Correct | Evidence |
+|---|---|---|---|
+| **C1** | repulsion radius 1.45 m > crate-to-goal 1.54 m | 1.54 m is the *centre*; the surface is **1.0582 m**. Real cause: cumulative repulsion, timeout 1.6167 m short | [`reactive_gnron_analysis.json`](results/v2_S6/reactive_gnron_analysis.json) |
+| **C2** | "cart vs model 0.00e+00 m" as headline evidence | True by construction → implementation-consistency check. Replaced by LiDAR–cart MAE **0.0193 m**, n = 650 | [`lidar_cart_consistency.json`](results/v2_S6/lidar_cart_consistency.json) |
+| **C3** | Mode B "3/3" per controller | **1/1** — the seed is accepted but unused. Pooled 3/3, Wilson [0.439, 1.000] | [`v1_distinctness.json`](results/v2_S6/v1_distinctness.json) |
+| **C4** | per-seed 9/15, 8/15, 7/15 discussed as a ranking | Pooled **24/45**, Wilson [0.391, 0.671]; intervals overlap, never ranked | [`pooled_rates.csv`](results/v2_S6/pooled_rates.csv) |
+| **C5** | "RMS 0.025 m", "mean 0.048 m" | Defined: per-beam, absolute; one is the angular-map fit, the other a full occluded scan | [Verification](docs/verification/V1_CORRECTIONS.md) |
+| **C6** | modes used without definition | Mode A/B/C defined once and used consistently | [Protocol §4](docs/verification/S6_GENERALIZATION_PROTOCOL.md) |
+| **C7** | — | `ppo.py` is a **from-scratch NumPy PPO**, not Stable-Baselines3; SB3 is not cited | [ADR index](docs/decisions/README.md) |
+| **C8** | — | v1 shipped a `protocol.json` describing a **different run** than its `results.csv` | [AUDIT_SUMMARY](docs/verification/AUDIT_SUMMARY.md) |
+| **C9** | — | L00 reproduces **exactly**: 10/10 cells, 0 m | [`v1_reproduction.csv`](results/v2_S6/v1_reproduction.csv) |
+
+Full detail with before → after → evidence: **[V1_CORRECTIONS.md](docs/verification/V1_CORRECTIONS.md)**.
+
+---
+
+## Limitations and open questions
+
+| Issue | Impact | Owner |
+|---|---|---|
+| **L04 traversability unconfirmed** | One rung of the ladder yields no conclusion | Dr. Mehdi — decision pending |
+| **Cart contact is not physical** | `collision_cart` means swept footprints intersected, not that an impact was simulated | Me — would need a `Physics` node |
+| **Ideal gimbal** | A best case, not a real sensor. Ideal-ON and body-fixed-OFF bracket a real one; the bracket run is not done | Me |
+| **Reset fails after a tumble** | A tumbled airframe cannot re-settle within its 6 s budget, aborting the next episode | Me |
+| **Sensor reading 0.0536 m vs 0.62 m ground truth** | Unexplained; matters because repulsion scales with `1.45 − range` | Sensor teammate |
+| **Three training seeds** | Cannot separate checkpoint variance from layout effects | Spencer |
+| **Six layouts, one seed per family** | A pilot, not a distribution; no trend is fitted | Me |
+
+Full register: **[ASSUMPTIONS.md](docs/verification/ASSUMPTIONS.md)**.
+
+---
+
+## Repository map
+
+```
+assets/        every visual: figures, gifs, renders, diagrams, decisions
+config/        scenario definitions; scenarios/ holds the 12 canonical JSONs + hashes
+dns/           the simulation package (scenario, backend, autopilot, sensing,
+               generator, feasibility, worldcheck, worldgen)
+docs/          team guides, interfaces, ADRs, verification, results, meetings
+evidence/      CLAIMS_EVIDENCE.csv, baseline hashes, environment, release state
+protos/        DnsQuadcopter.proto — airframe, rotors, LiDAR mount, demo camera
+results/       v1_L00/ (90 episodes) and v2_S6/ (540 episodes + per-run folders)
+scripts/       generator drivers, experiment runners, figure and clip builders,
+               security scan, freeze/verify
+tests/         26 unit tests + the Webots clients (gate, experiment, capture)
+worlds/        generated .wbt — one per layout and mode, stamped with its hash
 ```
 
----
-
-## 15. Limitations and future work
-
-Read this before quoting any result.
-
-1. **One fixed obstacle layout.** Mode C varies *when* the cart arrives, not
-   *where* obstacles are. Nothing here supports a spatial-generalisation claim.
-   Randomised layouts are **future work, not implemented**.
-2. **Small samples.** Three episodes per static cell; a 3/3 result carries a 95%
-   interval of 43.9–100%.
-3. **Three checkpoints**, whose dynamic spread (46.7–60%) is as wide as the
-   effect being measured.
-4. **Untuned baselines** — a sanity floor, not a ranking of methods.
-5. **Idealised LiDAR stabilisation** — the gimbal is massless, with no lag and
-   no joint limits. Real stabilisation has all three.
-6. **One scan layer**, so the sensor is blind to anything not crossing 1.14 m;
-   the validator now rejects obstacles shorter than the scan plane.
-7. **Kinematic obstacle motion** — no contact dynamics (§7).
-8. **Fixed altitude and yaw** — the problem is solved in the horizontal plane.
-9. **Zero sensor noise** — noise belongs in a deliberate robustness study.
-10. **PPO training distribution** — the arena is held at 10 × 6 m because the
-    checkpoints were fitted there. A larger hall is a legitimate
-    out-of-distribution study and must be reported as one.
-11. **No real-world validation.** No physical drone was flown; simulation
-    results do not transfer without a separate study.
-
-Planned next: randomised obstacle layouts, an out-of-distribution arena study,
-deliberate sensor noise, and integration of the perception workstream's
-processing into the live loop.
+Each folder has its own README. The full v2 migration map is [`evidence/FILE_MAP.md`](evidence/FILE_MAP.md).
 
 ---
 
-## 16. Research documents
+## Quick start (Windows)
 
-| Document | What it covers |
+**Prerequisites:** Webots R2025a, Python 3.15, and Spencer's `DroneNavPPO` tree beside this repository (or `DNS_PPO_DIR` pointing at it).
+
+```powershell
+git clone https://github.com/khh4lid/dns-webots-simulation.git
+cd dns-webots-simulation
+python -m pip install -r requirements.txt
+$env:WEBOTS_HOME = "C:\Program Files\Webots"   # wherever yours is
+```
+
+| What | Command | Expect |
+|---|---|---|
+| Unit tests — no Webots needed | `python tests/test_generator.py` | 26 passed · ~2 min |
+| Rebuild figures and tables from logs | `python reproduce.py --fast` | ~3 min |
+| Open the training world | `& "$env:WEBOTS_HOME\msys64\mingw64\bin\webots.exe" worlds\DNS_L00_C.wbt` | the drone waits for a client |
+| Verify one layout | `python scripts/run_gates.py L00` | 26/26 contracts, traversal `goal` · ~20 s |
+| Re-run one layout's 90 episodes | `python scripts/with_webots.py --boot-wait 12 --timeout 1500 --world worlds/DNS_L03_C.wbt tests/client_s6_experiment.py -- --layout L03` | ~3 min |
+| Re-run everything | `python reproduce.py --full` | 540 episodes · ~19 min |
+| Prove the baseline is untouched | `python scripts/freeze.py --verify` | `PASS` |
+
+<details>
+<summary><b>Troubleshooting</b></summary>
+
+- **`Supervisor()` hangs.** Webots must be running with a robot whose controller is `<extern>`. Always launch through `scripts/with_webots.py`, which starts Webots on a free port, runs the client as a subprocess with a timeout, and tears it down.
+- **Recorded video is blank.** Webots' built-in recorder produces empty frames in this environment and `exportImage` returns a uniform fill. Use the offscreen Camera path (`tests/client_capture.py`) — see [ADR-013](docs/decisions/ADR-013-offscreen-camera-capture-built-in-recorder.md).
+- **Webots not found.** Set `WEBOTS_HOME`, or let `dns/launcher.py` probe the usual install locations.
+- **A world looks wrong.** Do not edit the `.wbt`. Change the scenario JSON and run `python scripts/build_worlds.py`; `dns/worldcheck.py` will reject any drift.
+
+</details>
+
+---
+
+## Figure gallery
+
+<table>
+<tr>
+<td><img src="assets/figures/F1_shift_ladder.png" width="260" alt="The six layouts"></td>
+<td><img src="assets/figures/F2_generalization.png" width="260" alt="Generalisation results"></td>
+<td><img src="assets/figures/F3_trajectories.png" width="260" alt="Representative trajectories"></td>
+</tr>
+<tr>
+<td><sub>F1 — shift ladder</sub></td><td><sub>F2 — generalisation</sub></td><td><sub>F3 — trajectories</sub></td>
+</tr>
+<tr>
+<td><img src="assets/figures/F4_verification_panel.png" width="260" alt="Verification panel"></td>
+<td><img src="assets/figures/E9_l00_reproduction.png" width="260" alt="L00 reproduction"></td>
+<td><img src="assets/figures/E4_clearance.png" width="260" alt="Clearance distributions"></td>
+</tr>
+<tr>
+<td><sub>F4 — verification</sub></td><td><sub>E9 — L00 reproduction</sub></td><td><sub>E4 — clearance</sub></td>
+</tr>
+</table>
+
+Every figure with its n, data file, script and provenance: **[docs/FIGURES.md](docs/FIGURES.md)**.
+
+---
+
+## References
+
+Verified against a DOI, arXiv ID or publisher page before being cited.
+
+- Michel, O. (2004). *Webots: Professional Mobile Robot Simulation.* **Int. J. Adv. Robot. Syst. 1**(1), 39–42. [doi:10.5772/5618](https://doi.org/10.5772/5618)
+- Schulman, J. et al. (2017). *Proximal Policy Optimization Algorithms.* [arXiv:1707.06347](https://arxiv.org/abs/1707.06347)
+- Ge, S. S. & Cui, Y. J. (2000). *New potential functions for mobile robot path planning.* **IEEE Trans. Robot. Autom. 16**(5), 615–620. [doi:10.1109/70.880813](https://doi.org/10.1109/70.880813) — the GNRON condition behind C1
+- Hart, P. E., Nilsson, N. J. & Raphael, B. (1968). *A Formal Basis for the Heuristic Determination of Minimum Cost Paths.* **IEEE Trans. Syst. Sci. Cybern. 4**(2), 100–107. [doi:10.1109/TSSC.1968.300136](https://doi.org/10.1109/TSSC.1968.300136)
+- Lozano-Pérez, T. (1983). *Spatial Planning: A Configuration Space Approach.* **IEEE Trans. Comput. C-32**(2), 108–120. [doi:10.1109/TC.1983.1676196](https://doi.org/10.1109/TC.1983.1676196)
+- Khatib, O. (1986). *Real-Time Obstacle Avoidance for Manipulators and Mobile Robots.* **Int. J. Robot. Res. 5**(1), 90–98. [doi:10.1177/027836498600500106](https://doi.org/10.1177/027836498600500106)
+- Wilson, E. B. (1927). *Probable Inference, the Law of Succession, and Statistical Inference.* **JASA 22**(158), 209–212. [doi:10.1080/01621459.1927.10502953](https://doi.org/10.1080/01621459.1927.10502953)
+- Henderson, P. et al. (2018). *Deep Reinforcement Learning That Matters.* **AAAI-18**. [arXiv:1709.06560](https://arxiv.org/abs/1709.06560)
+- Cobbe, K. et al. (2019). *Quantifying Generalization in Reinforcement Learning.* **ICML**. [arXiv:1812.02341](https://arxiv.org/abs/1812.02341)
+- Kirk, R. et al. (2023). *A Survey of Zero-shot Generalisation in Deep RL.* **JAIR 76**. [doi:10.1613/jair.1.14174](https://doi.org/10.1613/jair.1.14174)
+- Tobin, J. et al. (2017). *Domain Randomization for Transferring Deep Neural Networks.* **IROS**. [arXiv:1703.06907](https://arxiv.org/abs/1703.06907)
+- Sargent, R. G. (2013). *Verification and validation of simulation models.* **J. Simulation 7**(1), 12–24. [doi:10.1057/jos.2012.20](https://doi.org/10.1057/jos.2012.20)
+- Koenig, N. & Howard, A. (2004). *Design and use paradigms for Gazebo.* **IROS**. [doi:10.1109/IROS.2004.1389727](https://doi.org/10.1109/IROS.2004.1389727)
+- Shah, S. et al. (2017). *AirSim: High-Fidelity Visual and Physical Simulation.* **FSR**. [arXiv:1705.05065](https://arxiv.org/abs/1705.05065)
+- Panerati, J. et al. (2021). *Learning to Fly — gym-pybullet-drones.* **IROS**. [arXiv:2103.02142](https://arxiv.org/abs/2103.02142)
+
+Stable-Baselines3 is deliberately **not** cited: `ppo.py` is a from-scratch NumPy implementation.
+
+---
+
+## Cite this work · changelog · licence
+
+- **Citation metadata:** [CITATION.cff](CITATION.cff)
+- **What changed in v2.0:** [CHANGELOG.md](CHANGELOG.md)
+- **Licence:** *not yet decided* — the supervisor's call. No licence file has been added, so default copyright applies and the repository stays private.
+
+**Acknowledgements.** Supervised by Dr. Mehdi Samieiyeganeh at Taylor's University, Malaysia. The PPO policy and the raw-sensor processing are my teammates' contributions, not mine.
+
+<details>
+<summary><b>Glossary</b></summary>
+
+| Term | Meaning |
 |---|---|
-| **[Simulation methods](docs/SIMULATION_METHODS.md)** | Design and verification of the environment: simulator choice, geometry, coordinate conventions, obstacle models with equations, drone model, control, timing, collision geometry, reproducibility |
-| **[Team integration](docs/TEAM_INTEGRATION.md)** | PPO interface for Spencer and the LiDAR interface for the perception workstream, with worked examples and flagged interface changes |
-| **[Validation and evidence](docs/VALIDATION_EVIDENCE.md)** | Every verification result with its evidence file, the 90-episode experiment, limitations, and the full reproduction recipe |
-| [Sensor attitude study](docs/SENSOR_ATTITUDE.md) | Stabilised versus body-fixed mount — the measurement behind the configured default |
-| Demonstration video | hosted link pending |
+| **Mode A / B / C** | A: kinematic interface-test mode (no reported result uses it). B: full flight, cart parked. C: full flight, cart sweeping. |
+| **Distinct configuration** | A documented scenario instance. Identical deterministic repeats count once, so 540 episodes are 480 configurations. |
+| **Wilson interval** | A binomial confidence interval that stays sensible at small n, unlike the normal approximation. |
+| **IoU** | Intersection-over-union of two layouts' static obstacle footprints. 1.000 = identical, 0.074 = almost no overlap. |
+| **Corridor width** | The tightest point of the *most generous* route (widest-path bottleneck), excluding the fixed endpoints. |
+| **C-space** | Configuration space: obstacles inflated by the drone's 0.18 m radius, so the drone can be treated as a point. |
+| **GNRON** | "Goals non-reachable with obstacles nearby" — a potential-field failure where repulsion near the goal prevents convergence. |
+| **TEST-ONLY** | L01–L05 are held out. Training on them would turn every generalisation number here into a training score. |
 
----
-
-## 17. Research use and attribution
-
-This is university research conducted at Taylor's University under the
-supervision of Dr. Mehdi Samieiyeganeh. The repository is **private** and is
-shared with the supervisor and authorised team members for research purposes.
-
-Reuse, redistribution or publication is subject to the permissions of the
-project and the institution. **No open-source licence is granted here**, and
-none should be inferred from the presence of this file. The Apache-2.0 header
-inside `protos/DnsQuadcopter.proto` reflects the Webots PROTO template
-convention it was derived from and is not a licence grant for this project as a
-whole.
-
-This repository covers the **Simulation Environment Development** contribution
-only. The PPO implementation and trained checkpoints are Spencer's work; sensor
-processing belongs to the perception workstream. Neither is claimed here, and
-the wider DNS project is a team effort rather than the independent work of any
-one member.
+</details>

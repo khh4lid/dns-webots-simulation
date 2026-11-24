@@ -10,7 +10,7 @@ All notable changes to the simulation environment.
   world is written. Byte-identity is tested across separate processes.
 - **Six-layout distribution-shift ladder** L00–L05, each validated,
   A*-feasible and frozen before any controller ran. En-route corridor widths
-  2.08 / 1.87 / 2.08 / 1.32 / 0.85 / 0.68 m.
+  2.08 / 1.87 / 2.08 / 1.31 / 0.85 / 0.68 m.
 - **S6 generalisation experiment**: 540 episodes = 480 distinct
   configurations — 5 controllers × 6 layouts × (Mode B 3 runs + Mode C 15 cart
   phases). The protocol was committed before anything ran.
@@ -51,7 +51,7 @@ All notable changes to the simulation environment.
 - v1's L00 protocol reproduces exactly: **10/10 cells, maximum per-episode path
   difference 0 m**.
 - Maximum obstacle t = 0 pose error across all six layouts: ≤ 4.0e-06 m.
-- 2 of 540 episodes exceeded 0.50 rad airframe tilt.
+- 3 of 540 episodes exceeded 0.50 rad airframe tilt.
 
 ### Known limitations
 - **L04 is excluded** from the generalisation conclusion pending a decision: no
