@@ -113,6 +113,8 @@ def main() -> int:
     parser.add_argument("--controller", default="ppo_seed7")
     parser.add_argument("--variant", type=int, required=True)
     parser.add_argument("--arm", required=True, choices=("isolated", "sequence"))
+    parser.add_argument("--reset-mode", default="settle_tolerance",
+                        choices=("settle_tolerance", "deterministic"))
     args = parser.parse_args()
 
     OUT.mkdir(parents=True, exist_ok=True)
@@ -124,6 +126,7 @@ def main() -> int:
     from dns.backend import WebotsBackend                         # noqa: E402
 
     backend = WebotsBackend(target)
+    backend.reset_mode = args.reset_mode
 
     prefix_episodes = 0
     if args.arm == "sequence":
@@ -160,6 +163,7 @@ def main() -> int:
 
     report = {
         "run_id": run_id, "arm": args.arm, "variant": args.variant,
+        "reset_mode": args.reset_mode,
         "prefix_episodes_replayed": prefix_episodes,
         "outcome": result["outcome"], "steps": result["steps"],
         "final_distance_m": result["final_distance_m"],
@@ -171,9 +175,10 @@ def main() -> int:
     if reference is not None:
         report["steps_vs_log"] = len(track) - len(reference)
 
-    (OUT / f"{run_id}_{args.arm}.json").write_text(
+    suffix = "" if args.reset_mode == "settle_tolerance" else "_det"
+    (OUT / f"{run_id}_{args.arm}{suffix}.json").write_text(
         json.dumps(report, indent=2), encoding="utf8")
-    print(f"[{run_id}] arm={args.arm:<8} prefix={prefix_episodes:>2} "
+    print(f"[{run_id}] mode={args.reset_mode:<17} arm={args.arm:<8} prefix={prefix_episodes:>2} "
           f"outcome={result['outcome']:<10} steps={result['steps']:>3} "
           f"delta_vs_log="
           f"{'n/a' if delta is None else f'{delta:.3e} m'}")
