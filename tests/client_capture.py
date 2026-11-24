@@ -48,7 +48,25 @@ VIEWS = {
     "overview": (np.array([-2.2, -4.6, 9.2]), np.array([6.3, 0.1, 0.7])),
     "topdown": (np.array([5.0, 0.0, 11.5]), np.array([5.0, 0.0, 0.0])),
     "low": (np.array([0.35, -2.1, 2.4]), np.array([7.5, 0.3, 0.9])),
+    # V-TOP: a near-orthographic plan. Placed high with a correspondingly
+    # narrow field of view, so the racks stand up straight instead of leaning
+    # outwards. 2*h*tan(fov/2) must frame the 10 m arena with ~5% margin:
+    # at h = 30 m that needs fov = 2*atan(5.6/30) = 0.3704 rad (21.2 deg).
+    "plan": (np.array([5.0, 0.0, 30.0]), np.array([5.0, 0.0, 1.0])),
+    # V-SIDE: well outside the long wall and high enough that the sight line
+    # clears it. Standing 0.5 m off the wall at 3.4 m was measured to be
+    # useless -- the nearest rack filled the frame. The wall is 2.5 m and sits
+    # 6 m from this eye, while the target is 9 m away at z = 1.0, so the ray
+    # passes the wall at 7 - 6*(6/9) = 3.0 m, clearing it by 0.5 m. The
+    # resulting depression angle is atan(6/9) = 33.7 deg.
+    "side": (np.array([0.0, -9.0, 7.0]), np.array([0.0, 0.0, 1.0])),
 }
+
+#: Field of view per view, radians. None leaves the PROTO default (0.7854).
+VIEW_FOV = {"plan": 0.3704, "side": 0.95}
+
+#: Views whose eye tracks the drone along x rather than staying put.
+TRACKING_VIEWS = {"side"}
 
 
 def grab(camera) -> np.ndarray | None:
@@ -96,6 +114,12 @@ def main() -> int:
     parser.add_argument("--controller", default="ppo_seed7")
     parser.add_argument("--variant", type=int, default=0)
     parser.add_argument("--view", default="overview", choices=tuple(VIEWS))
+    parser.add_argument("--warmup", action="store_true",
+                        help="replay the exact session prefix before capturing, "
+                             "so the captured run reproduces the logged one")
+    parser.add_argument("--fov", type=float, default=None,
+                        help="camera field of view in radians; overrides the "
+                             "per-view default")
     parser.add_argument("--every", type=int, default=5,
                         help="grab a frame every N physics steps (8 ms each)")
     parser.add_argument("--out", type=Path, default=None)
@@ -123,16 +147,83 @@ def main() -> int:
     if not backend.attach_scene_camera(*VIEWS[args.view]):
         print("FAIL: could not world-lock the scene camera")
         return 1
+    # Set the field of view at run time rather than adding a PROTO field: the
+    # experiment worlds must stay byte-identical, and a Camera is a sensor, not
+    # geometry, so nothing the LiDAR can see changes either way.
+    # The field of view is baked into the world, not set at run time: a Webots
+    # Camera exposes setFov() only through its zoom, and this PROTO declares no
+    # Zoom node, so the call is rejected. Capture worlds carry the right fov in
+    # their sceneCameraFov field -- see scripts/build_capture_worlds.py.
+    fov = float(camera.getFov())
+    wanted = args.fov if args.fov is not None else VIEW_FOV.get(args.view)
+    if wanted is not None and abs(fov - wanted) > 1e-3:
+        print(f"NOTE: world fov {fov:.4f} rad, view {args.view} wants "
+              f"{wanted:.4f} rad -- run against the capture world for this view")
 
     policy = load_policy(args.controller)
     env = Navigation(backend)
+
+    # The experiment runs every episode of a layout in ONE Webots session, in a
+    # fixed order: Mode B (3 episodes x 5 controllers) and then Mode C (15 x 5).
+    # The simulator is deterministic given that SEQUENCE, not in isolation -- a
+    # reset leaves a little residual airframe state behind. Replaying the prefix
+    # is therefore what makes a capture the same run as the logged one rather
+    # than merely the same configuration. Measured without it: 0.287 m of drift
+    # by the end of L00_C_ppo_seed7_v01.
+    if args.warmup:
+        order = ["ppo_seed7", "ppo_seed19", "ppo_seed43", "reactive", "direct"]
+        prefix: list[tuple[str, str, int]] = []
+        for name in order:                       # the whole Mode B block first
+            prefix += [("B", name, i) for i in range(3)]
+        for name in order:                       # then Mode C, up to this one
+            for i in range(15):
+                if name == args.controller and args.mode == "C" and i >= args.variant:
+                    break
+                prefix.append(("C", name, i))
+            if name == args.controller and args.mode == "C":
+                break
+        if args.mode == "B":
+            prefix = [s for s in prefix if s[0] == "B"]
+            prefix = prefix[:prefix.index(("B", args.controller, args.variant))]
+
+        static_scenario = Scenario.load(SCENARIOS / f"{args.layout}_B.json")
+        dynamic_scenario = Scenario.load(SCENARIOS / f"{args.layout}_C.json")
+        print(f"[{run_id}] warm-up: replaying {len(prefix)} preceding episodes",
+              flush=True)
+        for mode, name, index in prefix:
+            warm_seed = TEST_START + index
+            backend.scenario = (with_phase(dynamic_scenario, phase_for(warm_seed))
+                                if mode == "C" else static_scenario)
+            warm_env = Navigation(backend)
+            warm_obs, _ = warm_env.reset(
+                warm_seed, "moving" if mode == "C" else "static")
+            warm_policy = load_policy(name)
+            while True:
+                warm_obs, _r, done, cut, _i = warm_env.step(
+                    np.asarray(warm_policy(warm_obs), dtype=float))
+                if done or cut:
+                    break
+        backend.scenario = scenario
+
     obs, _info = env.reset(seed, "moving" if args.mode == "C" else "static")
 
     state = {"step": 0, "frames": 0}
     meta_frames: list[dict] = []
 
+    tracking = args.view in TRACKING_VIEWS
+
     def hook(_backend) -> None:
         state["step"] += 1
+        if tracking:
+            # Slew the eye along x with the drone. Updated after the step, so
+            # it takes effect on the next one -- an 8 ms lag, invisible at
+            # 30 fps, and far smoother than snapping to the exact pose.
+            x = float(backend.position_dns()[0])
+            smooth = state.get("cam_x", x) * 0.88 + x * 0.12
+            state["cam_x"] = smooth
+            eye, target = VIEWS[args.view]
+            backend._camera_eye_w = np.array([smooth - 1.0, eye[1], eye[2]])
+            backend._camera_target_w = np.array([smooth, target[1], target[2]])
         if state["step"] % args.every:
             return
         frame = grab(camera)
@@ -150,10 +241,13 @@ def main() -> int:
 
     backend.step_hook = hook
 
+    # Per-CONTROL-step poses, so the capture can be checked against the logged
+    # trajectory point for point rather than only on its final outcome.
+    control_poses = [backend.position_dns().copy()]
     while True:
-        action = np.asarray(load_policy.cache(obs), dtype=float) \
-            if hasattr(load_policy, "cache") else np.asarray(policy(obs), dtype=float)
-        obs, _reward, ended, cut, info = env.step(action)
+        obs, _reward, ended, cut, info = env.step(
+            np.asarray(policy(obs), dtype=float))
+        control_poses.append(backend.position_dns().copy())
         if ended or cut:
             break
 
@@ -163,6 +257,20 @@ def main() -> int:
     # session starts from different residual airframe state. Variant 00 is the
     # first episode of its block and reproduces exactly; later variants may
     # differ. Recording the comparison makes that visible instead of implied.
+    # Point-for-point path delta against the logged trajectory. This is the
+    # claim the footage rests on: that the captured run IS the logged run.
+    path_delta = None
+    logged_track = PROJECT_ROOT / "results" / "v2_S6" / "runs" / run_id / "trajectory.csv"
+    if logged_track.is_file():
+        import csv as _csv
+        with logged_track.open(encoding="utf8") as handle:
+            logged_xy = np.array([[float(r["x_m"]), float(r["y_m"])]
+                                  for r in _csv.DictReader(handle)])
+        captured = np.asarray(control_poses)
+        n = min(len(logged_xy), len(captured))
+        if n:
+            path_delta = float(np.abs(logged_xy[:n] - captured[:n]).max())
+
     logged = None
     results = PROJECT_ROOT / "results" / "v2_S6" / "results_v2.csv"
     if results.is_file():
@@ -192,7 +300,15 @@ def main() -> int:
         "camera_eye_webots": VIEWS[args.view][0].tolist(),
         "camera_target_webots": VIEWS[args.view][1].tolist(),
         "resolution": [camera.getWidth(), camera.getHeight()],
+        "camera_fov_rad": round(float(fov), 6),
+        "camera_tracks_drone": tracking,
+        "warmup_replayed": bool(args.warmup),
         "frame_index": meta_frames,
+        "max_path_delta_m": (round(path_delta, 9)
+                             if path_delta is not None else None),
+        "control_steps_compared": (min(len(control_poses),
+                                       sum(1 for _ in open(logged_track, encoding="utf8")) - 1)
+                                   if logged_track.is_file() else None),
         "logged_outcome": logged["outcome"] if logged else None,
         "logged_termination_step": int(logged["termination_step"]) if logged else None,
         "matches_logged_outcome": (
@@ -207,8 +323,10 @@ def main() -> int:
     }
     (out / "capture.json").write_text(json.dumps(sidecar, indent=2),
                                       encoding="utf8")
-    print(f"[{run_id}] {state['frames']} frames, outcome={info['outcome']}, "
-          f"{env.steps} steps -> {out}")
+    delta = ("n/a" if path_delta is None else f"{path_delta:.2e} m")
+    print(f"[{run_id}] view={args.view} {state['frames']} frames, "
+          f"outcome={info['outcome']}, {env.steps} steps, "
+          f"max path delta vs log {delta} -> {out.name}")
     return 0
 
 
