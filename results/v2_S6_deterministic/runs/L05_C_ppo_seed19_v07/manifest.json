@@ -1,0 +1,56 @@
+{
+  "run_id": "L05_C_ppo_seed19_v07",
+  "layout_id": "L05",
+  "mode": "C_dynamic",
+  "mode_meaning": "cart sweeping",
+  "variant": "v07",
+  "variant_definition": "cart initial phase = 4.889143 rad",
+  "distinct_configuration": true,
+  "controller": "ppo_seed19",
+  "controller_kind": "ppo_checkpoint",
+  "controller_source": "D:\\Download\\drone_navigation_system\\DroneNavPPO\\DroneNavPPO\\evidence\\seed19\\model.npz",
+  "controller_sha256": "bd48707abe0e2a22837837d44ee9d87a4744e20337f50e63cfdbaa56c4c1f63d",
+  "controller_determinism": "tanh(actor(obs)); no sampling, no RNG",
+  "scenario_sha256": "69434582238af1244c790e3deaea47d15f71c8117f840c00609a5ff031e0d779",
+  "scenario_file": "07_SCENARIOS/L05_C.json",
+  "snapshot": "webots_dns_BASELINE_SNAPSHOT_2026-11-24",
+  "webots_version": "R2025a",
+  "reset_mode": "deterministic",
+  "basic_timestep_ms": 8,
+  "observation_interval_s": 0.2,
+  "steps_per_command": 25,
+  "horizon_steps": 90,
+  "seed": 200000007,
+  "outcome": "timeout",
+  "termination_step": 90,
+  "lidar_archived": false,
+  "lidar_archive_policy": "full sector log kept for variant 00 of each cell only",
+  "world_check": {
+    "basic_timestep_ms": 8,
+    "steps_per_command": 25,
+    "command_period_s": 0.2,
+    "obstacle_t0_pose_max_error_m": 4.000000000115023e-06,
+    "lidar_beams": 720,
+    "lidar_fov_rad": 6.283185307179586,
+    "lidar_max_range_m": 5.0,
+    "arena_low_xy": [
+      0.0,
+      -3.0
+    ],
+    "arena_high_xy": [
+      10.0,
+      3.0
+    ],
+    "start_xy": [
+      0.85,
+      0.0
+    ],
+    "goal_xy": [
+      9.15,
+      0.0
+    ],
+    "goal_tolerance_m": 0.4,
+    "cruise_altitude_m": 1.0,
+    "scenario_sha256": "69434582238af1244c790e3deaea47d15f71c8117f840c00609a5ff031e0d779"
+  }
+}

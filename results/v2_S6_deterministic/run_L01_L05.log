@@ -12,3 +12,104 @@
   direct       goal 0/3
 
 [L01] MODE C: 15 episodes x 5 controllers
+  ppo_seed7    goal 7/15
+  ppo_seed19   goal 6/15
+  ppo_seed43   goal 9/15
+  reactive     goal 0/15
+  direct       goal 0/15
+
+[L01] 90 episodes in 258.4 s (2.87 s/episode)
+[L01] wrote results\v2_S6_deterministic\results_L01.csv
+[with_webots] client exit code 0
+[with_webots] Webots R2025a at D:\Program files\Webots
+[with_webots] world  : worlds\DNS_L02_C.wbt
+[with_webots] client : client_s6_experiment.py --layout L02 --reset-mode deterministic --out results/v2_S6_deterministic
+[with_webots] port   : 1234
+[L02] world check OK, max t=0 pose error 4.19e-07 m
+
+[L02] MODE B: 3 episodes x 5 controllers
+  ppo_seed7    goal 3/3
+  ppo_seed19   goal 3/3
+  ppo_seed43   goal 3/3
+  reactive     goal 3/3
+  direct       goal 0/3
+
+[L02] MODE C: 15 episodes x 5 controllers
+  ppo_seed7    goal 6/15
+  ppo_seed19   goal 11/15
+  ppo_seed43   goal 6/15
+  reactive     goal 0/15
+  direct       goal 0/15
+
+[L02] 90 episodes in 193.9 s (2.15 s/episode)
+[L02] wrote results\v2_S6_deterministic\results_L02.csv
+[with_webots] client exit code 0
+[with_webots] Webots R2025a at D:\Program files\Webots
+[with_webots] world  : worlds\DNS_L03_C.wbt
+[with_webots] client : client_s6_experiment.py --layout L03 --reset-mode deterministic --out results/v2_S6_deterministic
+[with_webots] port   : 1234
+[L03] world check OK, max t=0 pose error 4.00e-06 m
+
+[L03] MODE B: 3 episodes x 5 controllers
+  ppo_seed7    goal 3/3
+  ppo_seed19   goal 0/3
+  ppo_seed43   goal 3/3
+  reactive     goal 0/3
+  direct       goal 0/3
+
+[L03] MODE C: 15 episodes x 5 controllers
+  ppo_seed7    goal 13/15
+  ppo_seed19   goal 6/15
+  ppo_seed43   goal 1/15
+  reactive     goal 0/15
+  direct       goal 0/15
+
+[L03] 90 episodes in 190.3 s (2.11 s/episode)
+[L03] wrote results\v2_S6_deterministic\results_L03.csv
+[with_webots] client exit code 0
+[with_webots] Webots R2025a at D:\Program files\Webots
+[with_webots] world  : worlds\DNS_L04_C.wbt
+[with_webots] client : client_s6_experiment.py --layout L04 --reset-mode deterministic --out results/v2_S6_deterministic
+[with_webots] port   : 1234
+[L04] world check OK, max t=0 pose error 4.00e-06 m
+
+[L04] MODE B: 3 episodes x 5 controllers
+  ppo_seed7    goal 0/3
+  ppo_seed19   goal 0/3
+  ppo_seed43   goal 0/3
+  reactive     goal 0/3
+  direct       goal 0/3
+
+[L04] MODE C: 15 episodes x 5 controllers
+  ppo_seed7    goal 0/15
+  ppo_seed19   goal 0/15
+  ppo_seed43   goal 0/15
+  reactive     goal 0/15
+  direct       goal 0/15
+
+[L04] 90 episodes in 155.7 s (1.73 s/episode)
+[L04] wrote results\v2_S6_deterministic\results_L04.csv
+[with_webots] client exit code 0
+[with_webots] Webots R2025a at D:\Program files\Webots
+[with_webots] world  : worlds\DNS_L05_C.wbt
+[with_webots] client : client_s6_experiment.py --layout L05 --reset-mode deterministic --out results/v2_S6_deterministic
+[with_webots] port   : 1234
+[L05] world check OK, max t=0 pose error 4.00e-06 m
+
+[L05] MODE B: 3 episodes x 5 controllers
+  ppo_seed7    goal 0/3
+  ppo_seed19   goal 0/3
+  ppo_seed43   goal 0/3
+  reactive     goal 0/3
+  direct       goal 0/3
+
+[L05] MODE C: 15 episodes x 5 controllers
+  ppo_seed7    goal 0/15
+  ppo_seed19   goal 0/15
+  ppo_seed43   goal 0/15
+  reactive     goal 0/15
+  direct       goal 0/15
+
+[L05] 90 episodes in 437.7 s (4.86 s/episode)
+[L05] wrote results\v2_S6_deterministic\results_L05.csv
+[with_webots] client exit code 0

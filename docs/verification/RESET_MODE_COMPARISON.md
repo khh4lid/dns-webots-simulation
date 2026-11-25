@@ -133,3 +133,55 @@ with the rotors already at hover speed — a cleaner initial condition than the
 tolerance loop produced, not a less physical one. The settle costs 6.0 s of
 simulated time, the same budget the tolerance loop was allowed, and it is
 excluded from the episode clock.
+
+---
+
+# Full ladder under the deterministic reset (25 Nov 2026)
+
+All six layouts re-run, same scenarios, same checkpoints, same rules. Cohorts
+kept apart: `results/v2_S6/` (sequential) and `results/v2_S6_deterministic/`.
+
+**540 episodes compared · 15 changed outcome (2.8 %) · 70 changed step count.**
+
+| Layout | Mode B old → new | PPO Mode C old → new | Outcome changes |
+|---|---|---|---|
+| L00 | 3/3 → **3/3** | 24/45 → **23/45** | 4 |
+| L01 | 3/3 → **3/3** | 20/45 → **22/45** | 3 |
+| L02 | 3/3 → **3/3** | 24/45 → **23/45** | 4 |
+| L03 | 2/3 → **2/3** | 20/45 → **20/45** | 4 |
+| L04 | 0/3 → **0/3** | 0/45 → **0/45** | 0 |
+| L05 | 0/3 → **0/3** | 0/45 → **0/45** | 0 |
+
+## What survives
+
+- **Mode B is identical on every layout.** No cell moved.
+- **The mirror result survives.** L00 and L02 were 24/45 and 24/45 under the
+  sequential reset; they are **23/45 and 23/45** under the deterministic one.
+  Still exactly equal. The conclusion — *no evidence of left/right layout
+  memorisation in this test* — therefore holds under **both** reset procedures,
+  which is a stronger statement than either run alone supports.
+- **The zero results are untouched.** L04 and L05 are 0/45 under both. L05
+  remains a valid failure on a layout whose traversability was confirmed.
+- **The ordering of the ladder is unchanged**, and every interval overlaps its
+  counterpart.
+
+## What moved
+
+Three cells shifted by one or two episodes (L00 −1, L01 +2, L02 −1); L03, L04
+and L05 did not move at all. Fifteen individual episodes flipped, in both
+directions — seven toward goal, eight away. The flips concentrate in Mode C,
+where an episode can terminate near the cart, and are absent from L04 and L05,
+where every episode fails well short of any boundary.
+
+**Attribution.** These differences are caused by the reset procedure alone.
+The scenario JSONs, the policy checkpoints, the evaluation rules and Spencer's
+code are byte-identical between the cohorts; only `WebotsBackend.reset_mode`
+differs.
+
+## Which cohort to quote
+
+Quote **both**, as the slides now do. The sequential cohort is the published
+v1/v2 record and is what the v1 reproduction (10/10 cells, 0 m) was measured
+against. The deterministic cohort is the independently reproducible one. Where
+they differ the difference is at most two episodes in 45 and well inside the
+intervals, so no qualitative claim depends on the choice.
