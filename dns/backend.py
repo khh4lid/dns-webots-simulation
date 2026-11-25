@@ -466,9 +466,53 @@ class WebotsBackend:
             self._pin(xy_dns, altitude)
         self.autopilot.reset()
 
+    #: How ``reset`` brings the airframe to its initial state.
+    #:
+    #: ``"settle_tolerance"`` (default)
+    #:     v1 behaviour: hover until speed and altitude fall inside a tolerance
+    #:     box, then start. Any state inside that box is accepted, so the
+    #:     terminal state depends on what the previous episode left behind.
+    #:     Measured consequence: an episode re-run in isolation drifts 1.6 mm
+    #:     to 287 mm from its logged trajectory
+    #:     (``docs/verification/RESET_DETERMINISM.md``). Kept as the default so
+    #:     the v1 and v2 published results stay bit-comparable.
+    #: ``"deterministic"``
+    #:     A fixed number of settle steps with the pose re-asserted on every
+    #:     one. Because the pose and velocity are written each step and the
+    #:     autopilot integrator is cleared first, the terminal state is a
+    #:     function of the step count alone and cannot depend on history.
+    reset_mode = "settle_tolerance"
+
+    #: Settle steps used by the deterministic mode. 750 x 8 ms = 6.0 s, the
+    #: same budget the tolerance loop was allowed, so the rotors reach the same
+    #: hover regime rather than a different one.
+    DETERMINISTIC_SETTLE_STEPS = 750
+
+    def _settle_deterministic(self) -> None:
+        """Fixed-iteration settle; the terminal state cannot depend on history.
+
+        The autopilot integrator is cleared, then the hover controller runs for
+        a fixed number of steps with the pose and velocity re-written after
+        every one. Writing the pose each step is what removes the dependence on
+        the previous episode: whatever the controller does in between, the
+        state at the end of each step is exactly the start state, so the only
+        thing that evolves is the rotor spin-up, which is itself a
+        deterministic function of the fixed step count.
+        """
+        start = self.scenario.start_xy
+        altitude = self.scenario.cruise_altitude_m
+        self.autopilot.reset()
+        for _ in range(self.DETERMINISTIC_SETTLE_STEPS):
+            self.autopilot.update(np.zeros(2), altitude)
+            self._step_once()
+            self._pin(start, altitude)
+
     def _settle(self) -> None:
         """Hold a zero-velocity hover until the airframe is steady."""
         if self.scenario.dynamics_mode == "kinematic":
+            return
+        if self.reset_mode == "deterministic":
+            self._settle_deterministic()
             return
         deadline = self.robot.getTime() + self.scenario.settle_timeout_s
         target = self.scenario.cruise_altitude_m

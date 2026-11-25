@@ -267,6 +267,11 @@ def write_run_folder(root: Path, run_id: str, manifest: dict,
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--layout", required=True)
+    parser.add_argument("--reset-mode", default="settle_tolerance",
+                        choices=("settle_tolerance", "deterministic"),
+                        help="settle_tolerance reproduces the published "
+                             "v1/v2 numbers; deterministic makes each "
+                             "episode independently reproducible")
     parser.add_argument("--static-episodes", type=int, default=3)
     parser.add_argument("--dynamic-episodes", type=int, default=15)
     parser.add_argument("--out", type=Path,
@@ -289,6 +294,7 @@ def main() -> int:
     from dns.backend import WebotsBackend                         # noqa: E402
 
     backend = WebotsBackend(dynamic)
+    backend.reset_mode = args.reset_mode
     # Blocking check: refuse to produce results against a world that does not
     # implement the scenario. This is the v1 defect class made fatal.
     world_report = worldcheck.check(backend, dynamic, expect_sha256=digests["C"])
@@ -363,6 +369,7 @@ def main() -> int:
                     "scenario_file": f"07_SCENARIOS/{args.layout}_{mode}.json",
                     "snapshot": "webots_dns_BASELINE_SNAPSHOT_2026-11-24",
                     "webots_version": "R2025a",
+                    "reset_mode": args.reset_mode,
                     "basic_timestep_ms": backend.scenario.basic_timestep_ms,
                     "observation_interval_s": backend.scenario.command_period_s,
                     "steps_per_command": backend.scenario.steps_per_command,
@@ -410,7 +417,8 @@ def main() -> int:
         "controllers": {k: {"kind": v["kind"], "source": v["source"],
                             "sha256": v["sha256"]}
                         for k, v in controllers.items()},
-        "protocol": "10_EVIDENCE/S6_GENERALIZATION_PROTOCOL.md",
+        "protocol": "docs/verification/S6_GENERALIZATION_PROTOCOL.md",
+        "reset_mode": args.reset_mode,
         "near_miss_threshold_m": NEAR_MISS_M,
         "lidar_archive_variants": list(LIDAR_ARCHIVE_VARIANTS),
     }, indent=2), encoding="utf8")

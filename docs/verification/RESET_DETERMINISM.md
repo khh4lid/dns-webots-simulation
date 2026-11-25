@@ -120,3 +120,51 @@ state (pose, linear and angular velocity) directly and skip the settle. Either
 would make individual episodes independently reproducible. Both change
 `WebotsBackend.reset`, which would break bit-comparability with the v1 results,
 so this is a deliberate **not-now**: the current behaviour is documented instead.
+
+---
+
+# Fix — deterministic reset (25 Nov 2026)
+
+## What was changed
+
+`WebotsBackend.reset_mode` selects the settle procedure.
+
+| Mode | Procedure | Status |
+|---|---|---|
+| `settle_tolerance` | v1 behaviour: hover until `speed < 0.02 m/s` and `|alt − 1.0| < 0.02 m`, up to 6 s. **Default**, so all published v1/v2 numbers stay bit-comparable. | unchanged |
+| `deterministic` | Clear the autopilot integrator, then run a **fixed 750 steps** (750 × 8 ms = 6.0 s, the same budget) of the hover controller, re-asserting pose and zero velocity after **every** step. | new |
+
+Why it works: writing the pose and velocity each step means the state at the
+end of every step is exactly the start state, whatever the controller did in
+between. The only thing that evolves is the rotor spin-up, which is then a
+deterministic function of the fixed step count. No tolerance is widened and no
+drift is hidden — the loop simply has no history-dependent exit condition.
+
+Nothing in Spencer's PPO model, `navigation.py` or the controllers was touched.
+
+## Measured result — L00, `ppo_seed7`, variant v01
+
+Same episode, run isolated (nothing before it) and after a 16-episode prefix:
+
+| Quantity | `settle_tolerance` | `deterministic` |
+|---|---|---|
+| Steps, isolated vs sequence | 59 vs **60** | 59 vs **59** |
+| Max trajectory difference between the two arms | **0.287 m** | **1.0e-06 m** (the 6-dp logging rounding) |
+| Initial altitude difference | — | **2.5e-12 m** |
+| Initial x, y, roll, pitch, vx, vy difference | — | **0.0, exactly** |
+| Outcome | goal / goal | goal / goal |
+
+Source: `results/reset_study/L00_C_ppo_seed7_v01_{isolated,sequence}_det.json`.
+
+**Episodes are independently reproducible under `deterministic`.**
+
+## What has NOT been done
+
+- **The 90-episode experiment has not been re-run under the new mode.** The
+  published L00 and S6 numbers were all produced with `settle_tolerance` and
+  are unchanged; they remain valid as *sequence-reproducible* results and are
+  labelled as such. A deterministic-mode re-run would produce a **different and
+  not directly comparable** set of trajectories — the reset procedure differs —
+  and must be written to a separate results folder, never over the existing one.
+- Verified on **one** variant, two arms. It should be extended to the full
+  n = 5 study and to a second controller before the mode is made the default.
