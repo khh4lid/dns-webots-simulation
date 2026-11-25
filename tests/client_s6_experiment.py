@@ -36,8 +36,7 @@ from dns.feasibility import astar, clearance_grid, path_length   # noqa: E402
 from dns.scenario import Scenario                                # noqa: E402
 from dns.spencer_link import DT, Navigation, find_ppo_dir        # noqa: E402
 
-PACKAGE = PROJECT_ROOT.parent / "DNS_FRIDAY_MEETING_2026-11-27"
-SCENARIOS = PACKAGE / "07_SCENARIOS"
+SCENARIOS = PROJECT_ROOT / "config" / "scenarios"
 
 #: v1's seed base, reused so Mode C's 15 cart phases are identical to v1's.
 TEST_START = 200_000_000

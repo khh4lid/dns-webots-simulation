@@ -32,9 +32,8 @@ from dns.feasibility import describe                            # noqa: E402
 from dns.scenario import Scenario                               # noqa: E402
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-PACKAGE = PROJECT_ROOT.parent / "DNS_FRIDAY_MEETING_2026-11-27"
-SCENARIOS = PACKAGE / "07_SCENARIOS"
-DATA = PACKAGE / "06_DATA"
+SCENARIOS = PROJECT_ROOT / "config" / "scenarios"
+DATA = PROJECT_ROOT / "results" / "v2_S6"
 
 LAYOUTS = ("L00", "L01", "L02", "L03", "L04", "L05")
 MODES = ("C", "B")

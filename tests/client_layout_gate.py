@@ -48,8 +48,7 @@ from dns.spencer_link import (                                   # noqa: E402
 
 _ONLY: dict | None = None
 
-PACKAGE = PROJECT_ROOT.parent / "DNS_FRIDAY_MEETING_2026-11-27"
-SCENARIOS = PACKAGE / "07_SCENARIOS"
+SCENARIOS = PROJECT_ROOT / "config" / "scenarios"
 
 
 # ---------------------------------------------------------------------------

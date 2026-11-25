@@ -29,8 +29,7 @@ from dns.feasibility import (                                    # noqa: E402
 )
 from dns.scenario import Obstacle, Scenario                      # noqa: E402
 
-PACKAGE = PROJECT_ROOT.parent / "DNS_FRIDAY_MEETING_2026-11-27"
-SCENARIOS = PACKAGE / "07_SCENARIOS"
+SCENARIOS = PROJECT_ROOT / "config" / "scenarios"
 LAYOUTS = ("L00", "L01", "L02", "L03", "L04", "L05")
 
 PASSED: list[str] = []

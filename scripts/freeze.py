@@ -32,7 +32,6 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]          # .../webots_dns
 WORKSPACE = PROJECT_ROOT.parent                             # .../drone_navigation_system
-PACKAGE = WORKSPACE / "DNS_FRIDAY_MEETING_2026-11-27"
 EVIDENCE = PACKAGE / "10_EVIDENCE"
 
 #: Trees and files that are frozen for the duration of this work. Each entry is

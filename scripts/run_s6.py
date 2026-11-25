@@ -19,7 +19,6 @@ import time
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-PACKAGE = PROJECT_ROOT.parent / "DNS_FRIDAY_MEETING_2026-11-27"
 OUT = PROJECT_ROOT / "results" / "s6"
 LAYOUTS = ("L00", "L01", "L02", "L03", "L04", "L05")
 
@@ -62,8 +61,8 @@ def main() -> int:
             columns = reader.fieldnames or columns
             rows.extend(reader)
     if rows:
-        (PACKAGE / "06_DATA").mkdir(parents=True, exist_ok=True)
-        target = PACKAGE / "06_DATA" / "results_v2.csv"
+        (DATA).mkdir(parents=True, exist_ok=True)
+        target = DATA / "results_v2.csv"
         with target.open("w", newline="", encoding="utf8") as handle:
             writer = csv.DictWriter(handle, fieldnames=columns)
             writer.writeheader()

@@ -45,9 +45,11 @@ from .scenario import SCENARIO_SCHEMA, Scenario
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = PROJECT_ROOT.parent
-PACKAGE = WORKSPACE / "DNS_FRIDAY_MEETING_2026-11-27"
-CONFIG_PATH = PACKAGE / "07_SCENARIOS" / "generator_config.yaml"
-SCENARIO_DIR = PACKAGE / "07_SCENARIOS"
+# Repository paths. These used to point at the one-off meeting package,
+# which made the generator unusable from a fresh clone -- caught by the
+# clone verification, not by any test running in the dev tree.
+CONFIG_PATH = PROJECT_ROOT / "config" / "scenarios" / "generator_config.yaml"
+SCENARIO_DIR = PROJECT_ROOT / "config" / "scenarios"
 
 #: Decimal places every float in a canonical scenario is rounded to. Six is
 #: well past the simulator's own resolution (the reset error is 2.8e-6 m) and it
@@ -772,9 +774,9 @@ def main(argv: list[str] | None = None) -> int:
         "# SHA-256 of each canonical scenario JSON, hash field excluded.\n"
         "# Regenerate with: python -m dns.generator --all\n"
         + "\n".join(sorted(hashes)) + "\n", encoding="utf8")
-    (PACKAGE / "06_DATA" / "generator_report.json").parent.mkdir(
+    (DATA / "generator_report.json").parent.mkdir(
         parents=True, exist_ok=True)
-    (PACKAGE / "06_DATA" / "generator_report.json").write_text(
+    (DATA / "generator_report.json").write_text(
         json.dumps(report, indent=2), encoding="utf8")
     print(f"\nwrote {args.out / 'HASHES.txt'} ({len(hashes)} scenarios)")
     return 0
