@@ -16,8 +16,7 @@ from collections import Counter
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-PACKAGE = PROJECT_ROOT.parent / "DNS_FRIDAY_MEETING_2026-11-27"
-DATA = PACKAGE / "06_DATA"
+DATA = DATA
 EVIDENCE = PACKAGE / "10_EVIDENCE"
 
 COLUMNS = ["claim_id", "claim", "value", "unit", "n", "data_file", "script",

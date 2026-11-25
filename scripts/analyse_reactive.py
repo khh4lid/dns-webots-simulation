@@ -44,10 +44,9 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from dns.scenario import Scenario                                # noqa: E402
 from dns.spencer_link import RANGE, SECTORS, find_ppo_dir         # noqa: E402
 
-PACKAGE = PROJECT_ROOT.parent / "DNS_FRIDAY_MEETING_2026-11-27"
-SCENARIOS = PACKAGE / "07_SCENARIOS"
+SCENARIOS = PROJECT_ROOT / "config" / "scenarios"
 RUNS = PROJECT_ROOT / "results" / "s6" / "runs"
-DATA = PACKAGE / "06_DATA"
+DATA = DATA
 
 #: gap_rule's repulsion radius, read from Spencer's source rather than retyped.
 REPULSION_RADIUS_M = 1.45

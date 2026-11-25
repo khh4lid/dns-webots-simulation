@@ -1,0 +1,14 @@
+[with_webots] Webots R2025a at D:\Program files\Webots
+[with_webots] world  : worlds\DNS_L01_C.wbt
+[with_webots] client : client_s6_experiment.py --layout L01 --reset-mode deterministic --out results/v2_S6_deterministic
+[with_webots] port   : 1234
+[L01] world check OK, max t=0 pose error 4.00e-06 m
+
+[L01] MODE B: 3 episodes x 5 controllers
+  ppo_seed7    goal 3/3
+  ppo_seed19   goal 3/3
+  ppo_seed43   goal 3/3
+  reactive     goal 3/3
+  direct       goal 0/3
+
+[L01] MODE C: 15 episodes x 5 controllers

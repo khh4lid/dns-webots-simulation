@@ -79,3 +79,57 @@ references score zero, and Mode B is unaffected.
 - Repetitions under the deterministic reset are **still not independent
   samples**: they are exact repeats of one configuration, so they count once.
   Independence here means *reproducibility*, not statistical independence.
+
+---
+
+## Hidden state — what actually survives a reset
+
+Every component a reset is supposed to restore, compared across the three runs
+of each target (15 comparisons per mode). These are read **after** reset, before
+the first action.
+
+| Component | `settle_tolerance` worst | `deterministic` worst |
+|---|---|---|
+| Position (translation) | 4.572e-02 m | **2.525e-12 m** |
+| Linear velocity | 4.170e-02 m/s | **3.139e-10 m/s** |
+| Angular velocity | 2.669e-01 rad/s | **1.134e-08 rad/s** |
+| Measured velocity in the observation | 1.504e-02 m/s | **0.0 exactly** |
+| **Autopilot integrator** | 4.559e-02 | **0.0 exactly** |
+| **12 packed sector ranges** | 6.478e-02 m | **0.0 exactly** |
+| Sector validity flags | identical | identical |
+| Roll / pitch / yaw (IMU) | 9.6e-04 / 2.2e-03 / 1.1e-03 rad | **0.0 exactly** |
+| Episode clock | 0.0 | 0.0 |
+| **Cart y at t = 0** | 0.0 | 0.0 |
+| **Cart phase** | 0.0 | 0.0 |
+
+Three findings worth stating plainly:
+
+1. **The old reset leaked controller and sensor state, not just pose.** The
+   autopilot integrator started up to 0.046 different and the sector ranges the
+   policy received started up to 0.065 m different. That is a leak into the
+   *observation*, which is why trajectories diverged rather than merely
+   wobbling.
+2. **Obstacle timing was never affected, by either mode.** Cart phase, cart
+   position at t = 0 and the episode clock are identical to 0.0 in both. The
+   750-step settle does advance the global simulation clock, but
+   `backend._epoch` is taken *after* settling and obstacle motion is a function
+   of `episode_time`, so the cart always starts at its t = 0 pose. The longer
+   settle does not shift the hazard.
+3. **The `rotation` field is not a real difference.** Its worst value is
+   1.89 rad in *both* modes — but in every one of those cases roll, pitch and
+   yaw differ by exactly 0.0. A Webots `SFRotation` is `[axis, angle]`, and the
+   drone flies at fixed yaw so the angle is ≈ 0, which leaves the axis
+   degenerate and free to be written differently for an identical orientation.
+   The IMU Euler angles are the physically meaningful read-out and they agree
+   exactly. Reported here rather than silently dropped.
+
+## Does the 750-step settle create unrealistic behaviour?
+
+No behaviour is invented: the hover controller runs normally and the rotors
+spin up through the same model. What the procedure does add is that the pose is
+re-asserted after each of the 750 steps, so the airframe cannot drift during
+the settle. The episode therefore begins from a hover at exactly the start pose
+with the rotors already at hover speed — a cleaner initial condition than the
+tolerance loop produced, not a less physical one. The settle costs 6.0 s of
+simulated time, the same budget the tolerance loop was allowed, and it is
+excluded from the episode clock.

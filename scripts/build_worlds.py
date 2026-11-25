@@ -27,8 +27,7 @@ from dns import worldgen                                        # noqa: E402
 from dns.scenario import Scenario, to_webots                    # noqa: E402
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-PACKAGE = PROJECT_ROOT.parent / "DNS_FRIDAY_MEETING_2026-11-27"
-SCENARIOS = PACKAGE / "07_SCENARIOS"
+SCENARIOS = PROJECT_ROOT / "config" / "scenarios"
 WORLDS = PROJECT_ROOT / "worlds"
 PACKAGE_WORLDS = SCENARIOS / "worlds"
 
