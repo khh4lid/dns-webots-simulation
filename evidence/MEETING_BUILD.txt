@@ -53,3 +53,38 @@ IDENTITY
   the sensor teammate's name and handle.
 
 AFTER THIS POINT: no code or data changes until after the meeting.
+
+========================================================================
+SIMPLE DECK BUILD  —  added 27 Nov 2026 (meeting-2026-11-27-v2)
+========================================================================
+
+The deck to present from is now the SIMPLE deck: 12 picture-first
+slides plus 4 backups, built by scripts/make_slides_simple.py. The
+detailed 19-slide deck is retained unchanged as the backup file.
+
+DNS_SimEnv_SIMPLE_2026-11-27.pptx
+    sha256  c5b2f7bae7e5e01e744e2a11604665ee5e0f51ac52a41d7a59fe8294e9a8a55d
+    bytes   3,833,864
+
+DNS_SimEnv_SIMPLE_2026-11-27.pdf
+    sha256  f6293e84ad85b4185524150d0af3205126fdea2949ea5d9460921e00c310d6da
+    bytes   902,603
+
+DNS_SimEnv_2026-11-27.pptx
+    sha256  c49802339fed0074f699834f6752cc9efda560bd760f22ed7a623fb8aed17711
+    bytes   5,867,036
+
+DNS_SimEnv_2026-11-27.pdf
+    sha256  3a2e98f173c91ec140e0a50000f3088df5103b0d6af2b4c44bff42cb1790d200
+    bytes   3,900,326
+
+Claims checks, both 0 unmatched:
+    evidence/SLIDES_SIMPLE_CLAIMS_CHECK.csv   134 tokens, 0 unmatched
+    evidence/SLIDES_CLAIMS_CHECK.csv          288 tokens, 0 unmatched
+
+The defect tally on simple slide 11 is read from evidence/DEFECTS.csv
+(6 found, 5 fixed, 1 open) rather than typed, so it cannot drift.
+
+The supervisor's personal name was removed from every tracked file and
+from every generated PDF/PPTX on 27 Nov 2026. Published git history and
+the existing tags still contain it; history was not rewritten.

@@ -1,0 +1,135 @@
+claim_context,value,status,backed_by
+Khaled (@khh4lid),4,structural,slide numbering / layout constant
+2026-11-27,2026,structural,slide numbering / layout constant
+2026-11-27,11,structural,slide numbering / layout constant
+2026-11-27,27,structural,slide numbering / layout constant
+v2_S6,2,structural,slide numbering / layout constant
+v2_S6,6,structural,slide numbering / layout constant
+1/12,1,structural,slide numbering / layout constant
+1/12,12,structural,slide numbering / layout constant
+DNS project · Taylor's University 27 November 2026,27,structural,slide numbering / layout constant
+DNS project · Taylor's University 27 November 2026,2026,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,00,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,4,structural,slide numbering / layout constant
+2/12,2,structural,slide numbering / layout constant
+2/12,12,structural,slide numbering / layout constant
+3/12,3,structural,slide numbering / layout constant
+3/12,12,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,00,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,4,structural,slide numbering / layout constant
+4/12,4,structural,slide numbering / layout constant
+4/12,12,structural,slide numbering / layout constant
+5/12,5,structural,slide numbering / layout constant
+5/12,12,structural,slide numbering / layout constant
+6/12,6,structural,slide numbering / layout constant
+6/12,12,structural,slide numbering / layout constant
+7/12,7,structural,slide numbering / layout constant
+7/12,12,structural,slide numbering / layout constant
+8/12,8,structural,slide numbering / layout constant
+8/12,12,structural,slide numbering / layout constant
+9/12,9,structural,slide numbering / layout constant
+9/12,12,structural,slide numbering / layout constant
+10/12,10,structural,slide numbering / layout constant
+10/12,12,structural,slide numbering / layout constant
+LOGGED-DATA RENDER · results/v2_S6/pooled_rates.csv,2,structural,slide numbering / layout constant
+LOGGED-DATA RENDER · results/v2_S6/pooled_rates.csv,6,structural,slide numbering / layout constant
+11/12,11,structural,slide numbering / layout constant
+11/12,12,structural,slide numbering / layout constant
+"LOGGED-DATA RENDER · results/v2_S6/, docs/verification/RESET_DETERMINISM.md",2,structural,slide numbering / layout constant
+"LOGGED-DATA RENDER · results/v2_S6/, docs/verification/RESET_DETERMINISM.md",6,structural,slide numbering / layout constant
+12/12,12,structural,slide numbering / layout constant
+12/12,12,structural,slide numbering / layout constant
+source: docs/meetings/2026-11-27/MEETING_DAY.md,2026,structural,slide numbering / layout constant
+source: docs/meetings/2026-11-27/MEETING_DAY.md,11,structural,slide numbering / layout constant
+source: docs/meetings/2026-11-27/MEETING_DAY.md,27,structural,slide numbering / layout constant
+results/layout_gate/L04.json,04,structural,slide numbering / layout constant
+On L04 the PPO policy scores 0 of 45. But my own reference path — which is not a learned policy at all — canno,04,structural,slide numbering / layout constant
+On L04 the PPO policy scores 0 of 45. But my own reference path — which is not a learned policy at all — canno,0,structural,slide numbering / layout constant
+On L04 the PPO policy scores 0 of 45. But my own reference path — which is not a learned policy at all — canno,45,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+On L04 the PPO policy scores 0 of 45. But my own reference path — which is not a learned policy at all — canno,0,structural,slide numbering / layout constant
+"If asked: the interface is 52 numbers in, two numbers out, every 0.2 seconds — it is written down in docs/inte",52,matched,layout_gate L03 traversal steps
+"If asked: the interface is 52 numbers in, two numbers out, every 0.2 seconds — it is written down in docs/inte",0.2,matched,pooled_rates.csv L00/C_dynamic/reactive
+If asked: it has to arrive within 0.4 m of the goal to count as a success.,0.4,matched,pooled_rates.csv L01/C_dynamic/ppo_seed7
+"If asked: I did not benchmark the others — these four reasons were enough, and they are written up in ADR-001.",001,structural,slide numbering / layout constant
+"If asked: the L04 decision is the one that is actually blocking a result, so that is the one I would like answ",04,structural,slide numbering / layout constant
+"The reset finding in two rows. Replayed in order, a run reproduces to microns. Run on its own, it can drift by",29,matched,"reset_study isolated worst path delta, in centimetres"
+DNS_SimEnv_SIMPLE_2026-11-27.pdf,2026,structural,slide numbering / layout constant
+DNS_SimEnv_SIMPLE_2026-11-27.pdf,11,structural,slide numbering / layout constant
+DNS_SimEnv_SIMPLE_2026-11-27.pdf,27,structural,slide numbering / layout constant
+DNS_SimEnv_SIMPLE_2026-11-27.pptx,2026,structural,slide numbering / layout constant
+DNS_SimEnv_SIMPLE_2026-11-27.pptx,11,structural,slide numbering / layout constant
+DNS_SimEnv_SIMPLE_2026-11-27.pptx,27,structural,slide numbering / layout constant
+· 27 Nov 2026 ·,27,structural,slide numbering / layout constant
+· 27 Nov 2026 ·,2026,structural,slide numbering / layout constant
+V-TOP_L00_success_poster.png,00,structural,slide numbering / layout constant
+V-TOP_L00_success_poster.png,00,structural,slide numbering / layout constant
+"LOGGED-DATA RENDER · config/scenarios/L00_C.json, results/v2_S6/scenario_table.csv",00,structural,slide numbering / layout constant
+"LOGGED-DATA RENDER · config/scenarios/L00_C.json, results/v2_S6/scenario_table.csv",2,structural,slide numbering / layout constant
+"LOGGED-DATA RENDER · config/scenarios/L00_C.json, results/v2_S6/scenario_table.csv",6,structural,slide numbering / layout constant
+0.50 m of clear air,0.50,matched,ADR-004 circle-vs-box surface gap; also the tilt threshold for the exceedance count
+SCHEMATIC · rack size from config/scenarios/L00_C.json,00,structural,slide numbering / layout constant
+A circle called it a crash with 0.50 m of empty aisle left.,0.50,matched,ADR-004 circle-vs-box surface gap; also the tilt threshold for the exceedance count
+LOGGED-DATA RENDER · config/scenarios/L00_C.json,00,structural,slide numbering / layout constant
+"episodes, PPO with the cart moving · lines show 95% uncertainty (approximate) · L04 excluded: my own reference",95,matched,"Wilson interval confidence level, percent"
+"episodes, PPO with the cart moving · lines show 95% uncertainty (approximate) · L04 excluded: my own reference",04,structural,slide numbering / layout constant
+E4_clearance.png,4,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+words (max 12),12,structural,slide numbering / layout constant
+results/video/V1_main_demo.mp4,1,structural,slide numbering / layout constant
+results/video/V1_main_demo.mp4,4,structural,slide numbering / layout constant
+config/scenarios/L00_C.json,00,structural,slide numbering / layout constant
+Full 3-D flight,3,structural,slide numbering / layout constant
+config/scenarios/L0*_C.json,0,structural,slide numbering / layout constant
+L04 — needs a decision,04,structural,slide numbering / layout constant
+a decision on L04,04,structural,slide numbering / layout constant
+ADR-001,001,structural,slide numbering / layout constant
+ADR-002,002,structural,slide numbering / layout constant
+full 3-D flight,3,structural,slide numbering / layout constant
+ADR-003,003,structural,slide numbering / layout constant
+ADR-004,004,structural,slide numbering / layout constant
+ADR-006,006,structural,slide numbering / layout constant
+ADR-009,009,structural,slide numbering / layout constant
+"0.200000 s, error < 3e-16 s",0.200000,matched,v1 Verification_Report timing
+"0.200000 s, error < 3e-16 s",3e-16,matched,v1 Verification_Report observation-interval error
+v1 Verification_Report,1,structural,slide numbering / layout constant
+"≤ 4.0e-06 m, 6 layouts",4.0e-06,matched,layout_gate SUMMARY worst t=0 pose error
+"≤ 4.0e-06 m, 6 layouts",6,structural,slide numbering / layout constant
+0.048 m mean per beam,0.048,matched,v1 Verification_Report lidar full-scan mean
+v1 Verification_Report,1,structural,slide numbering / layout constant
+26 of 26,26,matched,layout_gate L00 contract tests
+26 of 26,26,matched,layout_gate L00 contract tests
+"L00 reproduction, in order",00,structural,slide numbering / layout constant
+results/v2_S6/v1_reproduction.csv,2,structural,slide numbering / layout constant
+results/v2_S6/v1_reproduction.csv,6,structural,slide numbering / layout constant
+results/v2_S6/v1_reproduction.csv,1,structural,slide numbering / layout constant
+results/v2_S6/results_v2.csv,2,structural,slide numbering / layout constant
+results/v2_S6/results_v2.csv,6,structural,slide numbering / layout constant
+results/v2_S6/results_v2.csv,2,structural,slide numbering / layout constant
+3 of 540 above 0.50 rad,3,structural,slide numbering / layout constant
+3 of 540 above 0.50 rad,540,matched,results_v2.csv row count
+3 of 540 above 0.50 rad,0.50,matched,ADR-004 circle-vs-box surface gap; also the tilt threshold for the exceedance count
+results/v2_S6/results_v2.csv,2,structural,slide numbering / layout constant
+results/v2_S6/results_v2.csv,6,structural,slide numbering / layout constant
+results/v2_S6/results_v2.csv,2,structural,slide numbering / layout constant
+results/v2_S6/pooled_rates.csv,2,structural,slide numbering / layout constant
+results/v2_S6/pooled_rates.csv,6,structural,slide numbering / layout constant
+results_v2.csv,2,structural,slide numbering / layout constant
+L00_C.json,00,structural,slide numbering / layout constant
+v1_reproduction.csv,1,structural,slide numbering / layout constant
+F1_shift_ladder.png,1,structural,slide numbering / layout constant
+m called 0.50 m of air a crash,0.50,matched,ADR-004 circle-vs-box surface gap; also the tilt threshold for the exceedance count
+"cells, 0 m",0,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,00,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,4,structural,slide numbering / layout constant
+V-TOP_L00_success_poster.png,00,structural,slide numbering / layout constant
+V-TOP_L02_mirror.mp4,02,structural,slide numbering / layout constant
+V-TOP_L02_mirror.mp4,4,structural,slide numbering / layout constant
+V-TOP_L02_mirror_poster.png,02,structural,slide numbering / layout constant
+video/mp4,4,structural,slide numbering / layout constant

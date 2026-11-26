@@ -19,6 +19,7 @@ Run::
 """
 from __future__ import annotations
 
+import argparse
 import ast
 import csv
 import json
@@ -29,6 +30,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "results" / "v2_S6"
 EVIDENCE = ROOT / "evidence"
+#: Default target. ``--source``/``--out`` let the same check run over the
+#: simple deck, which has its own literals and its own output CSV.
 SOURCE = ROOT / "scripts" / "make_slides.py"
 
 #: Numbers that are structural rather than measured -- slide indices, section
@@ -45,6 +48,14 @@ STRUCTURAL = {
     # the meeting date, and the "256" of SHA-256
     "27", "2026", "256",
 }
+
+
+#: Strings that are code rather than slide text: hex colours, matplotlib
+#: box/arrow style specifiers and format specs. Their digits are layout
+#: constants, so matching them against experiment data would be meaningless.
+NOT_A_CLAIM = re.compile(
+    r"^(#[0-9a-fA-F]{3,8}$|round,pad=|square,pad=|arc3|angle|bar,|simple,|"
+    r"fancy,|wedge,|->|-\|>|<\|-\|>|[-+]?\d*\.?\d*[eEfgd%]$)")
 
 
 def known_values() -> dict[str, str]:
@@ -172,7 +183,8 @@ def known_values() -> dict[str, str]:
             ("1.5905", "layout_gate L04 peak tilt, tumbled"),
             ("0.48", "L04 reference tracker speed"),
             ("0.22", "L04 reference planning margin"),
-            ("0.50", "tilt threshold used for the exceedance count"),
+            ("0.50", "ADR-004 circle-vs-box surface gap; also the tilt "
+                     "threshold for the exceedance count"),
             ("0.30", "near-miss threshold, S6 protocol"),
             ("0.0536", "v1 min_sensed_clearance anomaly"),
             ("0.62", "v1 ground-truth clearance at the anomaly"),
@@ -204,17 +216,33 @@ def known_values() -> dict[str, str]:
             ("1e-05", "order-independence gate threshold, Section 2 of the brief"),
             ("0.287", "reset_study SUMMARY.json isolated worst path delta"),
             ("750", "backend.DETERMINISTIC_SETTLE_STEPS"),
+            ("95", "Wilson interval confidence level, percent"),
+            ("29", "reset_study isolated worst path delta, in centimetres"),
     ]:
         values.setdefault(number, source)
     return values
 
 
-def extract_claims() -> list[tuple[str, str]]:
+def extract_claims(source: Path) -> list[tuple[str, str]]:
     """(context, numeric token) for every literal number in the deck source."""
-    tree = ast.parse(SOURCE.read_text(encoding="utf8"))
+    tree = ast.parse(source.read_text(encoding="utf8"))
+
+    # Docstrings describe the script; they are not claims on a slide.
+    docstrings = set()
+    for node in ast.walk(tree):
+        if isinstance(node, (ast.Module, ast.ClassDef, ast.FunctionDef,
+                             ast.AsyncFunctionDef)):
+            first = node.body[0] if node.body else None
+            if (isinstance(first, ast.Expr)
+                    and isinstance(first.value, ast.Constant)
+                    and isinstance(first.value.value, str)):
+                docstrings.add(id(first.value))
+
     claims: list[tuple[str, str]] = []
     for node in ast.walk(tree):
         if not isinstance(node, ast.Constant) or not isinstance(node.value, str):
+            continue
+        if id(node) in docstrings or NOT_A_CLAIM.match(node.value):
             continue
         text = node.value
         if len(text) < 4:
@@ -228,8 +256,15 @@ def extract_claims() -> list[tuple[str, str]]:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--source", default=str(SOURCE),
+                        help="deck script to check")
+    parser.add_argument("--out", default="SLIDES_CLAIMS_CHECK.csv",
+                        help="CSV name written under evidence/")
+    args = parser.parse_args()
+
     values = known_values()
-    claims = extract_claims()
+    claims = extract_claims(Path(args.source))
     rows, unmatched = [], 0
     for context, token in claims:
         if token in STRUCTURAL and "." not in token:
@@ -243,7 +278,7 @@ def main() -> int:
                      "status": status, "backed_by": source})
 
     EVIDENCE.mkdir(parents=True, exist_ok=True)
-    target = EVIDENCE / "SLIDES_CLAIMS_CHECK.csv"
+    target = EVIDENCE / args.out
     with target.open("w", newline="", encoding="utf8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader()

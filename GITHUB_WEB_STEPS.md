@@ -64,8 +64,8 @@ updates itself.
 
 ### Upload these files (drag into the attachment box)
 
-All paths are relative to the repository root on this machine
-(`D:\Download\drone_navigation_system\webots_dns\`):
+All paths below are relative to the repository root — the folder containing
+`README.md`. Open it in Explorer and drag the files from there.
 
 | File | What it is |
 |---|---|
@@ -91,8 +91,8 @@ All paths are relative to the repository root on this machine
 3. Title: `v1.0 — first research milestone`
 4. Description: *One layout, 90 episodes, the v1 verification report. The state
    before the S6 release.*
-5. Attach `..\DNS_SIMULATION_RESEARCH_DELIVERABLE.zip` (one directory **above**
-   the repo, in `D:\Download\drone_navigation_system\`).
+5. Attach `DNS_SIMULATION_RESEARCH_DELIVERABLE.zip` — it sits one directory
+   **above** the repository root.
 6. Tick **Set as a pre-release**. Publish.
 
 ---

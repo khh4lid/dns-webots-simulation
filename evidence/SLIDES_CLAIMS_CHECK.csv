@@ -1,17 +1,10 @@
 claim_context,value,status,backed_by
-"Build the 27 Nov 2026 deck: 12 slides plus 6 backups, PPTX and PDF. Assertion-evidence structure: every body s",27,structural,slide numbering / layout constant
-"Build the 27 Nov 2026 deck: 12 slides plus 6 backups, PPTX and PDF. Assertion-evidence structure: every body s",2026,structural,slide numbering / layout constant
-"Build the 27 Nov 2026 deck: 12 slides plus 6 backups, PPTX and PDF. Assertion-evidence structure: every body s",12,structural,slide numbering / layout constant
-"Build the 27 Nov 2026 deck: 12 slides plus 6 backups, PPTX and PDF. Assertion-evidence structure: every body s",6,structural,slide numbering / layout constant
-"Build the 27 Nov 2026 deck: 12 slides plus 6 backups, PPTX and PDF. Assertion-evidence structure: every body s",4,structural,slide numbering / layout constant
 Khaled (@khh4lid),4,structural,slide numbering / layout constant
 2026-11-27,2026,structural,slide numbering / layout constant
 2026-11-27,11,structural,slide numbering / layout constant
 2026-11-27,27,structural,slide numbering / layout constant
 v2_S6,2,structural,slide numbering / layout constant
 v2_S6,6,structural,slide numbering / layout constant
-"A 16:9 slide with a sentence headline, tracker and footer.",16,structural,slide numbering / layout constant
-"A 16:9 slide with a sentence headline, tracker and footer.",9,structural,slide numbering / layout constant
 V-TOP_L00_success.mp4,00,structural,slide numbering / layout constant
 V-TOP_L00_success.mp4,4,structural,slide numbering / layout constant
 assets/diagrams/SV1_sensor_schematic.png,1,structural,slide numbering / layout constant
@@ -270,7 +263,7 @@ collision at 13 steps,13,structural,slide numbering / layout constant
 "margin 0.12 m, ≤ 1.08 m/s",0.12,matched,"layout_gate L04 planning margin, tumbled attempt"
 "margin 0.12 m, ≤ 1.08 m/s",1.08,matched,scenario_table.csv L00
 "tumbled, peak tilt 1.5905 rad",1.5905,matched,"layout_gate L04 peak tilt, tumbled"
-PPO episodes exceeding 0.50 rad,0.50,matched,tilt threshold used for the exceedance count
+PPO episodes exceeding 0.50 rad,0.50,matched,ADR-004 circle-vs-box surface gap; also the tilt threshold for the exceedance count
 0 of 90,0,structural,slide numbering / layout constant
 0 of 90,90,matched,layout_gate L04 traversal steps
 "yes, 0.85 m",0.85,matched,scenario_table.csv L04
