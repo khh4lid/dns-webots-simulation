@@ -1,0 +1,54 @@
+DNS — FROZEN MEETING BUILD
+Supervisor meeting: Friday 27 November 2026
+Frozen: 2026-11-26 20:46 +0800
+
+COMMIT        f2460990a1ac29fcb542a23e2189d01764cf3451
+BRANCH        v2-transparency-release
+TAG           meeting-2026-11-27
+RESET MODE    settle_tolerance  (default; unchanged)
+FIX BRANCH    reset-fix-v2.1 @ 5ef04c3  (NOT merged -- see below)
+
+DECK
+  docs/meetings/2026-11-27/DNS_SimEnv_2026-11-27.pdf
+    sha256  cee6c7101bcd126adf421a66101cbf33c485c90a3045fbdd6e45141ed05ffdab
+    bytes   3900409
+  docs/meetings/2026-11-27/DNS_SimEnv_2026-11-27.pptx
+    sha256  07fe5a7f430905f8eb50763ca0c855c7a6b2c3d767e95d660b048a1d403c6e54
+    bytes   5870504
+  slides  12 main + 7 backup = 19
+  paths   12-minute: 1..12   |   5-minute: 1, 2, 9, 10, 12
+
+VALIDATION AT FREEZE
+  tests/unit_tests.py          46/46 passed
+  tests/test_generator.py      26/26 passed
+  SLIDES_CLAIMS_CHECK.csv      295 tokens, 0 unmatched
+  CLAIMS_EVIDENCE.csv          83 claims
+  consistency_sweep --check    0 edits, 0 problems (idempotent)
+  security_scan                VERDICT: CLEAN (tree + full history)
+  relative link check          0 broken
+
+RESET DECISION
+  The deterministic reset is NOT in this build. Gate (a) from the brief
+  requires identical outcomes and step counts with path drift <= 1e-5 m
+  across isolated and several preceding orders. Measured on 5 targets x 2
+  controllers: outcomes 5/5, step counts 5/5, but worst drift 2.139e-04 m
+  (ppo_seed7_v01) against the 1e-5 m bar -- 4 of 5 targets clear it, three
+  of those essentially bit-exact at ~5e-10 m. Gate (c) was not attempted:
+  no figure, README section or slide in this build is derived from the
+  deterministic cohort. The fix therefore stays on reset-fix-v2.1.
+  Evidence: results/reset_validation/validation_deterministic.json
+            results/reset_study/SUMMARY.json
+            docs/verification/RESET_DETERMINISM.md
+            docs/verification/RESET_MODE_COMPARISON.md
+
+COHORTS (kept apart, neither overwritten)
+  results/v2_S6/                540 episodes, settle_tolerance  <- this build
+  results/v2_S6_deterministic/  540 episodes, deterministic     <- v2.1 candidate
+
+IDENTITY
+  Resolved from the project record: Khaled (@khh4lid), Spencer,
+  Dr. Mehdi Samieiyeganeh. Shown as explicit gaps, never invented:
+  full legal name (CITATION.cff only), Spencer's surname and GitHub handle,
+  the sensor teammate's name and handle.
+
+AFTER THIS POINT: no code or data changes until after the meeting.

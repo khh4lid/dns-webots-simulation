@@ -1,10 +1,23 @@
-# RELEASE_STATE.md — v2 transparency release, working state
+# RELEASE_STATE.md — FROZEN for the 27 Nov 2026 meeting
 
-Updated at the end of every stage so a fresh session can resume from here
-without re-reading the whole history.
+> [!IMPORTANT]
+> **Frozen 26 Nov 2026, 20:46 +0800 at commit `f246099`, tag
+> `meeting-2026-11-27`.** No code or data changes until after the meeting.
+> Build manifest with hashes: [`MEETING_BUILD.txt`](MEETING_BUILD.txt).
+> Remaining GitHub actions are browser-only: [`../GITHUB_WEB_STEPS.md`](../GITHUB_WEB_STEPS.md).
 
-**Branch:** `v2-transparency-release` · **Base tag:** `v1.0` (annotated, on the
-old `main`) · **Remote:** `khh4lid/dns-webots-simulation` (private)
+## The one rule this build keeps
+
+Results, code, README and slides all describe **one** environment: the
+`settle_tolerance` reset. The deterministic reset exists in the code as a
+non-default option and has its own 540-episode cohort, but **nothing in the
+deck is derived from it**. The fix lives on `reset-fix-v2.1`.
+
+| Branch | Commit | Role |
+|---|---|---|
+| `main` | `8badfcf` | pre-release; PR open against it |
+| `v2-transparency-release` | `f246099` | **the meeting build** |
+| `reset-fix-v2.1` | `5ef04c3` | deterministic reset, awaiting re-validation |
 
 ---
 
