@@ -120,6 +120,75 @@ deck is derived from it**. The fix lives on `reset-fix-v2.1`.
 
 ---
 
+## 27 November 2026 — anonymisation, simple deck, paper section
+
+Tagged **`meeting-2026-11-27-v2`** on `v2-transparency-release`. Environment
+code and experiment data were frozen for this session; only presentation and
+documentation changed.
+
+### Part A — the supervisor's name removed
+
+All 56 occurrences across 22 tracked files now read "the supervisor", or
+"(name withheld by request)" where a document has a named-person field.
+`scripts/anonymise_supervisor.py` performs and re-checks the substitution; it
+edits the document *generators* as well as their output, so regeneration cannot
+reintroduce the name.
+
+Verified **0 hits** in tracked text files and **0 hits** in the extracted text
+of all 17 PDFs and PPTXs in the tree. The two research-report PDFs were
+regenerated. **Published git history and the existing tags still contain the
+name; history was not rewritten.**
+
+### Part B — the simple deck
+
+`scripts/make_slides_simple.py` builds `DNS_SimEnv_SIMPLE_2026-11-27.pptx/.pdf`:
+12 picture-first slides plus 4 backups, ~10 minutes, speaker notes on every
+slide. **This is now the deck to present from**; the detailed 19-slide deck is
+the backup. `MEETING_DAY.md` was updated to say so, and
+`TALKING_POINTS_SIMPLE_AR.md` gives an Arabic walkthrough.
+
+The simplicity rules are enforced by the build: headlines are measured against
+the slide width and wrapped rather than shrunk, and `audit()` fails the build if
+a slide's prose exceeds 16 words. Eight of sixteen slides carry no prose at all.
+
+### Part C — the paper section
+
+`docs/paper/simulation_environment_section.md` (+ `.docx`, PDF preview,
+`references.bib`, `figures/`): sections X.1-X.12, **3,545 prose words**, 6
+figures, 4 tables, 15 references all carrying a DOI or arXiv ID and all cited,
+renumbered to IEEE first-appearance order by script.
+
+### Claims checks — all three at 0 unmatched
+
+| Target | Tokens | Unmatched |
+|---|---|---|
+| `evidence/SLIDES_SIMPLE_CLAIMS_CHECK.csv` | 134 | 0 |
+| `evidence/SLIDES_CLAIMS_CHECK.csv` | 288 | 0 |
+| `evidence/PAPER_SECTION_CLAIMS_CHECK.csv` | 194 | 0 |
+
+`scripts/check_slide_claims.py` gained `--source`/`--out`/`--markdown`, now
+matches numbers by value rather than by string form, walks the scenario JSON so
+geometry traces to the file that defines it, and skips docstrings, hex colours
+and matplotlib style strings, which are code and not claims.
+
+### One deviation from the freeze, stated plainly
+
+`dns/__init__.py` is inside a frozen directory and its **module docstring**
+named the supervisor. The line was changed. It is a comment: 46/46 and 26/26
+tests still pass and the six scenario files still regenerate byte-identically.
+`results/`, `config/`, `worlds/`, `protos/` and `controllers/` are untouched,
+hash-for-hash.
+
+### New in this session
+
+- `evidence/DEFECTS.csv` — the six defects with status, fix and regression
+  test. Simple slide 11 reads its tally from this file rather than asserting it.
+- `scripts/anonymise_supervisor.py`, `scripts/make_slides_simple.py`,
+  `scripts/make_paper_section.py`.
+
+
+---
+
 ## Next action
 
 1. Fill the four names, then re-run `scripts/make_team_docs.py`,
@@ -127,5 +196,8 @@ deck is derived from it**. The fix lives on `reset-fix-v2.1`.
 2. Work `GITHUB_TODO.md` once `gh` is on PATH: PR, merge, `v2.0`, both
    releases, About/topics/labels/issues, collaborators.
 3. Outstanding, none blocking Friday: V-OBS orbit video, the composite and
-   showreel, `evidence/SLIDES_CLAIMS_CHECK.csv`, `evidence/REPRO_CHECK.md`
-   (fresh-clone `reproduce.py --fast`), and Phase 5's progress report.
+   showreel, `evidence/REPRO_CHECK.md` (fresh-clone `reproduce.py --fast`),
+   and Phase 5's progress report.
+4. Paper section: hand `docs/paper/simulation_environment_section.docx` to the
+   team and merge `docs/paper/references.bib` into the paper bibliography.
+   Section numbers are written `X.n` for the editor to renumber.

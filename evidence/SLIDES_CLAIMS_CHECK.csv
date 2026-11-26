@@ -17,10 +17,10 @@ V-SIDE_L00_altitude.mp4,00,structural,slide numbering / layout constant
 V-SIDE_L00_altitude.mp4,4,structural,slide numbering / layout constant
 "start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",0.85,matched,scenario_table.csv L04
 "start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",0.00,matched,pooled_rates.csv L00/B_static/reactive
-"start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",9.15,matched,"goal x, config/scenarios"
+"start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",9.15,matched,config/scenarios/L00_C.json goal.xy[0]
 "start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",0.00,matched,pooled_rates.csv L00/B_static/reactive
 "start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",0.4,matched,pooled_rates.csv L01/C_dynamic/ppo_seed7
-"start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",1.0,matched,config/scenarios cruise_altitude_m
+"start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",1.0,matched,config/scenarios/L00_C.json drone.cruise_altitude_m
 "start (0.85, 0.00) → goal (9.15, 0.00), 0.4 m tolerance · altitude 1.0 m · one velocity command every 0.2 s",0.2,matched,pooled_rates.csv L00/C_dynamic/reactive
 "Selection rationale, not a benchmark: no competing simulator was installed or timed. Full criteria and sources",001,structural,slide numbering / layout constant
 results/v2_S6/v1_reproduction.csv,2,structural,slide numbering / layout constant
@@ -98,8 +98,8 @@ Backup — why L04 is excluded,04,structural,slide numbering / layout constant
 "The reference tracker is GIVEN the correct route and still cannot fly it inside the horizon, so 0/90 cannot be",0,structural,slide numbering / layout constant
 "The reference tracker is GIVEN the correct route and still cannot fly it inside the horizon, so 0/90 cannot be",90,matched,layout_gate L04 traversal steps
 assets/decisions/ADR-008_timing_ladder.png,008,structural,slide numbering / layout constant
-"Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not to a fixed point, so the state it stopped at d",0.02,matched,config/scenarios settle_speed_tol_mps / settle_altitude_tol_m
-"Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not to a fixed point, so the state it stopped at d",0.02,matched,config/scenarios settle_speed_tol_mps / settle_altitude_tol_m
+"Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not to a fixed point, so the state it stopped at d",0.02,matched,config/scenarios/L00_C.json control.settle_altitude_tol_m
+"Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not to a fixed point, so the state it stopped at d",0.02,matched,config/scenarios/L00_C.json control.settle_altitude_tol_m
 "Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not to a fixed point, so the state it stopped at d",2.1,matched,"validation_deterministic.json worst, x1e-4"
 "Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not to a fixed point, so the state it stopped at d",1,structural,slide numbering / layout constant
 "Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not to a fixed point, so the state it stopped at d",5,structural,slide numbering / layout constant
@@ -161,7 +161,7 @@ ADR-C1_reactive_zone.png,1,structural,slide numbering / layout constant
 ADR-008_timing_ladder.png,008,structural,slide numbering / layout constant
 I record their interfaces and the SHA-256 of the files I ran against.,256,structural,slide numbering / layout constant
 "Start left, goal right, 0.4 m tolerance, fixed 1.0 m altitude.",0.4,matched,pooled_rates.csv L01/C_dynamic/ppo_seed7
-"Start left, goal right, 0.4 m tolerance, fixed 1.0 m altitude.",1.0,matched,config/scenarios cruise_altitude_m
+"Start left, goal right, 0.4 m tolerance, fixed 1.0 m altitude.",1.0,matched,config/scenarios/L00_C.json drone.cruise_altitude_m
 One velocity command every 0.2 s — five per second.,0.2,matched,pooled_rates.csv L00/C_dynamic/reactive
 Every one rises above the 1.14 m scan plane — nothing is solid but invisible.,1.14,matched,"cruise 1.0 + mount 0.14, config/scenarios/L00_C.json"
 The evidence that matters is determinism: the v1 run reproduced with zero path difference WHEN the session is ,1,structural,slide numbering / layout constant
@@ -198,16 +198,16 @@ Webots R2025a,2025,structural,slide numbering / layout constant
 2 · Navigation environment design,2,structural,slide numbering / layout constant
 "10 × 6 m, 1.0 m cruise",10,structural,slide numbering / layout constant
 "10 × 6 m, 1.0 m cruise",6,structural,slide numbering / layout constant
-"10 × 6 m, 1.0 m cruise",1.0,matched,config/scenarios cruise_altitude_m
+"10 × 6 m, 1.0 m cruise",1.0,matched,config/scenarios/L00_C.json drone.cruise_altitude_m
 3 · Start and goal definition,3,structural,slide numbering / layout constant
 "fixed, identical in 6 layouts",6,structural,slide numbering / layout constant
 4 · Static obstacle development,4,structural,slide numbering / layout constant
 5 · Moving obstacle modelling,5,structural,slide numbering / layout constant
-"Apache 2.0, active",2.0,matched,rack height_m
+"Apache 2.0, active",2.0,matched,config/scenarios/L00_C.json obstacles[0].height_m
 Beams over 360°,360,matched,"lidar field of view, degrees"
-720 (0.5° spacing),720,matched,DnsQuadcopter.proto lidarResolution
+720 (0.5° spacing),720,matched,config/scenarios/L00_C.json camera.height
 720 (0.5° spacing),0.5,matched,"lidar beam spacing, degrees"
-5.0 m,5.0,matched,navigation.RANGE
+5.0 m,5.0,matched,config/scenarios/L00_C.json sensing.max_range_m
 "12 × 30°, 0/3/6/9 = front/right/back/left",12,structural,slide numbering / layout constant
 "12 × 30°, 0/3/6/9 = front/right/back/left",30,structural,slide numbering / layout constant
 "12 × 30°, 0/3/6/9 = front/right/back/left",0,structural,slide numbering / layout constant
@@ -215,7 +215,7 @@ Beams over 360°,360,matched,"lidar field of view, degrees"
 "12 × 30°, 0/3/6/9 = front/right/back/left",6,structural,slide numbering / layout constant
 "12 × 30°, 0/3/6/9 = front/right/back/left",9,structural,slide numbering / layout constant
 1.14 m (1.0 m cruise + 0.14 m mount),1.14,matched,"cruise 1.0 + mount 0.14, config/scenarios/L00_C.json"
-1.14 m (1.0 m cruise + 0.14 m mount),1.0,matched,config/scenarios cruise_altitude_m
+1.14 m (1.0 m cruise + 0.14 m mount),1.0,matched,config/scenarios/L00_C.json drone.cruise_altitude_m
 1.14 m (1.0 m cruise + 0.14 m mount),0.14,matched,scenario_table.csv L05
 26 / 26,26,matched,layout_gate L00 contract tests
 26 / 26,26,matched,layout_gate L00 contract tests
