@@ -2,7 +2,8 @@ DNS — FROZEN MEETING BUILD
 Supervisor meeting: Friday 27 November 2026
 Frozen: 2026-11-26 20:46 +0800
 
-COMMIT        f2460990a1ac29fcb542a23e2189d01764cf3451
+COMMIT        e06e9ff5148c9192294b04e572b4fa65de97eba7
+BUILD COMMIT  f2460990a1ac29fcb542a23e2189d01764cf3451  (deck built here)
 BRANCH        v2-transparency-release
 TAG           meeting-2026-11-27
 RESET MODE    settle_tolerance  (default; unchanged)
