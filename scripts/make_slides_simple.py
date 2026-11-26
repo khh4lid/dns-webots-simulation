@@ -691,9 +691,14 @@ def s08():
         inset.annotate("", (CART["xy"][0], y0 + amp), (CART["xy"][0], y0 - amp),
                        arrowprops=dict(arrowstyle="<|-|>", color=S.CART,
                                        lw=2.6))
-        inset.text(CART["xy"][0] + 0.35, y0 + amp * 0.75,
-                   f"±{amp:.1f} m\n{CART['motion']['speed_mps']:.2f} m/s",
-                   fontsize=15, color=S.CART, fontweight="bold", va="center")
+        # Above the arena, not beside the lane: a label placed in the aisle
+        # lands behind a rack, which is what the first build did.
+        inset.text(CART["xy"][0], 3.7,
+                   f"±{amp:.1f} m at {CART['motion']['speed_mps']:.2f} m/s",
+                   fontsize=15, color=S.CART, fontweight="bold",
+                   ha="center", va="center")
+        inset.set_xlim(-0.4, EXTENT_X + 0.4)
+        inset.set_ylim(-3.6, 4.4)
         inset.axis("off")
         axis.text(rect[0], rect[1] - 0.028,
                   "LOGGED-DATA RENDER · config/scenarios/L00_C.json",

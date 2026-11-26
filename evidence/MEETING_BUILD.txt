@@ -88,3 +88,19 @@ The defect tally on simple slide 11 is read from evidence/DEFECTS.csv
 The supervisor's personal name was removed from every tracked file and
 from every generated PDF/PPTX on 27 Nov 2026. Published git history and
 the existing tags still contain it; history was not rewritten.
+
+------------------------------------------------------------------------
+SIMPLE DECK REBUILT after a slide-8 label fix (meeting-2026-11-27-v2.1)
+------------------------------------------------------------------------
+
+The cart's '+/-1.9 m at 0.45 m/s' label sat inside the aisle and was
+partly hidden behind a rack. It is now above the arena. Content
+unchanged; claims check still 134 tokens, 0 unmatched.
+
+DNS_SimEnv_SIMPLE_2026-11-27.pptx
+    sha256  5f3e3c8c1e2df7e037b44943a9538be407f2015d7581b65f2c8ef6b9b21da776
+    bytes   3,834,427
+
+DNS_SimEnv_SIMPLE_2026-11-27.pdf
+    sha256  773647e87e135d7a9cff904e713708fe2ba194ed2cfc42f57552a2e67e982fa9
+    bytes   902,536
