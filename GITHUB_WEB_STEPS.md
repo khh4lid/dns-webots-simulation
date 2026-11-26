@@ -168,7 +168,7 @@ cell moves by more than two episodes.
 
 To merge: close the 2.1e-04 m gap on ppo_seed7_v01, then regenerate the
 analysis, figures, README, slides and both claims checks from the deterministic
-cohort. Owner: Khaled. Decision needed from Dr. Mehdi on whether v2.1 is worth
+cohort. Owner: Khaled. Decision needed from the supervisor on whether v2.1 is worth
 the re-run.
 ```
 
@@ -180,7 +180,7 @@ Spencer's and the sensor teammate's GitHub handles were never supplied, so no
 invitation can be sent. Once you have them:
 
 **Settings → Collaborators → Add people** — Spencer and the sensor teammate as
-**Write**, Dr. Mehdi as **Read**.
+**Write**, the supervisor as **Read**.
 
 ---
 

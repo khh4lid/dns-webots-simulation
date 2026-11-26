@@ -35,7 +35,7 @@ destabilise: 0 of 90 L04 episodes exceeded 0.50 rad.
 − One rung of the ladder yields no conclusion, and the question of whether L04
   is flyable at all is still open.
 
-**Decision needed from Dr. Mehdi:** keep L04 excluded, or authorise a
+**Decision needed from the supervisor:** keep L04 excluded, or authorise a
 diagnostic-only rerun with a longer horizon (which would sit outside the frozen
 contract and so could not feed the main result)?
 

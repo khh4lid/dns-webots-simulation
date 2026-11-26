@@ -48,7 +48,7 @@ RESULTS = ROOT / "results" / "v2_S6"
 #: than invented. The deck is presentable as-is; the title slide carries the
 #: one outstanding item.
 PRESENTER = "Khaled (@khh4lid)"
-SUPERVISOR = "Dr. Mehdi Samieiyeganeh"
+SUPERVISOR = "the supervisor"
 SPENCER = "Spencer"
 SENSOR = "[sensor teammate — name to confirm]"
 NAMES_PENDING = True        # full name / surnames still outstanding
@@ -591,7 +591,7 @@ NOTES = {
        "The reactive explanation was arithmetically wrong — right conclusion, wrong reasoning.",
        "The cart's zero error was true by construction and carried no information."],
       "And here is what I need from you."),
- 12: ("Three decisions, one each for Dr. Mehdi, Spencer and the sensor teammate.",
+ 12: ("Three decisions, one each for the supervisor, Spencer and the sensor teammate.",
       ["L04 is the one that blocks a result — exclude it, or authorise a diagnostic run?",
        "More seeds would narrow every interval on slide 9.",
        "The sensor anomaly matters because repulsion scales with 1.45 minus the range."],
@@ -682,7 +682,7 @@ def build_pptx(figures) -> None:
           f"({len(figures)} slides, {path.stat().st_size/1e6:.2f} MB)")
     if NAMES_PENDING:
         print("\nIdentity: resolved as far as the project record supports "
-              "(Khaled @khh4lid, Spencer, Dr. Mehdi Samieiyeganeh).\n"
+              "(Khaled @khh4lid, Spencer, the supervisor).\n"
               "Shown as explicit gaps rather than invented: full legal name "
               "(CITATION.cff only), Spencer's surname and handle, the sensor "
               "teammate's name.")

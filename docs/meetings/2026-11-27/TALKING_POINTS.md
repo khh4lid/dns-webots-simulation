@@ -1,6 +1,6 @@
 # Presenter kit — 27 November 2026
 
-**Presenter:** Khaled (@khh4lid) · **Supervisor:** Dr. Mehdi Samieiyeganeh ·
+**Presenter:** Khaled (@khh4lid) · **Supervisor:** (name withheld) ·
 **Deck:** `DNS_SimEnv_2026-11-27.pdf` / `.pptx` (12 slides + 6 backups)
 
 > [!NOTE]

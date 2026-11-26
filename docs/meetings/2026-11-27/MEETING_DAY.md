@@ -1,6 +1,6 @@
 # Meeting day — Friday 27 November 2026
 
-Presenter: **Khaled** (@khh4lid) · Supervisor: **Dr. Mehdi Samieiyeganeh** ·
+Presenter: **Khaled** (@khh4lid) · Supervisor: (name withheld) ·
 Topic: the DNS simulation environment
 
 ---
@@ -39,8 +39,8 @@ Then go to slide 2. Do not open with the methodology.
 
 | # | Ask | Who | Backup slide |
 |---|---|---|---|
-| 1 | **L04: keep it excluded, or authorise a longer-horizon diagnostic?** My own reference tracker cannot fly it either, so 0/90 there is not attributable. | Dr. Mehdi | **B4** |
-| 2 | **Approve a full re-evaluation under the fixed reset as v2.1?** The fix is written and on its own branch; it needs 540 episodes and a re-analysis. | Dr. Mehdi | **B7** |
+| 1 | **L04: keep it excluded, or authorise a longer-horizon diagnostic?** My own reference tracker cannot fly it either, so 0/90 there is not attributable. | the supervisor | **B4** |
+| 2 | **Approve a full re-evaluation under the fixed reset as v2.1?** The fix is written and on its own branch; it needs 540 episodes and a re-analysis. | the supervisor | **B7** |
 | 3 | **More PPO training seeds.** Three cannot separate checkpoint variance from layout effects. | Spencer | slide 9 |
 | 4 | **The 0.0536 m vs 0.62 m sensor reading.** Unexplained, and repulsion scales with `1.45 − range`. | sensor teammate | — |
 
@@ -77,7 +77,7 @@ checkpoints · that the reset fix is in this build.
 
 ## One thing to be ready for
 
-If Dr. Mehdi asks *"so are your numbers wrong?"* — the answer is no, and be
+If the supervisor asks *"so are your numbers wrong?"* — the answer is no, and be
 precise about why: the 540 episodes were all measured under one reset, in a
 fixed order, and that order reproduces to 5 µm. What the reset finding changes
 is the **independence** assumption behind the intervals, not the measurements.

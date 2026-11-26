@@ -1,7 +1,7 @@
 # DNS — PRE-MEETING MASTER TASK (FINAL)
 
 > Verbatim record of the task prompt that produced this package.
-> Saved as required by Section 0. Research meeting with Dr. Mehdi: Friday 27 November 2026.
+> Saved as required by Section 0. Research meeting with the supervisor: Friday 27 November 2026.
 
 Close the spatial-generalization gap (S6), correct v1, and document everything
 
@@ -13,7 +13,7 @@ Mission for Friday — produce v2:
 1. close S6 with a reproducible scenario generator and a pre-registered spatial-generalization experiment;
 2. correct and reframe the weak points of v1 (Phase 3);
 3. document every step with real evidence: logs, tables, figures, charts, videos, GIFs and sensor visualizations;
-4. package it so Dr. Mehdi can see what I built, check every claim, rerun it, and see how Spencer and the sensor teammate can use it today.
+4. package it so the supervisor can see what I built, check every claim, rerun it, and see how Spencer and the sensor teammate can use it today.
 
 Execute end-to-end. Do not stop at a plan. Do not restart. Do not modify v1. Save this prompt as 10_EVIDENCE/TASK_PROMPT.md.
 

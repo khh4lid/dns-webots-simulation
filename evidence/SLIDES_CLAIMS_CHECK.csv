@@ -195,7 +195,7 @@ Define 'IoU': overlap of the two layouts' obstacle footprints. 0.074 is almost n
 "L04 is the one that blocks a result — exclude it, or authorise a diagnostic run?",04,structural,slide numbering / layout constant
 More seeds would narrow every interval on slide 9.,9,structural,slide numbering / layout constant
 The sensor anomaly matters because repulsion scales with 1.45 minus the range.,1.45,matched,evaluate.gap_rule repulsion radius
-"Identity: resolved as far as the project record supports (Khaled @khh4lid, Spencer, Dr. Mehdi Samieiyeganeh). ",4,structural,slide numbering / layout constant
+"Identity: resolved as far as the project record supports (Khaled @khh4lid, Spencer, the supervisor). Shown as ",4,structural,slide numbering / layout constant
 utf8,8,structural,slide numbering / layout constant
 utf8,8,structural,slide numbering / layout constant
 utf8,8,structural,slide numbering / layout constant

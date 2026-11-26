@@ -113,9 +113,9 @@ deck is derived from it**. The fix lives on `reset-fix-v2.1`.
 | # | Item | Stage |
 |---|---|---|
 | 1 | `gh` CLI **not installed** and no `GH_TOKEN`/`GITHUB_TOKEN` in the environment. Git push/tag work via the credential manager, but **API-only operations** (About text, topics, labels, issues, releases, collaborator invites) cannot be automated. | E |
-| 2 | **Section 0 identity fields were all left in brackets** — my full name, Spencer's name + username, the sensor teammate's name + username, Dr. Mehdi's username. Docs will say **TBC**; collaborator invites cannot be sent. | C, E |
+| 2 | **Section 0 identity fields were all left in brackets** — my full name, Spencer's name + username, the sensor teammate's name + username, the supervisor's username. Docs will say **TBC**; collaborator invites cannot be sent. | C, E |
 | 3 | C2 LiDAR–cart consistency and the cart physics-velocity check were never run. `results/v2_S6/runs/*/lidar.npz` holds sector ranges, pose and obstacle ground truth for 60 runs, so the consistency check is computable offline. | B |
-| 4 | L04 excluded pending Dr. Mehdi's decision; needs an issue. | E |
+| 4 | L04 excluded pending the supervisor's decision; needs an issue. | E |
 | 5 | README still contains one machine-specific Webots path (line 429). | D |
 
 ---

@@ -10,7 +10,7 @@
 
 
 **Status:** resolved, with evidence. **Owner:** Khaled (simulation environment).
-**Audience:** Dr. Mehdi, Spencer (PPO), sensor/obstacle-detection teammate.
+**Audience:** the supervisor, Spencer (PPO), sensor/obstacle-detection teammate.
 
 This note records four problems found in the first real lidar integration, how
 each was measured, what was changed, and what residual error remains. All

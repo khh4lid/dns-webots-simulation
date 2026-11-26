@@ -1,7 +1,7 @@
 # For the supervisor — one page
 
 **Student:** Khaled (@khh4lid) ·
-**Supervisor:** Dr. Mehdi Samieiyeganeh ·
+**Supervisor:** the supervisor ·
 **Contribution:** the Webots simulation environment
 
 > [!NOTE]

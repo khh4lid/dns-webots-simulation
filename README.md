@@ -74,7 +74,7 @@ Four clips, every frame a real Webots render from an offscreen Camera node. Each
 
 | You are… | Read this | The one command you need |
 |---|---|---|
-| **Dr. Mehdi (supervisor)** | [One-page summary](docs/team/FOR_SUPERVISOR.md) — results, the three decisions I need from you, honest limitations | — |
+| **the supervisor** | [One-page summary](docs/team/FOR_SUPERVISOR.md) — results, the three decisions I need from you, honest limitations | — |
 | **Spencer (PPO)** | [Evaluating checkpoints](docs/team/FOR_SPENCER.md) — the contract, the TEST-ONLY rule, your results | `python scripts/run_s6.py` |
 | **Sensor & perception** | [Sensor guide](docs/team/FOR_SENSOR_TEAM.md) — beam→bearing, sectors, ground-truth data, one open anomaly | `python scripts/analyse_lidar_cart.py` |
 | **New contributor** | [CONTRIBUTING](CONTRIBUTING.md) and the [decision records](docs/decisions/README.md) | `python tests/test_generator.py` |
@@ -92,7 +92,7 @@ Four clips, every frame a real Webots render from an offscreen Camera node. Each
 | **Khaled** ([@khh4lid](https://github.com/khh4lid)) | Simulation environment | This repository: world, drone, sensor mounting, obstacles, generator, verification | v2.0 ready to merge | Progress report |
 | **Spencer** *(handle to confirm)* | PPO policy | `DroneNavPPO/` — training, checkpoints, `handoff.py` | 3 checkpoints evaluated | More training seeds |
 | *(name to confirm)* | Sensor & perception | Raw-sensor processing | Interface + ground-truth data ready | Investigate the 0.0536 m anomaly |
-| **Dr. Mehdi Samieiyeganeh** | Supervisor | Direction, review | — | 3 decisions ([here](docs/team/FOR_SUPERVISOR.md#decisions-i-need-from-you)) |
+| **The supervisor** | Supervisor | Direction, review | — | 3 decisions ([here](docs/team/FOR_SUPERVISOR.md#decisions-i-need-from-you)) |
 
 My five responsibilities and what each delivered: **[simulation environment dossier](docs/team/SIMULATION_ENVIRONMENT_DOSSIER.md)**.
 
@@ -340,7 +340,7 @@ All five controllers score 0/90 on L04 — but so does the environment's own ref
 > `python scripts/run_gates.py L04` before citing the rest. The exclusion does
 > not depend on the missing rows — the tracker fails in the attempt on file.
 
-The route is flyable slowly and safely but not fast enough to finish inside the 18 s horizon; above that speed the tracker clips the same crate the PPO checkpoints hit. So "the policies fail to generalise" cannot be separated from "this layout may be outside the airframe's envelope within the horizon" — and reporting the former would be a claim the evidence does not support. The data is kept in full. **[ADR-014](docs/decisions/ADR-014-l04-excluded-generalisation-conclusion.md)** · *decision pending from Dr. Mehdi.*
+The route is flyable slowly and safely but not fast enough to finish inside the 18 s horizon; above that speed the tracker clips the same crate the PPO checkpoints hit. So "the policies fail to generalise" cannot be separated from "this layout may be outside the airframe's envelope within the horizon" — and reporting the former would be a claim the evidence does not support. The data is kept in full. **[ADR-014](docs/decisions/ADR-014-l04-excluded-generalisation-conclusion.md)** · *decision pending from the supervisor.*
 
 ### Why `direct` and `reactive` score 0
 
@@ -373,7 +373,7 @@ Full detail with before → after → evidence: **[V1_CORRECTIONS.md](docs/verif
 
 | Issue | Impact | Owner |
 |---|---|---|
-| **L04 traversability unconfirmed** | One rung of the ladder yields no conclusion | Dr. Mehdi — decision pending |
+| **L04 traversability unconfirmed** | One rung of the ladder yields no conclusion | the supervisor — decision pending |
 | **Cart contact is not physical** | `collision_cart` means swept footprints intersected, not that an impact was simulated | Me — would need a `Physics` node |
 | **Ideal gimbal** | A best case, not a real sensor. Ideal-ON and body-fixed-OFF bracket a real one; the bracket run is not done | Me |
 | **Single episodes are not independently reproducible** — drift 2.3 mm to 287 mm; see [RESET_DETERMINISM](docs/verification/RESET_DETERMINISM.md) | Episodes in a cell are coupled through residual state and are not strictly independent draws | Me |
@@ -503,7 +503,7 @@ Stable-Baselines3 is deliberately **not** cited: `ppo.py` is a from-scratch NumP
 - **What changed in v2.0:** [CHANGELOG.md](CHANGELOG.md)
 - **Licence:** *not yet decided* — the supervisor's call. No licence file has been added, so default copyright applies and the repository stays private.
 
-**Acknowledgements.** Supervised by Dr. Mehdi Samieiyeganeh at Taylor's University, Malaysia. The PPO policy and the raw-sensor processing are my teammates' contributions, not mine.
+**Acknowledgements.** Supervised at Taylor's University, Malaysia. The PPO policy and the raw-sensor processing are my teammates' contributions, not mine.
 
 <details>
 <summary><b>Glossary</b></summary>

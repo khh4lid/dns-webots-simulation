@@ -26,9 +26,13 @@ INTERFACES = ROOT / "docs" / "interfaces"
 #: Identity fields, each resolved ONLY as far as the project record supports.
 #: The brief's Section 0 was submitted twice with every field still in
 #: brackets, so nothing here is guessed: a value is filled in only where it
-#: appears in the repository, the supervisor's own name, or the GitHub URL.
-#: Anything else stays an explicit "to confirm", because a plausible-looking
-#: invented surname on a citation file is worse than a visible gap.
+#: appears in the repository or the GitHub URL. Anything else stays an explicit
+#: "to confirm", because a plausible-looking invented surname on a citation
+#: file is worse than a visible gap.
+#:
+#: The supervisor is referred to by role only. The name was removed from the
+#: repository at the owner's request, so this field must stay a role noun --
+#: do not reintroduce a personal name here.
 PEOPLE = {
     # Given name and handle are on record (repository owner, project docs).
     # The full legal name for CITATION.cff is not.
@@ -41,7 +45,7 @@ PEOPLE = {
     # Nothing at all is on record for this teammate.
     "sensor_name": "name to confirm",
     "sensor_handle": "handle to confirm",
-    "supervisor_name": "Dr. Mehdi Samieiyeganeh",
+    "supervisor_name": "the supervisor",
     "supervisor_handle": "handle to confirm",
 }
 

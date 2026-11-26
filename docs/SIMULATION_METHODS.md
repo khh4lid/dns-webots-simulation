@@ -10,7 +10,7 @@
 
 
 Simulation Environment Development — Drone Navigation System, Taylor's
-University. Supervisor: Dr. Mehdi Samieiyeganeh.
+University. Supervisor: (name withheld by request).
 
 This document records the simulation configuration and the engineering reasons
 behind it. Measured results and their evidence files are in

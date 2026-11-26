@@ -13,7 +13,7 @@ the fallback. L00's own smallest start/goal surface gap (crate stack at
 
 **Risk:** low. A larger keep-out would only have made L01–L05 easier.
 
-**To confirm:** agree a project value with Dr. Mehdi; regenerate — the
+**To confirm:** agree a project value with the supervisor; regenerate — the
 constraint is one line in `generator_config.yaml` and the layouts are
 reproducible from it.
 
@@ -91,7 +91,7 @@ choice is to exclude and say so.
 a diagnostic-only run and check whether the route completes. **Not done** — the
 horizon is a frozen contract (`HORIZON = 90`) and changing it, even
 diagnostically, after seeing outcomes would compromise the pre-registration.
-This is the single clearest open item for Dr. Mehdi.
+This is the single clearest open item for the supervisor.
 
 ---
 

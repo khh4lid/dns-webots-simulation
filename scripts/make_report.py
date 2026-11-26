@@ -322,7 +322,7 @@ def main() -> int:
                        "Simulation environment: Khaled\n"
                        "PPO / DRL: Spencer   ·   LiDAR sensing: sensor "
                        "teammate\n"
-                       "Supervisor: Dr. Mehdi Samieiyeganeh\n"
+                       "Supervisor: (name withheld by request)\n"
                        "Taylor's University, Malaysia",
                        fontsize=10, color=INK2, va="top")
         report.space(0.10)

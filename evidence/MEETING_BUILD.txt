@@ -48,7 +48,7 @@ COHORTS (kept apart, neither overwritten)
 
 IDENTITY
   Resolved from the project record: Khaled (@khh4lid), Spencer,
-  Dr. Mehdi Samieiyeganeh. Shown as explicit gaps, never invented:
+  the supervisor. Shown as explicit gaps, never invented:
   full legal name (CITATION.cff only), Spencer's surname and GitHub handle,
   the sensor teammate's name and handle.
 
