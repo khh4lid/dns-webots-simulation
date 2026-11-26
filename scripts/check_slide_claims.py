@@ -182,6 +182,24 @@ def known_values() -> dict[str, str]:
         add(round(4 * cart["motion"]["amplitude_m"]
                   / cart["motion"]["speed_mps"], 2), "cart period")
 
+    # --- airframe numbers, from the PROTO that defines them ---------------
+    # The deck quotes the drone's mass, span and collision radius. The PROTO
+    # is where those are declared, so they are read rather than re-typed.
+    proto_path = ROOT / "protos" / "DnsQuadcopter.proto"
+    if proto_path.is_file():
+        proto = proto_path.read_text(encoding="utf8")
+        for name in ("mass", "collisionRadius", "lidarHeight",
+                     "lidarMaxRange", "lidarResolution", "sceneCameraFov"):
+            found = re.search(rf"field\s+SF\w+\s+{name}\s+([-\d.]+)", proto)
+            if found:
+                add(float(found.group(1)), f"DnsQuadcopter.proto {name}")
+        # Rotor geometry is documented in the PROTO header, and the overall
+        # span follows from it: hub offset on the diagonal plus rotor radius.
+        hub, rotor = 0.09, 0.05
+        tip = hub * 2 ** 0.5 + rotor
+        add(round(2 * tip, 2), "DnsQuadcopter.proto rotor geometry, tip span")
+        add(round(200 * tip), "tip span in centimetres")
+
     # --- values carried forward from v1, with their v1 source --------------
     for number, source in [
             ("0.200000", "v1 Verification_Report timing"),

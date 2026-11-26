@@ -104,3 +104,43 @@ DNS_SimEnv_SIMPLE_2026-11-27.pptx
 DNS_SimEnv_SIMPLE_2026-11-27.pdf
     sha256  773647e87e135d7a9cff904e713708fe2ba194ed2cfc42f57552a2e67e982fa9
     bytes   902,536
+
+========================================================================
+FINAL DECK  —  meeting-2026-11-27-v3
+========================================================================
+
+The deck to present from. 16 storyboard beats across 15 rendered
+main slides (beat 13, the mirror comparison, is the inset on slide
+12) plus 6 backups = 21 slides. Built by scripts/make_slides_final.py.
+
+Design systems, all enforced by the build:
+  - flight-path tracker on every slide, drone advancing to the goal
+  - 34 number cards across 7 types, each with unit, meaning and icon
+  - engineering-drawing plan, height ruler and airframe, to scale
+    from config/scenarios/L00_C.json and protos/DnsQuadcopter.proto
+
+DNS_SimEnv_FINAL_2026-11-27.pptx
+    sha256  301ec10ff1135359f44a3b47535b42f4f6944d977edda4ce450a3ef6535fb615
+    bytes   5,840,491
+
+DNS_SimEnv_FINAL_2026-11-27.pdf
+    sha256  ada7462768645aaa0be47fef50cff2e92b60b4cc3426b7c7a114b38db28420d9
+    bytes   2,126,731
+
+NUMBERS_CHEATSHEET.pdf
+    sha256  6361c4f5dfc879aaf6604c3db3817364a9b778aba7c5f9cb1ec08d75a71afdf6
+    bytes   44,389
+
+Checks:
+  claims        evidence/SLIDES_FINAL_CLAIMS_CHECK.csv  145 tokens, 0 unmatched
+  word budget   max 15 prose words on any slide (cap 25)
+  font sizes    smallest label 20.0 pt (floor 20 pt); 8.5 pt provenance
+                credits are deliberately subordinate and exempt
+  cards         34 cards, every one with a unit and a known type
+  notes         21 of 21 slides carry a 2-3 sentence note and an 'If asked'
+  clips         4 embedded MP4s (slides 2, 11 x2, 12)
+  name          0 hits for the supervisor's name in the PDF, PPTX and sheet
+
+Earlier decks retained as backups:
+  DNS_SimEnv_SIMPLE_2026-11-27.pptx/.pdf   (16 slides)
+  DNS_SimEnv_2026-11-27.pptx/.pdf          (19 slides)

@@ -1,0 +1,146 @@
+claim_context,value,status,backed_by
+Khaled (@khh4lid),4,structural,slide numbering / layout constant
+2026-11-27,2026,structural,slide numbering / layout constant
+2026-11-27,11,structural,slide numbering / layout constant
+2026-11-27,27,structural,slide numbering / layout constant
+v2_S6,2,structural,slide numbering / layout constant
+v2_S6,6,structural,slide numbering / layout constant
+Simulation environment DNS project Taylor's University 27 November 2026,27,structural,slide numbering / layout constant
+Simulation environment DNS project Taylor's University 27 November 2026,2026,structural,slide numbering / layout constant
+LOGGED-DATA RENDER · config/scenarios/L00_C.json,00,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,00,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,4,structural,slide numbering / layout constant
+SCHEMATIC · to scale from config/scenarios/L00_C.json,00,structural,slide numbering / layout constant
+SCHEMATIC · heights from config/scenarios/L00_C.json,00,structural,slide numbering / layout constant
+V-SIDE_L00_altitude.mp4,00,structural,slide numbering / layout constant
+V-SIDE_L00_altitude.mp4,4,structural,slide numbering / layout constant
+SCHEMATIC · sensing block of config/scenarios/L00_C.json,00,structural,slide numbering / layout constant
+results/v2_S6/runs/*/lidar.npz,2,structural,slide numbering / layout constant
+results/v2_S6/runs/*/lidar.npz,6,structural,slide numbering / layout constant
+config/scenarios/L00_C.json,00,structural,slide numbering / layout constant
+LOGGED-DATA RENDER · L00_C.json,00,structural,slide numbering / layout constant
+full 3-D flight,3,structural,slide numbering / layout constant
+circles called 0.50 m of clear air a crash,0.50,matched,ADR-004 circle-vs-box surface gap; also the tilt threshold for the exceedance count
+"Each choice in full, with its trade-off and evidence: backup B1 to B6.",1,structural,slide numbering / layout constant
+"Each choice in full, with its trade-off and evidence: backup B1 to B6.",6,structural,slide numbering / layout constant
+"LOGGED-DATA RENDER · config/scenarios/L0*_C.json, results/v2_S6/scenario_table.csv",0,structural,slide numbering / layout constant
+"LOGGED-DATA RENDER · config/scenarios/L0*_C.json, results/v2_S6/scenario_table.csv",2,structural,slide numbering / layout constant
+"LOGGED-DATA RENDER · config/scenarios/L0*_C.json, results/v2_S6/scenario_table.csv",6,structural,slide numbering / layout constant
+"per map: 3 policies, 15 cart timings",3,structural,slide numbering / layout constant
+"per map: 3 policies, 15 cart timings",15,matched,pooled_rates.csv L00/C_dynamic/ppo_seed7
+lines show 95% uncertainty (approximate) Clutter excluded: my own reference path cannot fly it either,95,matched,"Wilson interval confidence level, percent"
+LOGGED-DATA RENDER · results/v2_S6/pooled_rates.csv,2,structural,slide numbering / layout constant
+LOGGED-DATA RENDER · results/v2_S6/pooled_rates.csv,6,structural,slide numbering / layout constant
+"LOGGED-DATA RENDER · L00_C.json, L02_C.json",00,structural,slide numbering / layout constant
+"LOGGED-DATA RENDER · L00_C.json, L02_C.json",02,structural,slide numbering / layout constant
+"LOGGED-DATA RENDER · results/v2_S6/, evidence/DEFECTS.csv, docs/verification/RESET_DETERMINISM.md",2,structural,slide numbering / layout constant
+"LOGGED-DATA RENDER · results/v2_S6/, evidence/DEFECTS.csv, docs/verification/RESET_DETERMINISM.md",6,structural,slide numbering / layout constant
+source: docs/meetings/2026-11-27/MEETING_DAY.md,2026,structural,slide numbering / layout constant
+source: docs/meetings/2026-11-27/MEETING_DAY.md,11,structural,slide numbering / layout constant
+source: docs/meetings/2026-11-27/MEETING_DAY.md,27,structural,slide numbering / layout constant
+github.com/khh4lid/dns-webots-simulation,4,structural,slide numbering / layout constant
+results/layout_gate/L04.json,04,structural,slide numbering / layout constant
+"On the Clutter map the PPO policy scores 0 of 45. But my own reference path, which is not a learned policy at ",0,structural,slide numbering / layout constant
+"On the Clutter map the PPO policy scores 0 of 45. But my own reference path, which is not a learned policy at ",45,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+Mode C pools three checkpoints over 15 cart timings. Per-checkpoint values are never ranked: their intervals o,15,matched,pooled_rates.csv L00/C_dynamic/ppo_seed7
+"LOGGED-DATA RENDER · results/v2_S6/pooled_rates.csv, scenario_table.csv",2,structural,slide numbering / layout constant
+"LOGGED-DATA RENDER · results/v2_S6/pooled_rates.csv, scenario_table.csv",6,structural,slide numbering / layout constant
+"If asked: it counts as arrived within 0.4 m of the goal, and it has 18 seconds, which is 90 commands at 0.2 s ",0.4,matched,pooled_rates.csv L01/C_dynamic/ppo_seed7
+"If asked: it counts as arrived within 0.4 m of the goal, and it has 18 seconds, which is 90 commands at 0.2 s ",18,structural,slide numbering / layout constant
+"If asked: it counts as arrived within 0.4 m of the goal, and it has 18 seconds, which is 90 commands at 0.2 s ",90,matched,layout_gate L04 traversal steps
+"If asked: it counts as arrived within 0.4 m of the goal, and it has 18 seconds, which is 90 commands at 0.2 s ",0.2,matched,pooled_rates.csv L00/C_dynamic/reactive
+"If asked: the interface is 52 numbers in and two numbers out, every 0.2 seconds, written down in docs/interfac",52,matched,layout_gate L03 traversal steps
+"If asked: the interface is 52 numbers in and two numbers out, every 0.2 seconds, written down in docs/interfac",0.2,matched,pooled_rates.csv L00/C_dynamic/reactive
+"This is the floor plan, drawn to scale from the scenario file, not by hand. One aisle, ten metres by six, with",0.4,matched,pooled_rates.csv L01/C_dynamic/ppo_seed7
+"The drone flies at one metre and its laser scans a flat ring just above it, at 1.14 m. Every obstacle in the r",1.14,matched,"cruise 1.0 + mount 0.14, config/scenarios/L00_C.json"
+"The airframe is about 35 centimetres across and weighs just over half a kilo. The LiDAR sits on top, held leve",35,matched,tip span in centimetres
+"If asked: the red dashed circle is the collision radius, 0.18 m, which is what the geometry checks use.",0.18,matched,config/scenarios/L00_C.json drone.collision_radius_m
+"The drone sees with a laser that sweeps all the way round, 720 beams, one every half a degree. Those are group",720,matched,config/scenarios/L00_C.json camera.height
+"If asked: each one has a full decision record in docs/decisions/, and backups B1 has them all in one table.",1,structural,slide numbering / layout constant
+"If asked: the 540 total contains 480 genuinely different setups; deterministic repeats are counted once, not t",540,matched,results_v2.csv row count
+"If asked: the 540 total contains 480 genuinely different setups; deterministic repeats are counted once, not t",480,matched,results_v2.csv distinct_configuration sum
+"Two things to take away. The mirror map scores exactly the same as the training map, which is evidence against",3,structural,slide numbering / layout constant
+The reset finding in two rows: replayed in order a run reproduces to microns; run on its own it can drift by 2,29,matched,"reset_study isolated worst path delta, in centimetres"
+"If asked: 0.2 s is exactly 25 physics steps, which is why an episode can replay exactly.",0.2,matched,pooled_rates.csv L00/C_dynamic/reactive
+"If asked: 0.2 s is exactly 25 physics steps, which is why an episode can replay exactly.",25,structural,slide numbering / layout constant
+DNS_SimEnv_FINAL_2026-11-27.pdf,2026,structural,slide numbering / layout constant
+DNS_SimEnv_FINAL_2026-11-27.pdf,11,structural,slide numbering / layout constant
+DNS_SimEnv_FINAL_2026-11-27.pdf,27,structural,slide numbering / layout constant
+DNS_SimEnv_FINAL_2026-11-27.pptx,2026,structural,slide numbering / layout constant
+DNS_SimEnv_FINAL_2026-11-27.pptx,11,structural,slide numbering / layout constant
+DNS_SimEnv_FINAL_2026-11-27.pptx,27,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+· 27 Nov 2026 ·,27,structural,slide numbering / layout constant
+· 27 Nov 2026 ·,2026,structural,slide numbering / layout constant
+V-TOP_L00_success_poster.png,00,structural,slide numbering / layout constant
+0.1 m,0.1,matched,config/scenarios/L00_C.json arena.wall_thickness_m
+V-SIDE_L00_altitude_poster.png,00,structural,slide numbering / layout constant
+0 front,0,structural,slide numbering / layout constant
+3 right,3,structural,slide numbering / layout constant
+6 back,6,structural,slide numbering / layout constant
+9 left,9,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,00,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,4,structural,slide numbering / layout constant
+V-TOP_L05_failure.mp4,05,structural,slide numbering / layout constant
+V-TOP_L05_failure.mp4,4,structural,slide numbering / layout constant
+results/v2_S6/runs/*/trajectory.csv,2,structural,slide numbering / layout constant
+results/v2_S6/runs/*/trajectory.csv,6,structural,slide numbering / layout constant
+E4_clearance.png,4,structural,slide numbering / layout constant
+52 numbers,52,matched,layout_gate L03 traversal steps
+2 numbers,2,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+utf8,8,structural,slide numbering / layout constant
+DNS_L00_C.wbt,00,structural,slide numbering / layout constant
+words (max 12),12,structural,slide numbering / layout constant
+words (max 8),8,structural,slide numbering / layout constant
+V-TOP_L00_success_poster.png,00,structural,slide numbering / layout constant
+V-TOP_L05_failure_poster.png,05,structural,slide numbering / layout constant
+F3_trajectories.png,3,structural,slide numbering / layout constant
+95% approx.,95,matched,"Wilson interval confidence level, percent"
+"0.200000 s, error < 3e-16 s",0.200000,matched,v1 Verification_Report timing
+"0.200000 s, error < 3e-16 s",3e-16,matched,v1 Verification_Report observation-interval error
+v1 Verification_Report,1,structural,slide numbering / layout constant
+"<= 4.0e-06 m, 6 layouts",4.0e-06,matched,layout_gate SUMMARY worst t=0 pose error
+"<= 4.0e-06 m, 6 layouts",6,structural,slide numbering / layout constant
+0.048 m mean per beam,0.048,matched,v1 Verification_Report lidar full-scan mean
+v1 Verification_Report,1,structural,slide numbering / layout constant
+26 of 26,26,matched,layout_gate L00 contract tests
+26 of 26,26,matched,layout_gate L00 contract tests
+"10/10 cells, 0 m",10,structural,slide numbering / layout constant
+"10/10 cells, 0 m",10,structural,slide numbering / layout constant
+"10/10 cells, 0 m",0,structural,slide numbering / layout constant
+results/v2_S6/v1_reproduction.csv,2,structural,slide numbering / layout constant
+results/v2_S6/v1_reproduction.csv,6,structural,slide numbering / layout constant
+results/v2_S6/v1_reproduction.csv,1,structural,slide numbering / layout constant
+results/v2_S6/results_v2.csv,2,structural,slide numbering / layout constant
+results/v2_S6/results_v2.csv,6,structural,slide numbering / layout constant
+results/v2_S6/results_v2.csv,2,structural,slide numbering / layout constant
+3 of 540 above 0.50 rad,3,structural,slide numbering / layout constant
+3 of 540 above 0.50 rad,540,matched,results_v2.csv row count
+3 of 540 above 0.50 rad,0.50,matched,ADR-004 circle-vs-box surface gap; also the tilt threshold for the exceedance count
+results/v2_S6/results_v2.csv,2,structural,slide numbering / layout constant
+results/v2_S6/results_v2.csv,6,structural,slide numbering / layout constant
+results/v2_S6/results_v2.csv,2,structural,slide numbering / layout constant
+results_v2.csv,2,structural,slide numbering / layout constant
+L00_C.json,00,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,00,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,4,structural,slide numbering / layout constant
+V-TOP_L00_success_poster.png,00,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,00,structural,slide numbering / layout constant
+V-TOP_L00_success.mp4,4,structural,slide numbering / layout constant
+V-TOP_L00_success_poster.png,00,structural,slide numbering / layout constant
+V-TOP_L05_failure.mp4,05,structural,slide numbering / layout constant
+V-TOP_L05_failure.mp4,4,structural,slide numbering / layout constant
+V-TOP_L05_failure_poster.png,05,structural,slide numbering / layout constant
+V-TOP_L02_mirror.mp4,02,structural,slide numbering / layout constant
+V-TOP_L02_mirror.mp4,4,structural,slide numbering / layout constant
+V-TOP_L02_mirror_poster.png,02,structural,slide numbering / layout constant
+>6.1f,6.1,matched,pooled_rates.csv L01/C_dynamic/ppo_seed7
+video/mp4,4,structural,slide numbering / layout constant
+iou_to_L00,00,structural,slide numbering / layout constant
