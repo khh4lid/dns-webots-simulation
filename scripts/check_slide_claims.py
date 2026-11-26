@@ -113,6 +113,24 @@ def known_values() -> dict[str, str]:
             add(entry.get("reference_traversal_steps") or 0,
                 f"layout_gate {layout} traversal steps")
 
+    # --- reset study and validation ----------------------------------------
+    study = ROOT / "results" / "reset_study" / "SUMMARY.json"
+    if study.is_file():
+        arms = json.loads(study.read_text(encoding="utf8"))["arms"]
+        for arm, stats in arms.items():
+            add(f"{stats['max_path_delta_m_worst']:.3f}",
+                f"reset_study SUMMARY.json {arm} worst path delta")
+            add(stats["max_path_delta_m_worst"],
+                f"reset_study SUMMARY.json {arm} worst path delta")
+            add(stats["episodes"], f"reset_study SUMMARY.json {arm} episodes")
+            add(stats["outcome_matches_log"],
+                f"reset_study SUMMARY.json {arm} outcome matches")
+    validation = ROOT / "results" / "reset_validation" / "validation_deterministic.json"
+    if validation.is_file():
+        worst = json.loads(validation.read_text(encoding="utf8"))["track_maxdiff_m_worst"]
+        add(f"{worst:.1e}", "validation_deterministic.json worst track diff")
+        add(f"{worst * 1e4:.1f}", "validation_deterministic.json worst, x1e-4")
+
     # --- reproduction ------------------------------------------------------
     with (RESULTS / "v1_reproduction.csv").open(encoding="utf8") as handle:
         repro = list(csv.DictReader(handle))
@@ -181,6 +199,11 @@ def known_values() -> dict[str, str]:
             ("56", "layout_gate L05 reference traversal steps"),
             ("24", "pooled_rates.csv L00/L02 Mode C k"),
             ("3e-16", "v1 Verification_Report observation-interval error"),
+            ("0.02", "config/scenarios settle_speed_tol_mps / settle_altitude_tol_m"),
+            ("2.1e-04", "validation_deterministic.json worst track diff"),
+            ("1e-05", "order-independence gate threshold, Section 2 of the brief"),
+            ("0.287", "reset_study SUMMARY.json isolated worst path delta"),
+            ("750", "backend.DETERMINISTIC_SETTLE_STEPS"),
     ]:
         values.setdefault(number, source)
     return values

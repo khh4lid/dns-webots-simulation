@@ -248,7 +248,7 @@ Fourteen decision records. Each states the context, the options that were on the
 | LiDAR angular map | fit index→bearing against analytic geometry | RMS **0.025 m** per beam |
 | LiDAR full scan | vs analytic ray caster, all beams incl. occlusion | mean **0.048 m** per beam |
 | **LiDAR ↔ moving cart** | measured sector vs ray caster at the *logged cart pose* | **MAE 0.0193 m**, n = 650 |
-| L00 reproduction | re-run v1's protocol on the regenerated world | **10/10 cells, 0 m path difference** |
+| L00 reproduction | re-run v1's protocol on the regenerated world | **10/10 cells**, 0 m path difference *when the session is replayed in order*; a single episode in isolation can drift up to 0.287 m ([detail](docs/verification/RESET_DETERMINISM.md)) |
 | Airframe stability | peak tilt per episode | 3 of 540 exceeded 0.50 rad |
 
 <details>
@@ -294,6 +294,16 @@ Full corrections C1–C9: **[V1_CORRECTIONS.md](docs/verification/V1_CORRECTIONS
 > - **540 episodes, 480 distinct configurations.** Mode C varies the cart phase 15 ways, so n = 15 per cell. Mode B's three episodes are the *same* configuration run three times — the episode seed is accepted by `reset()` and never used — so **n = 1** there. Identical deterministic repeats count once.
 > - Rates are **pooled over the three checkpoints** with Wilson 95% intervals. Per-checkpoint values are plotted but **never ranked**: their intervals overlap almost completely (on L00 they are 9/15, 8/15 and 7/15).
 > - **No significance tests.** Six layouts with one seed per family is a pilot, not a distribution; no trend is fitted.
+
+> [!IMPORTANT]
+> **The Wilson intervals are approximate.** A Wilson interval assumes
+> independent trials. The 15 cart-phase variants inside a cell are run back
+> to back and are coupled through residual airframe state across the reset
+> (`docs/verification/RESET_DETERMINISM.md`), so they are not strictly
+> independent draws. The deliberate cart-phase variation is far larger than
+> the coupling, but the intervals should be read as indicative rather than
+> exact.
+
 
 ### The mirror test
 

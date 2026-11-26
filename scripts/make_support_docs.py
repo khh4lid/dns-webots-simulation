@@ -70,8 +70,10 @@ All notable changes to the simulation environment.
   `results.csv`.
 
 ### Verified
-- v1's L00 protocol reproduces exactly: **10/10 cells, maximum per-episode path
-  difference 0 m**.
+- v1's L00 protocol reproduces **10/10 cells with a maximum per-episode
+  path difference of 0 m when the session is replayed in order**. A single
+  episode re-run in isolation drifts up to 0.287 m -- see
+  `docs/verification/RESET_DETERMINISM.md`.
 - Maximum obstacle t = 0 pose error across all six layouts: ≤ 4.0e-06 m.
 - 3 of {EPISODES} episodes exceeded 0.50 rad airframe tilt.
 

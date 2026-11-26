@@ -45,8 +45,8 @@ from dns.scenario import Scenario                                # noqa: E402
 from dns.spencer_link import RANGE, SECTORS, find_ppo_dir         # noqa: E402
 
 SCENARIOS = PROJECT_ROOT / "config" / "scenarios"
-RUNS = PROJECT_ROOT / "results" / "s6" / "runs"
-DATA = DATA
+RUNS = PROJECT_ROOT / "results" / "v2_S6" / "runs"
+DATA = PROJECT_ROOT / "results" / "v2_S6"
 
 #: gap_rule's repulsion radius, read from Spencer's source rather than retyped.
 REPULSION_RADIUS_M = 1.45

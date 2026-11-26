@@ -17,6 +17,16 @@ Protocol, committed before anything ran: [S6_GENERALIZATION_PROTOCOL.md](../veri
 
 Per-checkpoint values are in `results/v2_S6/pooled_rates.csv`. They are **never ranked**: on L00 Mode C they are 9/15, 8/15 and 7/15, a spread about the size of the effect, with Wilson intervals that overlap almost completely.
 
+> [!IMPORTANT]
+> **The Wilson intervals are approximate.** A Wilson interval assumes
+> independent trials. The 15 cart-phase variants inside a cell are run back
+> to back and are coupled through residual airframe state across the reset
+> (`docs/verification/RESET_DETERMINISM.md`), so they are not strictly
+> independent draws. The deliberate cart-phase variation is far larger than
+> the coupling, but the intervals should be read as indicative rather than
+> exact.
+
+
 ## Failure taxonomy — all PPO episodes
 
 | Layout | goal | collision static | collision cart | collision wall | timeout |

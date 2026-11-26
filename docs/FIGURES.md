@@ -10,7 +10,7 @@ The six layouts at identical metric scale. Grey fill is the configuration space 
 - **data:** `07_SCENARIOS/L0*_C.json, 06_DATA/scenario_table.csv`
 - **script:** `scripts/make_figures.py`
 - **provenance:** LOGGED-DATA RENDER
-- **files:** `03_FIGURES/core/F1_shift_ladder.png`, `03_FIGURES/core/F1_shift_ladder.pdf`, `03_FIGURES/core/F1_shift_ladder.svg`
+- **files:** `assets/figures/F1_shift_ladder.png`, `assets/figures/F1_shift_ladder.pdf`, `assets/figures/F1_shift_ladder.svg`
 
 ## F2 — Spatial generalization across the shift ladder
 
@@ -20,7 +20,7 @@ Top: pooled PPO success per layout with Wilson 95% intervals; per-checkpoint val
 - **data:** `06_DATA/results_v2.csv, 06_DATA/pooled_rates.csv`
 - **script:** `scripts/make_figures.py`
 - **provenance:** LOGGED-DATA RENDER
-- **files:** `03_FIGURES/core/F2_generalization.png`, `03_FIGURES/core/F2_generalization.pdf`, `03_FIGURES/core/F2_generalization.svg`
+- **files:** `assets/figures/F2_generalization.png`, `assets/figures/F2_generalization.pdf`, `assets/figures/F2_generalization.svg`
 
 ## F3 — Representative PPO trajectories
 
@@ -40,7 +40,7 @@ Every descriptor used to characterise the ladder. Difficulty (corridor width, to
 - **data:** `06_DATA/scenario_table.csv`
 - **script:** `scripts/make_figures.py`
 - **provenance:** LOGGED-DATA RENDER
-- **files:** `03_FIGURES/extended/E1_descriptors.png`, `03_FIGURES/extended/E1_descriptors.pdf`, `03_FIGURES/extended/E1_descriptors.svg`
+- **files:** `assets/figures/E1_descriptors.png`, `assets/figures/E1_descriptors.pdf`, `assets/figures/E1_descriptors.svg`
 
 ## E3 — Success vs dissimilarity and vs difficulty
 
@@ -50,7 +50,7 @@ Pooled PPO success against how DIFFERENT a layout is (left) and how HARD it is (
 - **data:** `06_DATA/pooled_rates.csv, 06_DATA/scenario_table.csv`
 - **script:** `scripts/make_figures.py`
 - **provenance:** LOGGED-DATA RENDER
-- **files:** `03_FIGURES/extended/E3_success_vs_descriptors.png`, `03_FIGURES/extended/E3_success_vs_descriptors.pdf`, `03_FIGURES/extended/E3_success_vs_descriptors.svg`
+- **files:** `assets/figures/E3_success_vs_descriptors.png`, `assets/figures/E3_success_vs_descriptors.pdf`, `assets/figures/E3_success_vs_descriptors.svg`
 
 ## E4 — Minimum clearance distribution per layout
 
@@ -60,7 +60,7 @@ Per-episode minimum supervisor ground-truth clearance for all PPO episodes, by l
 - **data:** `06_DATA/results_v2.csv`
 - **script:** `scripts/make_figures.py`
 - **provenance:** LOGGED-DATA RENDER
-- **files:** `03_FIGURES/extended/E4_clearance.png`, `03_FIGURES/extended/E4_clearance.pdf`, `03_FIGURES/extended/E4_clearance.svg`
+- **files:** `assets/figures/E4_clearance.png`, `assets/figures/E4_clearance.pdf`, `assets/figures/E4_clearance.svg`
 
 ## E9 — L00 reproduction, v1 vs v2
 
@@ -70,7 +70,7 @@ Every v1 cell re-run with the v2 harness on the regenerated L00 world. All ten c
 - **data:** `06_DATA/v1_reproduction.csv`
 - **script:** `scripts/make_figures.py`
 - **provenance:** LOGGED-DATA RENDER
-- **files:** `03_FIGURES/extended/E9_l00_reproduction.png`, `03_FIGURES/extended/E9_l00_reproduction.pdf`, `03_FIGURES/extended/E9_l00_reproduction.svg`
+- **files:** `assets/figures/E9_l00_reproduction.png`, `assets/figures/E9_l00_reproduction.pdf`, `assets/figures/E9_l00_reproduction.svg`
 
 ## SV1 — LiDAR configuration schematic
 
@@ -80,4 +80,4 @@ Sensor geometry as implemented: 720 beams over 360° (0.5° spacing), 5 m range 
 - **data:** `07_SCENARIOS/L00_C.json, protos/DnsQuadcopter.proto`
 - **script:** `scripts/make_figures.py`
 - **provenance:** SCHEMATIC
-- **files:** `09_HANDOFFS/sensor_pack/SV1_sensor_schematic.png`, `09_HANDOFFS/sensor_pack/SV1_sensor_schematic.pdf`, `09_HANDOFFS/sensor_pack/SV1_sensor_schematic.svg`
+- **files:** `assets/diagrams/SV1_sensor_schematic.png`, `assets/diagrams/SV1_sensor_schematic.pdf`, `assets/diagrams/SV1_sensor_schematic.svg`

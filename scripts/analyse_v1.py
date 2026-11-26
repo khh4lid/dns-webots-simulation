@@ -29,7 +29,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = PROJECT_ROOT.parent
-DATA = DATA
+DATA = PROJECT_ROOT / "results" / "v2_S6"
 
 V1_RESULTS = WORKSPACE / "DNS_SIMULATION_RESEARCH_DELIVERABLE" / "03_RESEARCH" / "results.csv"
 V2_RESULTS = DATA / "results_v2.csv"

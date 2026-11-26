@@ -35,8 +35,13 @@ from dns.scenario import Scenario                                # noqa: E402
 
 SCENARIOS = PROJECT_ROOT / "config" / "scenarios"
 DATA = PROJECT_ROOT / "results" / "v2_S6"
-CORE = PACKAGE / "03_FIGURES" / "core"
-EXTENDED = PACKAGE / "03_FIGURES" / "extended"
+# Figures live in the repository, not the one-off meeting package.
+CORE = PROJECT_ROOT / "assets" / "figures"
+EXTENDED = PROJECT_ROOT / "assets" / "figures"
+DIAGRAMS = PROJECT_ROOT / "assets" / "diagrams"
+#: Named CAPTIONS_PATH, not CAPTIONS: that name is already the
+#: module-level accumulator list for caption records.
+CAPTIONS_PATH = PROJECT_ROOT / "docs" / "FIGURES.md"
 RUNS = PROJECT_ROOT / "results" / "s6" / "runs"
 
 LAYOUTS = ("L00", "L01", "L02", "L03", "L04", "L05")
@@ -49,7 +54,8 @@ def caption(fid: str, title: str, text: str, *, n: str, data: str,
         "id": fid, "title": title, "caption": text, "n": n,
         "data_file": data, "script": "scripts/make_figures.py",
         "provenance": provenance,
-        "files": [str(p.relative_to(PACKAGE)).replace("\\", "/") for p in files],
+        "files": [str(p.relative_to(PROJECT_ROOT)).replace("\\", "/")
+                  for p in files],
     })
 
 
@@ -735,7 +741,7 @@ def figure_sv1(rows: list[dict]) -> None:
                     "scenario JSON and the DnsQuadcopter PROTO)",
                     x=0.02, ha="left", fontsize=9.8, fontweight="bold")
     figure.tight_layout(rect=(0, 0, 1, 0.93))
-    files = S.save(figure, PACKAGE / "09_HANDOFFS" / "sensor_pack" / "SV1_sensor_schematic")
+    files = S.save(figure, DIAGRAMS / "SV1_sensor_schematic")
     caption("SV1", "LiDAR configuration schematic",
             f"Sensor geometry as implemented: {beams} beams over 360° "
             f"(0.5° spacing), {cap:g} m range cap, {sectors} sectors of 30° with "
@@ -775,7 +781,7 @@ def main() -> int:
             traceback.print_exc()
 
     if CAPTIONS:
-        path = PACKAGE / "03_FIGURES" / "captions.md"
+        path = CAPTIONS_PATH
         existing = {}
         if path.is_file():
             # Preserve captions for figures not regenerated in this run.

@@ -1,5 +1,14 @@
 # Design and Verification of a Webots Simulation Environment for UAV Navigation in Static and Dynamic Scenarios
 
+> [!NOTE]
+> **Historical document — v1 configuration.** The numbers below describe
+> the configuration as it was when this was written (1.075 m scan plane (0.075 m mount)). The current
+> build flies at **1.0 m** with a **0.14 m** LiDAR mount, so the scan plane
+> rides at **1.14 m**; see `protos/DnsQuadcopter.proto` (`lidarHeight`) and
+> `config/scenarios/L00_C.json`. Kept unedited as the record of what was
+> measured at the time.
+
+
 Simulation Environment Development — Drone Navigation System, Taylor's
 University. Supervisor: Dr. Mehdi Samieiyeganeh.
 

@@ -171,7 +171,7 @@ def s01():
     axis.text(0.055, 0.645,
               "Drone Navigation System · Taylor's University, Malaysia\n"
               f"Supervisor: {SUPERVISOR}\n"
-              "Team: PPO policy — NAME NEEDED · Sensor & perception — NAME NEEDED\n"
+              f"Team: PPO policy — {SPENCER} · Sensor & perception — {SENSOR}\n"
               "27 November 2026",
               fontsize=12.5, color=S.INK_SOFT, va="top", linespacing=1.75)
     put_image(axis, RENDERS / "V-TOP_L00_success_poster.png",
@@ -194,7 +194,7 @@ def s02():
     axis.text(0.055, 0.40, "Not mine, and not in my repository:", fontsize=12,
               color=S.INK_SOFT, va="top")
     axis.text(0.055, 0.345,
-              "the PPO policy (NAME NEEDED) and raw-sensor processing (NAME NEEDED).\n"
+              f"the PPO policy ({SPENCER}) and raw-sensor processing ({SENSOR}).\n"
               "I record their interfaces and the SHA-256 of the files I ran against.",
               fontsize=11.5, color=S.INK_MUTED, va="top", linespacing=1.7)
     put_image(axis, DIAGRAMS / "SV1_sensor_schematic.png",
@@ -273,23 +273,27 @@ def s06():
 def s07():
     figure, axis = new_slide(
         "We verify the simulator instead of trusting it —\n"
-        "and verification caught five real defects",
+        "and verification caught six real defects",
         section="Verification", number="7/12")
+    # Keys and values both sit left of 0.50 so nothing runs under the figure.
     kv_table(axis, [
-        ("Observation interval", "0.200000 s  (error < 3e−16 s)"),
-        ("Reset repeatability", "2.8 µm"),
-        ("World ↔ scenario pose", "≤ 4.0e−06 m, all 6 layouts"),
-        ("LiDAR vs ray caster", "0.048 m mean per beam"),
-        ("L00 reproduction", "10/10 cells, 0 m"),
-    ], y=0.66, width=0.44)
-    axis.text(0.055, 0.30, "Caught by these checks:", fontsize=12,
+        ("Observation interval", "0.200000 s (< 3e−16 s)"),
+        ("World ↔ scenario pose", "≤ 4.0e−06 m, 6 layouts"),
+        ("LiDAR vs ray caster", "0.048 m mean/beam"),
+        ("L00 reproduction, in order", "10/10 cells, 0 m"),
+        ("Same episode in isolation", "drifts to 0.287 m"),
+    ], y=0.66, width=0.43, key_size=11.5, value_size=11.5)
+    axis.text(0.055, 0.33, "Caught by these checks:", fontsize=12,
               color=S.INK_SOFT, va="top", fontweight="bold")
-    axis.text(0.055, 0.245,
+    axis.text(0.055, 0.275,
               "racks collided as circles · camera rotated instead of tilting\n"
               "cart written at its sweep centre, not its t = 0 pose\n"
-              "calibration tool loaded a different world · v1 shipped a\n"
-              "protocol file describing a different run than its own results",
-              fontsize=10.5, color=S.INK_MUTED, va="top", linespacing=1.75)
+              "calibration tool loaded a different world\n"
+              "v1 shipped a protocol file from a different run\n"
+              "the reset left residual state behind, so an episode re-run\n"
+              "alone drifts up to 0.287 m — found by testing, fixed on\n"
+              "branch reset-fix-v2.1, awaiting full re-validation",
+              fontsize=10.2, color=S.INK_MUTED, va="top", linespacing=1.7)
     put_image(axis, FIGURES / "F4_verification_panel.png",
               (0.55, 0.13, 0.40, 0.54), "assets/figures/F4_verification_panel.png")
     return figure
@@ -381,13 +385,14 @@ def s11():
 
 def s12():
     figure, axis = new_slide(
-        "Three decisions I need from the team",
+        "Four decisions I need from the team",
         section="Decisions", number="12/12")
     kv_table(axis, [
         ("L04: exclude, or run a longer-horizon diagnostic?", SUPERVISOR),
+        ("Approve a full re-evaluation after the reset fix (v2.1)?", SUPERVISOR),
         ("More PPO training seeds — 3 cannot separate variance", SPENCER),
         ("The 0.0536 m vs 0.62 m sensor anomaly", "sensor teammate"),
-    ], y=0.70, width=0.60, key_size=13, value_size=12)
+    ], y=0.70, width=0.62, key_size=12.5, value_size=11.5)
     axis.text(0.055, 0.44, "My next steps", fontsize=13, fontweight="bold",
               color=S.INK, va="top")
     axis.text(0.055, 0.385,
@@ -479,8 +484,51 @@ def b6():
     return figure
 
 
+def b7():
+    """The reset finding, read from its own evidence file at build time."""
+    data = json.loads((ROOT / "results" / "reset_study" / "SUMMARY.json")
+                      .read_text(encoding="utf8"))
+    iso, seq = data["arms"]["isolated"], data["arms"]["sequence"]
+    figure, axis = new_slide(
+        "Backup — is one episode reproducible on its own?", number="B7",
+        accent="No. It is reproducible when the session is replayed in order.")
+    kv_table(axis, [
+        ("Episodes tested, both arms", f"{iso['episodes']} + {seq['episodes']}"),
+        ("Isolated — outcome matched the log",
+         f"{iso['outcome_matches_log']}/{iso['episodes']}"),
+        ("Isolated — step count matched",
+         f"{iso['step_count_matches_log']}/{iso['episodes']}"),
+        ("Isolated — worst path drift",
+         f"{iso['max_path_delta_m_worst']:.3f} m"),
+        ("Replayed in order — step count matched",
+         f"{seq['step_count_matches_log']}/{seq['episodes']}"),
+        ("Replayed in order — worst path drift",
+         f"{seq['max_path_delta_m_worst']:.2e} m"),
+    ], y=0.66, width=0.56, key_size=12, value_size=12)
+    axis.text(0.055, 0.30,
+              "Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not\n"
+              "to a fixed point, so the state it stopped at depended on the\n"
+              "previous episode. Fixed on branch reset-fix-v2.1 with a\n"
+              "fixed-step settle; not merged — 1 of 5 targets still drifts\n"
+              "2.1e-04 m against a 1e-05 m bar, and this deck was not\n"
+              "re-derived from it.",
+              fontsize=10.5, color=S.INK_SOFT, va="top", linespacing=1.7)
+    axis.text(0.055, 0.065,
+              "Source: results/reset_study/SUMMARY.json · "
+              "docs/verification/RESET_DETERMINISM.md",
+              fontsize=9, color=S.INK_MUTED, va="top")
+    return figure
+
+
 SLIDES = [s01, s02, s03, s04, s05, s06, s07, s08, s09, s10, s11, s12]
-BACKUPS = [b1, b2, b3, b4, b5, b6]
+BACKUPS = [b1, b2, b3, b4, b5, b6, b7]
+
+#: Two routes through the deck. The 5-minute path keeps the spine -- role,
+#: task, results, mirror, decisions -- and drops the context slides; the
+#: verification story then lives in one sentence on slide 9 and in backup B7.
+PATH_12_MIN = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+PATH_5_MIN = [1, 2, 9, 10, 12]
+PATH_5_MIN_SKIP = [3, 4, 5, 6, 7, 8, 11]
 
 NOTES = {
  1: ("I built the simulation environment for the DNS project.",
@@ -507,17 +555,19 @@ NOTES = {
      ["Define 'supervisor': it lets me read and write exact body poses from outside the controller.",
       "That is what every validator and the ground-truth scoring depends on.",
       "This is a selection rationale, not a benchmark — I did not install and time the alternatives.",
-      "The evidence that matters is determinism: the v1 run reproduced with zero path difference."],
+      "The evidence that matters is determinism: the v1 run reproduced with zero path difference WHEN the session is replayed in order."],
      "The sensor is where the contract with Spencer lives."),
  6: ("The LiDAR matches the policy's contract, and that is tested, not assumed.",
      ["Define 'sector': the 360° scan is binned into 12 wedges of 30°.",
       "0 is front, 3 right, 6 back, 9 left — verified per layout, not documented and hoped for.",
       "The cart check compares the measured sector against an independent ray caster."],
      "That is one check. Here is the rest."),
- 7: ("We verify the simulator rather than trusting it, and it caught five real defects.",
+ 7: ("We verify the simulator rather than trusting it, and it caught six real defects.",
      ["Timing is exact by construction: 0.2 s is exactly 25 physics steps.",
-      "The best argument for verification is the defect list — all five were silent.",
-      "The circle-versus-box one would have corrupted every collision statistic."],
+      "The best argument for verification is the defect list — all six were silent.",
+      "The circle-versus-box one would have corrupted every collision statistic.",
+      "The sixth is mine and it is recent: the reset left state behind. I found it by asking whether a single episode reproduces on its own. It does not — up to 0.287 m.",
+      "The fix is written and validated on reset-fix-v2.1, but it is not in this build: changing the environment would invalidate the results produced with it."],
      "With the instrument checked, I could ask the real question."),
  8: ("Six layouts, generated from one config and a seed, frozen before anything ran.",
      ["The ladder goes from barely perturbed to deliberately hard.",
@@ -631,8 +681,11 @@ def build_pptx(figures) -> None:
     print(f"wrote {path.relative_to(ROOT)} "
           f"({len(figures)} slides, {path.stat().st_size/1e6:.2f} MB)")
     if NAMES_PENDING:
-        print("\n!! NAMES PENDING -- the deck carries visible 'NAME NEEDED' "
-              "placeholders and must not be treated as final until filled in.")
+        print("\nIdentity: resolved as far as the project record supports "
+              "(Khaled @khh4lid, Spencer, Dr. Mehdi Samieiyeganeh).\n"
+              "Shown as explicit gaps rather than invented: full legal name "
+              "(CITATION.cff only), Spencer's surname and handle, the sensor "
+              "teammate's name.")
 
 
 if __name__ == "__main__":

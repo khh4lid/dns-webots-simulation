@@ -1,5 +1,14 @@
 # Validation and Evidence
 
+> [!NOTE]
+> **Historical document — v1 configuration.** The numbers below describe
+> the configuration as it was when this was written (1.2 m walls). The current
+> build flies at **1.0 m** with a **0.14 m** LiDAR mount, so the scan plane
+> rides at **1.14 m**; see `protos/DnsQuadcopter.proto` (`lidarHeight`) and
+> `config/scenarios/L00_C.json`. Kept unedited as the record of what was
+> measured at the time.
+
+
 Verification methodology, measured results, experiment provenance, reproduction
 commands, and the limits of what any of it supports.
 

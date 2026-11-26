@@ -65,6 +65,6 @@ world, and a blocking `dns/worldcheck.check` before any result is produced.
 ## Verdict
 
 Phase 0 **PASS**. v1 is frozen and hashed, the environment is recorded, the
-L00 protocol reproduces exactly, the episode-variant semantics are now
+L00 protocol reproduces exactly when replayed in order, the episode-variant semantics are now
 documented and corrected, and the Phase 2 runtime fits the budget with no
 reduction rule needed.

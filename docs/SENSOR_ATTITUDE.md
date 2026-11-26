@@ -1,5 +1,14 @@
 # Why the lidar is gimballed: four measured sensor defects
 
+> [!NOTE]
+> **Historical document — v1 configuration.** The numbers below describe
+> the configuration as it was when this was written (1.2 m walls). The current
+> build flies at **1.0 m** with a **0.14 m** LiDAR mount, so the scan plane
+> rides at **1.14 m**; see `protos/DnsQuadcopter.proto` (`lidarHeight`) and
+> `config/scenarios/L00_C.json`. Kept unedited as the record of what was
+> measured at the time.
+
+
 **Status:** resolved, with evidence. **Owner:** Khaled (simulation environment).
 **Audience:** Dr. Mehdi, Spencer (PPO), sensor/obstacle-detection teammate.
 

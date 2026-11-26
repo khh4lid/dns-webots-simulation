@@ -1,0 +1,688 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "../protos/DnsQuadcopter.proto"
+
+# ---------------------------------------------------------------------------
+# Drone Navigation System - Phase 1 navigation arena
+#
+# Scenario id    : L02_B
+# Scenario sha256: 376649c58d03b1265f2b3d02fea6cdde1308761236e6602e77ac80a125fc650d
+# GENERATED FILE. Edit 07_SCENARIOS/L02_B.json and re-run:
+#     python -m dns.worldgen
+#
+# Scenario : l02_static
+# Arena    : 10 6 m, DNS bounds [0.0, -3.0] -> [10.0, 3.0]
+# Start    : DNS [0.85, 0.0] at 1.0 m altitude
+# Goal     : DNS [9.15, 0.0], tolerance 0.4 m
+# Frames   : DNS +x forward / +y right;  Webots ENU +x east / +y north / +z up
+#            x_dns = x_webots,  y_dns = -y_webots   (see dns/scenario.py)
+#
+# The drone controller is "<extern>": start Webots first, then run the Python
+# client (see README.md). Only base nodes and the local PROTO are referenced,
+# so this world loads without network access.
+# ---------------------------------------------------------------------------
+
+WorldInfo {
+  info [
+    "Drone Navigation System - Phase 1 navigation arena"
+    "Scenario: l02_static"
+    "Owner: Khaled (Simulation Environment)"
+    "Scenario id: L02_B"
+    "Scenario sha256: 376649c58d03b1265f2b3d02fea6cdde1308761236e6602e77ac80a125fc650d"
+    "Scenario source: L02_B.json"
+  ]
+  title "DNS Navigation Arena"
+  basicTimeStep 8
+  coordinateSystem "ENU"
+  defaultDamping Damping {
+    linear 0.5
+    angular 0.5
+  }
+}
+Viewpoint {
+  orientation 1 -0 -0 1.04272
+  position 5 -12 8
+  near 0.2
+}
+Background {
+  skyColor [
+    0.21 0.24 0.29
+  ]
+}
+# Key light casts the shadows that make depth and obstacle height readable;
+# the two fills lift the shadowed faces so geometry stays legible on video
+# without washing the scene out.
+DirectionalLight {
+  ambientIntensity 0.55
+  direction -0.45 0.55 -1
+  intensity 2.1
+  castShadows TRUE
+}
+DirectionalLight {
+  ambientIntensity 0.35
+  direction 0.6 -0.35 -0.8
+  intensity 1.0
+}
+DirectionalLight {
+  ambientIntensity 0.25
+  direction 0 0 -1
+  intensity 0.55
+}
+
+DEF DNS_FLOOR Solid {
+  translation 5 0 -0.01
+  name "DNS_FLOOR"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.62 0.63 0.65
+        roughness 0.95
+        metalness 0
+      }
+      geometry Box {
+        size 10 6 0.02
+      }
+    }
+  ]
+  boundingObject Box {
+    size 10 6 0.02
+  }
+}
+
+DEF DNS_GRID_X0 Solid {
+  translation 0 0 0.0015
+  name "DNS_GRID_X0"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.012 6 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_X1 Solid {
+  translation 1 0 0.0015
+  name "DNS_GRID_X1"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.012 6 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_X2 Solid {
+  translation 2 0 0.0015
+  name "DNS_GRID_X2"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.012 6 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_X3 Solid {
+  translation 3 0 0.0015
+  name "DNS_GRID_X3"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.012 6 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_X4 Solid {
+  translation 4 0 0.0015
+  name "DNS_GRID_X4"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.012 6 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_X5 Solid {
+  translation 5 0 0.0015
+  name "DNS_GRID_X5"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.012 6 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_X6 Solid {
+  translation 6 0 0.0015
+  name "DNS_GRID_X6"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.012 6 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_X7 Solid {
+  translation 7 0 0.0015
+  name "DNS_GRID_X7"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.012 6 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_X8 Solid {
+  translation 8 0 0.0015
+  name "DNS_GRID_X8"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.012 6 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_X9 Solid {
+  translation 9 0 0.0015
+  name "DNS_GRID_X9"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.012 6 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_X10 Solid {
+  translation 10 0 0.0015
+  name "DNS_GRID_X10"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.012 6 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_Y0 Solid {
+  translation 5 -3 0.0015
+  name "DNS_GRID_Y0"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 10 0.012 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_Y1 Solid {
+  translation 5 -2 0.0015
+  name "DNS_GRID_Y1"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 10 0.012 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_Y2 Solid {
+  translation 5 -1 0.0015
+  name "DNS_GRID_Y2"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 10 0.012 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_Y3 Solid {
+  translation 5 0 0.0015
+  name "DNS_GRID_Y3"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 10 0.012 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_Y4 Solid {
+  translation 5 1 0.0015
+  name "DNS_GRID_Y4"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 10 0.012 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_Y5 Solid {
+  translation 5 2 0.0015
+  name "DNS_GRID_Y5"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 10 0.012 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_GRID_Y6 Solid {
+  translation 5 3 0.0015
+  name "DNS_GRID_Y6"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.52 0.53 0.56
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 10 0.012 0.003
+      }
+    }
+  ]
+}
+
+DEF DNS_WALL_XLOW Solid {
+  translation -0.05 0 1.25
+  name "DNS_WALL_XLOW"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.45 0.48 0.52
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 6.2 2.5
+      }
+    }
+  ]
+  boundingObject Box {
+    size 0.1 6.2 2.5
+  }
+}
+
+DEF DNS_WALL_XHIGH Solid {
+  translation 10.05 0 1.25
+  name "DNS_WALL_XHIGH"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.45 0.48 0.52
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 6.2 2.5
+      }
+    }
+  ]
+  boundingObject Box {
+    size 0.1 6.2 2.5
+  }
+}
+
+DEF DNS_WALL_YLOW Solid {
+  translation 5 -3.05 1.25
+  name "DNS_WALL_YLOW"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.45 0.48 0.52
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 10 0.1 2.5
+      }
+    }
+  ]
+  boundingObject Box {
+    size 10 0.1 2.5
+  }
+}
+
+DEF DNS_WALL_YHIGH Solid {
+  translation 5 3.05 1.25
+  name "DNS_WALL_YHIGH"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.45 0.48 0.52
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 10 0.1 2.5
+      }
+    }
+  ]
+  boundingObject Box {
+    size 10 0.1 2.5
+  }
+}
+
+DEF DNS_START_RING Solid {
+  translation 0.85 -0 0.003
+  name "DNS_START_RING"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.07 0.33 0.15
+        transparency 0
+        roughness 0.7
+        metalness 0
+      }
+      geometry Cylinder {
+        height 0.006
+        radius 0.50688
+      }
+    }
+  ]
+}
+
+DEF DNS_START_MARKER Solid {
+  translation 0.85 -0 0.009
+  name "DNS_START_MARKER"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.16 0.66 0.31
+        transparency 0
+        roughness 0.7
+        metalness 0
+      }
+      geometry Cylinder {
+        height 0.006
+        radius 0.396
+      }
+    }
+  ]
+}
+
+DEF DNS_GOAL_RING Solid {
+  translation 9.15 -0 0.003
+  name "DNS_GOAL_RING"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.06 0.22 0.45
+        transparency 0
+        roughness 0.7
+        metalness 0
+      }
+      geometry Cylinder {
+        height 0.006
+        radius 0.488
+      }
+    }
+  ]
+}
+
+DEF DNS_GOAL_MARKER Solid {
+  translation 9.15 -0 0.009
+  name "DNS_GOAL_MARKER"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.16 0.47 0.86
+        transparency 0
+        roughness 0.7
+        metalness 0
+      }
+      geometry Cylinder {
+        height 0.006
+        radius 0.4
+      }
+    }
+  ]
+}
+
+DEF DNS_OBSTACLE_RACK_A Solid {
+  translation 3.5 -1 1
+  name "DNS_OBSTACLE_RACK_A"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.33 0.36 0.4
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.8 2.4 2
+      }
+    }
+  ]
+  boundingObject Box {
+    size 0.8 2.4 2
+  }
+}
+
+DEF DNS_OBSTACLE_RACK_B Solid {
+  translation 6.5 1 1
+  name "DNS_OBSTACLE_RACK_B"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.33 0.36 0.4
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.8 2.4 2
+      }
+    }
+  ]
+  boundingObject Box {
+    size 0.8 2.4 2
+  }
+}
+
+DEF DNS_OBSTACLE_COLUMN_1 Solid {
+  translation 2 2.3 1.25
+  name "DNS_OBSTACLE_COLUMN_1"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.55 0.56 0.59
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.4 0.4 2.5
+      }
+    }
+  ]
+  boundingObject Box {
+    size 0.4 0.4 2.5
+  }
+}
+
+DEF DNS_OBSTACLE_COLUMN_2 Solid {
+  translation 8 -2.3 1.25
+  name "DNS_OBSTACLE_COLUMN_2"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.55 0.56 0.59
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.4 0.4 2.5
+      }
+    }
+  ]
+  boundingObject Box {
+    size 0.4 0.4 2.5
+  }
+}
+
+DEF DNS_OBSTACLE_CRATE_STACK Solid {
+  translation 7.9 0.9 0.8
+  rotation 0 0 1 0.35
+  name "DNS_OBSTACLE_CRATE_STACK"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.46 0.38 0.27
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.7 0.7 1.6
+      }
+    }
+  ]
+  boundingObject Box {
+    size 0.7 0.7 1.6
+  }
+}
+
+DEF DNS_OBSTACLE_CART Solid {
+  translation 5.1 2.5 0.75
+  name "DNS_OBSTACLE_CART"
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.92 0.45 0.13
+        roughness 0.85
+        metalness 0
+      }
+      geometry Box {
+        size 0.9 0.55 1.5
+      }
+    }
+  ]
+  boundingObject Box {
+    size 0.9 0.55 1.5
+  }
+}
+
+DEF DNS_DRONE DnsQuadcopter {
+  translation 0.85 -0 1
+  rotation 0 0 1 0
+  name "DnsDrone"
+  controller "<extern>"
+  supervisor TRUE
+  collisionRadius 0.18
+  lidarMaxRange 5
+  lidarResolution 720
+  lidarHeight 0.14
+  sceneCamera TRUE
+  sceneCameraWidth 1280
+  sceneCameraHeight 720
+}

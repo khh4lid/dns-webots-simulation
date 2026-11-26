@@ -14,7 +14,6 @@ v2_S6,6,structural,slide numbering / layout constant
 "A 16:9 slide with a sentence headline, tracker and footer.",9,structural,slide numbering / layout constant
 V-TOP_L00_success.mp4,00,structural,slide numbering / layout constant
 V-TOP_L00_success.mp4,4,structural,slide numbering / layout constant
-the PPO policy (NAME NEEDED) and raw-sensor processing (NAME NEEDED). I record their interfaces and the SHA-25,256,structural,slide numbering / layout constant
 assets/diagrams/SV1_sensor_schematic.png,1,structural,slide numbering / layout constant
 "The drone must cross a 10 × 6 m aisle, sensing obstacles only through a 360° LiDAR",10,structural,slide numbering / layout constant
 "The drone must cross a 10 × 6 m aisle, sensing obstacles only through a 360° LiDAR",6,structural,slide numbering / layout constant
@@ -37,6 +36,8 @@ results/v2_S6/v1_reproduction.csv,1,structural,slide numbering / layout constant
 assets/diagrams/SV1_sensor_schematic.png,1,structural,slide numbering / layout constant
 "racks collided as circles · camera rotated instead of tilting cart written at its sweep centre, not its t = 0 ",0,structural,slide numbering / layout constant
 "racks collided as circles · camera rotated instead of tilting cart written at its sweep centre, not its t = 0 ",1,structural,slide numbering / layout constant
+"racks collided as circles · camera rotated instead of tilting cart written at its sweep centre, not its t = 0 ",0.287,matched,reset_study SUMMARY.json isolated worst path delta
+"racks collided as circles · camera rotated instead of tilting cart written at its sweep centre, not its t = 0 ",2.1,matched,"validation_deterministic.json worst, x1e-4"
 assets/figures/F4_verification_panel.png,4,structural,slide numbering / layout constant
 config/scenarios/L0*_C.json,0,structural,slide numbering / layout constant
 Success on L01–L03 is not distinguishable from the training layout; on the hardest layout it falls to 0/45,01,structural,slide numbering / layout constant
@@ -104,6 +105,13 @@ Backup — why L04 is excluded,04,structural,slide numbering / layout constant
 "The reference tracker is GIVEN the correct route and still cannot fly it inside the horizon, so 0/90 cannot be",0,structural,slide numbering / layout constant
 "The reference tracker is GIVEN the correct route and still cannot fly it inside the horizon, so 0/90 cannot be",90,matched,layout_gate L04 traversal steps
 assets/decisions/ADR-008_timing_ladder.png,008,structural,slide numbering / layout constant
+"Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not to a fixed point, so the state it stopped at d",0.02,matched,config/scenarios settle_speed_tol_mps / settle_altitude_tol_m
+"Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not to a fixed point, so the state it stopped at d",0.02,matched,config/scenarios settle_speed_tol_mps / settle_altitude_tol_m
+"Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not to a fixed point, so the state it stopped at d",2.1,matched,"validation_deterministic.json worst, x1e-4"
+"Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not to a fixed point, so the state it stopped at d",1,structural,slide numbering / layout constant
+"Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not to a fixed point, so the state it stopped at d",5,structural,slide numbering / layout constant
+"Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not to a fixed point, so the state it stopped at d",2.1e-04,matched,validation_deterministic.json worst track diff
+"Cause: the reset settled to a TOLERANCE (0.02 m/s, 0.02 m), not to a fixed point, so the state it stopped at d",1e-05,matched,"order-independence gate threshold, Section 2 of the brief"
 I corrected four things from v1 and I am still carrying six limitations.,1,structural,slide numbering / layout constant
 DNS_SimEnv_2026-11-27.pdf,2026,structural,slide numbering / layout constant
 DNS_SimEnv_2026-11-27.pdf,11,structural,slide numbering / layout constant
@@ -115,11 +123,12 @@ DNS_SimEnv_2026-11-27.pptx,27,structural,slide numbering / layout constant
 · 27 Nov 2026,2026,structural,slide numbering / layout constant
 1/12,1,structural,slide numbering / layout constant
 1/12,12,structural,slide numbering / layout constant
-Team: PPO policy — NAME NEEDED · Sensor & perception — NAME NEEDED 27 November 2026,27,structural,slide numbering / layout constant
-Team: PPO policy — NAME NEEDED · Sensor & perception — NAME NEEDED 27 November 2026,2026,structural,slide numbering / layout constant
+27 November 2026,27,structural,slide numbering / layout constant
+27 November 2026,2026,structural,slide numbering / layout constant
 V-TOP_L00_success_poster.png,00,structural,slide numbering / layout constant
 2/12,2,structural,slide numbering / layout constant
 2/12,12,structural,slide numbering / layout constant
+). I record their interfaces and the SHA-256 of the files I ran against.,256,structural,slide numbering / layout constant
 SV1_sensor_schematic.png,1,structural,slide numbering / layout constant
 3/12,3,structural,slide numbering / layout constant
 3/12,12,structural,slide numbering / layout constant
@@ -162,7 +171,7 @@ I record their interfaces and the SHA-256 of the files I ran against.,256,struct
 "Start left, goal right, 0.4 m tolerance, fixed 1.0 m altitude.",1.0,matched,config/scenarios cruise_altitude_m
 One velocity command every 0.2 s — five per second.,0.2,matched,pooled_rates.csv L00/C_dynamic/reactive
 Every one rises above the 1.14 m scan plane — nothing is solid but invisible.,1.14,matched,"cruise 1.0 + mount 0.14, config/scenarios/L00_C.json"
-The evidence that matters is determinism: the v1 run reproduced with zero path difference.,1,structural,slide numbering / layout constant
+The evidence that matters is determinism: the v1 run reproduced with zero path difference WHEN the session is ,1,structural,slide numbering / layout constant
 Define 'sector': the 360° scan is binned into 12 wedges of 30°.,360,matched,"lidar field of view, degrees"
 Define 'sector': the 360° scan is binned into 12 wedges of 30°.,12,structural,slide numbering / layout constant
 Define 'sector': the 360° scan is binned into 12 wedges of 30°.,30,structural,slide numbering / layout constant
@@ -172,6 +181,8 @@ Define 'sector': the 360° scan is binned into 12 wedges of 30°.,30,structural,
 "0 is front, 3 right, 6 back, 9 left — verified per layout, not documented and hoped for.",9,structural,slide numbering / layout constant
 Timing is exact by construction: 0.2 s is exactly 25 physics steps.,0.2,matched,pooled_rates.csv L00/C_dynamic/reactive
 Timing is exact by construction: 0.2 s is exactly 25 physics steps.,25,structural,slide numbering / layout constant
+The sixth is mine and it is recent: the reset left state behind. I found it by asking whether a single episode,0.287,matched,reset_study SUMMARY.json isolated worst path delta
+"The fix is written and validated on reset-fix-v2.1, but it is not in this build: changing the environment woul",2.1,matched,"validation_deterministic.json worst, x1e-4"
 "L01 and L03 overlap L00 — I cannot distinguish them, and I do not claim to.",01,structural,slide numbering / layout constant
 "L01 and L03 overlap L00 — I cannot distinguish them, and I do not claim to.",03,structural,slide numbering / layout constant
 "L01 and L03 overlap L00 — I cannot distinguish them, and I do not claim to.",00,structural,slide numbering / layout constant
@@ -184,6 +195,7 @@ Define 'IoU': overlap of the two layouts' obstacle footprints. 0.074 is almost n
 "L04 is the one that blocks a result — exclude it, or authorise a diagnostic run?",04,structural,slide numbering / layout constant
 More seeds would narrow every interval on slide 9.,9,structural,slide numbering / layout constant
 The sensor anomaly matters because repulsion scales with 1.45 minus the range.,1.45,matched,evaluate.gap_rule repulsion radius
+"Identity: resolved as far as the project record supports (Khaled @khh4lid, Spencer, Dr. Mehdi Samieiyeganeh). ",4,structural,slide numbering / layout constant
 utf8,8,structural,slide numbering / layout constant
 utf8,8,structural,slide numbering / layout constant
 utf8,8,structural,slide numbering / layout constant
@@ -214,16 +226,16 @@ Beams over 360°,360,matched,"lidar field of view, degrees"
 1.14 m (1.0 m cruise + 0.14 m mount),0.14,matched,scenario_table.csv L05
 26 / 26,26,matched,layout_gate L00 contract tests
 26 / 26,26,matched,layout_gate L00 contract tests
-0.200000 s (error < 3e−16 s),0.200000,matched,v1 Verification_Report timing
-0.200000 s (error < 3e−16 s),3e-16,matched,v1 Verification_Report observation-interval error
-2.8 µm,2.8,matched,v1 Verification_Report reset error (um)
-"≤ 4.0e−06 m, all 6 layouts",4.0e-06,matched,layout_gate SUMMARY worst t=0 pose error
-"≤ 4.0e−06 m, all 6 layouts",6,structural,slide numbering / layout constant
-0.048 m mean per beam,0.048,matched,v1 Verification_Report lidar full-scan mean
-L00 reproduction,00,structural,slide numbering / layout constant
+0.200000 s (< 3e−16 s),0.200000,matched,v1 Verification_Report timing
+0.200000 s (< 3e−16 s),3e-16,matched,v1 Verification_Report observation-interval error
+"≤ 4.0e−06 m, 6 layouts",4.0e-06,matched,layout_gate SUMMARY worst t=0 pose error
+"≤ 4.0e−06 m, 6 layouts",6,structural,slide numbering / layout constant
+0.048 m mean/beam,0.048,matched,v1 Verification_Report lidar full-scan mean
+"L00 reproduction, in order",00,structural,slide numbering / layout constant
 "10/10 cells, 0 m",10,structural,slide numbering / layout constant
 "10/10 cells, 0 m",10,structural,slide numbering / layout constant
 "10/10 cells, 0 m",0,structural,slide numbering / layout constant
+drifts to 0.287 m,0.287,matched,reset_study SUMMARY.json isolated worst path delta
 en-route corridor width L00→L05:,00,structural,slide numbering / layout constant
 en-route corridor width L00→L05:,05,structural,slide numbering / layout constant
 L00 baseline,00,structural,slide numbering / layout constant
@@ -245,6 +257,7 @@ L03 aisle shift,03,structural,slide numbering / layout constant
 L05 hard,05,structural,slide numbering / layout constant
 "vs L00,",00,structural,slide numbering / layout constant
 "L04: exclude, or run a longer-horizon diagnostic?",04,structural,slide numbering / layout constant
+Approve a full re-evaluation after the reset fix (v2.1)?,2.1,matched,"validation_deterministic.json worst, x1e-4"
 More PPO training seeds — 3 cannot separate variance,3,structural,slide numbering / layout constant
 The 0.0536 m vs 0.62 m sensor anomaly,0.0536,matched,v1 min_sensed_clearance anomaly
 The 0.0536 m vs 0.62 m sensor anomaly,0.62,matched,v1 ground-truth clearance at the anomaly
@@ -266,6 +279,7 @@ python reproduce.py --full (~19 min),19,matched,"run_s6 wall clock for 540 episo
 26 / 26,26,matched,layout_gate L00 contract tests
 26 / 26,26,matched,layout_gate L00 contract tests
 26 contract tests + A* + flown traversal,26,matched,layout_gate L00 contract tests
+utf8,8,structural,slide numbering / layout constant
 results_v2.csv,2,structural,slide numbering / layout constant
 utf8,8,structural,slide numbering / layout constant
 V-TOP_L00_success.mp4,00,structural,slide numbering / layout constant

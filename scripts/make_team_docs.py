@@ -135,6 +135,15 @@ frozen with a SHA-256 before any controller sees it.
 in Mode C. Per-seed values are plotted but never ranked — their intervals
 overlap. Source: `results/v2_S6/pooled_rates.csv`.*
 
+> [!IMPORTANT]
+> **The Wilson intervals are approximate.** A Wilson interval assumes
+> independent trials. The 15 cart-phase variants inside a cell are run back
+> to back and are coupled through residual airframe state across the reset
+> (`docs/verification/RESET_DETERMINISM.md`), so they are not strictly
+> independent draws. The deliberate cart-phase variation is far larger than
+> the coupling, but the intervals should be read as indicative rather than
+> exact.
+
 Three things worth your attention:
 
 1. **The mirror test (L00 vs L02).** L02 is an exact reflection of L00:
