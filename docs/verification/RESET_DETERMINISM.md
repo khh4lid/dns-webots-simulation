@@ -1,5 +1,12 @@
 # Reset determinism — is a single episode reproducible on its own?
 
+> [!IMPORTANT]
+> **Status, 27 Nov 2026.**
+> - **Default.** The default reset is still `settle_tolerance`, and every published number (`results/v2_S6/`, the README, the final deck) uses it.
+> - **Experimental mode.** The `deterministic` mode described at the end of this page is in `dns/backend.py` on `main` as an opt-in setting. Branch `reset-fix-v2.1` points at a commit already contained in `main`.
+> - **Gate result.** Its multi-target validation (5 targets × 2 controllers) meets the strict order-independence gate on 4 of 5 targets. The worst path drift is 2.139e-04 m against a 1e-5 m bar, so it is **not** the default and is not approved for published results.
+> - **Second cohort.** Its 540-episode re-run, `results/v2_S6_deterministic/`, is a separately reported cohort; see [RESET_MODE_COMPARISON](RESET_MODE_COMPARISON.md).
+
 **Short answer: no.** The 90-episode evaluation is reproducible as a *sequence*,
 and that is what the v1 reproduction demonstrated. An individual episode re-run
 in a fresh session is **not** bit-reproducible: it drifts from the logged run by
@@ -57,7 +64,7 @@ variants, both arms, 10 Webots sessions.
 **Isolated:** drift of 1.6 mm to 287 mm; outcome matched the log **5/5**, step
 count matched **4/5**.
 **With the sequence replayed:** every case agrees to ~5e-06 m, outcome **5/5**
-and step count **5/5** — five orders of magnitude tighter.
+and step count **5/5** — between two and five orders of magnitude tighter than the isolated runs.
 
 ## Mechanism
 
@@ -84,8 +91,10 @@ The same is true of the 540-episode experiment: re-running
 **Affected — episode independence.** The 15 cart-phase variants inside a cell
 are run back to back, so variant *i* starts from the state variant *i−1* left.
 They are therefore **not fully independent draws**. The deliberate variation
-(the cart phase, which shifts the hazard by up to 1.9 m) dominates this
-coupling by orders of magnitude, but the coupling is not zero and should not be
+(the cart phase, which shifts the hazard by up to 1.9 m) is larger than the
+initial-state differences the coupling produces (up to 0.046 m in position;
+[RESET_MODE_COMPARISON](RESET_MODE_COMPARISON.md)), but the coupling is not
+zero, its effect on a trajectory can reach 0.287 m, and it should not be
 described as zero.
 
 **Affected — single-episode replay.** Any claim of the form "re-run this one
@@ -109,8 +118,8 @@ controller.
 > single episode re-run in a fresh session drifted 1.6 mm to 287 mm from its
 > logged trajectory (n = 5; outcome still matched the log in 5/5, step count in
 > 4/5). Episodes within a cell are consequently coupled
-> through residual airframe state, and are not strictly independent draws,
-> although the deliberate cart-phase variation is far larger than the coupling.
+> through residual airframe state, and are not strictly independent draws, so
+> the Wilson intervals reported for them are approximate.
 
 ## How to remove it, if we want to
 
@@ -156,9 +165,13 @@ Same episode, run isolated (nothing before it) and after a 16-episode prefix:
 
 Source: `results/reset_study/L00_C_ppo_seed7_v01_{isolated,sequence}_det.json`.
 
-**Episodes are independently reproducible under `deterministic`.**
+**On this target, the episode was independently reproducible under `deterministic`** (1.0e-06 m). The later multi-target validation found a worst case of 2.139e-04 m, which misses the strict 1e-5 m gate on 1 of 5 targets; see the status note at the top of this page.
 
 ## What has NOT been done
+
+*(Both items below were done later on 25 Nov 2026: the full 540-episode ladder was
+re-run into `results/v2_S6_deterministic/`, and the validation was extended to
+5 targets × 2 controllers. See the status note at the top of this page.)*
 
 - **The 90-episode experiment has not been re-run under the new mode.** The
   published L00 and S6 numbers were all produced with `settle_tolerance` and

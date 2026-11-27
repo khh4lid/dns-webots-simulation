@@ -134,7 +134,7 @@ Record: `results/calibration_warehouse.json`. Figure:
 |---|---|---|
 | Beams | 720 over 360° (0.5° spacing, 60 per sector) | configured |
 | Finite returns in the probe frame | 671 of 720 | measured |
-| Angular offset | **180.5°**, direction +1 | **measured**, not assumed |
+| Angular offset | **180.5°**, direction +1 (the implementation uses 180.0°, fitted in `results/calibration.json`; the two fits differ by one beam pitch) | **measured**, not assumed |
 | Angular fit residual | RMS **0.0245 m** | measured |
 | Worst per-sector difference vs ray-cast | 0.2362 m | measured |
 | Mount height | 0.14 m above the body, scan plane at 1.14 m | configured |

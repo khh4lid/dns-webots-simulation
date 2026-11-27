@@ -2,6 +2,34 @@
 
 All notable changes to the simulation environment.
 
+## [Unreleased] — 2026-11-27 — documentation sync with the final meeting deck
+
+Documentation only. No code, scenario, world, result or evidence file changed.
+
+### Changed
+- **README** aligned with the final deck (`docs/meetings/2026-11-27/DNS_SimEnv_FINAL_2026-11-27.pdf`) and with the evidence files:
+  - new *Status, stable version and next steps* section;
+  - new *Reset reproducibility: two cohorts kept apart* section;
+  - a *Where things are* table and contributing notes in the quick start;
+  - a link to the final deck.
+- **Reset documents** (`RESET_DETERMINISM.md`, `RESET_MODE_COMPARISON.md`) carry a status note:
+  - the deterministic reset is an opt-in mode already contained in `main`, not the default;
+  - it misses the strict 1e-5 m order-independence gate on 1 of 5 targets (worst 2.139e-04 m);
+  - its cohort is reported separately and never mixed with the published one.
+- **`docs/FIGURES.md`** points at repository paths instead of the one-off meeting-package folders.
+
+### Fixed — statements the evidence does not support
+- **Release links.** The README linked the clips to a `v2.0` release and called the PPTX a release asset, but no GitHub release has been published. The links now point at the committed GIFs.
+- **Reset start pose.** "Reset repeatability 2.8 µm" was the start-pose check (`docs/VALIDATION_EVIDENCE.md`, check 17), not episode repeatability. It is now labelled as such.
+- **Isolated-episode drift.** The drift range was given as 2.3–287 mm; `results/reset_study/reset_study.csv` gives 1.6–287 mm.
+- **Unqualified "0 m".** The "0 m" reproduction is now qualified everywhere as "when the session is replayed in order".
+- **Mirror result.** It is stated as no sign of left–right memorisation in this test, explicitly not proof of its absence.
+- **L04.** Only the fast-profile tracker attempt is backed by `results/layout_gate/L04.json`, and the README says so beside the final deck's summary. The exclusion is not a claim that L04 is impassable.
+- **Obstacle detectability.** "Nothing is invisible to the sensor" is replaced by the single-plane, 5 m range and line-of-sight limits.
+- **LiDAR angular offset.** The implementation uses 180.0° (`results/calibration.json`); the warehouse calibration fits 180.5°. The docs had quoted one or the other as *the* offset.
+- **Problems found by checking.** Six problems found (five fixed, one open: the reset), not "five defects".
+- **"Orders of magnitude".** "The cart-phase variation dominates the coupling by orders of magnitude" is replaced by the measured comparison.
+
 ## [2.0] — 2026-11-25 — S6 generalisation and transparency release
 
 ### Added
