@@ -356,7 +356,7 @@ def main() -> int:
                   "Drone Navigation System (DNS)\n"
                   "Simulation Environment Development\n"
                   "Taylor's University, Malaysia\n\n"
-                  "Supervisor: Dr. Mehdi Samieiyeganeh\n"
+                  "Supervisor: (name withheld by request)\n"
                   "DRL / PPO: Spencer    LiDAR processing: sensor teammate",
                   fontsize=10, color=INK2, va="top")
         r.space(0.14)

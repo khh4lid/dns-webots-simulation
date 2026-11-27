@@ -1,6 +1,6 @@
 # Presenter kit — 27 November 2026
 
-**Presenter:** Khaled (@khh4lid) · **Supervisor:** Dr. Mehdi Samieiyeganeh ·
+**Presenter:** Khaled (@khh4lid) · **Supervisor:** (name withheld) ·
 **Deck:** `DNS_SimEnv_2026-11-27.pdf` / `.pptx` (12 slides + 6 backups)
 
 > [!NOTE]
@@ -150,6 +150,32 @@ separate "the policies fail" from "this layout may be outside the airframe's
 envelope within the horizon". The data is kept in full.
 → backup B4, ADR-014. **This is decision 1 for you.**
 
+**Are your episodes independent?**
+Not strictly, and the Wilson intervals assume they are — so read them as
+indicative. The 15 cart-phase variants in a cell run back to back, and I showed
+by test that residual airframe state survives the reset: the same episode run in
+isolation drifts up to **0.287 m** from its logged trajectory, while replaying
+the session in order agrees to **≤ 5 µm**. Outcomes matched the log 5/5 either
+way; step counts 4/5 in isolation. The deliberate variation — the cart phase
+moves the hazard by up to 1.9 m — is orders of magnitude larger than the
+coupling, so I do not think it changes any conclusion here. But it is a real
+caveat and it is on the limitations slide, not buried.
+→ `docs/verification/RESET_DETERMINISM.md`, `results/reset_study/SUMMARY.json`,
+backup **B7**.
+
+**Why didn't you fix the reset before the meeting?**
+Because changing the environment would invalidate the results produced with it.
+The 540 episodes in this deck were measured under the current reset; swapping
+the reset and keeping the numbers would be the worst of both. So the fix sits on
+its own branch, `reset-fix-v2.1`, with a fixed-step settle instead of a
+settle-to-tolerance, and I set a bar before writing it: identical outcomes and
+step counts, path drift ≤ 1e-5 m, across isolated and several preceding orders.
+It currently clears that bar on **4 of 5** targets — three are essentially
+bit-exact at ~5e-10 m — but one still drifts **2.1e-04 m**, twenty-one times
+over. So it is not merged. What I am asking for is approval to run the full
+re-evaluation under the fixed reset as v2.1, then compare cell by cell.
+→ `docs/verification/RESET_MODE_COMPARISON.md`, branch `reset-fix-v2.1`.
+
 **What can Spencer and the sensor teammate do with this today?**
 Spencer: one command evaluates any checkpoint on all six layouts
 (`python scripts/run_s6.py`), with L01–L05 flagged TEST-ONLY. The sensor
@@ -177,3 +203,17 @@ reproducible anomaly to investigate.
 - "proves", "robust", "state-of-the-art"
 - "validated" for anything in simulation — it is **verification**
 - any ranking of the three checkpoints
+
+---
+
+## Two routes through the deck
+
+| | Slides | Drop | When |
+|---|---|---|---|
+| **12-minute path** | 1 → 12 in order | — | the slot you were given |
+| **5-minute path** | **1, 2, 9, 10, 12** | 3, 4, 5, 6, 7, 8, 11 | if the slot is cut |
+
+On the 5-minute path say the verification story in one sentence on slide 9 —
+*"the environment is checked rather than trusted; six defects were caught that
+way, one of them this week"* — and keep **B7** ready, because the independence
+question usually follows the interval on slide 9.

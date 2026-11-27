@@ -3,7 +3,7 @@
 What I was responsible for, what I delivered, and where the evidence is.
 
 **Owner:** Khaled (@khh4lid) ·
-**Supervisor:** Dr. Mehdi Samieiyeganeh
+**Supervisor:** the supervisor
 
 My contribution is the **simulation environment**. I do not own the PPO policy
 (Spencer) or raw sensor processing (the perception teammate), and neither is in

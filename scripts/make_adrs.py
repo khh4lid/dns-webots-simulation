@@ -90,8 +90,11 @@ plugin layer or hand-written.
         evidence="""
 Determinism, which the whole experiment rests on, was measured rather than
 assumed: re-running the v1 protocol on the regenerated world reproduced all ten
-cells with a **maximum per-episode path difference of 0 m**
-(`results/v2_S6/v1_reproduction.csv`, figure `E9_l00_reproduction.png`).
+cells with a **maximum per-episode path difference of 0 m, with the session
+replayed in order** (`results/v2_S6/v1_reproduction.csv`, figure
+`E9_l00_reproduction.png`). Determinism is a property of the sequence, not of an
+episode in isolation: a single episode re-run alone drifts up to 0.287 m
+(`docs/verification/RESET_DETERMINISM.md`).
 
 This is a **selection rationale, not a benchmark**: no competing simulator was
 installed, instrumented or timed for this project, and no performance
@@ -550,7 +553,7 @@ destabilise: 0 of 90 L04 episodes exceeded 0.50 rad.
 − One rung of the ladder yields no conclusion, and the question of whether L04
   is flyable at all is still open.
 
-**Decision needed from Dr. Mehdi:** keep L04 excluded, or authorise a
+**Decision needed from the supervisor:** keep L04 excluded, or authorise a
 diagnostic-only rerun with a longer horizon (which would sit outside the frozen
 contract and so could not feed the main result)?
 """,

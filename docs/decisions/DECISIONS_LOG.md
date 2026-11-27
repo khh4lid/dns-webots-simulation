@@ -57,7 +57,7 @@ i = 0…14, identical to v1.
 
 **Why:** it makes the L00 cells directly comparable with v1's `results.csv`,
 which is what turned the reproduction check into a strong result (10/10 cells
-identical, max path difference 0 m). Fresh phases would have made any
+identical, max path difference 0 m, session replayed in order). Fresh phases would have made any
 difference uninterpretable.
 
 ### D5 — The cart's dynamics are frozen; only its lane x is perturbed

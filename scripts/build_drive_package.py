@@ -538,7 +538,7 @@ def main(argv: list[str] | None = None) -> int:
         "package": PACKAGE.name,
         "project": "Drone Navigation System — Simulation Environment Development",
         "institution": "Taylor's University",
-        "supervisor": "Dr. Mehdi Samieiyeganeh",
+        "supervisor": "(name withheld)",
         "visibility": "private research material — share only with the "
                       "supervisor and authorised team members",
         "built_from": "webots_dns repository",
@@ -582,7 +582,7 @@ Two things deserve a deliberate decision before sharing:
 
 Use **Share → restricted**, then add people by email address individually:
 
-- the supervisor, Dr. Mehdi Samieiyeganeh
+- the supervisor
 - Spencer (deep reinforcement learning)
 - the sensors and perception teammate
 

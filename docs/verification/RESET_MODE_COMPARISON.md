@@ -6,8 +6,8 @@ checkpoints, same criteria, differing only in the reset procedure.
 | | `settle_tolerance` (published) | `deterministic` (new) |
 |---|---|---|
 | Results | `results/v2_S6/` | `results/v2_S6_deterministic/` |
-| Episode independence | **no** — drift 1.6–287 mm in isolation | **yes** — ≤ 0.21 mm across predecessors |
-| Status | the published v1/v2 numbers; unchanged | a second, independently reproducible run |
+| Episode independence | **no** — drift 1.6–287 mm in isolation | **much improved, not yet strict** — worst 0.214 mm across predecessors; misses the 1e-5 m gate on 1 of 5 targets |
+| Status | the published v1/v2 numbers; unchanged | a second cohort, reported separately; not the default |
 
 Neither overwrites the other. `settle_tolerance` is still the default.
 
@@ -68,7 +68,8 @@ references score zero, and Mode B is unaffected.
 
 ### What this does *not* establish
 
-- **Only L00 was re-run.** L01–L05 have **not** been re-run under the
+- *(Superseded later the same day: the full ladder was re-run; see "Full ladder
+  under the deterministic reset" below.)* **Only L00 was re-run.** L01–L05 have **not** been re-run under the
   deterministic reset, so the ladder comparison, the mirror result and the L05
   figure all still rest on `settle_tolerance` data. They are internally
   consistent — one protocol, one reset, one session order — but a
@@ -180,8 +181,14 @@ differs.
 
 ## Which cohort to quote
 
-Quote **both**, as the slides now do. The sequential cohort is the published
-v1/v2 record and is what the v1 reproduction (10/10 cells, 0 m) was measured
-against. The deterministic cohort is the independently reproducible one. Where
-they differ the difference is at most two episodes in 45 and well inside the
-intervals, so no qualitative claim depends on the choice.
+Quote the **sequential** (`settle_tolerance`) cohort as the result. That is
+what the final 27 Nov 2026 deck and the README report, and what the v1
+reproduction (10/10 cells, 0 m when replayed in order) was measured against.
+
+Quote the deterministic cohort only as a separately labelled robustness check.
+The deterministic reset has not yet passed the strict 1e-5 m order-independence
+gate: the worst case is 2.139e-04 m, on 1 of 5 targets.
+
+Where the two cohorts differ, the difference is at most two episodes in 45 and
+inside the intervals, so no qualitative claim depends on the choice. Never mix
+the two in one table or one pooled rate.

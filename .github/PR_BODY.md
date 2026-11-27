@@ -18,7 +18,7 @@ tell navigation competence from memorising one room.
 ### Headline results
 | | |
 |---|---|
-| L00 reproduction vs v1 | **10/10 cells, max path delta 0 m** |
+| L00 reproduction vs v1 | **10/10 cells, max path delta 0 m** (session replayed in order; single episodes drift up to 0.287 m) |
 | Mirror test (L00 vs L02) | 24/45 both — *no evidence of left/right memorisation in this test* |
 | L05 (traversability confirmed) | **0/45** — the counterweight to the mirror result |
 | L04 | **excluded** — the reference tracker cannot fly it either |

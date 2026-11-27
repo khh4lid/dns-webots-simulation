@@ -24,14 +24,14 @@ If `gh` is on PATH in a fresh terminal, run `python scripts/github_finalise.py`
 ## 0. Before anything — fill in the names
 
 Resolved from the project record: **Khaled (@khh4lid)**, **Spencer**,
-**Dr. Mehdi Samieiyeganeh**. Still genuinely unknown:
+**the supervisor**. Still genuinely unknown:
 
 | Field | Set in |
 |---|---|
 | My **full legal name** (needed only by `CITATION.cff`) | `scripts/make_team_docs.py` (`PEOPLE`) |
 | Spencer's **surname** + GitHub handle | `scripts/make_team_docs.py` (`PEOPLE["spencer_*"]`) |
 | Sensor teammate's name + GitHub handle | `scripts/make_team_docs.py` (`PEOPLE["sensor_*"]`) |
-| Dr. Mehdi's handle (optional) | `scripts/make_team_docs.py` (`PEOPLE["supervisor_handle"]`) |
+| the supervisor's handle (optional) | `scripts/make_team_docs.py` (`PEOPLE["supervisor_handle"]`) |
 
 Then:
 
@@ -118,7 +118,7 @@ foreach ($l in @("env:0072B2","ppo:009E73","sensor:E69F00","verification:56B4E9"
 ### The seven issues
 
 ```powershell
-gh issue create --label decision-needed --title "L04: exclude, or run a longer-horizon diagnostic?" --body "All five controllers score 0/90 on L04, but the reference tracker never reaches the goal either: stable and collision-free at <=0.48 m/s but timing out at the 90-step horizon, colliding above that. So 'the policies fail' cannot be separated from 'the layout may be outside the airframe's envelope within the horizon'. See docs/decisions/ADR-014-l04-excluded-generalisation-conclusion.md and results/layout_gate/L04.json. Owner: Dr. Mehdi."
+gh issue create --label decision-needed --title "L04: exclude, or run a longer-horizon diagnostic?" --body "All five controllers score 0/90 on L04, but the reference tracker never reaches the goal either: stable and collision-free at <=0.48 m/s but timing out at the 90-step horizon, colliding above that. So 'the policies fail' cannot be separated from 'the layout may be outside the airframe's envelope within the horizon'. See docs/decisions/ADR-014-l04-excluded-generalisation-conclusion.md and results/layout_gate/L04.json. Owner: the supervisor."
 
 gh issue create --label ppo --title "More PPO training seeds" --body "Three checkpoints cannot separate checkpoint-to-checkpoint variance from layout effects; on L00 Mode C they give 9/15, 8/15 and 7/15 with almost fully overlapping Wilson intervals. See results/v2_S6/pooled_rates.csv and docs/team/FOR_SPENCER.md. Owner: Spencer."
 
@@ -141,7 +141,7 @@ handles exist:
 ```powershell
 gh api -X PUT repos/khh4lid/dns-webots-simulation/collaborators/SPENCER_HANDLE -f permission=push
 gh api -X PUT repos/khh4lid/dns-webots-simulation/collaborators/SENSOR_HANDLE  -f permission=push
-gh api -X PUT repos/khh4lid/dns-webots-simulation/collaborators/MEHDI_HANDLE   -f permission=pull
+gh api -X PUT repos/khh4lid/dns-webots-simulation/collaborators/SUPERVISOR_HANDLE   -f permission=pull
 ```
 
 ## 7. Keep it private — verify, do not assume

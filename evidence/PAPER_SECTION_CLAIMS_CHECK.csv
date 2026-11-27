@@ -1,0 +1,195 @@
+claim_context,value,status,backed_by
+"between stages is fixed and documented: a 52-element observation in,",52,matched,layout_gate L03 traversal steps
+"a two-element normalised velocity command out, once per 0.2 s control step.",0.2,matched,pooled_rates.csv L00/C_dynamic/reactive
+"The arena is a single rectangular warehouse aisle of 10.0 m × 6.0 m, bounded by",10.0,matched,config/scenarios/L00_C.json arena.high_xy[0]
+"The arena is a single rectangular warehouse aisle of 10.0 m × 6.0 m, bounded by",6.0,matched,config/scenarios/L00_C.json control.settle_timeout_s
+"walls 2.5 m high and 0.1 m thick, with a metric floor grid for visual scale. All",2.5,matched,config/scenarios/L00_C.json arena.wall_height_m
+"walls 2.5 m high and 0.1 m thick, with a metric floor grid for visual scale. All",0.1,matched,config/scenarios/L00_C.json arena.wall_thickness_m
+"change in the task itself. The width in particular is load-bearing: at 6.0 m,",6.0,matched,config/scenarios/L00_C.json control.settle_timeout_s
+two 2.4 m racks placed on opposite sides leave a traversable corridor of,2.4,matched,config/scenarios/L00_C.json obstacles[0].size_xy[1]
+"2.08 m at its narrowest point en route — wide enough to be flyable, and narrow",2.08,matched,scenario_table.csv L00
+"The vehicle starts at (0.85, 0.0) m and the goal is at (9.15, 0.0) m, an",0.85,matched,scenario_table.csv L04
+"The vehicle starts at (0.85, 0.0) m and the goal is at (9.15, 0.0) m, an",0.0,matched,config/scenarios/L00_C.json arena.low_xy[0]
+"The vehicle starts at (0.85, 0.0) m and the goal is at (9.15, 0.0) m, an",9.15,matched,config/scenarios/L00_C.json goal.xy[0]
+"The vehicle starts at (0.85, 0.0) m and the goal is at (9.15, 0.0) m, an",0.0,matched,config/scenarios/L00_C.json arena.low_xy[0]
+8.30 m separation along the aisle centreline. An episode is scored a success,8.30,matched,goal x minus start x
+when the vehicle's horizontal position enters a disc of radius 0.40 m about the,0.40,matched,pooled_rates.csv L01/C_dynamic/ppo_seed7
+"layout the racks intrude 0.20 m across that straight line, which is the property",0.20,matched,pooled_rates.csv L00/C_dynamic/reactive
+"9.00 m against the 8.30 m straight-line distance, a tortuosity of 1.085, so",9.00,matched,scenario_table.csv L00
+"9.00 m against the 8.30 m straight-line distance, a tortuosity of 1.085, so",8.30,matched,goal x minus start x
+"9.00 m against the 8.30 m straight-line distance, a tortuosity of 1.085, so",1.085,matched,scenario_table.csv L00
+Storage racks present a flat 2.4 m face: a plane returns a predictable range,2.4,matched,config/scenarios/L00_C.json obstacles[0].size_xy[1]
+bounding circles. The distinction is not cosmetic. A 0.8 m × 2.4 m rack has a,0.8,matched,pooled_rates.csv L00/C_dynamic/ppo_seed7
+bounding circles. The distinction is not cosmetic. A 0.8 m × 2.4 m rack has a,2.4,matched,config/scenarios/L00_C.json obstacles[0].size_xy[1]
+"bounding radius of 1.265 m, so a bounding-circle test reports contact while the",1.265,matched,"rack_a bounding radius, hypot of half extents"
+vehicle still has 0.50 m of clear air beside the rack face — an error larger,0.50,matched,ADR-004 circle-vs-box surface gap; also the tilt threshold for the exceedance count
+than the vehicle's own 0.18 m collision radius and larger than the margins the,0.18,matched,config/scenarios/L00_C.json drone.collision_radius_m
+| Storage rack | 2 | 0.80 × 2.40 | 2.00 | blocks the straight line; flat calibration face |,2,structural,slide numbering / layout constant
+| Storage rack | 2 | 0.80 × 2.40 | 2.00 | blocks the straight line; flat calibration face |,0.80,matched,pooled_rates.csv L00/C_dynamic/ppo_seed7
+| Storage rack | 2 | 0.80 × 2.40 | 2.00 | blocks the straight line; flat calibration face |,2.40,matched,pooled_rates.csv L03/B_static/ppo_pooled
+| Storage rack | 2 | 0.80 × 2.40 | 2.00 | blocks the straight line; flat calibration face |,2.00,matched,pooled_rates.csv L03/B_static/ppo_pooled
+| Structural column | 2 | 0.40 × 0.40 | 2.50 | precisely known geometric reference |,2,structural,slide numbering / layout constant
+| Structural column | 2 | 0.40 × 0.40 | 2.50 | precisely known geometric reference |,0.40,matched,pooled_rates.csv L01/C_dynamic/ppo_seed7
+| Structural column | 2 | 0.40 × 0.40 | 2.50 | precisely known geometric reference |,0.40,matched,pooled_rates.csv L01/C_dynamic/ppo_seed7
+| Structural column | 2 | 0.40 × 0.40 | 2.50 | precisely known geometric reference |,2.50,matched,config/scenarios/L00_C.json arena.wall_height_m
+| Crate stack | 1 | 0.70 × 0.70 | 1.60 | clearance off the direct route |,1,structural,slide numbering / layout constant
+| Crate stack | 1 | 0.70 × 0.70 | 1.60 | clearance off the direct route |,0.70,matched,pooled_rates.csv L00/C_dynamic/ppo_seed43
+| Crate stack | 1 | 0.70 × 0.70 | 1.60 | clearance off the direct route |,0.70,matched,pooled_rates.csv L00/C_dynamic/ppo_seed43
+| Crate stack | 1 | 0.70 × 0.70 | 1.60 | clearance off the direct route |,1.60,matched,pooled_rates.csv L03/B_static/ppo_pooled
+| Transfer cart (moving) | 1 | 0.90 × 0.55 | 1.50 | time-varying free space |,1,structural,slide numbering / layout constant
+| Transfer cart (moving) | 1 | 0.90 × 0.55 | 1.50 | time-varying free space |,0.90,matched,config/scenarios/L00_C.json obstacles[4].xy[1]
+| Transfer cart (moving) | 1 | 0.90 × 0.55 | 1.50 | time-varying free space |,0.55,matched,pooled_rates.csv L03/C_dynamic/ppo_seed7
+| Transfer cart (moving) | 1 | 0.90 × 0.55 | 1.50 | time-varying free space |,1.50,matched,pooled_rates.csv L03/B_static/ppo_pooled
+One obstacle moves. A powered transfer cart of footprint 0.90 m × 0.55 m and,0.90,matched,config/scenarios/L00_C.json obstacles[4].xy[1]
+One obstacle moves. A powered transfer cart of footprint 0.90 m × 0.55 m and,0.55,matched,pooled_rates.csv L03/C_dynamic/ppo_seed7
+"height 1.50 m traverses the aisle perpendicular to the direction of travel,",1.50,matched,pooled_rates.csv L03/B_static/ppo_pooled
+"oscillating ±1.90 m along *y* at a constant 0.45 m s⁻¹, giving a period of",1.90,matched,pooled_rates.csv L03/B_static/ppo_pooled
+"oscillating ±1.90 m along *y* at a constant 0.45 m s⁻¹, giving a period of",0.45,matched,config/scenarios/L00_C.json obstacles[5].colour[1]
+16.89 s. Its pose is computed analytically as a function of simulation time and,16.89,matched,cart period
+"90 control steps, agreeing to 0.00 × 10⁰ m; as noted in this check is true",90,matched,layout_gate L04 traversal steps
+"90 control steps, agreeing to 0.00 × 10⁰ m; as noted in this check is true",0.00e0,matched,"v1 cart-vs-model check, reframed as C2"
+The vehicle carries a single rotating LiDAR with 720 beams over a full 360°,720,matched,config/scenarios/L00_C.json camera.height
+The vehicle carries a single rotating LiDAR with 720 beams over a full 360°,360,matched,"lidar field of view, degrees"
+"field of view, a beam spacing of 0.5°, and a range cap of 5.0 m. The sensor is",0.5,matched,"lidar beam spacing, degrees"
+"field of view, a beam spacing of 0.5°, and a range cap of 5.0 m. The sensor is",5.0,matched,config/scenarios/L00_C.json sensing.max_range_m
+"stabilised: it is mounted 0.14 m above the vehicle body and held level, so the",0.14,matched,scenario_table.csv L05
+scan is a horizontal plane at 1.14 m above the floor while the vehicle cruises,1.14,matched,"cruise 1.0 + mount 0.14, config/scenarios/L00_C.json"
+"at 1.00 m. Every static obstacle is taller than the scan plane (), so no obstacle",1.00,matched,pooled_rates.csv L00/B_static/ppo_pooled
+can be passed beneath or missed by the sensor. The 720 raw ranges are reduced to,720,matched,config/scenarios/L00_C.json camera.height
+"12 angular sectors of 30°, indexed so that sectors 0, 3, 6 and 9 correspond to",12,structural,slide numbering / layout constant
+"12 angular sectors of 30°, indexed so that sectors 0, 3, 6 and 9 correspond to",30,structural,slide numbering / layout constant
+"12 angular sectors of 30°, indexed so that sectors 0, 3, 6 and 9 correspond to",0,structural,slide numbering / layout constant
+"12 angular sectors of 30°, indexed so that sectors 0, 3, 6 and 9 correspond to",3,structural,slide numbering / layout constant
+"12 angular sectors of 30°, indexed so that sectors 0, 3, 6 and 9 correspond to",6,structural,slide numbering / layout constant
+"12 angular sectors of 30°, indexed so that sectors 0, 3, 6 and 9 correspond to",9,structural,slide numbering / layout constant
+Three nested clocks govern a run. The physics integrator advances in 8 ms steps.,8,structural,slide numbering / layout constant
+"An inner attitude-and-altitude loop runs at 125 Hz, one update per physics step.",125,matched,"autopilot inner loop, Hz"
+"The policy is queried every 0.2 s, which is exactly 25 physics steps, so the",0.2,matched,pooled_rates.csv L00/C_dynamic/reactive
+"The policy is queried every 0.2 s, which is exactly 25 physics steps, so the",25,structural,slide numbering / layout constant
+"is required at any level. An episode runs for a horizon of 90 policy steps,",90,matched,layout_gate L04 traversal steps
+equivalently 18.0 s. Before each episode the vehicle is driven to its start pose,18.0,matched,"horizon 90 steps x command period, seconds"
+and allowed to settle until its speed and altitude error fall below 0.02 m s⁻¹,0.02,matched,config/scenarios/L00_C.json control.settle_altitude_tol_m
+"and 0.02 m respectively, subject to a 6.0 s timeout; the consequences of this",0.02,matched,config/scenarios/L00_C.json control.settle_altitude_tol_m
+"and 0.02 m respectively, subject to a 6.0 s timeout; the consequences of this",6.0,matched,config/scenarios/L00_C.json control.settle_timeout_s
+"file: the 1.00 m cruise altitude, the 1.14 m scan plane, and the height of every",1.00,matched,pooled_rates.csv L00/B_static/ppo_pooled
+"file: the 1.00 m cruise altitude, the 1.14 m scan plane, and the height of every",1.14,matched,"cruise 1.0 + mount 0.14, config/scenarios/L00_C.json"
+"with SHA-256, and stamps that hash into the generated simulator world, so that a",256,structural,slide numbering / layout constant
+derived from a SHA-256 digest of the layout identifier rather than from the,256,structural,slide numbering / layout constant
+"layout (, ). L00 reproduces the training layout exactly. L01",00,structural,slide numbering / layout constant
+"layout (, ). L00 reproduces the training layout exactly. L01",01,structural,slide numbering / layout constant
+perturbs obstacle positions by up to ±0.3 m and yaw by up to ±10°. L02 is a,0.3,matched,pooled_rates.csv L00/C_dynamic/ppo_seed19
+perturbs obstacle positions by up to ±0.3 m and yaw by up to ±10°. L02 is a,10,structural,slide numbering / layout constant
+perturbs obstacle positions by up to ±0.3 m and yaw by up to ±10°. L02 is a,02,structural,slide numbering / layout constant
+mirror of L00 about the aisle centreline: geometrically it shares only 7.4% of,00,structural,slide numbering / layout constant
+mirror of L00 about the aisle centreline: geometrically it shares only 7.4% of,7.4,matched,"scenario_table.csv L02 iou_to_L00, as a percentage"
+"L00's occupied area by intersection-over-union, with a mean obstacle",00,structural,slide numbering / layout constant
+"displacement of 3.00 m, yet its shortest path length and narrowest en-route",3.00,matched,scenario_table.csv L02
+"corridor are identical to L00's, so it is a same-difficulty, different-geometry",00,structural,slide numbering / layout constant
+control. L03 shifts the aisle structure and swaps sides. L04 adds crate stacks to,03,structural,slide numbering / layout constant
+control. L03 shifts the aisle structure and swaps sides. L04 adds crate stacks to,04,structural,slide numbering / layout constant
+increase clutter. L05 combines a narrow gate with an occluded goal approach.,05,structural,slide numbering / layout constant
+Five of the six layouts pass all four. **L04 does not**: the reference tracker,04,structural,slide numbering / layout constant
+"tried. Because traversability is unconfirmed there, a policy failure on L04",04,structural,slide numbering / layout constant
+"cannot be attributed to the policy, and L04 is reported but excluded from any",04,structural,slide numbering / layout constant
+occupied area against L00; corridor is the narrowest en-route bottleneck,00,structural,slide numbering / layout constant
+| Layout | Variation | Obstacles | IoU vs L00 | Corridor (m) | A* path (m) | Tortuosity | Reference traversal ,00,structural,slide numbering / layout constant
+"| L00 | training layout | 6 | 1.000 | 2.08 | 9.00 | 1.085 | goal, 50 steps |",00,structural,slide numbering / layout constant
+"| L00 | training layout | 6 | 1.000 | 2.08 | 9.00 | 1.085 | goal, 50 steps |",6,structural,slide numbering / layout constant
+"| L00 | training layout | 6 | 1.000 | 2.08 | 9.00 | 1.085 | goal, 50 steps |",1.000,matched,pooled_rates.csv L00/B_static/ppo_pooled
+"| L00 | training layout | 6 | 1.000 | 2.08 | 9.00 | 1.085 | goal, 50 steps |",2.08,matched,scenario_table.csv L00
+"| L00 | training layout | 6 | 1.000 | 2.08 | 9.00 | 1.085 | goal, 50 steps |",9.00,matched,scenario_table.csv L00
+"| L00 | training layout | 6 | 1.000 | 2.08 | 9.00 | 1.085 | goal, 50 steps |",1.085,matched,scenario_table.csv L00
+"| L00 | training layout | 6 | 1.000 | 2.08 | 9.00 | 1.085 | goal, 50 steps |",50,matched,layout_gate L00 traversal steps
+"| L01 | ±0.3 m, ±10° perturbation | 6 | 0.589 | 1.87 | 8.96 | 1.080 | goal, 50 steps |",01,structural,slide numbering / layout constant
+"| L01 | ±0.3 m, ±10° perturbation | 6 | 0.589 | 1.87 | 8.96 | 1.080 | goal, 50 steps |",0.3,matched,pooled_rates.csv L00/C_dynamic/ppo_seed19
+"| L01 | ±0.3 m, ±10° perturbation | 6 | 0.589 | 1.87 | 8.96 | 1.080 | goal, 50 steps |",10,structural,slide numbering / layout constant
+"| L01 | ±0.3 m, ±10° perturbation | 6 | 0.589 | 1.87 | 8.96 | 1.080 | goal, 50 steps |",6,structural,slide numbering / layout constant
+"| L01 | ±0.3 m, ±10° perturbation | 6 | 0.589 | 1.87 | 8.96 | 1.080 | goal, 50 steps |",0.589,matched,scenario_table.csv L01
+"| L01 | ±0.3 m, ±10° perturbation | 6 | 0.589 | 1.87 | 8.96 | 1.080 | goal, 50 steps |",1.87,matched,scenario_table.csv L01
+"| L01 | ±0.3 m, ±10° perturbation | 6 | 0.589 | 1.87 | 8.96 | 1.080 | goal, 50 steps |",8.96,matched,scenario_table.csv L01
+"| L01 | ±0.3 m, ±10° perturbation | 6 | 0.589 | 1.87 | 8.96 | 1.080 | goal, 50 steps |",1.080,matched,scenario_table.csv L01
+"| L01 | ±0.3 m, ±10° perturbation | 6 | 0.589 | 1.87 | 8.96 | 1.080 | goal, 50 steps |",50,matched,layout_gate L00 traversal steps
+"| L02 | mirrored about the centreline | 6 | 0.074 | 2.08 | 9.00 | 1.085 | goal, 51 steps |",02,structural,slide numbering / layout constant
+"| L02 | mirrored about the centreline | 6 | 0.074 | 2.08 | 9.00 | 1.085 | goal, 51 steps |",6,structural,slide numbering / layout constant
+"| L02 | mirrored about the centreline | 6 | 0.074 | 2.08 | 9.00 | 1.085 | goal, 51 steps |",0.074,matched,scenario_table.csv L02
+"| L02 | mirrored about the centreline | 6 | 0.074 | 2.08 | 9.00 | 1.085 | goal, 51 steps |",2.08,matched,scenario_table.csv L00
+"| L02 | mirrored about the centreline | 6 | 0.074 | 2.08 | 9.00 | 1.085 | goal, 51 steps |",9.00,matched,scenario_table.csv L00
+"| L02 | mirrored about the centreline | 6 | 0.074 | 2.08 | 9.00 | 1.085 | goal, 51 steps |",1.085,matched,scenario_table.csv L00
+"| L02 | mirrored about the centreline | 6 | 0.074 | 2.08 | 9.00 | 1.085 | goal, 51 steps |",51,matched,layout_gate L02 traversal steps
+"| L03 | aisle shifted, sides swapped | 6 | 0.093 | 1.31 | 9.29 | 1.120 | goal, 52 steps |",03,structural,slide numbering / layout constant
+"| L03 | aisle shifted, sides swapped | 6 | 0.093 | 1.31 | 9.29 | 1.120 | goal, 52 steps |",6,structural,slide numbering / layout constant
+"| L03 | aisle shifted, sides swapped | 6 | 0.093 | 1.31 | 9.29 | 1.120 | goal, 52 steps |",0.093,matched,scenario_table.csv L03
+"| L03 | aisle shifted, sides swapped | 6 | 0.093 | 1.31 | 9.29 | 1.120 | goal, 52 steps |",1.31,matched,scenario_table.csv L03
+"| L03 | aisle shifted, sides swapped | 6 | 0.093 | 1.31 | 9.29 | 1.120 | goal, 52 steps |",9.29,matched,scenario_table.csv L03
+"| L03 | aisle shifted, sides swapped | 6 | 0.093 | 1.31 | 9.29 | 1.120 | goal, 52 steps |",1.120,matched,scenario_table.csv L03
+"| L03 | aisle shifted, sides swapped | 6 | 0.093 | 1.31 | 9.29 | 1.120 | goal, 52 steps |",52,matched,layout_gate L03 traversal steps
+| L04 | added clutter | 9 | 0.135 | 0.85 | 9.09 | 1.095 | **not reached** |,04,structural,slide numbering / layout constant
+| L04 | added clutter | 9 | 0.135 | 0.85 | 9.09 | 1.095 | **not reached** |,9,structural,slide numbering / layout constant
+| L04 | added clutter | 9 | 0.135 | 0.85 | 9.09 | 1.095 | **not reached** |,0.135,matched,scenario_table.csv L04
+| L04 | added clutter | 9 | 0.135 | 0.85 | 9.09 | 1.095 | **not reached** |,0.85,matched,scenario_table.csv L04
+| L04 | added clutter | 9 | 0.135 | 0.85 | 9.09 | 1.095 | **not reached** |,9.09,matched,scenario_table.csv L04
+| L04 | added clutter | 9 | 0.135 | 0.85 | 9.09 | 1.095 | **not reached** |,1.095,matched,scenario_table.csv L04
+"| L05 | narrow gate, occluded goal | 10 | 0.141 | 0.68 | 9.34 | 1.125 | goal, 56 steps |",05,structural,slide numbering / layout constant
+"| L05 | narrow gate, occluded goal | 10 | 0.141 | 0.68 | 9.34 | 1.125 | goal, 56 steps |",10,structural,slide numbering / layout constant
+"| L05 | narrow gate, occluded goal | 10 | 0.141 | 0.68 | 9.34 | 1.125 | goal, 56 steps |",0.141,matched,scenario_table.csv L05
+"| L05 | narrow gate, occluded goal | 10 | 0.141 | 0.68 | 9.34 | 1.125 | goal, 56 steps |",0.68,matched,scenario_table.csv L05
+"| L05 | narrow gate, occluded goal | 10 | 0.141 | 0.68 | 9.34 | 1.125 | goal, 56 steps |",9.34,matched,scenario_table.csv L05
+"| L05 | narrow gate, occluded goal | 10 | 0.141 | 0.68 | 9.34 | 1.125 | goal, 56 steps |",1.125,matched,scenario_table.csv L05
+"| L05 | narrow gate, occluded goal | 10 | 0.141 | 0.68 | 9.34 | 1.125 | goal, 56 steps |",56,matched,layout_gate L05 traversal steps
+"a full episode as 0.200000 s, with a maximum deviation below 3 × 10⁻¹⁶ s — a",0.200000,matched,v1 Verification_Report timing
+"a full episode as 0.200000 s, with a maximum deviation below 3 × 10⁻¹⁶ s — a",3e-16,matched,v1 Verification_Report observation-interval error
+"floating-point artefact, confirming that the control period is exactly 25",25,structural,slide numbering / layout constant
+disagreement across the six layouts was 4.0 × 10⁻⁶ m. This check is run as a,4.0e-6,matched,config/scenarios/L00_C.json arena.low_xy[0]
+"beam, giving a mean absolute difference of 0.048 m per beam over a full scan.",0.048,matched,v1 Verification_Report lidar full-scan mean
+"the same 720 bearings and reduced by the same sector binning, giving a mean",720,matched,config/scenarios/L00_C.json camera.height
+absolute error of 0.0193 m over 650 comparisons. An earlier version of this,0.0193,matched,lidar_cart_consistency.json cart MAE
+absolute error of 0.0193 m over 650 comparisons. An earlier version of this,650,matched,lidar_cart_consistency.json cart_sector_pooled
+"length — pass for all six layouts, 26/26 each.",26,matched,layout_gate L00 contract tests
+"length — pass for all six layouts, 26/26 each.",26,matched,layout_gate L00 contract tests
+protocol on the regenerated L00 world reproduced all 10 of 10 cells with zero,00,structural,slide numbering / layout constant
+protocol on the regenerated L00 world reproduced all 10 of 10 cells with zero,10,structural,slide numbering / layout constant
+protocol on the regenerated L00 world reproduced all 10 of 10 cells with zero,10,structural,slide numbering / layout constant
+"isolation can therefore diverge from its logged trajectory by up to 0.287 m,",0.287,matched,reset_study SUMMARY.json isolated worst path delta
+while the same episodes replayed in session order agree to 4.99 × 10⁻⁶ m. A,4.99e-6,matched,config/scenarios/L00_C.json arena.low_xy[0]
+misses a 10⁻⁵ m order-independence threshold on one of five tested targets,10,structural,slide numbering / layout constant
+(2.1 × 10⁻⁴ m). All results reported were therefore measured under one reset,2.1e-4,matched,validation_deterministic.json worst track diff
+"placed the cart at its sweep centre rather than its *t* = 0 pose, a 1.9 m",0,structural,slide numbering / layout constant
+"placed the cart at its sweep centre rather than its *t* = 0 pose, a 1.9 m",1.9,matched,config/scenarios/L00_C.json obstacles[5].motion.amplitude_m
+mismatch that corrupted a calibration reference by 1.34 m; a calibration tool,1.34,matched,V1_CORRECTIONS C3 corrupted calibration reference
+"| Observation interval | deviation from 0.2 s | 0.200000 s, < 3 × 10⁻¹⁶ s |",0.2,matched,pooled_rates.csv L00/C_dynamic/reactive
+"| Observation interval | deviation from 0.2 s | 0.200000 s, < 3 × 10⁻¹⁶ s |",0.200000,matched,v1 Verification_Report timing
+"| Observation interval | deviation from 0.2 s | 0.200000 s, < 3 × 10⁻¹⁶ s |",3e-16,matched,v1 Verification_Report observation-interval error
+"| World vs scenario pose | worst error, 6 layouts | 4.0 × 10⁻⁶ m |",6,structural,slide numbering / layout constant
+"| World vs scenario pose | worst error, 6 layouts | 4.0 × 10⁻⁶ m |",4.0e-6,matched,config/scenarios/L00_C.json arena.low_xy[0]
+"| LiDAR vs ray caster | mean absolute, per beam | 0.048 m |",0.048,matched,v1 Verification_Report lidar full-scan mean
+"| LiDAR vs moving cart | mean absolute, *n* = 650 | 0.0193 m |",650,matched,lidar_cart_consistency.json cart_sector_pooled
+"| LiDAR vs moving cart | mean absolute, *n* = 650 | 0.0193 m |",0.0193,matched,lidar_cart_consistency.json cart MAE
+| Interface contract | assertions passed | 26 / 26 per layout |,26,matched,layout_gate L00 contract tests
+| Interface contract | assertions passed | 26 / 26 per layout |,26,matched,layout_gate L00 contract tests
+"| Reproduction of the earlier study | cells matched, in order | 10 / 10, 0 m |",10,structural,slide numbering / layout constant
+"| Reproduction of the earlier study | cells matched, in order | 10 / 10, 0 m |",10,structural,slide numbering / layout constant
+"| Reproduction of the earlier study | cells matched, in order | 10 / 10, 0 m |",0,structural,slide numbering / layout constant
+| Same episode in isolation | worst path divergence | 0.287 m |,0.287,matched,reset_study SUMMARY.json isolated worst path delta
+| Airframe tilt | episodes above 0.50 rad | 3 of 540 |,0.50,matched,ADR-004 circle-vs-box surface gap; also the tilt threshold for the exceedance count
+| Airframe tilt | episodes above 0.50 rad | 3 of 540 |,3,structural,slide numbering / layout constant
+| Airframe tilt | episodes above 0.50 rad | 3 of 540 |,540,matched,results_v2.csv row count
+The environment was exercised by a pilot evaluation of 540 episodes spanning the,540,matched,results_v2.csv row count
+which 480 are distinct configurations once deterministic repeats are counted,480,matched,results_v2.csv distinct_configuration sum
+"policy. First, L00 and L02 — equal in path length and corridor width, sharing",00,structural,slide numbering / layout constant
+"policy. First, L00 and L02 — equal in path length and corridor width, sharing",02,structural,slide numbering / layout constant
+"only 7.4% of occupied area — returned identical pooled success, 24 of 45 each,",7.4,matched,"scenario_table.csv L02 iou_to_L00, as a percentage"
+"only 7.4% of occupied area — returned identical pooled success, 24 of 45 each,",24,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+"only 7.4% of occupied area — returned identical pooled success, 24 of 45 each,",45,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+"indicates the mirror construction worked as intended. Second, L05 returned 0 of",05,structural,slide numbering / layout constant
+"indicates the mirror construction worked as intended. Second, L05 returned 0 of",0,structural,slide numbering / layout constant
+"45 on a layout whose traversability the reference tracker confirms, locating a",45,matched,pooled_rates.csv L00/C_dynamic/ppo_pooled
+"**.** Pooled success per layout with approximate 95% Wilson intervals,",95,matched,"Wilson interval confidence level, percent"
+"the mirrored layout highlighted, and L04 shown as excluded.",04,structural,slide numbering / layout constant
+*A single scan layer.* One horizontal plane at 1.14 m cannot observe overhanging,1.14,matched,"cruise 1.0 + mount 0.14, config/scenarios/L00_C.json"
+*A fixed horizon.* The 18.0 s horizon is a hard cut-off. On L04 the reference,18.0,matched,"horizon 90 steps x command period, seconds"
+*A fixed horizon.* The 18.0 s horizon is a hard cut-off. On L04 the reference,04,structural,slide numbering / layout constant
+recorded; a 10 m × 6 m navigation environment whose dimensions and obstacle,10,structural,slide numbering / layout constant
+recorded; a 10 m × 6 m navigation environment whose dimensions and obstacle,6,structural,slide numbering / layout constant
+quantified at 0.20 m; exact rotated-rectangle geometry with swept inter-step,0.20,matched,pooled_rates.csv L00/C_dynamic/reactive
+by 0.50 m; a kinematic moving-obstacle model whose determinism is what makes,0.50,matched,ADR-004 circle-vs-box surface gap; also the tilt threshold for the exceedance count
+seven-part verification that agrees with an independent ray caster to 0.0193 m,0.0193,matched,lidar_cart_consistency.json cart MAE

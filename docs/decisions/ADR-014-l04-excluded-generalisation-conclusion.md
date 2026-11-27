@@ -19,16 +19,6 @@ breaks the pre-registration. Option 1 would claim something the evidence does
 not support.
 
 ## Evidence
-
-> [!WARNING]
-> **Evidence gap, 25 Nov.** The multi-profile sweep quoted below was run,
-> but `results/layout_gate/L04.json` was later overwritten by a single
-> targeted attempt, so the file now documents only one profile
-> (margin 0.22 m, collision at 10 steps, peak tilt 0.2496 rad). The
-> sweep must be regenerated with `python scripts/run_gates.py L04`
-> before these specific speeds and the 1.5905 rad tumble are cited.
-> The exclusion decision itself does not depend on them: the tracker
-> does not reach the goal in the attempt that IS on file.
 L04 passes every generator validator and is A*-feasible with an en-route
 corridor of 0.850 m. The flown reference traversal reaches the goal at no tested
 setting: at a 0.22 m planning margin and <= 0.48 m/s the tracker is stable
@@ -45,7 +35,7 @@ destabilise: 0 of 90 L04 episodes exceeded 0.50 rad.
 − One rung of the ladder yields no conclusion, and the question of whether L04
   is flyable at all is still open.
 
-**Decision needed from Dr. Mehdi:** keep L04 excluded, or authorise a
+**Decision needed from the supervisor:** keep L04 excluded, or authorise a
 diagnostic-only rerun with a longer horizon (which would sit outside the frozen
 contract and so could not feed the main result)?
 

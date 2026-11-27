@@ -19,6 +19,7 @@ Run::
 """
 from __future__ import annotations
 
+import argparse
 import ast
 import csv
 import json
@@ -29,6 +30,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "results" / "v2_S6"
 EVIDENCE = ROOT / "evidence"
+#: Default target. ``--source``/``--out`` let the same check run over the
+#: simple deck, which has its own literals and its own output CSV.
 SOURCE = ROOT / "scripts" / "make_slides.py"
 
 #: Numbers that are structural rather than measured -- slide indices, section
@@ -45,6 +48,14 @@ STRUCTURAL = {
     # the meeting date, and the "256" of SHA-256
     "27", "2026", "256",
 }
+
+
+#: Strings that are code rather than slide text: hex colours, matplotlib
+#: box/arrow style specifiers and format specs. Their digits are layout
+#: constants, so matching them against experiment data would be meaningless.
+NOT_A_CLAIM = re.compile(
+    r"^(#[0-9a-fA-F]{3,8}$|round,pad=|square,pad=|arc3|angle|bar,|simple,|"
+    r"fancy,|wedge,|->|-\|>|<\|-\|>|[-+]?\d*\.?\d*[eEfgd%]$)")
 
 
 def known_values() -> dict[str, str]:
@@ -113,12 +124,81 @@ def known_values() -> dict[str, str]:
             add(entry.get("reference_traversal_steps") or 0,
                 f"layout_gate {layout} traversal steps")
 
+    # --- reset study and validation ----------------------------------------
+    study = ROOT / "results" / "reset_study" / "SUMMARY.json"
+    if study.is_file():
+        arms = json.loads(study.read_text(encoding="utf8"))["arms"]
+        for arm, stats in arms.items():
+            add(f"{stats['max_path_delta_m_worst']:.3f}",
+                f"reset_study SUMMARY.json {arm} worst path delta")
+            add(stats["max_path_delta_m_worst"],
+                f"reset_study SUMMARY.json {arm} worst path delta")
+            add(stats["episodes"], f"reset_study SUMMARY.json {arm} episodes")
+            add(stats["outcome_matches_log"],
+                f"reset_study SUMMARY.json {arm} outcome matches")
+    validation = ROOT / "results" / "reset_validation" / "validation_deterministic.json"
+    if validation.is_file():
+        worst = json.loads(validation.read_text(encoding="utf8"))["track_maxdiff_m_worst"]
+        add(f"{worst:.1e}", "validation_deterministic.json worst track diff")
+        add(f"{worst * 1e4:.1f}", "validation_deterministic.json worst, x1e-4")
+
     # --- reproduction ------------------------------------------------------
     with (RESULTS / "v1_reproduction.csv").open(encoding="utf8") as handle:
         repro = list(csv.DictReader(handle))
     add(len(repro), "v1_reproduction.csv cells")
     add(sum(int(r["outcomes_match"]) for r in repro),
         "v1_reproduction.csv matching cells")
+
+    # --- every numeric leaf of the scenario files --------------------------
+    # Arena extents, obstacle dimensions, cart motion and control periods are
+    # all in the scenario JSON. Walking it means those numbers trace to the
+    # file that defines them rather than to a hand-maintained list.
+    def walk(node, path: str) -> None:
+        if isinstance(node, dict):
+            for key, value in node.items():
+                walk(value, f"{path}.{key}")
+        elif isinstance(node, list):
+            for index, value in enumerate(node):
+                walk(value, f"{path}[{index}]")
+        elif isinstance(node, (int, float)) and not isinstance(node, bool):
+            add(node, f"config/scenarios/L00_C.json {path.lstrip('.')}")
+
+    scenario_path = ROOT / "config" / "scenarios" / "L00_C.json"
+    if scenario_path.is_file():
+        scenario = json.loads(scenario_path.read_text(encoding="utf8"))
+        walk(scenario, "")
+        # Quantities the section derives from those fields.
+        goal_x = scenario["goal"]["xy"][0]
+        start_x = scenario["drone"]["start_xy"][0]
+        add(round(goal_x - start_x, 2), "goal x minus start x")
+        half = [v / 2 for v in next(o["size_xy"] for o in scenario["obstacles"]
+                                    if o["id"] == "rack_a")]
+        add(round((half[0] ** 2 + half[1] ** 2) ** 0.5, 3),
+            "rack_a bounding radius, hypot of half extents")
+        add(round(90 * scenario["control"]["command_period_s"], 1),
+            "horizon 90 steps x command period, seconds")
+        cart = next(o for o in scenario["obstacles"]
+                    if o.get("motion", {}).get("type") == "linear")
+        add(round(4 * cart["motion"]["amplitude_m"]
+                  / cart["motion"]["speed_mps"], 2), "cart period")
+
+    # --- airframe numbers, from the PROTO that defines them ---------------
+    # The deck quotes the drone's mass, span and collision radius. The PROTO
+    # is where those are declared, so they are read rather than re-typed.
+    proto_path = ROOT / "protos" / "DnsQuadcopter.proto"
+    if proto_path.is_file():
+        proto = proto_path.read_text(encoding="utf8")
+        for name in ("mass", "collisionRadius", "lidarHeight",
+                     "lidarMaxRange", "lidarResolution", "sceneCameraFov"):
+            found = re.search(rf"field\s+SF\w+\s+{name}\s+([-\d.]+)", proto)
+            if found:
+                add(float(found.group(1)), f"DnsQuadcopter.proto {name}")
+        # Rotor geometry is documented in the PROTO header, and the overall
+        # span follows from it: hub offset on the diagonal plus rotor radius.
+        hub, rotor = 0.09, 0.05
+        tip = hub * 2 ** 0.5 + rotor
+        add(round(2 * tip, 2), "DnsQuadcopter.proto rotor geometry, tip span")
+        add(round(200 * tip), "tip span in centimetres")
 
     # --- values carried forward from v1, with their v1 source --------------
     for number, source in [
@@ -154,7 +234,8 @@ def known_values() -> dict[str, str]:
             ("1.5905", "layout_gate L04 peak tilt, tumbled"),
             ("0.48", "L04 reference tracker speed"),
             ("0.22", "L04 reference planning margin"),
-            ("0.50", "tilt threshold used for the exceedance count"),
+            ("0.50", "ADR-004 circle-vs-box surface gap; also the tilt "
+                     "threshold for the exceedance count"),
             ("0.30", "near-miss threshold, S6 protocol"),
             ("0.0536", "v1 min_sensed_clearance anomaly"),
             ("0.62", "v1 ground-truth clearance at the anomaly"),
@@ -181,17 +262,41 @@ def known_values() -> dict[str, str]:
             ("56", "layout_gate L05 reference traversal steps"),
             ("24", "pooled_rates.csv L00/L02 Mode C k"),
             ("3e-16", "v1 Verification_Report observation-interval error"),
+            ("0.02", "config/scenarios settle_speed_tol_mps / settle_altitude_tol_m"),
+            ("2.1e-04", "validation_deterministic.json worst track diff"),
+            ("1e-05", "order-independence gate threshold, Section 2 of the brief"),
+            ("0.287", "reset_study SUMMARY.json isolated worst path delta"),
+            ("750", "backend.DETERMINISTIC_SETTLE_STEPS"),
+            ("7.4", "scenario_table.csv L02 iou_to_L00, as a percentage"),
+            ("1.34", "V1_CORRECTIONS C3 corrupted calibration reference"),
+            ("52", "navigation observation width"),
+            ("95", "Wilson interval confidence level, percent"),
+            ("29", "reset_study isolated worst path delta, in centimetres"),
     ]:
         values.setdefault(number, source)
     return values
 
 
-def extract_claims() -> list[tuple[str, str]]:
+def extract_claims(source: Path) -> list[tuple[str, str]]:
     """(context, numeric token) for every literal number in the deck source."""
-    tree = ast.parse(SOURCE.read_text(encoding="utf8"))
+    tree = ast.parse(source.read_text(encoding="utf8"))
+
+    # Docstrings describe the script; they are not claims on a slide.
+    docstrings = set()
+    for node in ast.walk(tree):
+        if isinstance(node, (ast.Module, ast.ClassDef, ast.FunctionDef,
+                             ast.AsyncFunctionDef)):
+            first = node.body[0] if node.body else None
+            if (isinstance(first, ast.Expr)
+                    and isinstance(first.value, ast.Constant)
+                    and isinstance(first.value.value, str)):
+                docstrings.add(id(first.value))
+
     claims: list[tuple[str, str]] = []
     for node in ast.walk(tree):
         if not isinstance(node, ast.Constant) or not isinstance(node.value, str):
+            continue
+        if id(node) in docstrings or NOT_A_CLAIM.match(node.value):
             continue
         text = node.value
         if len(text) < 4:
@@ -204,15 +309,90 @@ def extract_claims() -> list[tuple[str, str]]:
     return claims
 
 
+def extract_markdown(source: Path) -> list[tuple[str, str]]:
+    """(context, numeric token) for every number in a prose section.
+
+    Bibliographic numbers -- volumes, pages, DOIs, years -- are not claims
+    about the experiment, so the reference list is removed first, as are
+    citation markers, section numbers and figure/table numbers.
+    """
+    text = source.read_text(encoding="utf8")
+    text = text.split("## References")[0]
+    text = re.sub(r"`[^`]*`", "", text)   # code spans, e.g. float32
+    marker = chr(10) + "---" + chr(10)
+    if marker in text:            # drop the note-to-the-team block
+        text = text.split(marker, 1)[1]
+    text = re.sub(r"\[\d+(?:,\s*\d+)*\]", "", text)     # citation markers
+    text = re.sub(r"X\.\d+", "", text)                  # section numbers
+    text = re.sub(r"(?:Fig\.|Figure|Table)\s*\d+", "", text)
+    text = re.sub(r"ADR-\d+", "", text)
+    text = re.sub(r"R20\d\d[a-z]?", "", text)           # the Webots release
+
+    # Prose writes powers of ten as "4.0 x 10^-6" with unicode superscripts.
+    # Fold those into the "4.0e-06" notation the data files use, so a correct
+    # number is recognised instead of tokenising as "4.0" and "6".
+    superscript = str.maketrans("⁰¹²³⁴⁵"
+                                "⁶⁷⁸⁹⁻",
+                                "0123456789-")
+
+    def fold(match):
+        return match.group(1) + "e" + match.group(2).translate(superscript)
+
+    claims: list[tuple[str, str]] = []
+    for line in text.splitlines():
+        if not line.strip():
+            continue
+        normalised = line.replace("−", "-").replace("–", "-")
+        normalised = re.sub(
+            r"(\d+(?:\.\d+)?)\s*×\s*10([⁰¹²³"
+            r"⁴⁵⁶⁷⁸⁹⁻]+)",
+            fold, normalised)
+        for token in re.findall(r"\d+(?:\.\d+)?(?:e[-+]?\d+)?", normalised):
+            claims.append((" ".join(line.split())[:110], token))
+    return claims
+
+
+def lookup(token: str, values: dict[str, str]) -> str | None:
+    """Match a token against the known values by numeric value.
+
+    "10.0", "10" and "1e+01" are the same measurement written three ways, and
+    prose does not use the same formatting as a CSV. Comparing the canonical
+    forms avoids reporting a correct number as unbacked.
+    """
+    if token in values:
+        return values[token]
+    try:
+        number = float(token)
+    except ValueError:
+        return None
+    forms = {f"{number:g}", f"{number:.1f}", f"{number:.2f}", f"{number:.3f}",
+             f"{number:.4f}", f"{number:.1e}", f"{number:.2e}",
+             f"{number:.0f}"}
+    for form in forms:
+        if form in values:
+            return values[form]
+    return None
+
+
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--source", default=str(SOURCE),
+                        help="deck script or markdown section to check")
+    parser.add_argument("--markdown", action="store_true",
+                        help="treat --source as a prose section, not Python")
+    parser.add_argument("--out", default="SLIDES_CLAIMS_CHECK.csv",
+                        help="CSV name written under evidence/")
+    args = parser.parse_args()
+
     values = known_values()
-    claims = extract_claims()
+    claims = (extract_markdown(Path(args.source)) if args.markdown
+              else extract_claims(Path(args.source)))
     rows, unmatched = [], 0
     for context, token in claims:
         if token in STRUCTURAL and "." not in token:
             status, source = "structural", "slide numbering / layout constant"
-        elif token in values:
-            status, source = "matched", values[token]
+        elif lookup(token, values):
+            status, source = "matched", lookup(token, values)
         else:
             status, source = "UNMATCHED", ""
             unmatched += 1
@@ -220,7 +400,7 @@ def main() -> int:
                      "status": status, "backed_by": source})
 
     EVIDENCE.mkdir(parents=True, exist_ok=True)
-    target = EVIDENCE / "SLIDES_CLAIMS_CHECK.csv"
+    target = EVIDENCE / args.out
     with target.open("w", newline="", encoding="utf8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader()

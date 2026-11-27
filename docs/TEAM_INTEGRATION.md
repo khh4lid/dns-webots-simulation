@@ -237,11 +237,13 @@ records it as `lidar_beams`.
 Angles increase **clockwise** from the drone's forward axis. Sector *i* is
 centred on *i* × 30° and spans ±15°.
 
-**The index-to-bearing mapping was measured, not assumed.** Fitting against
-known arena geometry gives `direction = +1`, `offset = 180.50°`, RMS residual
-**0.0245 m** over 720 beams. The residual half-degree is one beam pitch. Do not
-assume the raw Webots beam index order equals clockwise navigation bearing — it
-does not, and the offset is why.
+**The index-to-bearing mapping was measured, not assumed.** The implementation
+(`dns/sensing.py`) uses `direction = +1`, `offset = 180.0°`, the value fitted in
+`results/calibration.json` (RMS **0.0147 m**, 641 finite beams). The warehouse
+calibration fits `offset = 180.5°` (RMS **0.0245 m**, 671 of 720 beams finite;
+`results/calibration_warehouse.json`). The half-degree between the two fits is one
+beam pitch. Do not assume the raw Webots beam index order equals clockwise
+navigation bearing — it does not, and the offset is why.
 
 ```bash
 python scripts/with_webots.py --world worlds/DNS_Warehouse.wbt \

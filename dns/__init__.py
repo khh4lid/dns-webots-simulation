@@ -1,7 +1,7 @@
 """DNS Webots simulation package.
 
 Phase 1 deliverable for the Drone Navigation System research project
-(Taylor's University, supervised by Dr. Mehdi).
+(Taylor's University).
 
 Owner of this component: Khaled - Simulation Environment.
 
