@@ -40,6 +40,26 @@ The story in three steps:
 
 ---
 
+## Research direction: the benchmark phase (from 28 Nov 2026)
+
+On the supervisor's direction, the team's benchmark is **H. Wang, F. Zhou and Q. Wu, "A Robust and Intelligent Obstacle Avoidance Method for Uncrewed Aerial Vehicles Under the Complex and Dynamic Environment", *IEEE Transactions on Vehicular Technology*, 2026**. The goal is a Q1 journal paper.
+
+| | Benchmark (abstract level; full text still to be read) | This project |
+|---|---|---|
+| Input | an environment-perception network over the sensed scene | **360° 2D LiDAR only** |
+| Environment | simulation | **Webots R2025a**, rigid-body quadrotor |
+| Moving obstacles | pedestrians | carts and pedestrian-like movers (one cart today) |
+| Start and goal | to be extracted from the paper | **randomised per episode** (fixed today) |
+| Learning | reinforcement learning under observational uncertainty | **improved PPO**, trained with LiDAR uncertainty |
+
+- **Benchmark analysis, extraction sheet and gap hypotheses:** [docs/benchmark/BENCHMARK_TVT2025.md](docs/benchmark/BENCHMARK_TVT2025.md)
+- **Pipeline, contracts, work packages, experiments and timeline:** [docs/RESEARCH_PLAN.md](docs/RESEARCH_PLAN.md)
+- **Traditional baselines (A\*, RRT), Ariana's prototype:** [baselines/traditional/](baselines/traditional/README.md)
+
+The rest of this README documents the **completed v2 study** (fixed start and goal, one moving cart), which is the verified starting point for this phase.
+
+---
+
 ## Watch
 
 Four clips, every frame a real Webots render from an offscreen Camera node. Each one replays an episode that is already a row of `results/v2_S6/results_v2.csv` — the capture re-runs the whole session prefix first, so the footage **is** the logged run and not a lookalike. Max trajectory difference against the log: **4.99e-06 m** on all four.
@@ -77,6 +97,8 @@ Four clips, every frame a real Webots render from an offscreen Camera node. Each
 | **the supervisor** | [One-page summary](docs/team/FOR_SUPERVISOR.md) — results, the three decisions I need from you, honest limitations | — |
 | **Spencer (PPO)** | [Evaluating checkpoints](docs/team/FOR_SPENCER.md) — the contract, the TEST-ONLY rule, your results | `python scripts/run_s6.py` |
 | **Sensor & perception** | [Sensor guide](docs/team/FOR_SENSOR_TEAM.md) — beam→bearing, sectors, ground-truth data, one open anomaly | `python scripts/analyse_lidar_cart.py` |
+| **Traditional baselines** | [Ariana's A\*/RRT prototype](baselines/traditional/README.md) — results, caveats, and the port to Webots | open the notebook |
+| **Everyone, for the next phase** | [Research plan](docs/RESEARCH_PLAN.md) — pipeline, contracts, your work package, experiments, timeline | — |
 | **New contributor** | [CONTRIBUTING](CONTRIBUTING.md) and the [decision records](docs/decisions/README.md) | `python tests/test_generator.py` |
 | **Just checking a number** | [`evidence/CLAIMS_EVIDENCE.csv`](evidence/CLAIMS_EVIDENCE.csv) — every claim → file → script | — |
 
@@ -85,16 +107,17 @@ Four clips, every frame a real Webots render from an offscreen Camera node. Each
 ## Team and responsibilities
 
 > [!NOTE]
-> Three details are still to confirm and are marked below rather than guessed: my full legal name for `CITATION.cff`, Spencer's surname and GitHub handle, and the sensor teammate's name and handle.
+> Four details are still to confirm and are marked below rather than guessed: my full legal name for `CITATION.cff`, Spencer's surname and GitHub handle, the sensor teammate's name and handle, and the spelling of Ariana's name and her handle.
 
 | Person | Role | Owns | Status | Next |
 |---|---|---|---|---|
-| **Khaled** ([@khh4lid](https://github.com/khh4lid)) | Simulation environment | This repository: world, drone, sensor mounting, obstacles, generator, verification | Meeting build frozen (tag `meeting-2026-11-27-v3`) | Pass the reset gate; re-run with approval |
-| **Spencer** *(handle to confirm)* | PPO policy | `DroneNavPPO/` — training, checkpoints, `handoff.py` | 3 checkpoints evaluated | More training seeds |
-| *(name to confirm)* | Sensor & perception | Raw-sensor processing | Interface + ground-truth data ready | Investigate the 0.0536 m anomaly |
+| **Khaled** ([@khh4lid](https://github.com/khh4lid)) | Simulation environment | This repository: world, drone, sensor mounting, obstacles, generator, verification | Meeting build frozen (tag `meeting-2026-11-27-v3`) | WP-ENV: reset gate, random start/goal, more movers; WP-EVAL |
+| **Spencer** *(handle to confirm)* | PPO policy | `DroneNavPPO/` — training, checkpoints, `handoff.py` | 3 checkpoints evaluated | WP-PPO: document the current PPO; improved PPO, 5 seeds per variant |
+| *(name to confirm)* | Sensor & perception | Raw-sensor processing | Interface + ground-truth data ready | WP-SENS: sensor v3 and a LiDAR noise model; the 0.0536 m anomaly |
+| **Ariana** *(spelling and handle to confirm)* | Traditional algorithms & performance evaluation | [`baselines/traditional/`](baselines/traditional/README.md) — A\*, RRT, goal-bias study | 2D prototype complete | WP-BASE: port A\*/RRT to the Webots arena |
 | **The supervisor** | Supervisor | Direction, review | — | 3 decisions ([here](docs/team/FOR_SUPERVISOR.md#decisions-i-need-from-you)) |
 
-My five responsibilities and what each delivered: **[simulation environment dossier](docs/team/SIMULATION_ENVIRONMENT_DOSSIER.md)**. Nothing in this repository is Spencer's PPO code or the sensor teammate's processing code; their work is credited to them and reached only through the interfaces in [`docs/interfaces/`](docs/interfaces/).
+My five responsibilities and what each delivered: **[simulation environment dossier](docs/team/SIMULATION_ENVIRONMENT_DOSSIER.md)**. Nothing in this repository is Spencer's PPO code or the sensor teammate's processing code; their work is credited to them and reached only through the interfaces in [`docs/interfaces/`](docs/interfaces/). Ariana's baseline prototype is included, unmodified and credited, in [`baselines/traditional/`](baselines/traditional/README.md).
 
 ---
 
@@ -107,7 +130,7 @@ My five responsibilities and what each delivered: **[simulation environment doss
 | **GitHub releases** | None published yet. `v1.0` and the meeting builds exist as tags only. |
 | **Done** | Arena and walls · six obstacles · the moving cart · six seeded test layouts · the verification checks · this documentation. |
 | **Open** | (1) The deterministic reset misses the strict order-independence gate on 1 of 5 targets, so it is not the default ([details](#reset-reproducibility-two-cohorts-kept-apart)). (2) L04 needs a decision: keep it excluded, or authorise a longer-horizon diagnostic run. (3) More PPO training seeds (Spencer). (4) The orbit video. |
-| **Next** | Pass the reset gate, then, with approval, re-run all 540 episodes under the new reset and publish them as a separately labelled cohort; add seeds per layout family. |
+| **Next** | The benchmark phase: see the [research plan](docs/RESEARCH_PLAN.md). First, read the benchmark in full and fill its [extraction sheet](docs/benchmark/BENCHMARK_TVT2025.md#3-extraction-sheet-pdf). Pass the reset gate; then, with approval, re-run under the new reset as a separately labelled cohort. |
 
 ---
 
@@ -425,10 +448,12 @@ Full register: **[ASSUMPTIONS.md](docs/verification/ASSUMPTIONS.md)**.
 
 ```
 assets/        every visual: figures, gifs, renders, diagrams, decisions
+baselines/     traditional planners: Ariana's A*/RRT prototype (notebook, report, slides)
 config/        scenario definitions; scenarios/ holds the 12 canonical JSONs + hashes
 dns/           the simulation package (scenario, backend, autopilot, sensing,
                generator, feasibility, worldcheck, worldgen)
-docs/          team guides, interfaces, ADRs, verification, results, meetings
+docs/          team guides, interfaces, ADRs, verification, results, meetings,
+               benchmark/ (the TVT 2025 benchmark) and RESEARCH_PLAN.md
 evidence/      CLAIMS_EVIDENCE.csv, baseline hashes, environment, release state
 protos/        DnsQuadcopter.proto — airframe, rotors, LiDAR mount, demo camera
 results/       v1_L00/ (90 episodes) and v2_S6/ (540 episodes + per-run folders)
