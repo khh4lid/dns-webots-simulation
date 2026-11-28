@@ -2,6 +2,25 @@
 
 All notable changes to the simulation environment.
 
+## [Unreleased] — 2026-11-28 — benchmark phase: plan, benchmark sheet, traditional baselines
+
+Documentation and teammate deliverables only. No simulation code, scenario, world, result or evidence file changed.
+
+### Added
+- **`docs/benchmark/BENCHMARK_TVT2025.md`.** The team's benchmark: Wang, Zhou & Wu, *IEEE Transactions on Vehicular Technology*, 2026. It holds:
+  - the verified citation and an abstract-level summary;
+  - an extraction sheet to fill from the full text, which has not been read yet;
+  - a side-by-side with our verified setting;
+  - eleven gap hypotheses;
+  - the fair-comparison rule: no "better than the benchmark" claim unless both methods ran under the same protocol.
+- **`docs/RESEARCH_PLAN.md`.** The pipeline (Webots for evaluation, a fast surrogate for training), v3 contracts, work packages per teammate (ENV, SENS, PPO, BASE, EVAL), experiments E1–E6, decision gates D1–D4, a relative timeline and the paper outline.
+- **`baselines/traditional/`.** Ariana's A\*/RRT prototype, as received:
+  - her notebook, progress report and slides, unmodified;
+  - a README with her results, notes on reading them, and the plan to port the planners into the Webots arena.
+
+### Changed
+- **README.** A *Research direction* section, team rows and next steps for each work package, entry points for the baselines and the plan, and a repository-map entry for `baselines/`.
+
 ## [Unreleased] — 2026-11-27 — documentation sync with the final meeting deck
 
 Documentation only. No code, scenario, world, result or evidence file changed.
